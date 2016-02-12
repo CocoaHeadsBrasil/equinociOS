@@ -1,0 +1,21 @@
+# Site settings
+title: equinociOS
+header-img: img/home-bg.jpg
+email: contato@cocoaheads.com.br
+copyright_name: Cocoaheads Brasil
+description: "20 artigos de voluntários durante o mês de Março para comemorar o equinociOS"
+baseurl: "/equinocios"
+url: "http://cocoaheadsbrasil.github.io"
+twitter_username: cocoaheadsbr
+github_username:  cocoaheadsbr
+facebook_username: CocoaHeadsBrasil
+email_username: contato@cocoaheads.com.br
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
