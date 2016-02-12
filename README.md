@@ -9,7 +9,7 @@ Para colaborar com algum artigo, o autor deve seguir o seguinte fluxo:
 	- Título do artigo
 	- Descrição sucinta do artigo
 	- Data de publicação
-2. Escrever o artigo e fazer o Pull Request para esse repositório
+2. Escrever o artigo e fazer o Pull Request para esse repositório, no branch `gh-pages`
 3. Certificar-se de que o artigo se encontra sob a licença [Creative Commons](https://br.creativecommons.org/)
 
 ## Como fazer Pull Request do artigo
