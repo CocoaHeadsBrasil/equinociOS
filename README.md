@@ -37,24 +37,24 @@ Fique atento para:
 
 ## Data de Publicação
 
-- 01/03/2016: 
-- 02/03/2016: 
-- 03/03/2016: 
-- 04/03/2016: CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
-- 05/03/2016: 
-- 06/03/2016: 
-- 07/03/2016: 
-- 08/03/2016: 
-- 09/03/2016: 
-- 10/03/2016: Scene Kit Overview, por [Lucas Farris](https://github.com/luksfarris)
-- 11/03/2016: 
-- 12/03/2016: 
-- 13/03/2016: 
-- 14/03/2016: 
-- 15/03/2016: 
-- 16/03/2016: Protocol-Oriented Programming, por [Lourenço Marinho](https://github.com/lourenco-marinho)
-- 17/03/2016: Bibliotecas, por [Igor Ferreira](https://github.com/igorcferreira)
-- 18/03/2016: iBeacon, por [Gabriel Oliva](https://github.com/gabrieloliva)
-- 19/03/2016: Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
-- 20/03/2016: 
+- **01/03/2016:** 
+- **02/03/2016:** 
+- **03/03/2016:** 
+- **04/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
+- **05/03/2016:** 
+- **06/03/2016:** 
+- **07/03/2016:** 
+- **08/03/2016:** 
+- **09/03/2016:** 
+- **10/03/2016:** Scene Kit Overview, por [Lucas Farris](https://github.com/luksfarris)
+- **11/03/2016:** 
+- **12/03/2016:** 
+- **13/03/2016:** 
+- **14/03/2016:** 
+- **15/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
+- **16/03/2016:** Protocol-Oriented Programming, por [Lourenço Marinho](https://github.com/lourenco-marinho)
+- **17/03/2016:** Bibliotecas, por [Igor Ferreira](https://github.com/igorcferreira)
+- **18/03/2016:** iBeacon, por [Gabriel Oliva](https://github.com/gabrieloliva)
+- **19/03/2016:** Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
+- **20/03/2016:** 
 
