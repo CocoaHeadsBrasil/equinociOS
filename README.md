@@ -1,6 +1,6 @@
 #equinociOS
 
-No dia 20 de março acontece o Equinócio! Para celebrarmos este evento, iremos escrever, a partir do primeiro dia do mês, 20 artigos sobre temas de conhecimento elemental que qualquer desenvolvedor iOS deve dominar.
+No dia 20 de março acontece o [Equinócio](https://pt.wikipedia.org/wiki/Equinócio)*! Para celebrarmos este evento, iremos escrever, a partir do primeiro dia do mês, 20 artigos sobre temas de conhecimento elemental que qualquer desenvolvedor iOS deve dominar.
 
 ## Workflow de colaboração
 Para colaborar com algum artigo, o autor deve seguir o seguinte fluxo:
@@ -50,7 +50,7 @@ Fique atento para:
 - **11/03/2016:** 
 - **12/03/2016:** 
 - **13/03/2016:** 
-- **14/03/2016:** 
+- **14/03/2016:** Programação Reativa com RxSwift, por [Bruno Koga](https://github.com/brunokoga)
 - **15/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
 - **16/03/2016:** Protocol-Oriented Programming, por [Lourenço Marinho](https://github.com/lourenco-marinho)
 - **17/03/2016:** Bibliotecas, por [Igor Ferreira](https://github.com/igorcferreira)
@@ -58,3 +58,4 @@ Fique atento para:
 - **19/03/2016:** Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
 - **20/03/2016:** 
 
+(*) Em março, ocorre o equinócio de outono no hemisfério sul. No hemisfério norte, na mesma data ocorre o equinócio de primavera.
