@@ -49,7 +49,7 @@ Fique atento para:
 - **10/03/2016:** Scene Kit Overview, por [Lucas Farris](https://github.com/luksfarris)
 - **11/03/2016:** 
 - **12/03/2016:** 
-- **13/03/2016:** 
+- **13/03/2016:** Seja um desenvolvedor regular: Adicionando expressões regulares não seu dia-a-dia, por [Diego Ventura] (https://github.com/diegoventura)
 - **14/03/2016:** Programação Reativa com RxSwift, por [Bruno Koga](https://github.com/brunokoga)
 - **15/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
 - **16/03/2016:** Protocol-Oriented Programming, por [Lourenço Marinho](https://github.com/lourenco-marinho)
