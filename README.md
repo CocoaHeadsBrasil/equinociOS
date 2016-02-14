@@ -34,6 +34,8 @@ Fique atento para:
 - A data deve ser no formato ano-mes-dia
 - Não se esqueça de inserir a imagem no diretório [`img`](https://github.com/CocoaHeadsBrasil/equinociOS/tree/gh-pages/img) e certificar-se que o parâmetro `header-img` possui o mesmo nome da imagem.
 
+Para escrever seu artigo, você pode utilizar editores markdown como o [MacDown](http://macdown.uranusjr.com/) ou [Atom](https://atom.io/packages/markdown-writer)!
+
 
 ## Data de Publicação
 
