@@ -39,7 +39,7 @@ Fique atento para:
 
 - **01/03/2016:** 
 - **02/03/2016:** 
-- **03/03/2016:** 
+- **03/03/2016:** (A definir), por [Diogo Tridapalli](https://github.com/diogot)
 - **04/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
 - **05/03/2016:** 
 - **06/03/2016:** 
