@@ -56,6 +56,6 @@ Fique atento para:
 - **17/03/2016:** Bibliotecas, por [Igor Ferreira](https://github.com/igorcferreira)
 - **18/03/2016:** iBeacon, por [Gabriel Oliva](https://github.com/gabrieloliva)
 - **19/03/2016:** Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
-- **20/03/2016:** 
+- **20/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
 
 (*) Em março, ocorre o equinócio de outono no hemisfério sul. No hemisfério norte, na mesma data ocorre o equinócio de primavera.
