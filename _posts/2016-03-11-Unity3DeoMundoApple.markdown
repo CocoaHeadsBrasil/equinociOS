@@ -8,6 +8,15 @@ header-img: "img/Unity3DeoMundoApple/header.jpg"
 category:   Categoria
 ---
 
+# TO-DO
+* Desenvolver o projeto na Unity
+* * Procurar assets livres para uso aberto no GitHub
+
+* Escrever o Artigo
+* Quebrar o TO-DO em tasks menores
+
+
+
 # Perguntas importantes
 ### Qual é a história que eu quero contar aqui?
 #### Como vou estruturar essa história?
@@ -17,14 +26,43 @@ category:   Categoria
 Nome: Equinox
 
 Precisa ter:
-Multitouch, 3D, Gyro/Accelerômetro em iOS e tvOS, Swiping, controlável por mouse e teclado.
+Multitouch, 3D, Gyro/Accelerômetro em iOS e tvOS, Swiping, controlável por mouse e teclado. Câmera tb seria legal.
 
 Minha solução? Vários minigames num proj só. Quem sabe depois a gente tenta encaixar isso direito em uma unidade. Ou corta features.
 
 
+Links úteis:
+
+https://github.com/dsoft20/psx_retroshader Esse shader lindo
+
+https://github.com/nickgravelyn/UnityToolbag Ver coisas daqui, talvez tenha algo interessante
+
+https://github.com/fholm/unityassets ver se os assets daqui tb podem se encaixar
+
+https://github.com/RyanNielson/awesome-unity Varrer esta lista em busca de algo útil
+
+https://www.reddit.com/r/gamedev/comments/3hst9l/best_unity_assets_by_keijiro_takahashi_including/ Shaders do Keijiro
+
+http://kenney.nl/assets dar uma olhada nos assets do kenney
+
+https://github.com/keijiro?tab=repositories
+
+https://github.com/unity3d-jp
+
+https://github.com/unity3d-jp/EasyFlightGame
+
+Artigos que podem conter alguma informação importante que eu ainda não pensei em
+
+http://www.raywenderlich.com/25205/beginning-unity-3d-for-ios-part-13
+
+http://docs.unity3d.com/Manual/iphone-GettingStarted.html
+
+http://www.dannygoodayle.com/2013/02/14/setting-up-your-system-for-unity-ios-development/
+
+https://prime31.com/docs#iosGCMP Plugins úteis para dev iOS
 
 # Possíveis Tópicos
-# First Steps
+## First Steps
 
 
 ![Unity3D Download Assistant Screenshot](img/Unity3DeoMundoApple/BuildSupport.png)
