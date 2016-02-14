@@ -46,7 +46,7 @@ Para escrever seu artigo, você pode utilizar editores markdown como o [MacDown]
 - **05/03/2016:** 
 - **06/03/2016:** 
 - **07/03/2016:** 
-- **08/03/2016:** 
+- **08/03/2016:** Desenvolvendo para Apple TV - compartilhando código e dependências entre plataformas, por [Tales Pinheiro](https://github.com/talesp)
 - **09/03/2016:** Em busca de um layout bonito e adaptativo: UICollectionView, Auto Layout e Size Classes, por [Rodrigo Borges] (https://github.com/rdgborges)
 - **10/03/2016:** Scene Kit Overview, por [Lucas Farris](https://github.com/luksfarris)
 - **11/03/2016:** Unity3D e o Mundo Apple, por [Mauricio Cardozo] (https://github.com/loloop)
