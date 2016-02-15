@@ -35,6 +35,14 @@ Links úteis:
 
 http://docs.unity3d.com/ScriptReference/WebCamTexture.html Uso de câmera
 
+http://answers.unity3d.com/questions/232547/how-to-access-camera-feed-ios-and-android.html Uso de câmera
+
+http://answers.unity3d.com/questions/550729/how-to-access-device-iphoneandroid-native-camera.html Uso de câmera
+
+http://answers.unity3d.com/questions/221621/where-is-ios-camera-support-documented.html Uso de câmera
+
+https://gist.github.com/Democide/beba5fd2603b268a8f72 Loading Screen Gist
+
 https://github.com/dsoft20/psx_retroshader Esse shader lindo
 
 https://github.com/nickgravelyn/UnityToolbag Ver coisas daqui, talvez tenha algo interessante
