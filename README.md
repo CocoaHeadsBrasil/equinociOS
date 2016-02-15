@@ -39,7 +39,7 @@ Para escrever seu artigo, você pode utilizar editores markdown como o [MacDown]
 
 ## Data de Publicação
 
-- **01/03/2016:** 
+- **01/03/2016:** O mundo é mais que seu umbigo, por [Marcelo Fabri](https://github.com/marcelofabri)
 - **02/03/2016:** 
 - **03/03/2016:** (A definir), por [Diogo Tridapalli](https://github.com/diogot)
 - **04/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
