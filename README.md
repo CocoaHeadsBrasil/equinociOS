@@ -82,5 +82,8 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **29/03/2016:**
 - **30/03/2016:**
 
+##Contato
+Para desenvolvedores que acharam a iniciativa interessante e quiserem se juntar e conhecer a comunidade de desenvolvedores iOS brasileira, se cadastre no [Slack do iOSDevBr](http://iosdevbr.herokuapp.com/).
+
 
 (*) Em março, ocorre o equinócio de outono no hemisfério sul. No hemisfério norte, na mesma data ocorre o equinócio de primavera.
