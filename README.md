@@ -40,7 +40,7 @@ Para escrever seu artigo, você pode utilizar editores markdown como o [MacDown]
 ## Data de Publicação
 
 - **01/03/2016:** O mundo é mais que seu umbigo, por [Marcelo Fabri](https://github.com/marcelofabri)
-- **02/03/2016:** 
+- **02/03/2016:** iOS nativo - load e parse de json da web sem framework de terceiros, por [Daniel Bonates] (https://github.com/dbonates)
 - **03/03/2016:** (A definir), por [Diogo Tridapalli](https://github.com/diogot)
 - **04/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
 - **05/03/2016:** Fastlane, por [Luiz Alberto da Silva Oliveira] (https://github.com/betodr)
