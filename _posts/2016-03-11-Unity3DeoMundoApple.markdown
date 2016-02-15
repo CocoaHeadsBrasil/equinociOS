@@ -9,6 +9,8 @@ category:   Categoria
 ---
 
 # TO-DO
+* trocar a pasta de imagens de nome do artigo para username
+
 * Desenvolver o projeto na Unity
 * * Procurar assets livres para uso aberto no GitHub
 
