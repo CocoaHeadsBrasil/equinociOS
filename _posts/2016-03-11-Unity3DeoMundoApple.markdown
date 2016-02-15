@@ -33,6 +33,8 @@ Minha solução? Vários minigames num proj só. Quem sabe depois a gente tenta 
 
 Links úteis:
 
+http://docs.unity3d.com/ScriptReference/WebCamTexture.html Uso de câmera
+
 https://github.com/dsoft20/psx_retroshader Esse shader lindo
 
 https://github.com/nickgravelyn/UnityToolbag Ver coisas daqui, talvez tenha algo interessante
