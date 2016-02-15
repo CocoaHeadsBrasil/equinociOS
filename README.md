@@ -44,7 +44,7 @@ Para escrever seu artigo, você pode utilizar editores markdown como o [MacDown]
 - **03/03/2016:** (A definir), por [Diogo Tridapalli](https://github.com/diogot)
 - **04/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
 - **05/03/2016:** Fastlane, por [Luiz Alberto da Silva Oliveira] (https://github.com/betodr)
-- **06/03/2016:** 
+- **06/03/2016:** Generics + Functional Programming + ReactiveProgramming
 - **07/03/2016:** (A definir), por [Rafael Nobre] (https://github.com/nobre84)
 - **08/03/2016:** Desenvolvendo para Apple TV - compartilhando código e dependências entre plataformas, por [Tales Pinheiro](https://github.com/talesp)
 - **09/03/2016:** Em busca de um layout bonito e adaptativo: UICollectionView, Auto Layout e Size Classes, por [Rodrigo Borges] (https://github.com/rdgborges)
