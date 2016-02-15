@@ -71,8 +71,16 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **20/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
 
 ##Artigos extras
-- **21/03/2016:**
-- **22/03/2016:**
+- **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
+- **22/03/2016:** Implementando o Facebook iOS SDK, por [Gabriel Ribeiro](https://github.com/gabrielribeiro)
+- **23/03/2016:**
+- **24/03/2016:**
+- **25/03/2016:**
+- **26/03/2016:**
+- **27/03/2016:**
+- **28/03/2016:**
+- **29/03/2016:**
+- **30/03/2016:**
 
 
 (*) Em março, ocorre o equinócio de outono no hemisfério sul. No hemisfério norte, na mesma data ocorre o equinócio de primavera.
