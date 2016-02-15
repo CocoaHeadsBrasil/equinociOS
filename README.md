@@ -14,8 +14,7 @@ Para colaborar com algum artigo, o autor deve seguir o seguinte fluxo:
 
 ## Como fazer Pull Request do artigo
 - Faça um fork, baixe ou clone o repositório `https://github.com/CocoaHeadsBrasil/equinociOS.git`
-- Seu artigo deve estar dentro do diretório [`_posts`](https://github.com/CocoaHeadsBrasil/equinociOS/tree/gh-pages/_posts) (que contém todos os posts do blog, que por sua vez são escrito na linguagem de marcação markdown). Fique atento as regras:
-	- O título do arquivo deve manter o seguinte padrão: `YYYY-MM-DD-nomeDoArtigo.markdown`.
+- Escreva seu artigo dentro do diretório [`_posts`](https://github.com/CocoaHeadsBrasil/equinociOS/tree/gh-pages/_posts) (que contém todos os posts do blog e que por sua vez são escrito na linguagem de marcação markdown).
 - Faça o Pull Request
 
 ## Estrutura do post
