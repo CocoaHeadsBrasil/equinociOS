@@ -63,12 +63,12 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **12/03/2016:** Seja um desenvolvedor regular: Adicionando expressões regulares não seu dia-a-dia, por [Diego Ventura] (https://github.com/diegoventura)
 - **13/03/2016:** WebView: A porta de entrada para desenvolvedores web, por [Emiliano E. S. Barbosa] (https://github.com/emilianoeloi)
 - **14/03/2016:** Programação Reativa com RxSwift, por [Bruno Koga](https://github.com/brunokoga)
-- **15/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
+- **15/03/2016:** Generics + Functional Programming + ReactiveProgramming, por [Bruno Bilescky](https://github.com/brunogb)
 - **16/03/2016:** Protocol-Oriented Programming, por [Lourenço Marinho](https://github.com/lourenco-marinho)
 - **17/03/2016:** Bibliotecas, por [Igor Ferreira](https://github.com/igorcferreira)
 - **18/03/2016:** iBeacon, por [Gabriel Oliva](https://github.com/gabrieloliva)
 - **19/03/2016:** Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
-- **20/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
+- **20/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
 
 ##Artigos extras
 - **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
@@ -80,7 +80,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **27/03/2016:**
 - **28/03/2016:**
 - **29/03/2016:**
-- **30/03/2016:**
+- **30/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
 
 ##Contato
 Para desenvolvedores que acharam a iniciativa interessante e quiserem se juntar e conhecer a comunidade de desenvolvedores iOS brasileira, se cadastre no [Slack do iOSDevBr](http://iosdevbr.herokuapp.com/).
