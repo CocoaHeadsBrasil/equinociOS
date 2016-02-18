@@ -37,6 +37,11 @@ Caso seu post tenha imagens, você deve adiciona-las no diretório [`img`](https
 
 Sempre que você for utilizar a imagem, insira o caminho dela: `img/nomeDoUsuario/imagem.jpg`
 
+### Como utilizar as imagens nos posts
+Utilize `{{ site.baseurl }}` para concatenar com o diretório de imagem, como no exemplo abaixo: 
+
+`<img src="{{ site.baseurl }}/img/nomeDoUsuario/imagem.jpg">`
+
 ### Como editar markdown
 Para escrever seu artigo, você pode utilizar editores markdown como o [MacDown](http://macdown.uranusjr.com/) ou [Atom](https://atom.io/packages/markdown-writer)!
 
@@ -46,6 +51,17 @@ Para escrever seu artigo, você pode utilizar editores markdown como o [MacDown]
 Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_posts`](https://github.com/CocoaHeadsBrasil/equinociOS/tree/gh-pages/_posts), pois ele só será exibido quando a data que foi especificada no cabeçalho chegar!
 
 **É muito importante seu artigo estar pronto alguns dias antes da data de publicação, caso contrário medidas serão tomadas para manter as publicações diárias.**
+
+## Como rodar localmente
+1. Pelo terminal, vá ao diretório onde seu equinociOS está localizado
+2. Execute `jekyll serve` ou simplesmente `jekyll s`
+3. No navegador, vá para `127.0.0.1:4000` ou o famoso `localhost:4000` :P
+
+Caso a página não carregue, você deverá:
+
+* Abrir o arquivo `_config.yml`
+* Apagar os parâmetros da `url` e da `baseurl`
+* Voltar ao **passo 1** e fazer a sequencia
 
 
 ## Data de Publicação
@@ -70,7 +86,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **19/03/2016:** Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
 - **20/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
 
-##Artigos extras
+## Artigos extras
 - **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
 - **22/03/2016:** Implementando o Facebook iOS SDK, por [Gabriel Ribeiro](https://github.com/gabrielribeiro)
 - **23/03/2016:**
@@ -82,7 +98,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **29/03/2016:**
 - **30/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
 
-##Contato
+## Contato
 Para desenvolvedores que acharam a iniciativa interessante e quiserem se juntar e conhecer a comunidade de desenvolvedores iOS brasileira, se cadastre no [Slack do iOSDevBr](http://iosdevbr.herokuapp.com/).
 
 
