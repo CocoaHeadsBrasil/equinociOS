@@ -53,15 +53,11 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 **É muito importante seu artigo estar pronto alguns dias antes da data de publicação, caso contrário medidas serão tomadas para manter as publicações diárias.**
 
 ## Como rodar localmente
-1. Pelo terminal, vá ao diretório onde seu equinociOS está localizado
+1. Pelo terminal, vá ao diretório raíz onde seu equinociOS está localizado
+2. Se for a primeira vez que você irá rodar esse projeto, execute `bundle install` para garantir que todas as dependências que o projeto utiliza existem. Caso negativo, o download será efetuado
 2. Execute `jekyll serve` ou simplesmente `jekyll s`
-3. No navegador, vá para `127.0.0.1:4000` ou o famoso `localhost:4000` :P
-
-Caso a página não carregue, você deverá:
-
-* Abrir o arquivo `_config.yml`
-* Apagar os parâmetros da `url` e da `baseurl`
-* Voltar ao **passo 1** e fazer a sequencia
+3. Confira qual foi o *Server Address* gerado pelo jekyll ![](img/jekyll-path.png)
+4. Abra o navegador e entre no endereço
 
 
 ## Data de Publicação
