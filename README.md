@@ -78,7 +78,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **25/03/2016:**
 - **26/03/2016:**
 - **27/03/2016:**
-- **28/03/2016:**
+- **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
 - **29/03/2016:**
 - **30/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
 
