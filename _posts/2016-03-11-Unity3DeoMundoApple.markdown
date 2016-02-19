@@ -35,6 +35,8 @@ Minha solução? Vários minigames num proj só. Quem sabe depois a gente tenta 
 
 Links úteis:
 
+https://littlebitesofcocoa.com/192-being-a-good-low-power-mode-citizen afetar settings do app com isso aqui seria bem legal
+
 http://docs.unity3d.com/ScriptReference/WebCamTexture.html Uso de câmera
 
 http://answers.unity3d.com/questions/232547/how-to-access-camera-feed-ios-and-android.html Uso de câmera
