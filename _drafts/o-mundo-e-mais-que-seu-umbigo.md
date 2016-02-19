@@ -12,7 +12,7 @@ category:   Categoria
 
 A comunidade iOS está constantemente presente no nosso dia-a-dia. Aposto que você já se beneficiou dela de algum jeito, seja usando alguma biblioteca criada por outra pessoa, alguma ferramenta open source ou participando de algum encontro do [CocoaHeads](http://www.cocoaheads.com.br). [Não??!](https://www.youtube.com/watch?v=8gEkCkhtUQU) Mas com certeza você já se beneficiou de alguma resposta do [Stack Overflow](http://stackoverflow.com). 😅
 
-A pergunta que eu faço agora é: o quanto você já retribuiu para esse comunidade?
+A pergunta que eu faço agora é: o quanto você já retribuiu para essa comunidade?
 
 ### Por que retribuir?
 
@@ -57,6 +57,7 @@ O [Diogo](https://twitter.com/diogot) já fez [pull request](https://github.com/
 
 ### Criando projetos open source
 
+http://artsy.github.io/blog/2016/01/13/OSS-Expectations/
 
 ### Outras formas de retribuir
 
@@ -85,3 +86,16 @@ Tem [um monte de gente](http://stackoverflow.com/research/developer-survey-2015#
 
 
 ### E agora?
+
+
+### Referências
+
+* https://speakerdeck.com/orta/contributing-to-open-source-doesnt-require-changing-the-world
+* https://speakerdeck.com/kylef/building-for-open-source
+* http://artsy.github.io/blog/2016/01/28/being-a-good-open-source-citizen/
+* https://realm.io/news/altconf-orta-therox-being-nice-in-open-source/
+* https://www.objc.io/issues/22-scale/artsy/
+* https://ashfurrow.com/blog/building-online-communities/
+* https://blog.cocoapods.org/starting-open-source/
+
+
