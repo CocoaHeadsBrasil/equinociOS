@@ -85,7 +85,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 ## Artigos extras
 - **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
 - **22/03/2016:** Implementando o Facebook iOS SDK, por [Gabriel Ribeiro](https://github.com/gabrielribeiro)
-- **23/03/2016:**
+- **23/03/2016:** Método Swizzling, por [Fernanda Geraissate](https://github.com/fggeraissate)
 - **24/03/2016:**
 - **25/03/2016:**
 - **26/03/2016:**
