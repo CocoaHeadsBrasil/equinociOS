@@ -1,6 +1,6 @@
 
 # Created by https://www.gitignore.io/api/jekyll,osx
-
+Gemfile.lock
 ### Jekyll ###
 _site/
 .sass-cache/
