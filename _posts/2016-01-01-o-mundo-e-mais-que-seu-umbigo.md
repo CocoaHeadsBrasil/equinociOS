@@ -139,6 +139,6 @@ Alguns links que foram úteis no processo de escrita desse post:
 * [Starting Open Source](https://blog.cocoapods.org/starting-open-source/) - [@K0nserv](https://twitter.com/K0nserv)
 
 
-> A [foto](http://www.nasa.gov/jpl/msl/earth-view-from-mars-pia17936) de capa do post foi tirada em 31/01/2014 pela Curiosity Mars e mostra a Terra (sim aquele pontinho brilhante é  a Terra) e a nossa lua logo embaixo dela. 
+> A [foto](http://www.nasa.gov/jpl/msl/earth-view-from-mars-pia17936) de capa do post foi tirada em 31/01/2014 pela Curiosity Mars e mostra a Terra (sim, aquele pontinho brilhante é  a Terra!) e a nossa lua logo embaixo dela. 
 
 
