@@ -3,7 +3,7 @@ layout:     post
 title:      "O mundo é mais que seu umbigo"
 date:       2016-01-01 15:58:00
 author:     "Marcelo Fabri"
-header-img: "img/fabri/header.JPG"
+header-img: "img/fabri/pia17936_evening_star.jpg"
 category:   Categoria
 ---
 
@@ -137,5 +137,8 @@ Alguns links que foram úteis no processo de escrita desse post:
 * [Issue 22: iOS at Scale - Artsy](https://www.objc.io/issues/22-scale/artsy/) - [objc.io](https://www.objc.io)
 * [Building Online Communities](https://ashfurrow.com/blog/building-online-communities/) - [@ashfurrow](https://twitter.com/ashfurrow)
 * [Starting Open Source](https://blog.cocoapods.org/starting-open-source/) - [@K0nserv](https://twitter.com/K0nserv)
+
+
+> A [foto](http://www.nasa.gov/jpl/msl/earth-view-from-mars-pia17936) de capa do post foi tirada em 31/01/2014 pela Curiosity Mars e mostra a Terra (sim aquele pontinho brilhante é  a Terra) e a nossa lua logo embaixo dela. 
 
 
