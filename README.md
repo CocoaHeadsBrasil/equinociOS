@@ -63,7 +63,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 ## Data de Publicação
 - **01/03/2016:** O mundo é mais que seu umbigo, por [Marcelo Fabri](https://github.com/marcelofabri)
 - **02/03/2016:** iOS nativo - load e parse de json da web sem framework de terceiros, por [Daniel Bonates] (https://github.com/dbonates)
-- **03/03/2016:** (A definir), por [Diogo Tridapalli](https://github.com/diogot)
+- **03/03/2016:** Minimizando o acoplamento de Views e ViewControllers, por [Diogo Tridapalli](https://github.com/diogot)
 - **04/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
 - **05/03/2016:** Fastlane, por [Luiz Alberto da Silva Oliveira] (https://github.com/betodr)
 - **06/03/2016:** PIP - Picture in Picture, por [Douglas Fischer](https://github.com/DougFischer)
