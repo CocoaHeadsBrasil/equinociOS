@@ -10,7 +10,7 @@ category:   Categoria
 > Marcelo Fabri ([@marcelofabri_](https://twitter.com/marcelofabri_){:target="_blank"}) é desenvolvedor iOS desde quando a contagem de referências era manual e Xcode e Interface Builder eram apps distintos.
 
 
-A comunidade iOS está constantemente presente no nosso dia-a-dia. Aposto que você já se beneficiou dela de algum jeito, seja usando alguma biblioteca criada por outra pessoa, alguma ferramenta open source ou participando de algum encontro do [CocoaHeads](http://www.cocoaheads.com.br){:target="_blank"}. [Não??!](https://www.youtube.com/watch?v=8gEkCkhtUQU){:target="_blank"} Mas com certeza você já se beneficiou de alguma resposta do [Stack Overflow](http://stackoverflow.com){:target="_blank"}. 😅
+A comunidade iOS está constantemente presente no nosso dia-a-dia. Aposto que você já se beneficiou dela de algum jeito, seja usando alguma biblioteca criada por outra pessoa, alguma ferramenta open source ou participando de algum encontro do [CocoaHeads](http://www.cocoaheads.com.br){:target="_blank"}. [Não??!](https://www.youtube.com/watch?v=8gEkCkhtUQU){:target="_blank"} Mas com certeza você já foi ajudado por alguma resposta do [Stack Overflow](http://stackoverflow.com){:target="_blank"}. 😅
 
 A pergunta que eu faço agora é: o quanto você já retribuiu para essa comunidade?
 
@@ -32,19 +32,19 @@ extern CGFloat roundCGFloat(CGFloat x) {
 }
 ~~~
 
-O processo deve ter demorado uns 20 minutos, no máximo. Eu poderia ter gasto uns 5 minutos e deixado apenas no meu projeto, mas seria um desperdício não contribuir de volta. Esses 15 minutos não farão diferença alguma para o seu projeto (e se fizer, tem algo muito errado acontecendo), mas podem ser muito úteis para outras pessoas.
+O processo deve ter demorado uns 20 minutos, no máximo. Eu poderia ter gasto uns 5 minutos e deixado apenas no meu projeto, mas seria um desperdício não contribuir de volta. Esses 15 minutos não farão diferença alguma para o seu projeto (*e se fizer, tem algo muito errado acontecendo*), mas podem ser muito úteis para outras pessoas.
 
 Algum tempo depois, estava trabalhando com Swift e usando o [Natalie](https://github.com/krzyzanowskim/Natalie){:target="_blank"} para gerar código com o objetivo de eliminar aquelas strings terríveis quando trabalhamos com Storyboards. Percebi um ponto que poderia ser melhorado e abri [uma pull request](https://github.com/krzyzanowskim/Natalie/pull/24){:target="_blank"}. O [Christian](https://twitter.com/chrisfsampaio){:target="_blank"}, que trabalhava comigo na época, também descobriu uma outra limitação e abriu [outra pull request](https://github.com/krzyzanowskim/Natalie/pull/15){:target="_blank"}.
 
 Como vocês podem ver, não foram grandes alterações feitas, mas eram importantes para nós e imaginamos que seriam importantes para a comunidade. E para facilitar, foram alterações feitas em repositórios nas linguagens que trabalhamos diariamente: Objective-C e Swift.
 
-Muitas ferramentas que usamos diariamente são feitas em Ruby, incluindo o [liftoff](https://github.com/thoughtbot/liftoff){:target="_blank"}, que serve para gerar projetos do Xcode conforme um template pré-determinado. Isso é algo muito bom para ajudar a espalhar boas práticas dentro de uma empresa e começamos a usar. Porém, ainda tínhamos que fazer muitas configurações manualmente depois, pois  sempre criávamos outras *build configurations* e *schemes*, configurando algumas flags como `GCC_PREPROCESSOR_DEFINITIONS`.
+Muitas ferramentas que usamos para trabalhar são feitas em Ruby, incluindo o [liftoff](https://github.com/thoughtbot/liftoff){:target="_blank"}, que serve para gerar projetos do Xcode conforme um template pré-determinado. Isso é algo muito bom para ajudar a espalhar boas práticas dentro de uma empresa e por isso começamos a usar. Porém, ainda tínhamos que fazer muitas configurações manualmente depois, já que sempre criávamos outras *build configurations* e *schemes*, usando algumas flags como `GCC_PREPROCESSOR_DEFINITIONS`.
 
 Juntando o problema existente e a vontade de melhorar um pouco meu Ruby, resolvi tentar implementar isso no liftoff. Foi uma experiência bem desafiadora, já que tive que aprender melhor como *build configurations* e *schemes* funcionam no Xcode, além de aprender mais sobre Ruby e, principalmente, testes unitários. O resultado pode ser visto em duas pull requests: [#224](https://github.com/thoughtbot/liftoff/pull/224){:target="_blank"} e [#225](https://github.com/thoughtbot/liftoff/pull/225){:target="_blank"}. Olhem a quantidade de comentários feitos, principalmente na segunda, sobre como eu poderia melhorar o que eu fiz! Ganhei de graça uma aula sobre Ruby e testes. 😄
 
 Além disso, é muito legal receber feedbacks positivos de pessoas que você considera como referências na sua área, como o pessoal da [thoughtbot](https://thoughtbot.com){:target="_blank"} nesse caso, ou do [Ash Furrow](https://twitter.com/ashfurrow){:target="_blank"} e do [Orta Therox](https://twitter.com/orta){:target="_blank"} ([orta/cocoapods-keys#125](https://github.com/orta/cocoapods-keys/pull/125){:target="_blank"}) ou ainda do [Felix Krause](https://twitter.com/KrauseFx){:target="_blank"} ([fastlane/fastlane#822](https://github.com/fastlane/fastlane/pull/822){:target="_blank"}), criador do [fastlane](https://github.com/fastlane/fastlane){:target="_blank"}.
 
-Mesmo quando você faz cagadas, o pessoal geralmente é compreensível. E eu já fiz algumas, como aumentar o tempo de processamento do [SwiftLint](https://github.com/realm/SwiftLint){:target="_blank"} em mais de 16x 😵.
+Mesmo quando você faz cagadas, o pessoal geralmente é compreensivo. E eu já fiz algumas, como aumentar o tempo de processamento do [SwiftLint](https://github.com/realm/SwiftLint){:target="_blank"} em mais de 16x 😵.
 
 ![]({{ site.baseurl }}/img/fabri/swiftlint.png)
 <span class="caption text-muted">Ooops! 😅 (<a href="https://github.com/realm/SwiftLint/pull/330" target="_blank">realm/SwiftLint#330</a>)</span>
@@ -58,7 +58,7 @@ E tudo isso por que eu estava de saco cheio de ser o cara chato, comentando em p
 ![]({{ site.baseurl }}/img/fabri/bot.png)
 <span class="caption text-muted">Eu, sendo chato</span>
 
-E não sou só eu que faço isso. Temos vários exemplos na nossa própria comunidade brasileira: o Christian implementou boa parte do `NSNumberFormatter` no Foundation do Swift ([swift-corelibs-foundation#132](https://github.com/apple/swift-corelibs-foundation/pull/132){:target="_blank"}). 
+E não sou só eu que faço isso. Temos vários exemplos na própria comunidade brasileira: o Christian implementou boa parte do `NSNumberFormatter` no Foundation do Swift ([swift-corelibs-foundation#132](https://github.com/apple/swift-corelibs-foundation/pull/132){:target="_blank"}).
 
 O [Koga](https://twitter.com/brunokoga){:target="_blank"} contribuiu com o [swift-sodium](https://github.com/jedisct1/swift-sodium){:target="_blank"} ([#20](https://github.com/jedisct1/swift-sodium/pull/20){:target="_blank"} e [#21](https://github.com/jedisct1/swift-sodium/pull/21){:target="_blank"}). 
 
@@ -76,9 +76,9 @@ Um dos pontos mais complicados é convencer a liderança da empresa que isso é 
 
 * **Visibilidade**: é muito difícil achar bons desenvolvedores, especialmente no caso de iOS. Com um (bom) projeto open source, fica mais fácil a empresa ser reconhecida/descoberta pela comunidade.
 * **Contribuição da comunidade**: com um projeto open source, a comunidade pode ajudar e encontrar (e até mesmo arrumar!) bugs ou até mesmo desenvolver features que seriam úteis. Duvida que isso aconteça? Um exemplo é [essa pull request](https://github.com/artsy/eigen/pull/195){:target="_blank"} do Felix Krause, adicionando integração com o fastlane no [Eigen](https://github.com/artsy/eigen){:target="_blank"}.
-* **Componentes e documentação**: na minha visão, o ideal é começar disponibilizando componentes reutilizáveis do projeto. É uma ótima oportunidade de descobrir eventuais acoplamentos ou dependências que não deveriam existir, além de documentar o componente, beneficiando até mesmo membros da equipe. Extrair um componente (e tornar open source) exige uma disciplina maior sobre barreiras do seu sistema, barrando a tentação de "fazer assim mesmo agora, porque o prazo tá apertado". Outro benefício é o maior cuidado em seguir [Semantic Versioning](http://semver.org){:target="_blank"}, já que tendemos a ser um pouco desleixados com isso quando só nós estamos usando um componente.
+* **Componentes e documentação**: na minha visão, o ideal é começar disponibilizando componentes reutilizáveis do projeto. É uma ótima oportunidade de descobrir eventuais acoplamentos ou dependências que não deveriam existir, além de documentar o componente, beneficiando até mesmo membros da equipe. Extrair um componente (e tornar open source) exige uma disciplina maior sobre barreiras do seu sistema, eliminando a tentação de "fazer assim mesmo agora, porque o prazo tá apertado". Outro benefício é o maior cuidado em seguir [Semantic Versioning](http://semver.org){:target="_blank"}, já que tendemos a ser um pouco desleixados com isso quando um componente é usado apenas internamente.
 
-Entretanto, eu espero que esses pontos sejam usados apenas para convencer pessoas que não estão mais tão ligadas com desenvolvimento, já que para mim são apenas efeitos colaterais do principal motivo: retribuir a comunidade que tanto nos ajuda.
+Entretanto, eu espero que esses pontos sejam usados apenas para convencer pessoas que não estão mais tão ligadas com desenvolvimento, já que, na minha visão, essas vantagens são apenas efeitos colaterais do principal motivo: retribuir a comunidade que tanto nos ajuda.
 
 Eu recomendo a leitura do post [OSS Expectations](http://artsy.github.io/blog/2016/01/13/OSS-Expectations/){:target="_blank"}, que fala um pouco da experiência do pessoal da Artsy em tornar seus apps open source.
 
@@ -94,9 +94,9 @@ Algumas formas de contribuição não envolvem nem repositórios do GitHub.
 
 O Diogo e o Koga escrevem no [Invariante](http://invariante.com){:target="_blank"}, levantando discussões importantes sobre iOS. Blogs são importantes para compartilhar conhecimento, mesmo que sejam posts curtos. Um bom exemplo disso é o blog da [Natasha the Robot](https://www.natashatherobot.com){:target="_blank"}, que sempre faz um post assim que ela aprende algo novo (olhe o ["NSStringFromClass in Swift is Here!"](https://www.natashatherobot.com/nsstringfromclass-in-swift/) para ter uma ideia do que estou falando). 
 
-Uma galera contribui com os [Podcasts do CocoaHeads](http://www.cocoaheads.com.br/podcasts/){:target="_blank"}.
+Uma galera contribui com os episódios do [Podcast do CocoaHeads](https://soundcloud.com/cocoaheadsbr){:target="_blank"}, em especial o [Douglas](https://twitter.com/DougDiskin){:target="_blank"}, que gasta umas 10 horas por semana apenas na edição de cada episódio.
 
-Várias pessoas trabalham muito para os encontros do CocoaHeads acontecerem em [diversas cidades](http://www.cocoaheads.com.br/cidades){:target="_blank"} do Brasil todo mês.
+Várias pessoas trabalham muito para os encontros do CocoaHeads acontecerem em [diversas cidades](http://www.cocoaheads.com.br/cidades){:target="_blank"} do Brasil todo mês, não desanimando mesmo quando uma galera confirma presença e não aparece no dia do evento 😔.
 
 Muita gente palestra em eventos como o próprio CocoaHeads, compartilhando suas experiências.
 
