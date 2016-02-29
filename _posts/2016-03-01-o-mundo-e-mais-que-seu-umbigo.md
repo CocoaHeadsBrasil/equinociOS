@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "O mundo é mais que seu umbigo"
-date:       2016-01-01 15:58:00
+date:       2016-03-01 00:00:00
 author:     "Marcelo Fabri"
 header-img: "img/fabri/pia17936_evening_star.jpg"
 category:   Categoria
