@@ -43,7 +43,7 @@ Sim, quando o uso de bibliotecas prontas passa a ser a primeira opção do desen
 | conviver com uma limitação do framework| -  |
 | encarar o código pra entende-lo e fazer ajustes para sua necessidade ou ainda, | - |
 | mudar o que você achava que seria a solução ideal, para que tenha condições de usar a biblioteca "ideal". | - |
-| aos poucos você vai perceber o quanto está distante de alguns conceitos básicos da plataforma sobre a qual você deveria ser O cara! | Além de saber o que está fazendo, você estará em dia com os rumos da plataforma para a qual você se dispôs a ser um solucionado de problemas. |
+| aos poucos você vai perceber o quanto está distante de alguns conceitos básicos da plataforma sobre a qual você deveria ser O cara! | Além de saber o que está fazendo, você estará em dia com os rumos da plataforma para a qual você se dispôs a ser um solucionador de problemas. |
 
 Além desses pontos, depender de um framework de terceiro pode se tornar um caso ainda mais crítico nos eventos de updates, principalmente do iOS. Na virada de chave do Swift 1.2 para 2.0, por exemplo, muitos projetos abandonaram o suporte às versões inferiores à 8.0 do iOS, e isso só aumentou o impacto e esforço necessário para essa conversão em apps que dependiam desses frameworks e precisam manter compatibilidade com iOS 7, um problema considerável em projetos grandes. Lá se foram horas e horas pra resolver essas pendências mantendo esses requerimentos por conta própria.
 
