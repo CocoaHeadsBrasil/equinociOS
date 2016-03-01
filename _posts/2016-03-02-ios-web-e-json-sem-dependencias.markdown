@@ -337,3 +337,6 @@ Tentei ser prático em minha peroração. Não tenho a pretensão de ter mostrad
 Com esse artigo, espero ter contribuído ao menos 1 byte pra seu conhecimento e tendo sido útil ou não, seu feedback é muito importante e gostaria de encoraja-lo a dizer o que achou desse artigo e contribuir com suas críticas e sugestões.
 
 Um forte abraço a todos e até a próxima!
+
+> Daniel Bonates<br>designer & developer -  <a href="http://bonates.com" target="_blank">bonates.com</a>
+
