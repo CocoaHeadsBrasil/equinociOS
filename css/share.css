@@ -1,0 +1,18 @@
+.share-page {
+    text-align: center;
+    background: #eee;
+    color: #0085A1;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+
+    a {
+        font-weight: 700;
+        color: #fff;
+        margin-left: 10px;
+
+        &:hover {
+            border-bottom: 1px dashed #fff;
+        }
+    }
+}
