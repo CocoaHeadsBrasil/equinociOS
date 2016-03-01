@@ -4,7 +4,7 @@ title:      "O mundo é mais que seu umbigo"
 date:       2016-03-01 00:00:00
 author:     "Marcelo Fabri"
 header-img: "img/fabri/pia17936_evening_star.jpg"
-category:   "open source"
+category:   "open-source"
 ---
 
 > Marcelo Fabri ([@marcelofabri_](https://twitter.com/marcelofabri_){:target="_blank"}) é desenvolvedor iOS desde quando a contagem de referências era manual e Xcode e Interface Builder eram apps distintos.
