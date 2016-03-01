@@ -22,16 +22,16 @@ Não, por conta do fato de que muito esforço pode ser poupado, tempo de produç
 Sim, quando o uso de bibliotecas prontas passa a ser a primeira opção do desenvolvedor. Esse problema foi sentido também na comunidade de desenvolvedores Ruby faz alguns anos, com as famosas gems. Com a chegada do gerenciador de dependências CocoaPods, tornou-se previsível que isso também poderia ser uma armadilha no mundo iOS. E tem sido.
 
 ### Quando é legal usar?
-1. quando você sabe que poderia resolver o resolver o problema (mesmo!);
-2. você entende o que a lib está fazendo e que recursos ela está utilizando;
-3. a lib realmente vai resolver seu problema, e não criar outros;
-4. a lib será usada apenas para acelerar a solução. Exemplo: CoreData;
-5. Quando trata-se de algum recurso muito pontual que você não acredita que não precisará, ao menos por hora, se aprofundar. Exemplo: Bluetooth.
+1. Quando você sabe que poderia resolver o resolver o problema (mesmo!);
+2. Você entende o que a lib está fazendo e que recursos ela está utilizando;
+3. A lib realmente vai resolver seu problema, e não criar outros;
+4. A lib será usada apenas para acelerar a solução. Exemplo: CoreData;
+5. Quando trata-se de algum recurso muito pontual que você acredita que não precisará, ao menos por hora, se aprofundar. Exemplo: Bluetooth.
 
 ### Quando NÃO é legal usar?
 1. Quando não se faz idéia de como se resolveria o problema e que frameworks podem ser acionados para isso;
 2. Muito código e muita dependência será acrescentada à sua base, para pouca funcionalidade realmente utilizada;
-3. Quando trata-se de uma operação básica e você não sabe como fazê-la na mão. Exemplos: puxar dados da web, interpretar json.
+3. Quando trata-se de uma operação básica e você não sabe como fazê-la na mão. Exemplos: puxar dados da web, interpretar *JSON*.
 
 ### Comparando na prática:
 
@@ -45,24 +45,24 @@ Sim, quando o uso de bibliotecas prontas passa a ser a primeira opção do desen
 | mudar o que você achava que seria a solução ideal, para que tenha condições de usar a biblioteca "ideal". | - |
 | aos poucos você vai perceber o quanto está distante de alguns conceitos básicos da plataforma sobre a qual você deveria ser O cara! | Além de saber o que está fazendo, você estará em dia com os rumos da plataforma para a qual você se dispôs a ser um solucionado de problemas. |
 
-Além desses pontos, depender de um framework de terceiro pode se tornar um caso ainda mais crítico nos eventos de updates, principalmente do iOS. Na virada de chave do swift 1.2 para 2.0, por exemplo, muitos projetos abandonaram o suporte às versões inferiores à 8.0 do iOS, e isso só aumentou o impacto e esforço necessário para essa conversão em apps que dependiam desses frameworks e precisam manter compatibilidade com iOS 7, um problema considerável em projetos grandes. Lá se foram horas e horas pra resolver essas pendências mantendo esses requerimentos por conta própria.
+Além desses pontos, depender de um framework de terceiro pode se tornar um caso ainda mais crítico nos eventos de updates, principalmente do iOS. Na virada de chave do Swift 1.2 para 2.0, por exemplo, muitos projetos abandonaram o suporte às versões inferiores à 8.0 do iOS, e isso só aumentou o impacto e esforço necessário para essa conversão em apps que dependiam desses frameworks e precisam manter compatibilidade com iOS 7, um problema considerável em projetos grandes. Lá se foram horas e horas pra resolver essas pendências mantendo esses requerimentos por conta própria.
 
-Enfim, tudo isso que pontuei foi apenas pra defender esse ponto de vista: o desenvolvedor tem que se envolver com a plataforma e saber tirar dela o caldo que ela dá com as ferramentas que ela oferece. Isso significa consistencia e solidez nas soluções. Usar uma bilblioteca pronta, tem que ser para acelerar a solução, sendo sempre assertivo na aplicação e nunca para suprir uma falta de conhecimento ou domínio do assunto que ela trata. 
+Enfim, tudo isso que pontuei foi apenas pra defender esse ponto de vista: o desenvolvedor tem que se envolver com a plataforma e saber tirar dela o caldo que ela dá com as ferramentas que ela oferece. Isso significa consistência e solidez nas soluções. Usar uma bilblioteca pronta tem que ser para acelerar a solução, sendo sempre assertivo na aplicação, e nunca para suprir uma falta de conhecimento ou domínio do assunto que ela trata. 
 
 > o desenvolvedor tem que se envolver com a plataforma e saber tirar dela o caldo que ela dá com as ferramentas que ela oferece.
 
-> Usar uma bilblioteca pronta, tem que ser para acelerar a solução, sendo sempre assertivo na aplicação e nunca para burlar uma falta de conhecimento ou domínio do assunto que ela trata. 
+> Usar uma bilblioteca pronta tem que ser para acelerar a solução, sendo sempre assertivo na aplicação, e nunca para suprir uma falta de conhecimento ou domínio do assunto que ela trata. 
 
 
 
-## Caso clássico: load and parse de json da web
+## Caso clássico: load and parse de *JSON* da web
 
 Vou tentar mostrar agora um caso clássico, presente em muitos testes para vagas de iOS, e que, para minha surpresa, muitos colegas acabam travando se for solicitado para que não seja utilizada dependências externas. O que deveria ser uma solicitação básica acaba virando um problema e um balizador do quão distante o programador está realmente da plataforma que ele usa pra desenvolver.
 
 
 ### O que precisamos?
 
-o processo é tão simples, que basicamente vamos precisar apenas de `NSURLSession`, `NSJSONSerialization` e mais algum código básico para fazer o load dos dados da web e parse dos mesmos.
+O processo é tão simples, que basicamente vamos precisar apenas de `NSURLSession`, `NSJSONSerialization` e mais algum código básico para fazer o load dos dados da web e parse dos mesmos.
 
 Eis como a gente pode resolver o load simples de url (_async_):
 
@@ -77,7 +77,7 @@ let task = session.dataTaskWithRequest(request) { (data, response, error) -> Voi
 task.resume()
 ```
 
-e para interpretar o json recebido:
+E para interpretar o *JSON* recebido:
 
 ```swift
 do {
@@ -94,9 +94,9 @@ do {
 Acredite, é basicamente isso. Acredite se quiser, mas vejo muitos devs que desconhecem essa dupla. O que vou propor agora é só dar uma incrementada mas sem adicionar complexidade. O objetivo é tornar essas operações mais genéricas e reutilizáveis, aprimorando o tratamento de erros e resposta, deixando nosso código mais reutilizável:
 
 
-#### parte 1: o load
+#### Parte 1: o load
 
-primeiro, proponho uma estrutura pra facilitar nossa leitura de erros, tratando casos comuns de resposta do servidor:
+Primeiro, proponho uma estrutura pra facilitar nossa leitura de erros, tratando casos comuns de resposta do servidor:
 
 ```swift
 enum NetError : ErrorType, CustomStringConvertible {
@@ -125,7 +125,7 @@ enum NetError : ErrorType, CustomStringConvertible {
 }
 ```
 
-agora o nosso request, inserimos dentro de uma `func` usando um _callback_ para retornar os dados ou o erro quando for o caso:
+Agora o nosso request, inserimos dentro de uma `func` usando um _callback_ para retornar os dados ou o erro quando for o caso:
 
 ```swift
 func requestData(request:NSMutableURLRequest, callback:(AnyObject?, NetError?)-> ()) {
@@ -164,11 +164,11 @@ func requestData(request:NSMutableURLRequest, callback:(AnyObject?, NetError?)->
 }
 ```
 
-O `switch` deixa o código um pouco mais extenso, mas o que fazemos aqui é simples, em qualquer situação que não consigamos uma resposta ok (statusCode == 200, por exemplo), reportamos o erro, caso contrario, passamos os dados recebidos no _callback_ para que o responsável por esses dados faça o parse do json recebido.
+O `switch` deixa o código um pouco mais extenso, mas o que fazemos aqui é simples, em qualquer situação que não consigamos uma resposta *OK* (statusCode == 200, por exemplo), reportamos o erro, caso contrario, passamos os dados recebidos no _callback_ para que o responsável por esses dados faça o parse do *JSON* recebido.
 
-#### parte 2: o parse
+#### Parte 2: o parse
 
-Agora precisamos extrair um JSON dos dados que recuperamos. Atribuindo o processo de parse a uma estrutura também nos dá mais mobilidade. Aqui fazemos isso de uma forma bem simples:
+Agora precisamos extrair um *JSON* dos dados que recuperamos. Atribuindo o processo de parse a uma estrutura também nos dá mais mobilidade. Aqui fazemos isso de uma forma bem simples:
 
 ```swift
 struct Parser {
@@ -192,7 +192,7 @@ struct Parser {
 }
 ```
 
-note que aqui poderíamos ainda fazer uso de _`Generics`_ no Swift ao invés de `typealias`, o que seria uma opção para tornar o parser ainda mais abrangente para transformar json em outros objetos, algo tipo isso:
+Note que aqui poderíamos ainda fazer uso de _`Generics`_ no Swift ao invés de `typealias`, o que seria uma opção para tornar o parser ainda mais abrangente para transformar *JSON* em outros objetos, algo tipo isso:
 
 ```swift
 struct Parser {
@@ -207,7 +207,7 @@ struct Parser {
 
 Mas esse assunto é mais extenso, cabe num tópico só sobre _Generics_ e sai bem do escopo do objetivo desse artigo.
 
-#### parte 3: nosso plano em ação:
+#### Parte 3: nosso plano em ação:
 
 Isso posto, vamos para um exemplo de uso dessa proposta. Note que estarei usando um array apenas para facilitar o entendimento:
 
@@ -248,9 +248,9 @@ if let url = NSURL(string: "https://gist.githubusercontent.com/dbonates/f3d0c489
 }
 ```
 
-Pronto, está feito! Caso de load e json resolvido sem precisar de Alamofire, swiftJSON e etc...
+Pronto, está feito! Caso de load e *JSON* resolvido sem precisar de Alamofire, swiftJSON etc...
 
-Como eu sei que é bem provável que você queira na verdade fazer o parse do json e retorna-lo como um objeto pronto. Dou uma sugestão de como faço isso mais adiante e no Playground vai essa implementação também.
+Como eu sei que é bem provável que você queira na verdade fazer o parse do *JSON* e retorná-lo como um objeto pronto. Dou uma sugestão de como faço isso mais adiante e no Playground vai essa implementação também.
 
 Poderiámos encerrar esse artigo por aqui, mas...
 
@@ -259,7 +259,7 @@ Poderiámos encerrar esse artigo por aqui, mas...
 Dá pra ficar melhor? 
 Sempre! E para fechar segue uma _pro-tip_:
 
-Para fazer o parse do json retornando um objeto, normalmente eu crio um protocolo `JSONParselable` e nele defino uma função:
+Para fazer o parse do *JSON* retornando um objeto, normalmente eu crio um protocolo `JSONParselable` e nele defino uma função:
 
 ```swift
 protocol JSONParselable {
@@ -267,9 +267,9 @@ protocol JSONParselable {
 }
 ```
 
-daí é questão de implementar esse protocolo no próprio objeto, de preferência em uma extensão pra separar visualmente as responsabilidades.
+Daí é questão de implementar esse protocolo no próprio objeto, de preferência em uma extensão pra separar visualmente as responsabilidades.
 
-o Model User do exemplo é esse:
+O Model User do exemplo é esse:
 
 ```swift
 struct User {
@@ -279,7 +279,7 @@ struct User {
 }
 ```
 
-a implementação do parse nesse model, retornando um User válido apenas se os dados não opcionais sejam encontrados no json:
+A implementação do parse nesse model, retornando um User válido apenas se os dados não opcionais sejam encontrados no *JSON*:
 
 ```swift
 static func withJSON(json: [String:AnyObject]) -> User? {
@@ -302,7 +302,7 @@ static func withJSON(json: [String:AnyObject]) -> User? {
 }
 ```
 
-agora podemos capturar os _users_ usando a implementação do protocolo no User fazendo apenas isso:
+Agora podemos capturar os _users_ usando a implementação do protocolo no User fazendo apenas isso:
 
 ```swift
 for user in usersJson {
@@ -318,7 +318,7 @@ Veja como conseguimos um objeto User válido pra lista apenas usando:
 User.withJSON(user)
 ```
 
-passando para esse método um bloco com os dados do user extraídos do json. 
+Passando para esse método um bloco com os dados do user extraídos do *JSON*. 
 
 
 That's it! Implementando esse protocolo para cada objeto, você consegue personalizar o tipo de dados e parse para cada objeto.
