@@ -38,7 +38,7 @@ Sim, quando o uso de bibliotecas prontas passa a ser a primeira opção do desen
 | Usando soluções de terceiros | Desenvolvendo a sua solução |
 |-----------------|---------------:|
 | pode conseguir solução pontual mais rápida  | tempo = o que você sabe vs. o que precisará saber |
-| pode precisar de um tempo pra descobrir qual solução se encaixa melhor no seu problema      |    tempo que você deixa de aprimorar seu conhecimento e suas habilidades como desenvolvedor de soluções  |
+| pode precisar de um tempo pra descobrir qual solução se encaixa melhor no seu problema      |    o tempo gasto geralmente vai aumentar seu leque opções e capacidade de resolver problemas  |
 | É provável que você terá que lidar com 3 situações:  | Como foi você que fez, nenhum problema, you always win! |
 | conviver com uma limitação do framework| -  |
 | encarar o código pra entende-lo e fazer ajustes para sua necessidade ou ainda, | - |
