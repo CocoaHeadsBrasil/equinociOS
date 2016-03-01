@@ -194,7 +194,8 @@ Para fazer a troca animada de layouts entre collection view, irá funcionar mais
 ### Conclusões
 
 Bem falado isso tudo, tentei abordar um pouco de como comecei com as `CollectionView` e o que podemos aproveitar desta classe, o nosso amigo Rodrigo Borges, vai abordar este assunto mais afundo então aqui foi apenas uma introdução.
-O link do projeto completo está no meu [github](www.github.com/viniciuscarvalho), então se quiser discutir alguma alteração ou propor alguma mudança é sempre bem vindo. Vou deixar alguns links interessantes caso você queira aproveitar mais.
+O link do projeto completo está no meu [github](www.github.com/viniciuscarvalho), então se quiser discutir alguma alteração ou propor alguma mudança é sempre bem vindo. Vou deixar alguns links interessantes caso você queira aproveitar mais sobre o assunto.
+
 Um abraço e até a próxima!
 
 Links interessantes:
