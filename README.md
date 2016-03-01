@@ -87,7 +87,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **22/03/2016:** Implementando o Facebook iOS SDK, por [Gabriel Ribeiro](https://github.com/gabrielribeiro)
 - **23/03/2016:** Método Swizzling, por [Fernanda Geraissate](https://github.com/fggeraissate)
 - **24/03/2016:**
-- **25/03/2016:**
+- **25/03/2016:** Optionals e o Gato de Schrödinger, por [Francesco Perrotti-Garcia](https://github.com/fpg1503)
 - **26/03/2016:**
 - **27/03/2016:**
 - **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
