@@ -10,7 +10,7 @@ category:   CollectionView
 
 > Olá pessoal, essa é minha primeira postagem aqui no EquinociOS e então farei uma breve apresentação. Me chamo [Vinicius Carvalho](www.twitter.com/viniciusc70), sou desenvolvedor mobile há pouco mais de três anos e também já trabalhei com backend usando Ruby On Rails. Feito essa introdução, vamos ao que interessa, UICollectionView!
 
-Vamos estrutura o artigo em quatro partes,
+Vamos estruturar o artigo em quatro partes,
 
 * O que é uma CollectionView;
 * Como funciona;
