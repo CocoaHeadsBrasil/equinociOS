@@ -2,7 +2,7 @@
 layout:     post
 title:      "Resolvendo suas dependências"
 subtitle:   "dados da web e parse de json por sua conta"
-date:       2016-03-02 15:58:00
+date:       2016-03-02 00:00:00
 author:     "Daniel Bonates"
 header-img: "img/dbonates/header_bg.jpg"
 category:   ios
