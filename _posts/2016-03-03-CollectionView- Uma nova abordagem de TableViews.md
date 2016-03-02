@@ -188,7 +188,7 @@ Este mesmo princípio é usado para deletar alguma célula, agora a animação v
 
 #### Trocando de layouts
 
-Para fazer a troca animada de layouts entre collection view, irá funcionar mais ou menos . Quando chamamos o método `setCollectionViewLayout:animated`, ele irá consultar o novo layout e suas células, fazendo assim a animação em cada célula do seu antigo para o novo layout. Você não precisa fazer mais nada, bem legal né?
+Para fazer a troca animada de layouts entre collection view, teremos mais ou menos o mesmo conceito anterior de *fade in* e *fade out*. Quando chamamos o método `setCollectionViewLayout:animated`, ele irá consultar o novo layout e suas células, fazendo assim a animação em cada célula do seu antigo para o novo layout. Você não precisa fazer mais nada, bem legal né?
 
 ### Conclusões
 
