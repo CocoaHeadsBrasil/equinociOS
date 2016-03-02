@@ -4,13 +4,11 @@ title:      "UICollectionView - Uma nova abordagem de TableView?"
 subtitle:   "Por onde começar a utilizar collectionview"
 date:       2016-03-03 00:00:00
 author:     "Vinicius Carvalho"
-header-img: "img/viniciuscarvalho/imagem-header.jpg"
-category:   Categoria
+header-img: "img/viniciuscarvalho/background-header.jpg"
+category:   CollectionView
 ---
 
-Olá pessoal,
-
-essa é minha primeira postagem aqui no EquinociOS e então farei uma pequena apresentação. Me chamo Vinícius Carvalho, sou desenvolvedor mobile há pouco mais de três anos e também já trabalhei com backend usando Ruby On Rails. Feito essa introdução, vamos ao que interessa, UICollectionView!
+> Olá pessoal, essa é minha primeira postagem aqui no EquinociOS e então farei uma breve apresentação. Me chamo [Vinicius Carvalho](www.twitter.com/viniciusc70), sou desenvolvedor mobile há pouco mais de três anos e também já trabalhei com backend usando Ruby On Rails. Feito essa introdução, vamos ao que interessa, UICollectionView!
 
 Vamos estrutura o artigo em quatro partes,
 
@@ -36,12 +34,13 @@ Além disso tudo a customização das células é um ponto importante com as *su
 Veremos quase tudo sobre `CollectionView`, o nosso amigo Rodrigo Borges também vai explorar mais esse elemento aqui no blog e nos trazer muito conhecimento.
 
 ### Como Funciona a Collection View
+
 Como mostrado anteriormente, podemos ter o layout simples dividido em colunas e mostrado como default ou podemos explorar a flexibilidade e criar um layout customizado da collection view, vamos abordar um pouco dessas customizações.
 Vou criar um projeto para ilustrar bem essas funcionalidades.
 
 Ao criarmos o projeto temos a seguinte estrutura de arquivos,
 
-![]({{ site.baseurl }}/img/viniciuscarvalho/imagem-inicial.png)
+<center><img src="/img/viniciuscarvalho/imagem-inicial.png" alt="" /></center>
 
 Onde, foi criado um novo `Controller`, `HomeViewController`, para receber as instruções da nossa CollectionView. Feito isso vamos trabalhar um pouco no nosso Storyboard.
 
@@ -54,7 +53,7 @@ Em seguida foi adicionado um Visual Effect with Blur em cima da imagem, com a ap
 
 Normalmente o scroll das CollectionViews é para baixo, vamos fazer diferente e aproveitar tudo de customização e fazer o scroll lateral.
 
-![]({{ site.baseurl }}/img/viniciuscarvalho/direcao-scroll.png)
+<center><img src="/img/viniciuscarvalho/direcao-scroll.png" alt="" /></center>
 
 Feito isso vamos para a customização do interior de nossa `cell`. Vamos adicionar uma imagem dentro da `cell` e adicionar seus Constraints 0,0,0,0. 
 
@@ -62,10 +61,10 @@ Feito isso vamos para a customização do interior de nossa `cell`. Vamos adicio
 
 Depois vamos adicionar outro efeito Blur no canto inferior da `ImageView` e adicionar seus Constraints também.
 
-![]({{ site.baseurl }}/img/viniciuscarvalho/constraints-segunda-img.png)
+<center><img src="/img/viniciuscarvalho/constraints-segunda-img.png" alt="" /></center>
 
 Logo em seguida, adicionamos uma Label dentro do Visual Effect Blur e seus respectivos paddings nos quatro cantos, superior, traling à direita/esquerda e bottom.
-Um fato extremamente importante é não esquecer de ligar os Outlets da CollectionView ao nosso Home View Controller ou referência-los via código no nosso `viewDidLoad()`, atenção a este ponto.
+Um fato extremamente importante é não esquecer de ligar os Outlets da CollectionView ao nosso `HomeViewController` ou referência-los via código no nosso `viewDidLoad()`, atenção a este ponto.
 
 Feito tudo isso, vamos finalmente para o código. UFA!
 
@@ -116,9 +115,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 Veja que na `CollectionView` também temos elementos semelhantes do TableView, como `numberOfSection`, `numberOfItem` e o tratamento da célula, isso tudo facilita sua compreensão ao trabalhar com `CollectionView`.
 
-Foi criado aquela variável `interests` para pegar os dados e popular nossas células, além de não esquecer de referênciar a sua célula que esteja trabalhando, no nosso caso é o `InterestCell`
+Foi criado a variável `interests` para pegar os dados e popular nossas células, além disso não podemos esquecer de referênciar a sua célula que esteja trabalhando, no nosso caso é o `InterestCell`
 
-Para popularmos nossas células foi criado no Model, o `Interest`,
+Para popularmos nossas células foi criado o Model, `Interest`,
 
 ```
 class Interest {
@@ -193,8 +192,11 @@ Para fazer a troca animada de layouts entre collection view, irá funcionar mais
 
 ### Conclusões
 
-Bem falado isso tudo, tentei abordar um pouco de como comecei com as `CollectionView` e o que podemos aproveitar desta classe, o nosso amigo Rodrigo Borges, vai abordar este assunto mais afundo então aqui foi apenas uma introdução.
-O link do projeto completo está no meu [github](www.github.com/viniciuscarvalho), então se quiser discutir alguma alteração ou propor alguma mudança é sempre bem vindo. Vou deixar alguns links interessantes caso você queira aproveitar mais sobre o assunto.
+Bem falado isso tudo, tentei abordar um pouco de como comecei com as `CollectionView` e o que podemos aproveitar desta classe, o nosso amigo [Rodrigo Borges](http://www.twitter.com/rdgborges), vai abordar este assunto mais afundo, então aqui foi apenas uma introdução :)
+O link do projeto completo está no meu [github](www.github.com/viniciuscarvalho), então se quiser discutir alguma alteração ou propor alguma mudança é sempre bem vindo.
+
+ 
+Vou deixar alguns links interessantes e que me ajudaram bastante, e um deles foi o [Invariante](http://invariante.com) dos amigos [Diogo Tridapalli](http://www.twitter.com/diogot) e [Bruno Koga](http://www.twitter.com/brunokoga) que tem um artigo interessante também falando sobre uma implementação de `CollectionView` e outros mais, vale a pena dar uma conferida.
 
 Um abraço e até a próxima!
 
