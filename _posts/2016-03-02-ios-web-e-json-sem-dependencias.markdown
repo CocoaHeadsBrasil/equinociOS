@@ -15,7 +15,7 @@ Em primeiro lugar, vamos esclarecer alguns pontos que, pelas conversas que tenho
 
 Me refiro a concluir uma solução usando ferramentas entregues pelo kit nativo do iOS, sem recorrer a frameworks de terceiros como por exemplo, aquelas bibliotecas lindas que costumamos adicionar aos nossos projetos usando CocoaPods e Carthage.
 
-## É condenavel o uso de bibliotecas nos projetos iOS?
+## É condenável o uso de bibliotecas nos projetos iOS?
 
 Não e sim! Explico:
 Não, por conta do fato de que muito esforço pode ser poupado, tempo de produção e ganho de resultados podem ser alcançados mais facilmente se usarmos o código certo para uma determinada solução. É muito mais rápido e prático quando aplicado com assertividade.
@@ -25,7 +25,7 @@ Sim, quando o uso de bibliotecas prontas passa a ser a primeira opção do desen
 1. Quando você sabe que poderia resolver o resolver o problema (mesmo!);
 2. Você entende o que a lib está fazendo e que recursos ela está utilizando;
 3. A lib realmente vai resolver seu problema, e não criar outros;
-4. A lib será usada apenas para acelerar a solução. Exemplo: CoreData;
+4. A lib será usada apenas para acelerar a solução. Exemplo: Core Data;
 5. Quando trata-se de algum recurso muito pontual que você acredita que não precisará, ao menos por hora, se aprofundar. Exemplo: Bluetooth.
 
 ### Quando NÃO é legal usar?
@@ -145,7 +145,7 @@ func requestData(request:NSMutableURLRequest, callback:(AnyObject?, NetError?)->
                 
             case 200..<300:
                 callback(data ?? nil, nil)
-            case 401:
+            case 403:
                 callback(nil, NetError.Forbidden(response.statusCode))
             case 404:
                 callback(nil, NetError.NotFound(response.statusCode))
