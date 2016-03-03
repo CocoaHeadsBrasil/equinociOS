@@ -27,7 +27,7 @@ Para acompanhar não é necessário conhecimento prévio de `Swift`, apenas de p
 
 Comece tendo certeza que seu XCode está atualizado, pelo menos na versão `Version 7.2`. Crie um novo projeto, do tipo `Game`, escolha `Swift` para a linguagem, `SceneKit` como tecnologia, e `Universal` nos dispositivos. Salve onde preferir.
 
-<img src="../../../../../img/farris/img1.png"/>
+![]({{ site.baseurl }}img/farris/img1.png)
 
 No projeto criado, voce poderá encontrar o arquivo `GameViewController.swift`. Abra ele e vamos comecar!
 
@@ -104,7 +104,7 @@ override func viewDidLoad() {
 
 Compile e rode e veja nosso cenário inicial. Use gestos para circular pelo terreno tridimensional.
 
-<img src="../../../../../img/farris/img2.png"/>
+![]({{ site.baseurl }}img/farris/img2.png)
 
 ### Capítulo 2: A jornada do herói.
 
@@ -137,7 +137,7 @@ func createScenario() {
 Ok, tem muita coisa acontecendo aqui, vamos por partes. Estamos dentro de um *loop*, no qual `i` vai assumir todos os valores entre `20` e `70`. Em cada iteração, colocamos um pequeno tijolinho, `preto` ou `transparente`, dependendo de `i`. Note que isso vai colocar 3 tijolinhos pretos, e 2 transparentes.
 Em seguida, adicionamos uma animação ao conjunto. Todos os tijolinhos estão sujeitos a duas animações: `moveUp` e `moveDown`. A animação `moveLoop` combina as duas (usando o método `sequence`), e as repete para sempre (usando `repeatActionForever`). Por fim, `runAction`, que pode ser chamado a qualquer `SCNNode`, aplica a animação em cada um de nossos tijolinhos. Como cada faixa tem 3 tijolinhos pretos + 2 transparentes, nós andamos `5` pra baixo em `0.3` segundos, e instanteneamente subimos `5` pra dar a impressão de que é um movimento contínuo. Tente remover `moveUp` como experimento. Eis o resultado até agora:
 
-<img src="../../../../../img/farris/gif1.gif"/>
+![]({{ site.baseurl }}img/farris/gif1.gif)
 
 Vamos adicionar nosso personagem principal? Adicione esta variável junto com as outras:
 
@@ -161,7 +161,7 @@ func createPlayer(){
 
 Note que precisamos fazer um ajuste de translação para que nosso modelo se encaixasse no cenário. Rode o código, veja o carrinho aparecendo. Vamos adicionar um escapamento? Clique com o botão direito na pasta de seu projeto, vá em `Novo Arquivo... -> Recurso -> SceneKit Particle System` e use o template `Smoke` ou fumaça. Brinque como quiser com os parametros, segue um print de como deixar o sistema bacaninha:
 
-<img src="../../../../../img/farris/img3.png"/>
+![]({{ site.baseurl }}img/farris/img3.png)
 
 Agora adicione este código no final da função `createPlayer`:
 
@@ -199,7 +199,7 @@ func move(sender: UITapGestureRecognizer){
 
 Rode. O resultado deve ser algo como:
 
-<img src="../../../../../img/farris/gif2.gif"/>
+![]({{ site.baseurl }}img/farris/gif2.gif)
 
 ### Capítulo 3: Obstáculos e recompensas!
 
@@ -270,7 +270,7 @@ NSTimer.scheduledTimerWithTimeInterval(7, target: self, selector: "spawnEnemyMob
 
 Note que criamos um inimigo, e programamos pra adicionar outro a cada 7 segundos. Rode o código, voce deverá ver algo como:
 
-<img src="../../../../../img/farris/gif3.gif"/>
+![]({{ site.baseurl }}img/farris/gif3.gif)
 
 Notou que o bloco passou atravessando o carro? Precisamos adicionar um corpo ao nosso jogador. Adicione este código na sua função `createPlayer` (antes de `car.addChildNode(exausterNode)`):
 
