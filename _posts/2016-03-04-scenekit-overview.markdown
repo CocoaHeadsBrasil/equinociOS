@@ -8,15 +8,14 @@ header-img: "img/farris/bg.jpg"
 category:   Tutorial
 ---
 
-Este artigo pertence à série de artigos equinociOS, e aqui iremos tratar do framework [SceneKit](https://developer.apple.com/library/ios/documentation/SceneKit/Reference/SceneKit_Framework/), que é uma bibiliteca para desenvolvimento de gráficos 3d de alta performance. O código será escrito em `Swift`, e um exemplo completo do projeto pode ser encontrado [neste repositório](https://github.com/luksfarris/carRush). O presente artigo está licenciado como [CC - Creative Commons](https://creativecommons.org/).
-
-Você irá, acompanhando o texto, escrever umas 150 linhas de código, o tempo médio da leitura é 25 minutos. 
+> Este artigo pertence à série de artigos equinociOS, e aqui iremos tratar do framework [SceneKit](https://developer.apple.com/library/ios/documentation/SceneKit/Reference/SceneKit_Framework/), que é uma bibiliteca para desenvolvimento de gráficos 3d de alta performance. O código será escrito em `Swift`, e um exemplo completo do projeto pode ser encontrado [neste repositório](https://github.com/luksfarris/carRush). O presente artigo está licenciado como [CC - Creative Commons](https://creativecommons.org/).
+Você irá, acompanhando o texto, escrever umas `150` linhas de código, o tempo médio da leitura é de `30` minutos. 
 
 ---
 
 ### Prólogo: Declarações iniciais e criando o projeto.
 
-Durante este texto iremos recriar juntos uma versão minimalista do fantástico jogo [2 Cars](https://itunes.apple.com/en/app/2-cars/id936839198?mt=8"), mas em um ambiente tridimensional. Com isso aprenderemos sobre:
+Durante este texto iremos recriar juntos uma versão *minimalista* do fantástico jogo [2 Cars](https://itunes.apple.com/en/app/2-cars/id936839198?mt=8"), mas em um ambiente tridimensional. Com isso aprenderemos sobre:
 
 - Física e colisões
 - Texturas e modelos 3d
@@ -32,10 +31,10 @@ Comece tendo certeza que seu XCode está atualizado, pelo menos na versão `Vers
 
 No projeto criado, voce poderá encontrar o arquivo `GameViewController.swift`. Abra ele e vamos comecar!
 
-### Capítulo 1: Luzes, Camera e Ação!
+### Capítulo 1: Luzes, Câmera e Ação!
 
-###### No qual aprendemos a criar cameras, posicionar elementos, criar materiais e adicionar objetos à cena.
-Apague tudo na classe GameView Controller, e deixe apenas:
+###### No qual aprendemos a criar câmeras, posicionar elementos, criar materiais e adicionar objetos à cena.
+Apague tudo na classe `GameViewController`, e deixe apenas:
 
 ```Swift
 import UIKit
@@ -44,7 +43,7 @@ import SceneKit
 class GameViewController: UIViewController {
 }
 ```
-Em seguida, adicione variáveis pra camera, pro chão e pra nossa cena:
+Em seguida, adicione variáveis pra câmera, pro chão e pra nossa cena:
 
 ```Swift
 var camera:SCNNode!
@@ -66,7 +65,7 @@ func createScene () {
 }
 ```
 
-Adicione uma função responsável por criar a camera. Note que `.position` é a propriedade que define a posição tridimensional da camera, e `eulerAngles` (medidos em radianos) definem a orientação (pra onde a camera aponta). Os fotógrafos amadores poderão se divertir com os [demais parametros disponíveis para cameras](http://flexmonkey.blogspot.com/2015/05/depth-of-field-in-scenekit.html).
+Adicione uma função responsável por criar a câmera. Note que `.position` é a propriedade que define a posição tridimensional dela, e `eulerAngles` (medidos em radianos) definem a orientação (pra onde ela aponta). Os fotógrafos amadores poderão se divertir com os [demais parâmetros disponíveis para as lentes](http://flexmonkey.blogspot.com/2015/05/depth-of-field-in-scenekit.html).
 
 ```Swift
 func createCamera () {
@@ -92,7 +91,7 @@ func createGround () {
 }
 ```
 
-E junte tudo no método `ViewDidLoad()`:
+E junte tudo no `ViewDidLoad()`:
 
 ```Swift
 override func viewDidLoad() {
@@ -135,7 +134,7 @@ func createScenario() {
 }
 ```
 
-Ok, tem muita coisa acontecendo aqui, vamos por partes. Estamos dentro de um *loop*, no qual `i` vai assumir todos os valores entre `20` e `70`. Em cada iteração, colocamos um pequeno tijolinho, `preto` ou `transparente`, dependendo de `i`. Note que isso vai colocar tres tijolinhos pretos, e dois transparentes.
+Ok, tem muita coisa acontecendo aqui, vamos por partes. Estamos dentro de um *loop*, no qual `i` vai assumir todos os valores entre `20` e `70`. Em cada iteração, colocamos um pequeno tijolinho, `preto` ou `transparente`, dependendo de `i`. Note que isso vai colocar 3 tijolinhos pretos, e 2 transparentes.
 Em seguida, adicionamos uma animação ao conjunto. Todos os tijolinhos estão sujeitos a duas animações: `moveUp` e `moveDown`. A animação `moveLoop` combina as duas (usando o método `sequence`), e as repete para sempre (usando `repeatActionForever`). Por fim, `runAction`, que pode ser chamado a qualquer `SCNNode`, aplica a animação em cada um de nossos tijolinhos. Como cada faixa tem 3 tijolinhos pretos + 2 transparentes, nós andamos `5` pra baixo em `0.3` segundos, e instanteneamente subimos `5` pra dar a impressão de que é um movimento contínuo. Tente remover `moveUp` como experimento. Eis o resultado até agora:
 
 <img src="../../../../../img/farris/gif1.gif"/>
@@ -214,7 +213,7 @@ enum PhysicsCategory: Int {
 }
 ```
 
-Em seguida, na função `createGround`, vamos dar um formato e um corpo pro nosso chão:
+Veja que os valores são binários, pois estamos simulando máscaras de bits. Em seguida, na função `createGround`, vamos dar um formato e um corpo pro nosso chão:
 
 ```Swift
 func createGround () {
@@ -241,7 +240,7 @@ No nosso `groundBody` criamos 3 máscaras:
 
 - `categoryBitMask`: nos ajuda a definir a qual categoria o objeto pertence. 
 - `contactTestBitMask`: define com quais objetos os testes de contato são feitos (veremos isso mais adiante). 
-- `collisionBitMask`: cotra quais outras categorias esse objeto colide.
+- `collisionBitMask`: contra quais outras categorias esse objeto colide.
 
 Vamos criar alguns inimigos então? Adicione o método `spawnEnemyMob()`:
 
@@ -323,7 +322,7 @@ func physicsWorld(world: SCNPhysicsWorld, didBeginContact contact: SCNPhysicsCon
 ```
 
 Estamos verificando se a colisão é com nosso carro, ou com o muro que está escondido atrás da câmera. Se for com um deles, removemos o inimigo e criamos outro.
-Rode novamente e divirta-se!
+Rode novamente, desvie dos inimigos!
 
 ### Epílogo: Pra onde ir agora.
 
@@ -337,3 +336,4 @@ Como desafio, sugiro as seguintes modificações:
 
 Espero que tenha gostado do texto, fique ligado nos demais artigos dessa série. Qualquer dúvida, reclamação, sugestão, o repositório [https://github.com/luksfarris/carRush](https://github.com/luksfarris/carRush) é o melhor lugar para me achar. Abra uma `Issue`, faça um `Pull Request`, brinque com o código, enfim: Divirta-se!
 
+> Lucas Farris desenvolve jogos desde 2006, entrou no mercado mobile em 2011. Atualmente mora na Polonia. 
