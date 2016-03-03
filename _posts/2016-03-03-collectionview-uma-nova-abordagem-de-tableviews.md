@@ -17,7 +17,7 @@ Vamos estruturar o artigo em quatro partes,
 * Elementos de uma CollectionView;
 * Utilização em diversos aplicativos;
 
-Este post contêm uma base para você começar a utilizar UICollectionView em suas aplicações, não é um guideline pois a Apple tem um muito bom [Documentação CollectionView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionView_class/), vou apenas tentar dar um norte com as dificuldades que tive recentemente.
+Este post contém uma base para você começar a utilizar UICollectionView em suas aplicações, não é um guideline pois a Apple tem um muito bom [Documentação CollectionView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionView_class/), vou apenas tentar dar um norte com as dificuldades que tive recentemente.
 
 `UICollectionView` foi introduzido no iOS 6 e ao longo desse tempo tornou-se um dos elementos de UI mais apreciados e utilizado por desenvolvedores iOS. Sua característica básica é de um layout em formato de Grid, o que se parece muito com o elemento do Android, `GridView`.
 
@@ -25,12 +25,12 @@ Este post contêm uma base para você começar a utilizar UICollectionView em su
 
 A gama de aplicações feitas com `CollectionViews` é vasta e podemos observar nos próprios aplicativos da Apple como, calendário, a câmera, música, a própria apple store entre outros.
 
-Como na `UITableView`, a `UICollectionView` é uma subclasse de `UISrollView` que gerencia todos os artigos e elementos encomendados.   Os itens são geridos por uma fonte de dados, que fornece uma visão celular representado po um determinado caminho de índice.
+Como na `UITableView`, a `UICollectionView` é uma subclasse de `UISrollView` que gerencia todos os artigos e elementos encomendados.   Os itens são geridos por um *data source*, que fornece uma *collection view cell*, que representa um elemento em um determinado *index path*.
 
-Ao contrário da `UITableView`, a `UICollectionView` não está retrista a um layout vertical, de coluna única. Em vez disso, a collection view tem um *layout object*, que determina a posição de cada *subview*, similar ao *data source* em alguns aspectos.
+Ao contrário da `UITableView`, a `UICollectionView` não está restrita a um layout vertical, de coluna única. Em vez disso, a collection view tem um *layout object*, que determina a posição de cada *subview*, similar ao *data source* em alguns aspectos.
 
-Veremos como o `UICollectionViewDataSource` (número de items, sessões, cell..) e `UICollectionViewDelegate` são eficientes, a separação do layout da camada de model, que é a grande diferença para as `TableViews`, onde não possui esses layouts objects.
-Além disso tudo a customização das células é um ponto importante com as *subclass* `UICollectionView Cell`. Possuem diferentes métodos de seleção das células e diferentes modos de animações.
+Veremos como o `UICollectionViewDataSource` (número de itens, sessões, cells..) e `UICollectionViewDelegate` são eficientes, a separação do layout da camada de model, que é a grande diferença para as `TableViews`, onde não possui esses layout objects.
+Além disso tudo a customização das células é um ponto importante com as *subclass* `UICollectionViewCell`. Possuem diferentes métodos de seleção das células e diferentes modos de animações.
 Veremos quase tudo sobre `CollectionView`, o nosso amigo Rodrigo Borges também vai explorar mais esse elemento aqui no blog e nos trazer muito conhecimento.
 
 ### Como Funciona a Collection View
@@ -64,7 +64,7 @@ Depois vamos adicionar outro efeito Blur no canto inferior da `ImageView` e adic
 <center><img src="/img/viniciuscarvalho/constraints-segunda-img.png" alt="" /></center>
 
 Logo em seguida, adicionamos uma Label dentro do Visual Effect Blur e seus respectivos paddings nos quatro cantos, superior, traling à direita/esquerda e bottom.
-Um fato extremamente importante é não esquecer de ligar os Outlets da CollectionView ao nosso `HomeViewController` ou referência-los via código no nosso `viewDidLoad()`, atenção a este ponto.
+Um fato extremamente importante é não esquecer de ligar os Outlets da CollectionView ao nosso `HomeViewController` ou referenciá-los via código no nosso `viewDidLoad()`, atenção a este ponto.
 
 Feito tudo isso, vamos finalmente para o código. UFA!
 
@@ -113,9 +113,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
 ```
 
-Veja que na `CollectionView` também temos elementos semelhantes do TableView, como `numberOfSection`, `numberOfItem` e o tratamento da célula, isso tudo facilita sua compreensão ao trabalhar com `CollectionView`.
+Veja que na `CollectionView` também temos elementos semelhantes do TableView, como `numberOfSections`, `numberOfItems` e o tratamento da célula, isso tudo facilita sua compreensão ao trabalhar com `CollectionView`.
 
-Foi criado a variável `interests` para pegar os dados e popular nossas células, além disso não podemos esquecer de referênciar a sua célula que esteja trabalhando, no nosso caso é o `InterestCell`
+Foi criado a variável `interests` para pegar os dados e popular nossas células, além disso não podemos esquecer de referenciar a sua célula que esteja trabalhando, no nosso caso é o `InterestCell`
 
 Para popularmos nossas células foi criado o Model, `Interest`,
 
