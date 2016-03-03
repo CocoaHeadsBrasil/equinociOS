@@ -70,7 +70,7 @@ Feito tudo isso, vamos finalmente para o código. UFA!
 
 Primeiro vamos abordar nosso `HomeViewController`,
 
-```
+```swift
 import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate { 
@@ -119,7 +119,7 @@ Foi criado a variável `interests` para pegar os dados e popular nossas células
 
 Para popularmos nossas células foi criado o Model, `Interest`,
 
-```
+```swift
 class Interest {
 
     var title = ""
@@ -152,7 +152,7 @@ class Interest {
 
 E por último na nossa aplicação temos a `InterestCollectionViewCell`,
 
-```
+```swift
 class InterestCollectionViewCell: UICollectionViewCell {
  
     var interest: Interest! {
