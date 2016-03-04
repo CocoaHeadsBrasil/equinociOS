@@ -36,7 +36,7 @@ No projeto criado, voce poderá encontrar o arquivo `GameViewController.swift`. 
 ###### No qual aprendemos a criar câmeras, posicionar elementos, criar materiais e adicionar objetos à cena.
 Apague tudo na classe `GameViewController`, e deixe apenas:
 
-```Swift
+```swift
 import UIKit
 import QuartzCore
 import SceneKit
@@ -45,7 +45,7 @@ class GameViewController: UIViewController {
 ```
 Em seguida, adicione variáveis pra câmera, pro chão e pra nossa cena:
 
-```Swift
+```swift
 var camera:SCNNode!
 var ground:SCNNode!
 var scene:SCNScene!
@@ -53,7 +53,7 @@ var sceneView:SCNView!
 ```
 Adicione uma função para criar a cena:
 
-```Swift
+```swift
 func createScene () {
   scene = SCNScene()
   sceneView = self.view as! SCNView
@@ -67,7 +67,7 @@ func createScene () {
 
 Adicione uma função responsável por criar a câmera. Note que `.position` é a propriedade que define a posição tridimensional dela, e `eulerAngles` (medidos em radianos) definem a orientação (pra onde ela aponta). Os fotógrafos amadores poderão se divertir com os [demais parâmetros disponíveis para as lentes](http://flexmonkey.blogspot.com/2015/05/depth-of-field-in-scenekit.html).
 
-```Swift
+```swift
 func createCamera () {
   camera = SCNNode()
   camera.camera = SCNCamera()
@@ -79,7 +79,7 @@ func createCamera () {
 
 Adicione uma função responsável por criar o chão. `SCNFloor` cria um plano infinito fixado inicialmente na origem. Note que vamos dar uma tonalidade amarela pra ele usando um `SCNMaterial`.
 
-```Swift
+```swift
 func createGround () {
   let groundGeometry = SCNFloor()
   groundGeometry.reflectivity = 0.5
@@ -93,7 +93,7 @@ func createGround () {
 
 E junte tudo no `viewDidLoad()`:
 
-```Swift
+```swift
 override func viewDidLoad() {
   super.viewDidLoad()
   createScene()
@@ -112,7 +112,7 @@ Compile e rode e veja nosso cenário inicial. Use gestos para circular pelo terr
 
 Vamos criar um tímido cenário? Faremos uma faixa na nossa rodovia! Adicione este método e chame-o no `viewDidLoad`:
 
-```Swift
+```swift
 func createScenario() {
   for i in 20...70 {
     let laneMaterial = SCNMaterial()
@@ -141,13 +141,13 @@ Em seguida, adicionamos uma animação ao conjunto. Todos os tijolinhos estão s
 
 Vamos adicionar nosso personagem principal? Adicione esta variável junto com as outras:
 
-```Swift
+```swift
 var car:SCNNode!
 ```
 
 Em seguida adicione a função `createPlayer`, e <b>chame-a</b> no `viewDidLoad`:
 
-```Swift
+```swift
 func createPlayer(){
   car = SCNNode(geometry: SCNBox(width: 3, height: 2, length: 3, chamferRadius: 0.2))
   let material = SCNMaterial()
@@ -165,7 +165,7 @@ Note que precisamos fazer um ajuste de translação para que nosso modelo se enc
 
 Agora adicione este código no final da função `createPlayer`:
 
-```Swift
+```swift
 let particleSystem = SCNParticleSystem(named: "SmokeParticles", inDirectory: nil)
 let exausterNode = SCNNode(geometry: SCNBox(width: 0, height: 0, length: 0, chamferRadius: 1))
 exausterNode.position = SCNVector3(0,0,1.5)
@@ -175,7 +175,7 @@ car.addChildNode(exausterNode)
 
 Vamos interagir com ele? Adicione a seguinte variavel `var onLeftLane:Bool = true`, e adicione este código no seu `viewDidLoad`:
 
-```Swift
+```swift
 let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:"move:")
 let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "move:")
 scnView.addGestureRecognizer(tapGestureRecognizer)
@@ -184,7 +184,7 @@ scnView.addGestureRecognizer(swipeGestureRecognizer)
 
 Em seguida, vamos implementar o `move:`:
 
-```Swift
+```swift
 func move(sender: UITapGestureRecognizer){
     let position = sender.locationInView(self.view) //localizacao do gesto
     let right = position.x > self.view.frame.size.width/2 // foi na esquerda ou direita?
@@ -207,7 +207,7 @@ Rode. O resultado deve ser algo como:
 
 Vamos começar definindo quem serão nossas entidades capazes de interagir fisicamente entre si. Insira esse `enum` em seu `ViewController`:
 
-```Swift
+```swift
 enum PhysicsCategory: Int {
     case Player=1, Mob=2, Ground=4, Wall=8
 }
@@ -215,7 +215,7 @@ enum PhysicsCategory: Int {
 
 Veja que os valores são binários, pois estamos simulando máscaras de bits. Em seguida, na função `createGround`, vamos dar um formato e um corpo pro nosso chão:
 
-```Swift
+```swift
 func createGround () {
     let groundGeometry = SCNFloor()
     groundGeometry.reflectivity = 0.5
@@ -244,7 +244,7 @@ No nosso `groundBody` criamos 3 máscaras:
 
 Vamos criar alguns inimigos então? Adicione o método `spawnEnemyMob()`:
 
-```Swift
+```swift
 func spawnEnemyMob() {
     let enemyMaterial = SCNMaterial()
     enemyMaterial.reflective.contents = UIColor.redColor()
@@ -263,7 +263,7 @@ func spawnEnemyMob() {
 Quase nada de novo aqui. `Velocity` é a velocidade inicial que nosso objeto se encontrará quando aparecer na cena. Vamos invocar esses inimigos?
 Chame no seu `viewDidLoad()`:
 
-```Swift
+```swift
 spawnEnemyMob()
 NSTimer.scheduledTimerWithTimeInterval(7, target: self, selector: "spawnEnemyMob", userInfo: nil, repeats: true)
 ```
@@ -274,13 +274,13 @@ Note que criamos um inimigo, e programamos pra adicionar outro a cada 7 segundos
 
 Notou que o bloco passou atravessando o carro? Precisamos adicionar um corpo ao nosso jogador. Adicione este código na sua função `createPlayer` (antes de `car.addChildNode(exausterNode)`):
 
-```Swift
+```swift
 car.physicsBody = SCNPhysicsBody(type: .Kinematic, shape: SCNPhysicsShape(node: car, options: nil))
 ```
 
 Rode de novo, veja que existe a colisão. Vamos adicionar um objeto agora para capturar os inimigos e engatilhar a lógica de criação dos próximos. Adicione a variável `var wall:SCNNode!`, a chamada `createWall()` no seu `viewDidLoad`, e crie a função:
 
-```Swift
+```swift
 func createWall () {
     wall = SCNNode(geometry:SCNBox(width: 200, height: 200, length: 3, chamferRadius: 0))
     wall.physicsBody = SCNPhysicsBody(type: .Static, shape: SCNPhysicsShape(geometry: wall.geometry!, options: nil))
@@ -295,13 +295,13 @@ func createWall () {
 
 Vamos agora detectar as colisões. Adicione a interface `SCNPhysicsContactDelegate` ao seu view controller, assim:
 
-```Swift
+```swift
 class GameViewController: UIViewController, SCNPhysicsContactDelegate
 ```
 
 Em seguida, vamos criar a função que recebe os avisos de colisões:
 
-```Swift
+```swift
 func physicsWorld(world: SCNPhysicsWorld, didBeginContact contact: SCNPhysicsContact) {
     if (contact.nodeA != ground && contact.nodeB != ground) {
         if (contact.nodeA == car || contact.nodeB == car) {
