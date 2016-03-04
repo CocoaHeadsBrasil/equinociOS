@@ -23,7 +23,7 @@ Este post contém uma base para você começar a utilizar `UICollectionView` em 
 
 ![]({{ site.baseurl }}/img/viniciuscarvalho/layout-flow-cv.png)
 
-A gama de aplicações feitas com CollectionViews é vasta e podemos observar nos próprios aplicativos da Apple como calendário, a câmera, música, a própria Apple Store, entre outros.
+A gama de aplicações feitas com CollectionViews é vasta e podemos observar nos próprios aplicativos da Apple como calendário, a câmera, música, a própria AppleStore, entre outros.
 
 Como na `UITableView`, a `UICollectionView` é uma subclasse de `UIScrollView` que gerencia todos os artigos e elementos encomendados. Os itens são geridos por um *data source*, que fornece uma *collection view cell*, que representa um elemento em um determinado *index path*.
 
