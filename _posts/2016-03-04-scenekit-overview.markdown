@@ -91,7 +91,7 @@ func createGround () {
 }
 ```
 
-E junte tudo no `ViewDidLoad()`:
+E junte tudo no `viewDidLoad()`:
 
 ```Swift
 override func viewDidLoad() {
