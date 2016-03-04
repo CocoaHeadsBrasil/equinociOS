@@ -8,7 +8,7 @@ header-img: "img/farris/bg.jpg"
 category:   Tutorial
 ---
 
-> Este artigo pertence à série de artigos equinociOS, e aqui iremos tratar do framework [SceneKit](https://developer.apple.com/library/ios/documentation/SceneKit/Reference/SceneKit_Framework/), que é uma bibiliteca para desenvolvimento de gráficos 3d de alta performance. O código será escrito em `Swift`, e um exemplo completo do projeto pode ser encontrado [neste repositório](https://github.com/luksfarris/carRush). O presente artigo está licenciado como [CC - Creative Commons](https://creativecommons.org/).
+> Este artigo pertence à série de artigos equinociOS, e aqui iremos tratar do framework [SceneKit](https://developer.apple.com/library/ios/documentation/SceneKit/Reference/SceneKit_Framework/), que é uma biblioteca para desenvolvimento de gráficos 3d de alta performance. O código será escrito em `Swift`, e um exemplo completo do projeto pode ser encontrado [neste repositório](https://github.com/luksfarris/carRush). O presente artigo está licenciado como [CC - Creative Commons](https://creativecommons.org/).
 Você irá, acompanhando o texto, escrever umas `150` linhas de código, o tempo médio da leitura é de `30` minutos. 
 
 ---
