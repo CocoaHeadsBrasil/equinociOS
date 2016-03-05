@@ -86,10 +86,10 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
 - **22/03/2016:** Implementando o Facebook iOS SDK, por [Gabriel Ribeiro](https://github.com/gabrielribeiro)
 - **23/03/2016:** Método Swizzling, por [Fernanda Geraissate](https://github.com/fggeraissate)
-- **24/03/2016:**
+- **24/03/2016:** Testes de Aceitação em iOS, por [Felipe Valio](https://github.com/felipe-valio-movile)
 - **25/03/2016:** Optionals e o Gato de Schrödinger, por [Francesco Perrotti-Garcia](https://github.com/fpg1503)
 - **26/03/2016:**
-- **27/03/2016:**
+- **27/03/2016:** App Extensions - Today Notification, por [Renato Matos](https://github.com/renatosarro)
 - **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
 - **29/03/2016:**
 - **30/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
