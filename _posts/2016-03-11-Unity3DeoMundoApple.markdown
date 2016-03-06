@@ -34,12 +34,11 @@ category:   gamedev
 
 -->
 
-
 Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?
 
-Diferente de apps híbridos, que na maior parte do tempo são várias Web Views com uns hooks para acessar algumas funcionalidades nativas, o core da Unity é todo em C++ ([E o build que ela gera para o iOS também](http://blogs.unity3d.com/2015/05/06/an-introduction-to-ilcpp-internals/)) e ela implementa o [Metal](http://blogs.unity3d.com/2015/04/17/ios-64-bit-and-metal-update/) no iOS, e assim tem uma performance ótima mesmo quando comparada com o SceneKit
+Sim, funciona. Diferente de apps híbridos, que na maior parte do tempo são várias Web Views com uns hooks para acessar algumas funcionalidades nativas, o core da Unity é todo em C++ ([E o build que ela gera para o iOS também](http://blogs.unity3d.com/2015/05/06/an-introduction-to-ilcpp-internals/)) e ela implementa o [Metal](http://blogs.unity3d.com/2015/04/17/ios-64-bit-and-metal-update/) no iOS, e assim tem uma performance ótima mesmo quando comparada com o SceneKit
 
-Tendo dito isto, vamos começar? 
+Agora que você já conhece um pouco da Unity e o core dela, vamos começar? :)
 
 
 ## Primeiros Passos
@@ -83,6 +82,7 @@ Vou começar falando da parte ruim da parte de UI da Unity, que é o fato dela n
 
 ~~~ csharp
 
+//O Device.generation retorna um enum com a versão específica do device, então também é possível utilizar ele para saber se o usuário tem um iPad Pro ou um iPad Air, por exemplo
 if(UnityEngine.iOS.Device.generation.ToString().Contains("iPhone")){
 	Debug.Log("Estou num iPhone!");
 	//Carrega a UI específica do iPhone
@@ -95,15 +95,29 @@ if(UnityEngine.iOS.Device.generation.ToString().Contains("iPhone")){
 
 <!-- http://docs.unity3d.com/ScriptReference/iOS.DeviceGeneration.html -->
 
-### Canvas Settings
+### Canvas
 
-### UI Layouts
+A Unity, na versão 4.6, ganhou um sistema novo de UI ([open source, btw](https://bitbucket.org/Unity-Technologies/ui)), com  suporte muito melhor para lidar com múltiplas resoluções, aspectos e variações de DPI. Um dos componentes mais importantes desse sistema é o `Canvas Scaler`, responsável por coordenar a escala dos elementos no aparelho. Existem algumas formas de configurar ele:
+
+* `Constant Pixel Size`: É a configuração padrão do Scaler, e nela os elementos retém o tamanho original deles, e pode ser bem enganadora. É o que causa uma interface a ficar boa em um iPad 2, mas minúscula em um iPad Air. Tem seus usos, mas tome cuidado ao decidir ficar nela.
+
+* `Scale With Screen Size`: Nesta configuração a Unity escala os elementos de acordo com a resolução da tela, e você tem uma resolução virtual para trabalhar com os seus elementos.
+
+* `Constant Physical Size`: Na última configuração, os valores de pontos da Unity são trocados por valores em dp. Esta configuração depende do device reportar adequadamente o dpi de sua tela, e você pode especificar um valor de DPI padrão como fallback.
+
+A configuração mais "segura" de todas é usar o `Scale With Screen Size`, com resolução virtual de 1080p, e o `Match Width or Height` configurado para 0.5. 
+
+`<Imagem do World Space Canvas>`
+
+Também é possível incluir o Canvas dentro do mundo do seu jogo, como um elemento que faz parte dele. Usar isto é útil para quando você quiser colocar um nome em cima dos jogadores, por exemplo, mas desabilita completamente qualquer tipo de escala.
 
 ### Input Handling
 
+Todo tipo de Input
+
 #### Multitouch
 
-A Unity possui suporte fácil a 
+A Unity possui suporte fácil ao 
 
 #### Swiping
 
@@ -132,8 +146,27 @@ void Vibrar(){
 
 ### Integração com o mundo nativo
 
+`<Interoperabilidade com o código Obj-C e Swift>`
 
 #### GameCenter
+
+As APIs da Unity já provem um nível bem básico de integração com o GameCenter, utilizando a classe [Social](http://docs.unity3d.com/ScriptReference/Social.html), que  
+
+~~~ csharp
+
+        void Start () {
+            Social.localUser.Authenticate(SocialUserLogin);
+        }
+        
+        void SocialUserLogin(bool success){
+            if(success){
+                Debug.Log("do stuff with logged user here");
+            } else {                
+                Debug.Log("disable gamecenter features until player logs in");
+            }
+        }
+        
+~~~
 
 #### Low Power Mode
 
@@ -147,9 +180,6 @@ Com a interoperabilidade de código, podemos fazer coisas interessantes, como re
 ~~~ 
 
 https://developer.apple.com/library/ios/documentation/Performance/Conceptual/EnergyGuide-iOS/LowPowerMode.html
-
-
-
 
 ~~~ csharp
 class DeviceManager{
@@ -172,6 +202,21 @@ void Start(){
 
 #### Exemplo com a câmera
 
+##### O jeito fácil
+
+`<Vídeo do projeto, pode ser no editor mesmo>`
+
+`WebCamTexture`
+
+##### O jeito correto
+
+`<Vídeo do projeto """buildado""" capturando input da câmera e colocando no jogo>`
+
+`UIImagePickerView` nativo
+
+
+
+### Conclusão 
 
 Colocar isso aqui no fim do post pra concluir!111!!! 
 http://madewith.unity.com/games?type=featured&search=&platform=ios&genre=
@@ -196,8 +241,6 @@ Minha solução? Vários minigames num proj só. Quem sabe depois a gente tenta 
 
 
 Links úteis:
-
-https://littlebitesofcocoa.com/192-being-a-good-low-power-mode-citizen afetar settings do app com isso aqui seria bem legal
 
 http://docs.unity3d.com/ScriptReference/WebCamTexture.html Uso de câmera
 
