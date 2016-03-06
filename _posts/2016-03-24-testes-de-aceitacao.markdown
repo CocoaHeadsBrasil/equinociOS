@@ -91,23 +91,25 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        signInConductor.showActivityIndicator = {
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        signInConductor.showActivityIndicator = { [weak self] in
+            guard let view = self?.view else { return }
+            MBProgressHUD.showHUDAddedTo(view, animated: true)
         }
         
-        signInConductor.hideActivityIndicator = {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        signInConductor.hideActivityIndicator = { [weak self] in
+            guard let view = self?.view else { return }
+            MBProgressHUD.hideHUDForView(view, animated: true)
         }
         
-        signInConductor.showAlertWithMessage = { message in
+        signInConductor.showAlertWithMessage = { [weak self] message in
             let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self?.presentViewController(alert, animated: true, completion: nil)
         }
         
-        signInConductor.navigateToWelcomeScreen = {
-            if let welcomeController = self.storyboard?.instantiateViewControllerWithIdentifier("WelcomeViewController") {
-                self.showViewController(welcomeController, sender: nil)
+        signInConductor.navigateToWelcomeScreen = { [weak self] in
+            if let welcomeController = self?.storyboard?.instantiateViewControllerWithIdentifier("WelcomeViewController") {
+                self?.showViewController(welcomeController, sender: nil)
             }
         }
     }
