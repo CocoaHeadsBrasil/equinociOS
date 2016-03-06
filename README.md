@@ -54,6 +54,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 
 ## Como rodar localmente
 1. Pelo terminal, vá ao diretório raíz onde seu equinociOS está localizado
+2. Caso não possua o Bundler instalado, execute `sudo gem install bundler`
 2. Se for a primeira vez que você irá rodar esse projeto, execute `bundle install` para garantir que todas as dependências que o projeto utiliza existem. Caso negativo, o download será efetuado
 2. Execute `jekyll serve` ou simplesmente `jekyll s`
 3. Confira qual foi o *Server Address* gerado pelo jekyll ![](img/jekyll-path.png)
