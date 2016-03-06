@@ -76,7 +76,7 @@ E é aí que entra a mágica do Swift ser tão restrito em relação a tipos (ou
 <span class="caption text-muted"> O compilador está do nosso lado! Após concatenar várias funções, você (quase) sempre pode confiar nele para te dizer o tipo do retorno das suas funções. Essa técnica é muito útil para você checar se o tipo retornado é mesmo o que você espera.
 
 ![]({{ site.baseurl }}/img/brunokoga/typesafe2.png)
-<span class="caption text-muted">a mesma estratégia funciona também para os parâmetros das funções concatenadas. Mesmo que você não entenda o código acima, a idéia é que você tem a segurança de saber que está trabalhando com o tipo de dado correto (diferentemente do Objective-C), onde não há essa garantia.
+<span class="caption text-muted">a mesma estratégia funciona também para os parâmetros das funções concatenadas. Mesmo que você não entenda o código acima, a idéia é que você tem a segurança de saber que está trabalhando com o tipo de dado correto (diferentemente do Objective-C, onde não há essa garantia).
 
 
 ###Gerúndio: resumindo
