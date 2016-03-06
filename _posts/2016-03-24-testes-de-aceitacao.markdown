@@ -2,7 +2,7 @@
 layout:     post
 title:      Testes de Aceitação em iOS
 subtitle:   Como escrever testes de aceitação em iOS.
-date:       2016-03-24 14:26
+date:       2016-03-05 14:26
 author:     Felipe B. Valio
 category:   ios
 
