@@ -70,10 +70,10 @@ Quando o futuro retornado por `User.logIn`  falha (por exemplo, se o `username` 
 
 Falando nisso, o `flatMap` aí em cima é um dos caras que fazem parte dos conceitos funcionais. Caso você não o entenda (ainda!), a idéia é que ele "transforma" (ou "mapeia") o **resultado** de um `Future` no **valor** de um novo `Future`. Ou seja, ele transforma o resultado do `logIn` (que é um `user`) no valor de entrada para o `fetchPosts` (que por sua vez retorna outro `Future`).
 
-E é aí que entra a mágica do Swift ser tão restrito em relação a tipos (ou seja, ser uma linguagem [_type safe_](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html), totalmente diferente do Objective-C): você consegue garantir (com o uso de _optionals_ e _generics_ por exemplo) que os tipos de dados dos valores retornados por uma função e passados para outra função estão sempre corretos. E a partir daí, o atalho preferido do Xcode passa a ser `⌥ + click`:
+E é aí que entra a mágica do Swift ser tão restrito em relação a tipos (ou seja, ser uma linguagem [_type safe_](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html), totalmente diferente do Objective-C): o compilador consegue te garantir que os tipos de dados dos valores retornados por uma função e passados para outra função estão sempre corretos. E a partir daí, o atalho preferido do Xcode passa a ser `⌥ + click`:
 
 ![]({{ site.baseurl }}/img/brunokoga/typesafe1.png)
-<span class="caption text-muted"> O compilador está do nosso lado! Após concatenar várias funções, você (quase) sempre pode confiar no compilador para te dizer o tipo do retorno. Essa técnica é muito útil para você checar se o tipo retornado é mesmo o que você espera.
+<span class="caption text-muted"> O compilador está do nosso lado! Após concatenar várias funções, você (quase) sempre pode confiar nele para te dizer o tipo do retorno das suas funções. Essa técnica é muito útil para você checar se o tipo retornado é mesmo o que você espera.
 
 ![]({{ site.baseurl }}/img/brunokoga/typesafe2.png)
 <span class="caption text-muted">a mesma estratégia funciona também para os parâmetros das funções concatenadas. Mesmo que você não entenda o código acima, a idéia é que você tem a segurança de saber que está trabalhando com o tipo de dado correto (diferentemente do Objective-C), onde não há essa garantia.
