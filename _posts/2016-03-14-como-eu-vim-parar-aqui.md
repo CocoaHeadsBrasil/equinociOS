@@ -37,7 +37,7 @@ Voltando ao `BrightFutures`: na época, mesmo sem saber nada de programação fu
 
 E foi aí que comecei a entender _um pouco_ o que significava programação funcional e porque o Swift era uma linguagem que permitia a implementação e o uso de conceitos funcionais.
 
-> Vamos começar a viajar um pouco. Essa é a hora ideal para uma dose de cafeína ☕️
+> Vamos começar a viajar um pouco. Essa é a hora ideal para uma dose de cafeína ☕️.
 
 Imagine o caso em que você tem uma série de eventos futuros que você quer que sejam encadeados, respeitando (ou não) uma ordem e que no final desse encadeamento de eventos (ou seja, no futuro) você quer ser notificado.
 
