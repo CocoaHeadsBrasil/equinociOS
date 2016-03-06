@@ -63,14 +63,14 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 ## Data de Publicação
 - **01/03/2016:** O mundo é mais que seu umbigo, por [Marcelo Fabri](https://github.com/marcelofabri)
 - **02/03/2016:** iOS nativo - load e parse de json da web sem framework de terceiros, por [Daniel Bonates] (https://github.com/dbonates)
-- **03/03/2016:** Minimizando o acoplamento de Views e ViewControllers, por [Diogo Tridapalli](https://github.com/diogot)
-- **04/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
-- **05/03/2016:** Fastlane, por [Luiz Alberto da Silva Oliveira] (https://github.com/betodr)
+- **03/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
+- **04/03/2016:** Scene Kit Overview, por [Lucas Farris](https://github.com/luksfarris)
+- **05/03/2016:** Testes de Aceitação em iOS, por [Felipe Valio](https://github.com/felipe-valio-movile)
 - **06/03/2016:** PIP - Picture in Picture, por [Douglas Fischer](https://github.com/DougFischer)
 - **07/03/2016:** (A definir), por [Rafael Nobre] (https://github.com/nobre84)
 - **08/03/2016:** Desenvolvendo para Apple TV - compartilhando código e dependências entre plataformas, por [Tales Pinheiro](https://github.com/talesp)
 - **09/03/2016:** Em busca de um layout bonito e adaptativo: UICollectionView, Auto Layout e Size Classes, por [Rodrigo Borges] (https://github.com/rdgborges)
-- **10/03/2016:** Scene Kit Overview, por [Lucas Farris](https://github.com/luksfarris)
+- **10/03/2016:** Minimizando o acoplamento de Views e ViewControllers, por [Diogo Tridapalli](https://github.com/diogot)
 - **11/03/2016:** Unity3D e o Mundo Apple, por [Mauricio Cardozo] (https://github.com/loloop)
 - **12/03/2016:** Seja um desenvolvedor regular: Adicionando expressões regulares não seu dia-a-dia, por [Diego Ventura] (https://github.com/diegoventura)
 - **13/03/2016:** WebView: A porta de entrada para desenvolvedores web, por [Emiliano E. S. Barbosa] (https://github.com/emilianoeloi)
@@ -86,10 +86,10 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
 - **22/03/2016:** Implementando o Facebook iOS SDK, por [Gabriel Ribeiro](https://github.com/gabrielribeiro)
 - **23/03/2016:** Método Swizzling, por [Fernanda Geraissate](https://github.com/fggeraissate)
-- **24/03/2016:**
-- **25/03/2016:**
+- **24/03/2016:** Fastlane, por [Luiz Alberto da Silva Oliveira] (https://github.com/betodr)
+- **25/03/2016:** Optionals e o Gato de Schrödinger, por [Francesco Perrotti-Garcia](https://github.com/fpg1503)
 - **26/03/2016:**
-- **27/03/2016:**
+- **27/03/2016:** App Extensions - Today Notification, por [Renato Matos](https://github.com/renatosarro)
 - **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
 - **29/03/2016:**
 - **30/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
