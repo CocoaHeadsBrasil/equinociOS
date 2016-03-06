@@ -5,7 +5,7 @@ subtitle:   "Introdução e Integração da engine com iOS"
 date:       2016-03-01 00:00:00
 author:     "Mauricio Cardozo"
 header-img: "img/loloop/header.jpg"
-category:   Categoria
+category:   gamedev
 ---
 
 <!-- galera com licença aí mas eu preciso centralizar e limitar umas coisas pro meu post --> 
@@ -29,18 +29,24 @@ subtitle:   "Introdução e Integração da engine com iOS"
 date:       2016-03-11 00:00:00
 author:     "Mauricio Cardozo"
 header-img: "img/loloop/header.jpg"
-category:   Categoria
+category:   gamedev
 ---
 
 -->
 
-Escrever uma rápida introdução, talvez?
+
+Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?
+
+Diferente de apps híbridos, que na maior parte do tempo são várias Web Views com uns hooks para acessar algumas funcionalidades nativas, o core da Unity é todo em C++ ([E o build que ela gera para o iOS também](http://blogs.unity3d.com/2015/05/06/an-introduction-to-ilcpp-internals/)) e ela implementa o [Metal](http://blogs.unity3d.com/2015/04/17/ios-64-bit-and-metal-update/) no iOS, e assim tem uma performance ótima mesmo quando comparada com o SceneKit
+
+Tendo dito isto, vamos começar? 
+
 
 ## Primeiros Passos
 
 <img src="{{ site.baseurl }}/img/loloop/GetUnity.png">
 
-Bom, vamos começar baixando a Unity né? A versão que eu usei pra escrever esse artigo é a 5.3.2, mas já saiu uma versão mais nova, a 5.3.3, mas tudo que eu vou fazer aqui deve funcionar nela sem o menor dos problemas. O download tá no [site da Unity](http://unity3d.com/download), e a Personal Edition é completa o suficiente pra funcionar com tudo que a gente vai usar.
+Bom, vamos começar baixando a Unity né? Não precisa se preocupar muito se o seu Mac vai funcionar bem com ela, pois estou usando um [](MacBook Air de 2010) para escrever este artigo, e a versão que eu usei pra escrever ele é a 5.3.2, mas já saiu uma versão mais nova, a 5.3.3, mas tudo que eu fizer aqui deve funcionar nela sem o menor dos problemas. O download tá no [site da Unity](http://unity3d.com/download), e a Personal Edition é completa o suficiente pra funcionar com tudo que a gente vai usar.
 
 <img src="{{ site.baseurl }}/img/loloop/BuildSupport.png">
 
@@ -103,6 +109,7 @@ A Unity possui suporte fácil a
 
 #### Gyroscope, Accelerometer
 
+
 <video src="https://zippy.gfycat.com/ShockedAthleticAlligatorsnappingturtle.mp4">
 
 <span class="imageSubtitle">
@@ -123,8 +130,46 @@ void Vibrar(){
 }
 ~~~
 
-### Integração com coisas nativas
+### Integração com o mundo nativo
+
+
 #### GameCenter
+
+#### Low Power Mode
+
+Com a interoperabilidade de código, podemos fazer coisas interessantes, como reduzir o framerate do nosso jogo quando o iOS9 está em modo Low Power para economizar bateria:
+
+~~~ objc
+
+[[NSProcessInfo processInfo] isLowPowerModeEnabled]
+
+
+~~~ 
+
+https://developer.apple.com/library/ios/documentation/Performance/Conceptual/EnergyGuide-iOS/LowPowerMode.html
+
+
+
+
+~~~ csharp
+class DeviceManager{
+	public static bool isLowPowerActive{
+		get{
+			return true; //implementar método
+		}
+	}
+}
+~~~
+
+E aí, preferencialmente no startup do nosso jogo:
+
+~~~ csharp
+void Start(){
+	Application.targetFrameRate = DeviceManager.isLowPowerActive? 30: 60;
+}
+~~~
+
+
 #### Exemplo com a câmera
 
 
