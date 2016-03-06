@@ -68,7 +68,7 @@ Quando o futuro retornado por `User.logIn`  falha (por exemplo, se o `username` 
 
 > **Opinião:** o código pode parecer estranho a princípio, mas novamente a teoria faz sentido. E por isso que acho que tanto programação funcional como programação reativa são dois conceitos que requerem estudo da teoria antes da prática. É um pouco diferente de aprender uma linguagem de programação nova (como Swift), que algo 100% _hands on_ pode ser efetivo.
 
-Falando nisso, o `flatMap` aí em cima é um dos caras que fazem parte dos conceitos funcionais. Caso você não o entenda (ainda!), a idéia é que ele "transforma" (ou "mapeia") o **resultado** de um `Future` no **valor** de um novo `Future`. Ou seja, ele transforma o resultado do `logIn` (que é um `user`) no valor de entrada para o `fetchPosts` (que retorna outro `Future`).
+Falando nisso, o `flatMap` aí em cima é um dos caras que fazem parte dos conceitos funcionais. Caso você não o entenda (ainda!), a idéia é que ele "transforma" (ou "mapeia") o **resultado** de um `Future` no **valor** de um novo `Future`. Ou seja, ele transforma o resultado do `logIn` (que é um `user`) no valor de entrada para o `fetchPosts` (que por sua vez retorna outro `Future`).
 
 E é aí que entra a mágica do Swift ser tão restrito em relação a tipos (ou seja, ser uma linguagem [_type safe_](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html), totalmente diferente do Objective-C): você consegue garantir (com o uso de _optionals_ e _generics_ por exemplo) que os tipos de dados dos valores retornados por uma função e passados para outra função estão sempre corretos. E a partir daí, o atalho preferido do Xcode passa a ser `⌥ + click`:
 
