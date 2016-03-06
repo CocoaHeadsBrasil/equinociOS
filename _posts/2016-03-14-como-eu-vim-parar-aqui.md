@@ -62,7 +62,7 @@ func logIn(username: String, password: String) -> Future<User, ErrorType>
 func fetchPosts(user: User) -> Future<[Posts], ErrorType>
 ~~~
 
-Se você não estiver acostumado com a sintaxe do Swift ou o código acima parecer muito confuso para você, essa é a intenção desse código (traduzido do [repositório do Bright Futures](https://github.com/Thomvis/BrightFutures)):
+Se você não estiver acostumado com a sintaxe do Swift ou o código acima parecer muito confuso para você, essa é a explicação desse código (traduzido do [repositório do Bright Futures](https://github.com/Thomvis/BrightFutures)):
  
 Quando o futuro retornado por `User.logIn`  falha (por exemplo, se o `username` e `password` não estiverem corretos), tanto o `flatMap` como o `onSuccess` são pulados, e o closure `onFailure` é chamado com o `error` que ocorreu na tentativa de `logIn`. Se a tentativa de realizar o `logIn` for bem sucedida, o resultado da operação (que é um objeto `user`) é passado para o `flatMap`, que "transforma" o usuário em um _array_ com seus posts. Se os posts não puderem ser baixados (por causa de um erro), `onSuccess` é pulado, e `onFailure` é chamado com o `error` que ocorreu na tentativa de baixar os posts. Se os posts puderem ser baixados com sucesso, `onSuccess`  é chamado com os posts do usuário.
 
