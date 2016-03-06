@@ -79,7 +79,7 @@ E é aí que entra a mágica do Swift ser tão restrito em relação a tipos (ou
 <span class="caption text-muted">a mesma estratégia funciona também para os parâmetros das funções concatenadas. Mesmo que você não entenda o código acima, a idéia é que você tem a segurança de saber que está trabalhando com o tipo de dado correto (diferentemente do Objective-C, onde não há essa garantia).
 
 
-###Gerúndio: resumindo
+###Resumindo
 
 `Futures` são ações futuras (assíncronas, com tratamento de erros). O paradigma da programação funcional permite transformar e encadear essas ações de uma forma clara e segura. Além disso, ao trabalhar com `Futures`, estamos trabalhando de uma forma "reativa". Em outras palavras, estamos programando baseado no "retorno" dos `futures`. Esses `futures` se responsabilizam de fazer o trabalho deles assincronamente. E ao encadear esses `futures`, estamos trabalhando com os conceitos funcionais. Por isso que, apesar de diferentes, esses dois termos são vistos comumente juntos: **Programação Reativa Funcional**.
 
