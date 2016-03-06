@@ -25,7 +25,7 @@ Em junho de 2015, logo após o lançamento do Swift 2.0, entrei num projeto 100%
 
 Porém, a camada de comunicação com o servidor desse aplicativo era construída em cima de uma biblioteca escrita chamada [BrightFutures](https://github.com/Thomvis/BrightFutures). E com isso me deparei com dois outros conceitos que eu nunca havia estudado (muito menos usado): [programação funcional](https://pt.wikipedia.org/wiki/Programação_funcional) e [programação reativa](https://en.wikipedia.org/wiki/Reactive_programming). 
 
-> **Opinião:** para mim programação funcional é, a grosso modo, uma mudança de pensamento que, ao invés de você pensar em classes e objetos e na interação entre essas entidades, você pensa muito mais em funções e composição de funções. É um tema bastante extenso. Pela minha experiência, isso é algo que leva um certo tempo para aprender e requer disciplina para ler teorias e documentações. 
+> **Opinião:** o resumo de programação funcional é, **para mim**, algo do tipo: uma mudança de pensamento que, ao invés de você pensar em classes e objetos e na interação entre essas entidades, você pensa muito mais em funções e composição de funções. É um tema bastante extenso. Pela minha experiência, isso é algo que leva um certo tempo para aprender e requer disciplina para ler teorias e documentações. 
 
 E por fim: programação reativa. Até então, eu nunca tinha conseguido entender exatamete o que era programação reativa. Todas a vezes que tentei usar [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) desisti no meio por perder o controle do que estava acontecendo.
 
