@@ -34,6 +34,8 @@ category:   gamedev
 
 -->
 
+`<Inserir um print de SUPER HOT aqui>`
+
 Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?
 
 Sim, funciona. Diferente de apps híbridos, que na maior parte do tempo são várias Web Views com uns hooks para acessar algumas funcionalidades nativas, o core da Unity é todo em C++ ([E o build que ela gera para o iOS também](http://blogs.unity3d.com/2015/05/06/an-introduction-to-ilcpp-internals/)) e ela implementa o [Metal](http://blogs.unity3d.com/2015/04/17/ios-64-bit-and-metal-update/) no iOS, e assim tem uma performance ótima mesmo quando comparada com o SceneKit
@@ -78,7 +80,7 @@ As outras configurações básicas de cada projeto estão no `Edit > Project Set
 
 ### Layouts específicos para os devices
 
-Vou começar falando da parte ruim da parte de UI da Unity, que é o fato dela não saber lidar muito bem com os layouts aparelhos de dpi diferentes e resoluções parecidas, infelizmente nos forçando a fazer algo parecido com isso:
+Vou começar falando da parte ruim do sistema de UI da Unity, que é o fato dela não saber lidar muito bem com os layouts aparelhos de dpi diferentes e resoluções parecidas, infelizmente nos forçando a fazer algo parecido com isso:
 
 ~~~ csharp
 
@@ -121,18 +123,22 @@ A Unity possui suporte fácil ao
 
 #### Swiping
 
+<!-- https://github.com/prime31/TouchKit --> 
+
 #### Gyroscope, Accelerometer
 
+<!--
+
+Não faço a menor ideia do que acontece aqui mas o jekyll não quer renderizar a página pra baixo do meu vídeo
 
 <video src="https://zippy.gfycat.com/ShockedAthleticAlligatorsnappingturtle.mp4">
 
-<span class="imageSubtitle">
 `Input.accelerometer`do jeito que ele realmente é
-</span>
 
 <video src="https://zippy.gfycat.com/SarcasticDismalEidolonhelvum.mp4">
 
 `Input.accelerometer` suavizado entre os frames
+--> 
 
 #### Vibração
 
@@ -150,7 +156,7 @@ void Vibrar(){
 
 #### GameCenter
 
-As APIs da Unity já provem um nível bem básico de integração com o GameCenter, utilizando a classe [Social](http://docs.unity3d.com/ScriptReference/Social.html), que  
+As APIs da Unity já provem um nível bem básico de integração com o GameCenter, utilizando a classe [Social](http://docs.unity3d.com/ScriptReference/Social.html), que possui as funcionalidades básicas de autenticação, leaderboards e achievements.
 
 ~~~ csharp
 
@@ -208,73 +214,31 @@ void Start(){
 
 `WebCamTexture`
 
+<!--
+Links úteis
+
+http://docs.unity3d.com/ScriptReference/WebCamTexture.html Uso de câmera
+
+http://answers.unity3d.com/questions/232547/how-to-access-camera-feed-ios-and-android.html Uso de câmera
+
+http://answers.unity3d.com/questions/221621/where-is-ios-camera-support-documented.html Uso de câmera
+-->
+
 ##### O jeito correto
 
 `<Vídeo do projeto """buildado""" capturando input da câmera e colocando no jogo>`
 
 `UIImagePickerView` nativo
 
+<!--
+Links úteis: dá uma olhada lá no teu Pocket, Mauricio
+-->
 
 
-### Conclusão 
+## Conclusão 
 
-Colocar isso aqui no fim do post pra concluir!111!!! 
-http://madewith.unity.com/games?type=featured&search=&platform=ios&genre=
-E mostrar o projeto de exemplo lá github.com/loloop/equinox
+Com esse material todo aí vocês já tem uma boa base para desenvolver o jogo de iOS que tanto queriam. Mal posso esperar para ver o que vocês vão fazer!
 
+Todas as imagens e vídeos utilizados para ilustrar os code samples estão no meu [GitHub](https://github.com/loloop/equinox), embalados num pacote bonitinho que tem todo o texto aqui escrito, com uns minigames bem mini divertidinhos pra vocês :D
 
-FIM DO POST
-------------------------------
-
-# Perguntas importantes
-### Qual é a história que eu quero contar aqui?
-#### Como vou estruturar essa história?
-### Quem é a pessoa que vai ler este artigo?
-
-# O Projeto na Unity
-Nome: Equinox
-
-Precisa ter:
-Multitouch, 3D, Gyro/Accelerômetro em iOS, Swiping. Câmera tb seria legal.
-
-Minha solução? Vários minigames num proj só. Quem sabe depois a gente tenta encaixar isso direito em uma unidade. Ou corta features.
-
-
-Links úteis:
-
-http://docs.unity3d.com/ScriptReference/WebCamTexture.html Uso de câmera
-
-http://answers.unity3d.com/questions/232547/how-to-access-camera-feed-ios-and-android.html Uso de câmera
-
-http://answers.unity3d.com/questions/550729/how-to-access-device-iphoneandroid-native-camera.html Uso de câmera
-
-http://answers.unity3d.com/questions/221621/where-is-ios-camera-support-documented.html Uso de câmera
-
-https://gist.github.com/Democide/beba5fd2603b268a8f72 Loading Screen Gist
-
-https://github.com/dsoft20/psx_retroshader Esse shader lindo
-
-https://github.com/nickgravelyn/UnityToolbag Ver coisas daqui, talvez tenha algo interessante
-
-https://github.com/fholm/unityassets ver se os assets daqui tb podem se encaixar
-
-https://github.com/RyanNielson/awesome-unity Varrer esta lista em busca de algo útil
-
-https://www.reddit.com/r/gamedev/comments/3hst9l/best_unity_assets_by_keijiro_takahashi_including/ Shaders do Keijiro
-
-http://kenney.nl/assets dar uma olhada nos assets do kenney
-
-https://github.com/keijiro?tab=repositories
-
-https://github.com/unity3d-jp
-
-https://github.com/unity3d-jp/EasyFlightGame
-
-Artigos que podem conter alguma informação importante que eu ainda não pensei em
-
-http://www.raywenderlich.com/25205/beginning-unity-3d-for-ios-part-13
-
-http://docs.unity3d.com/Manual/iphone-GettingStarted.html
-
-https://prime31.com/docs#iosGCMP Plugins úteis para dev iOS
-
+A imagem do Header é do jogo [**Firewatch**](http://www.firewatchgame.com), desenvolvido pela empresa americana [Campo Santo](http://www.camposanto.com) com Unity3D para PS4 e PC, a imagem que abre o post é de [**SUPER HOT**](https://superhotgame.com), também desenvolvido com Unity3D, para PC. A Unity tem um espaço de showcase dos jogos desenvolvidos usando ela, o [Made With Unity](http://madewith.unity.com/games?type=featured&search=&platform=ios&genre=). Se você quiser conhecer mais jogos desenvolvidos com ela, é só dar um pulinho lá :)
