@@ -5,7 +5,7 @@ subtitle:   "Ganhe produtividade sem perder sua sanidade"
 date:       2016-03-07 00:00:00
 author:     "Rafael Nobre"
 header-img: "img/nobre84/bg.jpg"
-category:   Categoria
+category:   storyboards
 ---
 
 > Rafael Nobre é desenvolvedor iOS desde 2009, tendo trabalhado com UIs programáticas, XIBs, Storyboards, tanto com frames calculados e autosizing masks ou AutoLayout
