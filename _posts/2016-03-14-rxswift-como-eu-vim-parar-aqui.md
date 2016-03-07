@@ -8,10 +8,10 @@ header-img: "img/brunokoga/stream.jpg"
 ---
 
 >☝️
->Esse artigo não visa ensinar nenhum conceito ou técnica diretamente. Ele é muito mais um relato pessoal da minha experiência no aprendizado de alguns conceitos e paradigmas. Se você não tem idéia do que é programação reativa, eu recomendo fortemente [esse guia](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754). 
+>Esse artigo não visa ensinar nenhum conceito ou técnica diretamente. Ele é muito mais um relato pessoal da minha experiência no aprendizado de alguns conceitos e paradigmas. Se você não tem ideia do que é programação reativa, eu recomendo fortemente [esse guia](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754). 
 
 >✌️
->A maioria dos exemplos contidos nesse artigo foram retirados de projetos reais, de documentações ou exemplos providos pelos autores das bibliotecas citadas. Todos os respectivos links estam disponíveis no final do artigo.
+>A maioria dos exemplos contidos nesse artigo foram retirados de projetos reais e de documentações ou exemplos providos pelos autores das bibliotecas citadas. Todos os respectivos links estam disponíveis no final do artigo.
 
 ###Passado
 Programo para iOS desde 2009. Até 8 meses atrás, Objective-C (e o básico de C) eram as duas únicas linguagens que eu sabia programar. 
@@ -20,6 +20,10 @@ E por muitos anos a minha abordagem para desenvolver software sempre envolveu: O
  
 ###Presente
 Em junho de 2015, logo após o lançamento do Swift 2.0, entrei num projeto 100% escrito em Swift (1.2). Era meu primeiro contato real com Swift. 
+
+![]({{ site.baseurl }}/img/brunokoga/aleera.png)
+<span class="caption text-muted">Logo eu me vingarei!
+
 
 > **Opinião:** aprender Swift é como aprender qualquer outra linguagem de programação. Sua sintaxe é relativamente simples de aprender e já há muita documentação e exemplos na internet. Não acho que Swift deveria ser barreira para ninguém: é algo que se aprende (o básico) em poucos dias. E é questão de dias para você ser produtivo usando Swift.
 
@@ -33,7 +37,7 @@ E por fim: programação reativa. Até então, eu nunca tinha conseguido entende
 <span class="caption text-muted">meu snippet para `;rac` no TextExpander
 
 ###Futuro
-Voltando ao `BrightFutures`: na época, mesmo sem saber nada de programação funcional e programação reativa foi fácil para mim entender a teoria e a filosofia por trás do _framework_: prover uma forma de tratar com código assíncrono e tratamento de erros através de [futuros e promessas](https://en.wikipedia.org/wiki/Futures_and_promises).
+Voltando ao `BrightFutures`: na época, mesmo sem saber nada de programação funcional e programação reativa, foi fácil para eu entender a teoria e a filosofia por trás do _framework_: prover uma forma de tratar com código assíncrono e tratamento de erros através de [futuros e promessas](https://en.wikipedia.org/wiki/Futures_and_promises).
 
 E foi aí que comecei a entender _um pouco_ o que significava programação funcional e porque o Swift era uma linguagem que permitia a implementação e o uso de conceitos funcionais.
 
@@ -64,7 +68,7 @@ func fetchPosts(user: User) -> Future<[Posts], ErrorType>
 
 Se você não estiver acostumado com a sintaxe do Swift ou o código acima parecer muito confuso para você, essa é a explicação desse código (traduzido do [repositório do Bright Futures](https://github.com/Thomvis/BrightFutures)):
  
-Quando o futuro retornado por `User.logIn`  falha (por exemplo, se o `username` e `password` não estiverem corretos), tanto o `flatMap` como o `onSuccess` são pulados, e o closure `onFailure` é chamado com o `error` que ocorreu na tentativa de `logIn`. Se a tentativa de realizar o `logIn` for bem sucedida, o resultado da operação (que é um objeto `user`) é passado para o `flatMap`, que "transforma" o usuário em um _array_ com seus posts. Se os posts não puderem ser baixados (por causa de um erro), `onSuccess` é pulado, e `onFailure` é chamado com o `error` que ocorreu na tentativa de baixar os posts. Se os posts puderem ser baixados com sucesso, `onSuccess`  é chamado com os posts do usuário.
+Quando o futuro retornado por `User.logIn` falha (por exemplo, se o `username` e `password` não estiverem corretos), tanto o `flatMap` como o `onSuccess` são pulados, e o closure `onFailure` é chamado com o `error` que ocorreu na tentativa de `logIn`. Se a tentativa de realizar o `logIn` for bem sucedida, o resultado da operação (que é um objeto `user`) é passado para o `flatMap`, que "transforma" o usuário em um _array_ com seus posts. Se os posts não puderem ser baixados (por causa de um erro), `onSuccess` é pulado, e `onFailure` é chamado com o `error` que ocorreu na tentativa de baixar os posts. Se os posts puderem ser baixados com sucesso, `onSuccess` é chamado com os posts do usuário.
 
 > **Opinião:** o código pode parecer estranho a princípio, mas novamente a teoria faz sentido. E por isso que acho que tanto programação funcional como programação reativa são dois conceitos que requerem estudo da teoria antes da prática. É um pouco diferente de aprender uma linguagem de programação nova (como Swift), que algo 100% _hands on_ pode ser efetivo.
 
@@ -93,7 +97,7 @@ A idéia básica da programação reativa é que você trabalha em cima de _stre
 
 No nosso exemplo anterior, usando [BrightFutures]((https://github.com/Thomvis/BrightFutures)), a nossa entidade `Future` nada mais é do que um _stream_, que pode produzir um valor (e um sinal de "finalizado" logo em seguida) ou um erro.
 
-Com o `RxSwift`, porém, as coisas são mais amplas que apenas `Futures`. Você pode definit outros tipos de _streams_. Um bom exemplo é um `UITextField`: ao invés de programar pensando nos conceitos de _delegates_, o `RxSwift` te permite **observar** os valores do _stream_ `rx_text` do `UITextField` e **reagir** de acordo com a emissão desses valores. Veja um exemplo:
+Com o `RxSwift`, porém, as coisas são mais amplas que apenas `Futures`. Você pode definir outros tipos de _streams_. Um bom exemplo é um `UITextField`: ao invés de programar pensando nos conceitos de _delegates_, o `RxSwift` te permite **observar** os valores do _stream_ `rx_text` do `UITextField` e **reagir** de acordo com a emissão desses valores. Veja um exemplo:
 
 ~~~swift
 let lengthOfBytes =
