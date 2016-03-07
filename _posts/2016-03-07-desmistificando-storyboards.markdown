@@ -8,8 +8,8 @@ header-img: "img/nobre84/bg.jpg"
 category:   storyboards
 ---
 
-> Rafael Nobre é desenvolvedor iOS desde 2009, tendo trabalhado com UIs programáticas, XIBs, Storyboards, tanto com frames calculados e autosizing masks ou AutoLayout
-> Durante este mês do equinociOS, aproveito para abrir minha mente com os temas apresentados
+> Rafael Nobre é desenvolvedor iOS desde 2009, tendo trabalhado com UIs programáticas, XIBs, Storyboards, tanto com frames calculados e autosizing masks ou AutoLayout.  
+> Durante este mês do equinociOS, aproveita para abrir sua mente com os temas propostos e estudar muita coisa nova.
 
 # Interface Builder
 
