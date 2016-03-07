@@ -65,7 +65,7 @@ extension UILabel {
 ~~~
 
 A idéia parece interessante, mas esse exemplo dá uma impressão de excesso de complexidade. Concordo, realmente estamos trocando 6 por meia dúzia.
-Vamos tomar um exemplo mais real. Temos uma `View` que contém uma `UILabel` e um `UIButton`. Sua interface publica seria:
+Vamos tomar um exemplo mais real. Temos uma `View` que contém uma `UILabel` e um `UIButton`. Sua interface pública seria:
 
 ~~~ swift
 public class View : UIView {
@@ -108,7 +108,7 @@ O *estado* dessa `View` depende de um `Model`:
 ~~~ swift
 public struct Model {
 
-    public enum Emoji {
+    public enum Emoji: String {
         case 👍, 👎, 👊
     }
 
@@ -130,15 +130,7 @@ public extension ViewModel {
            string: model.name,
            attributes: [NSForegroundColorAttributeName: UIColor.redColor()])
 
-        let text: String
-        switch model.emoji {
-        case .👊:
-            text = "👊"
-        case .👍:
-            text = "👍"
-        case .👎:
-            text = "👎"
-        }
+        let text: String = model.emoji.rawValue
 
         self.init(
             attributedLabel: NSAttributedString(string: text),
@@ -174,7 +166,7 @@ Mas pouco se fala fora desse contexto, a [NatashaTheRobot](https://twitter.com/N
 
 ---
 
-Criticas, sugestões e comentários são sempre bem vindos, é só me *pingar* no [@diogot](https://twitter.com/diogot) ou no [slack do iOS Dev BR](http://iosdevbr.herokuapp.com).
+Criticas, sugestões e comentários são sempre bem vindos, é só me *pingar* no [@diogot](https://twitter.com/diogot) ou no [Slack do iOS Dev BR](http://iosdevbr.herokuapp.com).
 
 ---
 Diogo Tridapalli <br />
