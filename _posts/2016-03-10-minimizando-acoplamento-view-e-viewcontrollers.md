@@ -8,7 +8,7 @@ header-img: "img/diogot/plainMVVM.png"
 category:   Arquitetura
 ---
 
-O excesso de responsabilidades do `ViewController` é algo que vem me incomodando à algum tempo. Já [escrevi](http://invariante.com/2015/10/20/todo-view-controller-deveria-ter-delegate/) um pouco sobre um a relação entre `ViewControllers`, hoje quero falar sobre a relação entre as `Views` e o `ViewController`.
+O excesso de responsabilidades do `ViewController` é algo que vem me incomodando há algum tempo. Já [escrevi](http://invariante.com/2015/10/20/todo-view-controller-deveria-ter-delegate/) um pouco sobre um a relação entre `ViewControllers`, hoje quero falar sobre a relação entre as `Views` e o `ViewController`.
 
 `Views`, de maneira geral, são genéricas. Não contem lógica e podem ser reutilizadas em diferentes contextos. Por exemplo, `UILabel` possui uma série de customizações como `text`, `font` e `textColor`, que permitem que ela seja usada em diversos contextos. Até aqui tudo certo[^1]. Na maioria dos casos nem todas as configurações são alteradas, o mais comum é alterar as 3 citadas. Em alguns casos é necessário definir uma configuração para o mesmo valor, por exemplo `textColor`, cujo o valor padrão é `blackColor` mas no *app* todos os textos são `grayColor`, para evitar a replicação de código algumas vezes eu já fiz uma subclasse de `UILabel` com configurações padrão diferentes, mas isso sempre me pareceu estranho. Essa questão de onde deve ficar o código que define as configurações é um ponto desconfortável. Por exemplo o `text`, normalmente quem atribui uma *string* é o `ViewController` que é um estranho pois normalmente ele tira essa *string* de um `Model`. Quem deve ter o propósito de definir essas configurações? 
 
