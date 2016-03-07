@@ -106,14 +106,14 @@ let lengthOfBytes =
             .filter { $0 > 5 }
 ~~~
 
-Com o código acima, estamos definindo que a cada vez que `rx_text` emitir um valor, nós iremos _mapear_ (ou seja, transformar) esse valor em um `Int`, e então iremos filtrar esse valor, seguindo adiante apenas de ele for maior que 5.
+Com o código acima, estamos definindo que a cada vez que `rx_text` emitir um valor, nós iremos _mapear_ (ou seja, transformar) esse valor em um `Int`, e então iremos filtrar esse valor, seguindo adiante apenas se ele for maior que 5.
 
 Fazendo novamente a comparação com `Futures`, o `RxSwift` encapsula seus _streams_  em `Observables`. Ou seja, o tipo de dado de `rx_text` é um `Observable<String>`, enquanto, no exemplo acima, o tipo de dados de `lengthOfBytes` é um `Observable<Int>` (ou seja, é um _stream_ também):
 
 ![]({{ site.baseurl }}/img/brunokoga/rxswift1.png)
 <span class="caption text-muted">Lembre-se: `⌥ + click` é seu melhor amigo!
 
-A última peça que falta nesse quebra-cabeças do `RxSwift` é que **nada acontece** até você der um _subscribe_ no seu _stream_ (ou na sua sequência de _streams). Antes disso, você está apenas definindo as ações que você irá tomar, baseada nos eventos que podem acontecer. O _subscribe_ é o sinal verde para que o `Observable` comece a emitir itens:
+A última peça que falta nesse quebra-cabeças do `RxSwift` é que **nada acontece** até você dar um _subscribe_ no seu _stream_ (ou na sua sequência de _streams_). Antes disso, você está apenas definindo as ações que você irá tomar, baseada nos eventos que podem acontecer. O _subscribe_ é o sinal verde para que o `Observable` comece a emitir itens:
 
 ~~~swift
 self.messagesHandler.messages
@@ -160,7 +160,7 @@ E esse é o resultado:
 ###E esse é só o começo
 
 Acredite: esses são apenas os primeiros passos dentro do mundo de programação reativa e/ou funcional. Ainda existe muito a ser explorado e muito, muito a ser aprendido.
-Algo que tem me ajudado bastante nesse processo de aprendizado é ter a consciência de que o tema é extenso e não se aprende da noite pro dia (diferente de aprender uma nova linguagem de programação, por exemplo). A verdade é que Programação Funcional e Reativa são conceitos longos e complexos e que levam tempo para serem assimilados. Mas acredito que uma vez que você aprenda a teoria, a escolha de bibliotecas, seja um "mero" detalhe.
+Algo que tem me ajudado bastante nesse processo de aprendizado é ter a consciência de que o tema é extenso e não se aprende da noite pro dia (diferente de aprender uma nova linguagem de programação, por exemplo). A verdade é que Programação Funcional e Reativa são conceitos longos e complexos e que levam tempo para serem assimilados. Mas acredito que uma vez que você aprenda a teoria, a escolha de bibliotecas seja um "mero" detalhe.
 
 Espero que compartilhar a minha experiência possa ser útil para você começar a entender um pouco mais desses paradigmas de programação. Caso queira se aprofundar mais, coloquei alguns links nas **Referências** abaixo.
 
