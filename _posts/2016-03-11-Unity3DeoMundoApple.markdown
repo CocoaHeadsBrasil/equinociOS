@@ -10,11 +10,11 @@ category:   gamedev
 
 <!-- galera com licença aí mas eu preciso centralizar e limitar umas coisas pro meu post --> 
 <style>
-video{
+video, iframe{
 	width: 100%;
 }
 
-img{
+img, iframe{
 	margin: 0 auto;
 }
 
@@ -33,8 +33,7 @@ category:   gamedev
 ---
 
 -->
-
-`<Inserir um print de SUPER HOT aqui>`
+![O fps mais inovador que eu já joguei em anos]({{site.baseurl}}/img/loloop/muchocaliente.png)
 
 Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?
 
@@ -45,9 +44,9 @@ Agora que você já conhece um pouco da Unity e o core dela, vamos começar? :)
 
 ## Primeiros Passos
 
-<img src="{{ site.baseurl }}/img/loloop/GetUnity.png">
+![Página Inicial da Unity3D]({{ site.baseurl }}/img/loloop/GetUnity.png)
 
-Bom, vamos começar baixando a Unity né? Não precisa se preocupar muito se o seu Mac vai funcionar bem com ela, pois estou usando um [](MacBook Air de 2010) para escrever este artigo, e a versão que eu usei pra escrever ele é a 5.3.2, mas já saiu uma versão mais nova, a 5.3.3, mas tudo que eu fizer aqui deve funcionar nela sem o menor dos problemas. O download tá no [site da Unity](http://unity3d.com/download), e a Personal Edition é completa o suficiente pra funcionar com tudo que a gente vai usar.
+Bom, vamos começar baixando a Unity né? Não precisa se preocupar muito se ela vai rodar bem no seu Mac, pois estou usando um [MacBook Air de 2010](https://support.apple.com/kb/sp618?locale=en_US) para escrever este artigo. A versão que eu usei pra escrever ele é a 5.3.2, mas já saiu uma versão mais nova, a 5.3.3, mas tudo que eu fizer aqui deve funcionar nela sem o menor dos problemas. O download tá no [site da Unity](http://unity3d.com/download), e a Personal Edition é completa o suficiente pra funcionar com tudo que a gente vai usar.
 
 <img src="{{ site.baseurl }}/img/loloop/BuildSupport.png">
 
@@ -55,9 +54,8 @@ Não se esqueça de marcar pro Download Assistant baixar o Build Support para as
 
 ### O Unity Remote
 
-<img src="{{ site.baseurl }}/img/loloop/UnityRemote4.png">
-
-[Download do UnityRemote na App Store](https://itunes.apple.com/us/app/unity-remote-4/id871767552?mt=8)
+![Unity Remote 4 na App Store]({{ site.baseurl }}/img/loloop/UnityRemote4.png)
+<span class="caption text-muted">[Download do UnityRemote na App Store](https://itunes.apple.com/us/app/unity-remote-4/id871767552?mt=8)</span>
  
 Testar builds em aparelhos iOS com a Unity é um processo demorado e chato. Para aqueles testes onde queremos apenas o input do celular, o Remote é uma 
 ótima ferramenta de auxílio no desenvolvimento. Ele pode utilizar os sensores do seu celular, como acelerômetro e etc, mas não roda o jogo no hardware dele, apenas renderizando o jogo no Editor no computador, e enviando o vídeo pelo USB e captando os inputs feitos no device. 
@@ -70,7 +68,7 @@ Para deixar o mais amigável para se trabalhar com o Git, nós precisamos mudar 
 
 Fica bem mais fácil de identificar problemas assim, já que antes não era possível fazer diff dos arquivos, mas isso deixa os commits um número de linhas bem exagerado, como dá pra ver nos graphs do GitHub de um dos meus projetos
 
-<img src="{{ site.baseurl }}/img/loloop/3MilhoesDeLinhas.png" style="margin: 0 auto">
+![3mi linhas de código]({{ site.baseurl }}/img/loloop/3MilhoesDeLinhas.png)
 
 ### Player Settings
 
@@ -109,36 +107,70 @@ A Unity, na versão 4.6, ganhou um sistema novo de UI ([open source, btw](https:
 
 A configuração mais "segura" de todas é usar o `Scale With Screen Size`, com resolução virtual de 1080p, e o `Match Width or Height` configurado para 0.5. 
 
-`<Imagem do World Space Canvas>`
+<iframe src='https://gfycat.com/ifr/RewardingCreepyHowlermonkey' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
 
-Também é possível incluir o Canvas dentro do mundo do seu jogo, como um elemento que faz parte dele. Usar isto é útil para quando você quiser colocar um nome em cima dos jogadores, por exemplo, mas desabilita completamente qualquer tipo de escala.
+Também é possível incluir o Canvas dentro do mundo do seu jogo, como um elemento que faz parte dele. Usar isto é útil para quando você quiser colocar um nome em cima dos jogadores, por exemplo, mas desabilita completamente qualquer tipo de escala de acordo com o tamanho da tela.
 
 ### Input Handling
 
-Todo tipo de Input
+A classe `Input` controla todo tipo de input feito no jogo na Unity3D, 
 
 #### Multitouch
 
-A Unity possui suporte fácil ao 
+O `Input` possui suporte fácil ao multitouch, com a propriedade `Input.touches`, 
 
 #### Swiping
 
-<!-- https://github.com/prime31/TouchKit --> 
+Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso nós temos duas alternativas: Usar uma lib externa, como o [TouchKit](https://github.com/prime31/TouchKit), ou escrever todo o código nós mesmos. 
 
-#### Gyroscope, Accelerometer
+#### Aceleração
 
-<!--
+O input de aceleração é reportado como um `Vector3` que representa a aceleração em valores de força G que o device está recebendo. É possível capturar e utilizar estes dados de forma bem simples, com o `Input.acceleration`: 
 
-Não faço a menor ideia do que acontece aqui mas o jekyll não quer renderizar a página pra baixo do meu vídeo
+~~~ csharp
 
-<video src="https://zippy.gfycat.com/ShockedAthleticAlligatorsnappingturtle.mp4">
+        IEnumerator NonSmoothedAccelerate(){
+            move = true;
+            while(move){
+                transform.localPosition = Input.acceleration * strength;
+                yield return new WaitForEndOfFrame();                
+            }
+        }
 
-`Input.accelerometer`do jeito que ele realmente é
+~~~
 
-<video src="https://zippy.gfycat.com/SarcasticDismalEidolonhelvum.mp4">
+O problema de usar o valor direto assim é esse aqui:
 
-`Input.accelerometer` suavizado entre os frames
---> 
+<iframe src='https://gfycat.com/ifr/ShockedAthleticAlligatorsnappingturtle' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
+<span class="caption text-muted">`Input.acceleration`do jeito que ele realmente é</span>
+
+Você muito provavelmente vai querer suavizar estes valores pro jogador não achar que ele tem alguma tremedeira ou coisa do tipo, e é bem simples, é só usar um `SmoothDamp` do próprio `Vector3` que a gente pode definir o valor que vai ser suavizado, a "força" com que ele vai ser suavizado, e o delay da suavização, fazendo algo parecido com o seguinte código:
+
+~~~ csharp
+
+/*
+Eu ainda tenho de investigar essa solução, não tô muito confiante no translate desse jeito, acho que ele nem funciona direito?
+*/
+
+        IEnumerator Accelerate(){
+            move = true;
+            Vector3 lastFramePosition = transform.localPosition;
+            Vector3 velocity = Vector3.zero;            
+            while(move){
+                baseline = Input.acceleration;
+                Vector3 accelData = Vector3.SmoothDamp(lastFramePosition, baseline, ref velocity, 0.1f); //Inputs do sensor devem ser "limpos", senão ele fica pulando loucamente por aí              
+                Vector2 ad = (Vector2) accelData;  
+                transform.Translate(ad * strength * Time.deltaTime);
+                lastFramePosition = transform.localPosition;            
+                yield return new WaitForEndOfFrame();                
+            }
+        }
+
+~~~
+
+<iframe src='https://gfycat.com/ifr/SarcasticDismalEidolonhelvum' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
+<span class="caption text-muted">`Input.acceleration` com suavização</span>
+
 
 #### Vibração
 
@@ -149,6 +181,8 @@ void Vibrar(){
 	Handheld.Vibrate();
 }
 ~~~
+
+
 
 ### Integração com o mundo nativo
 
