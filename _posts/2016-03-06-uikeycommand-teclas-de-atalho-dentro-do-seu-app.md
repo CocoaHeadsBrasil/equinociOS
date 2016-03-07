@@ -44,7 +44,7 @@ No que se refere a texto, o iOS garante que todas as metas estão sendo cumprida
 
 Agora convenhamos, isso é muito pouco perto do que podemos fazer.
 
-Desde o iOS7, já é possível implementar atalhos de teclado dentro dos seus apps. Eles ficam a seu critério. São capazes de realizar qualquer coisa dentro do seu aplicativo. 
+Desde o iOS 7, já é possível implementar atalhos de teclado dentro dos seus apps. Eles ficam a seu critério. São capazes de realizar qualquer coisa dentro do seu aplicativo. 
 
 
 ### Quando devo implementar?
@@ -84,7 +84,7 @@ Tudo funciona em torno da classe `UIKeyCommand`. Uma classe bastante simples. Qu
 	
 * **action**: É o `@selector` que será chamado quando esse atalho for reconhecido. Aqui você vai apontar para o método da sua classe que de fato executa o que o atalho deve ativar.
 
-* **discoverabilityTitle**: Um texto opcional descrevendo o nome do atalho. Essa propriedade foi adicionada apenas no iOS9 e já veremos porque ela é tão importante para essa funcionalidade. Aguenta aí! 
+* **discoverabilityTitle**: Um texto opcional descrevendo o nome do atalho. Essa propriedade foi adicionada apenas no iOS 9 e já veremos porque ela é tão importante para essa funcionalidade. Aguenta aí! 
 
 
 
@@ -106,7 +106,7 @@ Agora retorne um `NSArray` de `UIKeyCommand` no método `keyCommands`.
 
 
 ~~~objc
-- (NSArray *)keyCommands {
+- (NSArray <UIKeyCommand *> *)keyCommands {
 	return @[
 		[UIKeyCommand keyCommandWithInput:@"N" modifierFlags:UIKeyModifierCommand action:@selector(addNewRecord:) discoverabilityTitle:@"Adicionar novo registro"]
 	];
@@ -130,9 +130,9 @@ Pronto! Agora seu app já reconhece o atalho `CMD + N` e chama o método de adic
 
 Ahá! Exatamente! Esse é o motivo porque os atalhos de teclado não eram muito comuns nos apps até recentemente. 
 
-No iOS7 e no iOS8, o desenvolvedor precisava criar hints e outras formas de ensinar ao usuário que ele podia usar atalhos de teclado na sua aplicação. Cada app fazia de uma forma diferente e o resultado era um usuário pouco propenso a adotar os atalhos no seu dia a dia.
+No iOS 7 e no iOS 8, o desenvolvedor precisava criar hints e outras formas de ensinar ao usuário que ele podia usar atalhos de teclado na sua aplicação. Cada app fazia de uma forma diferente e o resultado era um usuário pouco propenso a adotar os atalhos no seu dia a dia.
 
-Com o iOS9 e as diversas funcionalidades focadas em produtividade, a Apple criou o `Discoverability`, que entre outras funções, exibe uma tela em overlay, mostrando os atalhos disponíveis. Basta manter a tecla `Command` pressionada enquanto um teclado externo estiver conectado.
+Com o iOS 9 e as diversas funcionalidades focadas em produtividade, a Apple criou o `Discoverability`, que entre outras funções, exibe uma tela em overlay, mostrando os atalhos disponíveis. Basta manter a tecla `Command` pressionada enquanto um teclado externo estiver conectado.
 
 ![]({{ site.baseurl }}/img/dougfischer/overlay-shortcuts.jpeg)
 <span class="caption text-muted">Fica legal né?! ;-)</span>
