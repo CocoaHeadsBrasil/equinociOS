@@ -12,6 +12,7 @@ email_username: contato@cocoaheads.com.br
 
 # Build settings
 markdown: kramdown
+paginate: 50
 highlighter: rouge
 permalink: pretty
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
