@@ -11,7 +11,7 @@ header-img: "img/brunokoga/stream.jpg"
 >Esse artigo não visa ensinar nenhum conceito ou técnica diretamente. Ele é muito mais um relato pessoal da minha experiência no aprendizado de alguns conceitos e paradigmas. Se você não tem ideia do que é programação reativa, eu recomendo fortemente [esse guia](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754). 
 
 >✌️
->A maioria dos exemplos contidos nesse artigo foram retirados de projetos reais e de documentações ou exemplos providos pelos autores das bibliotecas citadas. Todos os respectivos links estam disponíveis no final do artigo.
+>A maioria dos exemplos contidos nesse artigo foram retirados de projetos reais e de documentações ou exemplos providos pelos autores das bibliotecas citadas. Todos os respectivos links estão disponíveis no final do artigo.
 
 ###Passado
 Programo para iOS desde 2009. Até 8 meses atrás, Objective-C (e o básico de C) eram as duas únicas linguagens que eu sabia programar. 
