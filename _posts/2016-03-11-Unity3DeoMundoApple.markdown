@@ -58,7 +58,7 @@ Não se esqueça de marcar pro Download Assistant baixar o Build Support para as
 <span class="caption text-muted">[Download do UnityRemote na App Store](https://itunes.apple.com/us/app/unity-remote-4/id871767552?mt=8)</span>
  
 Testar builds em aparelhos iOS com a Unity é um processo demorado e chato. Para aqueles testes onde queremos apenas o input do celular, o Remote é uma 
-ótima ferramenta de auxílio no desenvolvimento. Ele pode utilizar os sensores do seu celular, como acelerômetro e etc, mas não roda o jogo no hardware dele, apenas renderizando o jogo no Editor no computador, e enviando o vídeo pelo USB e captando os inputs feitos no device. 
+ótima ferramenta de auxílio no desenvolvimento. Ele pode utilizar os sensores do seu celular, como acelerômetro e etc, mas não roda o jogo no hardware dele, apenas renderizando o jogo no Editor no computador, e enviando o vídeo pelo USB e captando os inputs feitos no device. Um downside é que não dá pra capturar a câmera do device com o remote.
 
 ### Git
 
@@ -113,11 +113,11 @@ Também é possível incluir o Canvas dentro do mundo do seu jogo, como um eleme
 
 ### Input Handling
 
-A classe `Input` controla todo tipo de input feito no jogo na Unity3D, 
+A classe `Input` controla todo tipo de input feito no jogo na Unity3D, desde o apertar de teclas no teclado, a movimentação dos analógicos em um controle e claro, por que não, os toques em uma tela. 
 
 #### Multitouch
 
-O `Input` possui suporte fácil ao multitouch, com a propriedade `Input.touches`, 
+O `Input` possui suporte fácil ao multitouch, com a propriedade `Input.touches`, que nada mais é do que um array de [toques](http://docs.unity3d.com/ScriptReference/Touch.html), com a posição, delta de movimento e tempo, posição, pressão no caso de aparelhos como o 6S e até se ele veio do dedo do usuário ou de uma [Apple Pencil](http://docs.unity3d.com/ScriptReference/Touch-type.html).
 
 #### Swiping
 
@@ -130,8 +130,7 @@ O input de aceleração é reportado como um `Vector3` que representa a acelera�
 ~~~ csharp
 
         IEnumerator NonSmoothedAccelerate(){
-            move = true;
-            while(move){
+            while(true){
                 transform.localPosition = Input.acceleration * strength;
                 yield return new WaitForEndOfFrame();                
             }
@@ -144,7 +143,7 @@ O problema de usar o valor direto assim é esse aqui:
 <iframe src='https://gfycat.com/ifr/ShockedAthleticAlligatorsnappingturtle' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
 <span class="caption text-muted">`Input.acceleration`do jeito que ele realmente é</span>
 
-Você muito provavelmente vai querer suavizar estes valores pro jogador não achar que ele tem alguma tremedeira ou coisa do tipo, e é bem simples, é só usar um `SmoothDamp` do próprio `Vector3` que a gente pode definir o valor que vai ser suavizado, a "força" com que ele vai ser suavizado, e o delay da suavização, fazendo algo parecido com o seguinte código:
+Você muito provavelmente vai querer suavizar estes valores pro jogador não achar que ele tem alguma tremedeira ou coisa do tipo, e é bem simples, é só usar o `SmoothDamp` do próprio `Vector3` que a gente pode definir o valor que vai ser suavizado, a "força" com que ele vai ser suavizado, e o delay da suavização, fazendo algo parecido com o seguinte código:
 
 ~~~ csharp
 
@@ -153,10 +152,9 @@ Eu ainda tenho de investigar essa solução, não tô muito confiante no transla
 */
 
         IEnumerator Accelerate(){
-            move = true;
             Vector3 lastFramePosition = transform.localPosition;
             Vector3 velocity = Vector3.zero;            
-            while(move){
+            while(true){
                 baseline = Input.acceleration;
                 Vector3 accelData = Vector3.SmoothDamp(lastFramePosition, baseline, ref velocity, 0.1f); //Inputs do sensor devem ser "limpos", senão ele fica pulando loucamente por aí              
                 Vector2 ad = (Vector2) accelData;  
@@ -273,6 +271,6 @@ Links úteis: dá uma olhada lá no teu Pocket, Mauricio
 
 Com esse material todo aí vocês já tem uma boa base para desenvolver o jogo de iOS que tanto queriam. Mal posso esperar para ver o que vocês vão fazer!
 
-Todas as imagens e vídeos utilizados para ilustrar os code samples estão no meu [GitHub](https://github.com/loloop/equinox), embalados num pacote bonitinho que tem todo o texto aqui escrito, com uns minigames bem mini divertidinhos pra vocês :D
+Todas as imagens e vídeos utilizados para ilustrar os code samples estão no meu [GitHub](https://github.com/loloop/equinox), embalados num pacote bonitinho com uns minigames bem mini divertidinhos pra vocês :D
 
 A imagem do Header é do jogo [**Firewatch**](http://www.firewatchgame.com), desenvolvido pela empresa americana [Campo Santo](http://www.camposanto.com) com Unity3D para PS4 e PC, a imagem que abre o post é de [**SUPER HOT**](https://superhotgame.com), também desenvolvido com Unity3D, para PC. A Unity tem um espaço de showcase dos jogos desenvolvidos usando ela, o [Made With Unity](http://madewith.unity.com/games?type=featured&search=&platform=ios&genre=). Se você quiser conhecer mais jogos desenvolvidos com ela, é só dar um pulinho lá :)
