@@ -119,12 +119,48 @@ Mesmo que você não crie - explicitamente ou através do *cocoapods*, por exemp
 
 Quando usamos o CocoaPods para gerenciamento de dependências, um _workspace_ é criado, e nele é adicionado o seu projeto original, além de um novo projeto exclusivo para gerenciar as dependências. 
 
-## _Build configurations_
-
 ## _Targets_
 
-*Targets* especificam produtos a serem construídos (bibliotecas, apps, etc), e contém instruções de como
+![]({{ site.baseurl }}/img/talesp/project.png)
 
-## _Build Phases_
+*Targets* especificam produtos a serem construídos (bibliotecas, apps, etc), e suas divisões mais
+"tradicionais" são _General_, _Info_, _Build Settings_, _Build Phases_ (além das mais recentes _Capabilities_, _Resource Tags_ e da pouco usada _Build Rules_). Um _target_ especifíca um produto, organizando um conjunto de arquivos de entrada, um conjunto de regras e ações a serem tomadas sobre esses arquivos a fim de gerar um produto - um aplicativo ou biblioteca, por exemplo - como saída. Um projeto pode conter mais de um target, podendo gerar (tomando devidas precauções, como não usar APIs indiponíveis) por exemplo, uma biblioteca compilada para iOS e tvOS, compartilhando código do mesmo projeto em diferentes _targets_.
+
+As configurações gerais de como gerar o produto estão disponíveis na aba _Build Settings_, e é organizada de forma hierarquica, podendo inclusive ser compartilhada entre projetos não relacionados (nem mesmo estando no mesmo _workspace_, através do uso de arquivos de _build configurations_. A figura abaixo mostra a visão combinada das _Build Settings_.
+
+![Combined Build Settings]({{ site.baseurl }}/img/talesp/combined.png)
+
+Mas recentemente tive um [problema com o CocoaPods](https://github.com/CocoaPods/CocoaPods/issues/4928), e para facilitar a identificação de onde específicamente estava o problema, utilizei a visão categorizada, disponível no botão _Levels_, que pode ser exibida abaixo.
+
+![]({{ site.baseurl }}/img/talesp/levels.png)
+
+Nesse exemplo podemos ver, da direita (nivel hierárquico mais basico) para a esquerda (configuração final aceita como _Build Setting_ a ser utilizada) os níveis _iOS Default_, _CocoaHeads_ (primeiro as configurações do projeto, sendo aqui o nome do seu projeto), _CocoaHeads_ (aqui as configurações do _target_) e _Resolved_ (opção exibida quando _Combined_ está selecionado). Quando o projeto usa CocoaPods (ou quando você adiciona manualmente), são adicionados arquivos de configuração, que adicionam um nível adicional, chamado _Config File_. Foi nesse item que encontrei o causador do meu problema, qual era o arquivo que o estava causando, me permitindo abrir a _issue_ no repositório do CocoaPods.
+
+### _Build Settings_
+Como vimos acima, uma das abas to _Target Editor_ é a _Build Settings_, que lista todas essas configurações disponíveis, mas estudando um pouco mais, podemos ver que cada _build setting_ é na verdade uma variável que contém uma informação ou configuração específica sobre o processo de construção do produto, como para quais arquiteturas o binário será compilado. Como vimos acima, podemos específicar a configuração no projeto ou sobre-escrever para um _target_ específico.
+
+Para descobrir qual o nome da variável, basta selecionar a _build setting_ desejada e abrir a aba _Quick Help_ do _Attribute Inspector_ (por exemplo, pressionando Opt+⌘+2), como pode ser visto abaixo (onde a opção `SUPPORTED_PLATFORMS` está selecionada).
+
+![]({{ site.baseurl }}/img/talesp/quickhelp.png)
+
+Para uma lista das variáveis, valores disponíveis e valores padrão, consulte a pagina [Build Setting Reference](https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html). Além disso, é possível criar configurações definidas por você, que podem ser usadas por sistemas de integração continua, compilação via linha de comando e, em alguns casos, como macros de pre-processamento dentro do código (ou dentro de um arquivo de _build configuration_). Também é útil utilizar configurações condicionais, permitindo por exemplo linkar com versões diferentes de uma bilioteca caso esteja sendo construído para o dispositivo ou para o simulador: já precisei usar isso quando me forneceram duas biliotecas, uma compilada apenas para arquitetura `i386` (usada pelo simulador em processadores 32 bits. Macs mais novos usam arquitetura `x86_64`) e outro compilada para `armv6` e `armv7`.
+
+Uma referência legal de como utilizar é a pagina [Xcode Build Settings Part 1: Preprocessing](https://robots.thoughtbot.com/xcode-build-settings-part-1-preprocessing)
+
+### _Build Phases_
+
+As _build phases_ são um pequeno conjunto de fases necessárias para a geração do seu produto. As mais comuns são:
+
+- _Target Dependencies_: Dependencias explicitas de outras biliotecas. Caso seu projeto dependa de uma biblioteca não compilada por um projeto dentro da sua _workspace_ (explicita ou a implicita, incluída dentro do _bundle_ `xcodeproj`), você adiciona aqui a dependencia
+- _Compile Sources_: A lista de todos os arquivos de código fonte compilados para gerar seu produto. Podemos passar _flags_ de compilação (a lista depende do compilador, mas para o clang a lista completa está [aqui](http://clang.llvm.org/docs/UsersManual.html#command-line-options)). Durante a migração de projetos que não usavam _Automatic Reference Couting_ era comum ir migrando o projeto aos poucos, e marcar arquivo por arquivo quais usavam ARC ou não. Além de ser possível tratar individualmente por arquivo, é possível tratar de forma global via _Build Setting_. Quando trabalho por mais tempo em um produto, gosto de ligar por exemplo as opções `-Weverything` e para a geração do binário final, `-Werror`. Assim tenho uma analise minunciosa do compilador, e todos os _warnings_ sãO tratados como erro. Infelizmente em projetos mais curtos não é possível ter tanta garantia, pois a validação disso as vezes exige um tempo maior.
+- _Link binary with Libraries_: Caso alguém (ou alguma empresa) tenho lhe fornecido uma bilioteca pré-compilada (por exemplo, o SDK da Hockey ou Fabric), ela estará listada aqui. Normalmente a integração é feita de forma automática por gerenciadores de dependência, mas pode ser necessário adicionar manualmente aqui.
+- _Copy bundle resources_: arquivos de storyboard, assets como imagens, vídeos, e arquivos de áudio, por exemplo, são listados aqui.
+
+Além dessas mais comuns e incluídas por padrão, pode ser útil - ou mesmo necessário - incluir uma (ou mais) através da opção _New run script phase_. Por exemplo, ferramentas de geração de código como [Natalie](https://github.com/krzyzanowskim/Natalie) ou [mogenerator](https://github.com/rentzsch/mogenerator) podem ter scripts para analisar, respectivamente, os arquivos de storyboard ou core Data, e ferramentas de _lint_, como [OCLint](http://oclint.org) ou [SwiftLint](https://github.com/realm/SwiftLint) podem fazer analises do código e identificar coisas fora do padrão do time ou _code smells_, sendo nesse caso adicionar scripts no começo do processo, e ferramentas como Kockeyapp ou Fabric podem pedir para adicionar um script no final, habilitando a nova versão no serviço deles.
+
+### _Build configurations_
 
 ## _Schemes_
+An Xcode scheme defines a collection of targets to build, a configuration to use when building, and a collection of tests to execute.
+
+You can have as many schemes as you want, but only one can be active at a time. You can specify whether a scheme should be stored in a project—in which case it’s available in every workspace that includes that project, or in the workspace—in which case it’s available only in that workspace. When you select an active scheme, you also select a run destination (that is, the architecture of the hardware for which the products are built).
