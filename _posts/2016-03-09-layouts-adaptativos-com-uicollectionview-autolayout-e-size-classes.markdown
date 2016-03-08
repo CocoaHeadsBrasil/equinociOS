@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Layouts adaptativos com UICollectionView, Size Classes e Auto Layout"
-date:       2016-03-05 00:00:00
+date:       2016-03-09 00:00:00
 author:     "Rodrigo Borges"
 header-img: "img/borges/viva-cover.jpg"
 category:   iOS
