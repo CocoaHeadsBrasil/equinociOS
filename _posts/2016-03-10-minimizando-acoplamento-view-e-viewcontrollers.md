@@ -8,17 +8,17 @@ header-img: "img/diogot/plainMVVM.png"
 category:   Arquitetura
 ---
 
-O excesso de responsabilidades do `ViewController` é algo que vem me incomodando há algum tempo. Já [escrevi](http://invariante.com/2015/10/20/todo-view-controller-deveria-ter-delegate/) um pouco sobre um a relação entre `ViewControllers`, hoje quero falar sobre a relação entre as `Views` e o `ViewController`.
+O excesso de responsabilidades do `ViewController` é algo que vem me incomodando há algum tempo. Já [escrevi](http://invariante.com/2015/10/20/todo-view-controller-deveria-ter-delegate/) um pouco sobre a relação entre `ViewControllers`, hoje quero falar sobre a relação entre as `Views` e o `ViewController`.
 
-`Views`, de maneira geral, são genéricas. Não contem lógica e podem ser reutilizadas em diferentes contextos. Por exemplo, `UILabel` possui uma série de customizações como `text`, `font` e `textColor`, que permitem que ela seja usada em diversos contextos. Até aqui tudo certo[^1]. Na maioria dos casos nem todas as configurações são alteradas, o mais comum é alterar as 3 citadas. Em alguns casos é necessário definir uma configuração para o mesmo valor, por exemplo `textColor`, cujo o valor padrão é `blackColor` mas no *app* todos os textos são `grayColor`, para evitar a replicação de código algumas vezes eu já fiz uma subclasse de `UILabel` com configurações padrão diferentes, mas isso sempre me pareceu estranho. Essa questão de onde deve ficar o código que define as configurações é um ponto desconfortável. Por exemplo o `text`, normalmente quem atribui uma *string* é o `ViewController` que é um estranho pois normalmente ele tira essa *string* de um `Model`. Quem deve ter o propósito de definir essas configurações? 
+`Views`, de maneira geral, são genéricas. Não contêm lógica e podem ser reutilizadas em diferentes contextos. Por exemplo, `UILabel` possui uma série de customizações como `text`, `font` e `textColor`, que permitem que ela seja usada em diversos contextos. Até aqui tudo certo[^1]. Na maioria dos casos nem todas as configurações são alteradas, o mais comum é alterar as 3 citadas. Em alguns casos é necessário definir uma configuração para o mesmo valor, por exemplo `textColor`, cujo o valor padrão é `blackColor` mas no *app* todos os textos são `grayColor`, para evitar a replicação de código algumas vezes eu já fiz uma subclasse de `UILabel` com configurações padrão diferentes, mas isso sempre me pareceu estranho. Essa questão de onde deve ficar o código que define as configurações é um ponto desconfortável. Por exemplo o `text`, normalmente quem atribui uma *string* é o `ViewController` que é um estranho pois normalmente ele tira essa *string* de um `Model`. Quem deve ter o propósito de definir essas configurações? 
 
 [^1]: certo?
 
-Primeiramente o que são essas configurações? São um conjunto de customizações de um componente que correspondem a um resultado final específico, vamos chamar esse conjunto de configurações de **estado**. Note que a definição de **estado** aqui é a mesma usada em física[^2], uma descrição que que define de maneira única e não ambígua a configuração de um sistema. Por exemplo, se o sistema for a localização de algo em uma rua, um estado é definido pelo número da casa. Se o sistema for a localização de algo em alguma cidade na terra, temos várias descrições (ou *modelos*) de estados possíveis, por exemplo [País, cidade, rua, número da casa] ou [latitude, longitude, altitude].
+Primeiramente o que são essas configurações? São um conjunto de customizações de um componente que correspondem a um resultado final específico, vamos chamar esse conjunto de configurações de **estado**. Note que a definição de **estado** aqui é a mesma usada em física[^2], uma descrição que define de maneira única e não ambígua a configuração de um sistema. Por exemplo, se o sistema for a localização de algo em uma rua, um estado é definido pelo número da casa. Se o sistema for a localização de algo em alguma cidade na terra, temos várias descrições (ou *modelos*) de estados possíveis, por exemplo [País, cidade, rua, número da casa] ou [latitude, longitude, altitude].
 
 [^2]: ¯\\_(ツ)\_/¯
 
-Então cada componente possui um número quase infinito de estados diferentes, pois, no caso do `UILabel`, para cada `text` diferente temos um estado diferente. Se cada estado é único e corresponde a um conjunto de configurações porque não criar uma classe responsável por definir o estado de uma `View`? Precisamos de um nome para essa descrição de estado, como devamos fazer uma *modelagem* de quais as configurações são relevantes acho que `ViewModel` pode ser um nome adequado ;-)
+Então cada componente possui um número quase infinito de estados diferentes, pois, no caso do `UILabel`, para cada `text` diferente temos um estado diferente. Se cada estado é único e corresponde a um conjunto de configurações, porque não criar uma classe responsável por definir o estado de uma `View`? Precisamos de um nome para essa descrição de estado, como devemos fazer uma *modelagem* de quais as configurações são relevantes acho que `ViewModel` pode ser um nome adequado ;-)
 
 Um `LabelViewModel` simplificado seria:
 
@@ -101,7 +101,7 @@ public struct ViewModel {
 }
 ~~~
 
-Os atributos que pode ser alterados são o`NSAttributedString` da `label`, `NSAttributedString` do `UIButton` em `UIControlState.Normal`, a `backgroundColor` e um *clojure* que é executado quando o botão tem um *tap*.
+Os atributos que podem ser alterados são o`NSAttributedString` da `label`, `NSAttributedString` do `UIButton` em `UIControlState.Normal`, a `backgroundColor` e um *closure* que é executado quando o botão tem um *tap*.
 
 O *estado* dessa `View` depende de um `Model`:
 
@@ -162,7 +162,7 @@ Um exemplo completo pode ser encontrado no repositório [PlainMVVM](https://gith
 ---
 
 O nome `ViewModel` não foi usado aqui por mero acaso, ele vem de um padrão de arquitetura conhecido como `MVVM` ([Model-View-ViewModel](https://en.wikipedia.org/wiki/Model–view–viewmodel)). Ele tem se tornado popular, principalmente num contexto de programação reativa, inclusive em alguns artigos do [equinociOS](http://equinocios.com).
-Mas pouco se fala fora desse contexto, a [NatashaTheRobot](https://twitter.com/NatashaTheRobot) deu uma palestra sobre [Protocol Oriented MVVM](http://www.slideshare.net/natashatherobot/protocoloriented-mvvm-extended-edition), com algumas idéias interessantes para organizar o código usando `MVVM`. A idéia que eu descrevi aqui pode não corresponder à um `MVVM` formal, mas ilustra de uma maneira razoavelmente simples de separar mais as responsabilidades facilitando testes e reaproveitamento de código.
+Mas pouco se fala fora desse contexto, a [NatashaTheRobot](https://twitter.com/NatashaTheRobot) deu uma palestra sobre [Protocol Oriented MVVM](http://www.slideshare.net/natashatherobot/protocoloriented-mvvm-extended-edition), com algumas idéias interessantes para organizar o código usando `MVVM`. A idéia que eu descrevi aqui pode não corresponder à um `MVVM` formal, mas ilustra de uma maneira razoavelmente simples como separar mais as responsabilidades facilitando testes e reaproveitamento de código.
 
 ---
 
