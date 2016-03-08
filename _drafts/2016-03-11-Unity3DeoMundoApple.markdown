@@ -2,7 +2,7 @@
 layout:     post
 title:      "Unity3D e o Mundo Apple"
 subtitle:   "Introdução e Integração da engine com iOS"
-date:       2016-03-01 00:00:00
+date:       2016-02-11 00:00:00
 author:     "Mauricio Cardozo"
 header-img: "img/loloop/header.jpg"
 category:   gamedev
@@ -19,20 +19,7 @@ img, iframe{
 }
 
 </style>
-<!--
-HEADER ORIGINAL
 
----
-layout:     post
-title:      "Unity3D e o Mundo Apple"
-subtitle:   "Introdução e Integração da engine com iOS"
-date:       2016-03-11 00:00:00
-author:     "Mauricio Cardozo"
-header-img: "img/loloop/header.jpg"
-category:   gamedev
----
-
--->
 ![O fps mais inovador que eu já joguei em anos]({{site.baseurl}}/img/loloop/muchocaliente.png)
 
 Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?
@@ -121,7 +108,10 @@ O `Input` possui suporte fácil ao multitouch, com a propriedade `Input.touches`
 
 #### Swiping
 
-Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso nós temos duas alternativas: Usar uma lib externa, como o [TouchKit](https://github.com/prime31/TouchKit), ou escrever todo o código nós mesmos. 
+`<TO-DO>`
+
+Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso nós temos uma alternativa bem legal: Usar uma lib externa, o [TouchKit](https://github.com/prime31/TouchKit)
+
 
 #### Aceleração
 
@@ -181,10 +171,9 @@ void Vibrar(){
 ~~~
 
 
-
 ### Integração com o mundo nativo
 
-`<Interoperabilidade com o código Obj-C e Swift>`
+A Unity permite que o código C# interaja com várias linguagens de programação específicas de outros sistemas, como no nosso caso, o Objective-C, através dos [Native Plugins](http://docs.unity3d.com/Manual/NativePlugins.html) 
 
 #### GameCenter
 
@@ -206,30 +195,38 @@ As APIs da Unity já provem um nível bem básico de integração com o GameCent
         
 ~~~
 
+
 #### Low Power Mode
 
-Com a interoperabilidade de código, podemos fazer coisas interessantes, como reduzir o framerate do nosso jogo quando o iOS9 está em modo Low Power para economizar bateria:
+Com a interoperabilidade de código, podemos fazer coisas interessantes, como reduzir o framerate do nosso jogo quando o iOS9 está em modo Low Power para economizar bateria.
+
+Esse exemplo é bem simples, e mostra como é fácil misturar o Objective C com o C#. Em um arquivo .mm, tenho o seguinte código: 
 
 ~~~ objc
-
-[[NSProcessInfo processInfo] isLowPowerModeEnabled]
-
-
+extern "C" bool getLowPowerMode(){
+    return [[NSProcessInfo processInfo] isLowPowerModeEnabled];
+}
 ~~~ 
 
-https://developer.apple.com/library/ios/documentation/Performance/Conceptual/EnergyGuide-iOS/LowPowerMode.html
+E eu acesso esse código na minha classe pelo namespace `System.Runtime.InteropServices`, apenas declarando o nome e o retorno do método no corpo da classe:
 
 ~~~ csharp
-class DeviceManager{
-	public static bool isLowPowerActive{
-		get{
-			return true; //implementar método
-		}
-	}
+using System.Runtime.InteropServices;
+
+namespace CocoaHeadsBR{   
+    public class DeviceManager {        
+        [DllImport ("__Internal")] private static extern bool getLowPowerMode();
+        
+        public static bool isLowPowerActive{
+            get{
+                return getLowPowerMode();
+            }
+        }
+    }
 }
 ~~~
 
-E aí, preferencialmente no startup do nosso jogo:
+E aí, preferencialmente no startup do nosso jogo, modificamos o framerate alvo do jogo, que será menor caso o Low Power Mode esteja ativo:
 
 ~~~ csharp
 void Start(){
@@ -238,25 +235,70 @@ void Start(){
 ~~~
 
 
+
 #### Exemplo com a câmera
+
+Existem duas formas de se trabalhar com a câmera na Unity3D, e elas servem a propósitos diferentes. O jeito fácil é usando a classe `WebCamTexture`, e o jeito um pouco mais complicado é usando o próprio `UIImagePickerView`.
 
 ##### O jeito fácil
 
-`<Vídeo do projeto, pode ser no editor mesmo>`
+<iframe src='https://gfycat.com/ifr/GloomySpitefulAmericanwigeon' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
 
-`WebCamTexture`
+Na minha cena tenho algumas texturas que eu quero que sejam fotos que eu vou tirar na hora (Aqueles quadrados brancos ali no meio dos estandartes), e é bem simples de fazer isso funcionar.
 
-<!--
-Links úteis
+Para capturar a imagem, as ações dos botões na tela são estas:
 
-http://docs.unity3d.com/ScriptReference/WebCamTexture.html Uso de câmera
+~~~ csharp
+        public GameObject cameraOverlay;
+        public RawImage camImage; 
+        
+        WebCamTexture wct;
+        
+        void Awake(){
+            wct = new WebCamTexture();                                               
+        }     
 
-http://answers.unity3d.com/questions/232547/how-to-access-camera-feed-ios-and-android.html Uso de câmera
+        public void StartCamera(){
+            camImage.texture = wct;            
+            camImage.material.mainTexture = wct;            
+            wct.Play(); //Começa a modificar a RawImage que aparecerá como overlay na tela
+            cameraOverlay.SetActive(true); //Abre o overlay
+        }
+        
+        public void CaptureImage(){
+            cameraOverlay.SetActive(false); //Fecha o overlay
+            wct.Stop(); //Para o RawImage no último frame capturado
+            CameraSceneManager.sharedInstance.PostPictureIntoStandard(camImage.texture);     
+        }
+~~~
 
-http://answers.unity3d.com/questions/221621/where-is-ios-camera-support-documented.html Uso de câmera
--->
+Para colocar a imagem dentro do jogo, na textura, o `CameraSceneManager` faz isto:
+
+~~~ csharp
+        public void PostPictureIntoStandard(Texture photo){
+            foreach(Standard s in standards){
+                s.ApplyPhoto(photo);    
+            }
+        }        
+~~~
+
+E cada um dos estandartes na cena só faz isso:
+
+~~~ csharp
+        public MeshRenderer meshToApplyPhoto; //Esse MeshRenderer é colocado direto no Inspector da Unity
+        
+        public void ApplyPhoto(Texture photo){
+            meshToApplyPhoto.material.mainTexture = photo;
+        }
+~~~
+
+Fazer funcionar direito é outra história. A texture que a Unity retornou no `WebCamTexture` está invertida. Se você brincar um pouco mais com isso, dá pra fazer funcionar bem, mas não é o nosso foco agora.
+
 
 ##### O jeito correto
+
+`<TO-DO>`
+
 
 `<Vídeo do projeto """buildado""" capturando input da câmera e colocando no jogo>`
 
@@ -271,6 +313,6 @@ Links úteis: dá uma olhada lá no teu Pocket, Mauricio
 
 Com esse material todo aí vocês já tem uma boa base para desenvolver o jogo de iOS que tanto queriam. Mal posso esperar para ver o que vocês vão fazer!
 
-Todas as imagens e vídeos utilizados para ilustrar os code samples estão no meu [GitHub](https://github.com/loloop/equinox), embalados num pacote bonitinho com uns minigames bem mini divertidinhos pra vocês :D
+O projeto que eu usei para fazer todas as imagens e vídeos utilizados para ilustrar os code samples estão no [GitHub](https://github.com/loloop/equinox) :D
 
-A imagem do Header é do jogo [**Firewatch**](http://www.firewatchgame.com), desenvolvido pela empresa americana [Campo Santo](http://www.camposanto.com) com Unity3D para PS4 e PC, a imagem que abre o post é de [**SUPER HOT**](https://superhotgame.com), também desenvolvido com Unity3D, para PC. A Unity tem um espaço de showcase dos jogos desenvolvidos usando ela, o [Made With Unity](http://madewith.unity.com/games?type=featured&search=&platform=ios&genre=). Se você quiser conhecer mais jogos desenvolvidos com ela, é só dar um pulinho lá :)
+A imagem do Header é do jogo [**Firewatch**](http://www.firewatchgame.com), desenvolvido pela empresa americana [Campo Santo](http://www.camposanto.com) com Unity3D para PS4 e OS X, a imagem que abre o post é de [**SUPER HOT**](https://superhotgame.com), também desenvolvido com Unity3D, para OS X. A Unity tem um espaço de showcase dos jogos desenvolvidos usando ela, o [Made With Unity](http://madewith.unity.com/games?type=featured&search=&platform=ios&genre=). Se você quiser conhecer mais jogos desenvolvidos com ela, é só dar um pulinho lá :)
