@@ -4,7 +4,7 @@ title:      "Desmistificando Storyboards"
 subtitle:   "Ganhe produtividade sem perder sua sanidade"
 date:       2016-03-07 00:00:00
 author:     "Rafael Nobre"
-header-img: "img/nobre84/bg.jpg"
+header-img: "img/home-bg.jpg"
 category:   storyboards
 ---
 
