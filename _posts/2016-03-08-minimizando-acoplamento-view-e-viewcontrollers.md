@@ -2,7 +2,7 @@
 layout:     post
 title:      "Minimizando o acoplamento entre Views e ViewControllers"
 subtitle:   "Uma opção para configurar Views"
-date:       2016-03-10 00:00:00
+date:       2016-03-08 00:00:00
 author:     "Diogo Tridapalli"
 header-img: "img/diogot/plainMVVM.png"
 category:   Arquitetura
