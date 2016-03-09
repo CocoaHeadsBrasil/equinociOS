@@ -64,7 +64,7 @@ extension UILabel {
 }
 ~~~
 
-A idéia parece interessante, mas esse exemplo dá uma impressão de excesso de complexidade. Concordo, realmente estamos trocando 6 por meia dúzia.
+A ideia parece interessante, mas esse exemplo dá uma impressão de excesso de complexidade. Concordo, realmente estamos trocando 6 por meia dúzia.
 Vamos tomar um exemplo mais real. Temos uma `View` que contém uma `UILabel` e um `UIButton`. Sua interface pública seria:
 
 ~~~ swift
