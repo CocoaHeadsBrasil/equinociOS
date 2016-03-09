@@ -1,9 +1,8 @@
 ---
 layout:     post
 title:      "Vamos falar de Xcode"
-date:       2016-03-06 00:00:00
+date:       2016-03-10 00:00:00
 author:     "Tales Pinheiro"
-header-img: "img/fabri/pia17936_evening_star.jpg"
 category:   "xcode"
 ---
 
