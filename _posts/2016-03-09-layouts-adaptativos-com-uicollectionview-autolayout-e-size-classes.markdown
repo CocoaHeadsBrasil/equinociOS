@@ -29,7 +29,7 @@ Toda Collection View possui um objeto do tipo **UICollectionViewLayout**, que é
 
 Outro problema que identifiquei foi o tamanho das células em uma mesma linha. Geralmente, a altura de uma linha é determinada pela célula de maior altura. Dessa forma, na PDP antiga, haviam vários espaços em branco entre células de linhas diferentes, pois as células costumam variar bastante de tamanho.
 
-##Custom Layouts
+## Custom Layouts
 
 Para resolver esse problema, chegamos a uma alternativa: **Custom Layouts**. Segundo a [Apple](https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/CollectionViewPGforIOS/CreatingCustomLayouts/CreatingCustomLayouts.html), Custom Layouts devem ser considerados se:
 
@@ -44,7 +44,7 @@ No nosso caso, percebemos que satisfazíamos ambos os pontos. 
 
 Todos esses pontos nos levaram a utilizar um Custom Layout para implementar nossa nova PDP. 👌
 
-###Criando a subclasse da UICollectionViewLayout
+### Criando a subclasse da UICollectionViewLayout
 
 A primeira coisa a se fazer quando implementando um Custom Layout é criar uma **subclasse** da UICollectionViewLayout. Ela deve implementar 3 métodos principais, que são os responsáveis por indicar à Collection View os tamanhos e posições das células.
 
@@ -54,7 +54,7 @@ A primeira coisa a se fazer quando implementando um Custom Layout é criar uma *
 
 O método prepareLayout possui a implementação mais complexa dos 3, pois ele varia de acordo com a complexidade do layout da sua Collection View. Os outros 2 métodos apenas retornam objetos que calculamos no prepareLayout, como veremos mais à frente.
 
-###Método prepareLayout
+### Método prepareLayout
 
 No método prepareLayout, deve-se determinar a posição de cada célula. No fim desse método, é preciso ter o mínimo de informação para definir a área total do conteúdo da Collection View (não somente a área visível).
 
@@ -184,7 +184,7 @@ func columnsBasedOnScreen() -> Int {
     - Se são ambas Regular, significa que estamos em uma tela grande, como o iPad. Nesse caso, precisamos checar também se o usuário está utilizando Multitasking ou não. Isso é feito facilmente comparando o window.frame com o window.screen.bounds.
     - Caso contrário, estamos em uma tela menor, e, por isso, utilizamos o layout normal baseado em 1 coluna.
 
-###Método collectionViewContentSize
+### Método collectionViewContentSize
 
 Com as informações calculadas no método prepareLayout, é possível definir a área total do conteúdo da Collection View. O retorno do método é um objeto do tipo CGSize.
 
@@ -196,7 +196,7 @@ override func collectionViewContentSize() -> CGSize {
 
 No nosso caso, à medida que calculamos as posições e tamanhos das células no método **prepareLayout**, atualizamos duas variáveis globais da classe: **contentWidth** e **contentHeight**. Dentro do método collectionViewContentSize() criamos uma CGSize e a retornamos.
 
-###Método layoutAttributesForElementsInRect:
+### Método layoutAttributesForElementsInRect:
 
 Esse método é chamado pela Collection View para saber os atributos das células que estão dentro de um retângulo passado como parâmetro. O retorno do método deve ser um **Array de UICollectionViewLayoutAttributes**.
 
@@ -217,7 +217,7 @@ Os atributos de cada célula são informações que também podemos calcular e a
 
 Feito isso, no layoutAttributesForElementsInRect:, basta iterarmos sobre o Array de atributos e utilizar o método CGRectIntersectsRect para identificar quais células cujos frames intersectam o retângulo passado como parâmetro.
 
-###Definindo o novo layout da Collection View
+### Definindo o novo layout da Collection View
 
 Uma vez que temos o nosso Custom Layout implementado, precisamos defini-lo como layout da nossa Collection View. Para isso, bastamos selecioná-la no Storyboard, abrir o Attributes Inspector, selecionar o tipo do layout como **Custom** e a classe do layout.
 
@@ -239,13 +239,13 @@ override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator c
 }
 ~~~
 
-##Mostrando Views de acordo com a Size Class
+## Mostrando Views de acordo com a Size Class
 
 Outra característica interessante da PDP é que, em telas menores, o formulário de contato com o anunciante deve ser implementado como última célula da Collection View. Já em telas maiores (iPad), ele deve ficar fixo no lado direito do layout, independente da Collection View.
 
 ![]({{ site.baseurl }}/img/borges/viva-ipad4.png)
 
-###Size Classes
+### Size Classes
 
 Desde a criação das [Size Classes](https://developer.apple.com/library/ios/recipes/xcode_help-IB_adaptive_sizes/chapters/AboutAdaptiveSizeDesign.html), o desenvolvimento de interfaces universais no iOS deixou de ser dividido em iPhone e iPad para levar em consideração duas classes: **Regular** e **Compact** combinadas com as duas dimensões: **Width** e **Height**.
 
@@ -253,7 +253,7 @@ Cada combinação possível entre elas define um tipo de tamanho de tela, levand
 
 Quando você baseia o layout em Size Classes, a interface do seu app pode se comportar bem em qualquer tipo de tela, seja ela de um iPhone, iPhone Plus, de um iPad ou iPad Pro, em portrait ou landscape.
 
-###Modificando constraints para uma Size Class
+### Modificando constraints para uma Size Class
 
 No Storyboard é possível alterar a Size Class do layout na barra que fica logo acima da Debug area. Inicialmente, a Size Class selecionada é a Any Width/Any Height, o que significa que as constraints e Views configuradas no atual Storyboard serão aplicadas a todas as Size Classes.
 
@@ -269,7 +269,7 @@ A modificação foi alterar as **constraints do Auto Layout** que definem o espa
 ------------- | -------------
 | ![]({{ site.baseurl }}/img/borges/viva-storyboard2.png) | ![]({{ site.baseurl }}/img/borges/viva-storyboard1.png)|
 
-###Instalando uma View de acordo com a Size Class
+### Instalando uma View de acordo com a Size Class
 
 Você deve estar se perguntando: O que acontece com a nossa View lateral de formulário no iPhone? 🤔 Ela é criada e ocupa memória mesmo nunca sendo utilizada lá? 😱
 
@@ -279,7 +279,7 @@ Felizmente o Xcode fornece um meio de configurar se uma View será computada ou 
 
 O formulário é instalado apenas quando em Regular Width/Regular Height. Já o botão de "Contatar anunciante", que aparece na parte inferior da tela, é instalado em todas as Size Classes, exceto nas Regular.
 
-##Multitasking
+## Multitasking
 
 Quando você desenvolve sua app baseando-se em Size Classes e Auto Layout, ela se adaptará automaticamente durante o uso de Multitasking! 🎉
 
@@ -295,7 +295,7 @@ Segundo a [Apple](https://developer.apple.com/library/prerelease/ios/documentati
 
 Então o maior problema a ser tratado durante o Multitasking é o gerenciamento de recursos e memória. Conceitos como instalação ou não de Views baseados em Size Classes ajudam a utilizar o mínimo de recursos possíveis e compartilhá-los com outras apps.
 
-##Conclusão
+## Conclusão
 
 Vimos aqui como foi implementada a PDP do app do VivaReal, onde o desafio foi criar a melhor experiência pro usuário que o tamanho de tela do seu device permitisse.
 
@@ -303,7 +303,7 @@ Utilizamos UICollectionViews e Custom Layouts para definir a lógica de criaçã
 
 Não deixe de ler e compartilhar também os outros artigos do EquinociOS, uma excelente iniciativa da comunidade do [CocoaHeads Brasil](http://www.cocoaheads.com.br)! 👏🤓
 
-##Referências
+## Referências
 1. [Projeto Demo](https://github.com/rdgborges/VivaRealPDPExample). Disponibilizado no meu perfil do Github.
 2. [UICollectionViews Tutorial](http://www.raywenderlich.com/78550/beginning-ios-collection-views-swift-part-1). Ray Wenderlich.
 3. [UICollectionView Custom Layout Tutorial](http://www.raywenderlich.com/107439/uicollectionview-custom-layout-tutorial-pinterest). Ray Wenderlich.
