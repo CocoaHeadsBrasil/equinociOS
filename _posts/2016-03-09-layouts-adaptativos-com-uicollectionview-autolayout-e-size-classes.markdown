@@ -7,7 +7,7 @@ header-img: "img/borges/viva-cover.jpg"
 category:   iOS
 ---
 
-> Meu nome é Rodrigo Borges ([@rdgborges](https://www.twitter.com/rdgborges)). Sou manauara e moro em São Paulo. Passei uma temporada em BH, onde fiz um mestrado em Computação Ubíqua. Já trabalhei com Maemo, MeeGo, Symbian, Windows Phone e Android. Atualmente sou desenvolvedor iOS no [VivaReal](https://itunes.apple.com/br/app/vivareal-imoveis-casas-condominios/id655245656?mt=8) e desenvolvedor/co-fundador no [Meatless](https://itunes.apple.com/us/app/meatless-sao-paulo-sp/id1080837095?l=pt&ls=1&mt=8), onde estou tentando reduzir o consumo de carne no mundo  com alguns amigos.
+> Meu nome é Rodrigo Borges ([@rdgborges](https://www.twitter.com/rdgborges)). Sou manauara e moro em São Paulo. Passei uma temporada em BH, onde fiz um mestrado em Computação Ubíqua. Já trabalhei com Maemo, MeeGo, Symbian, Windows Phone e Android. Atualmente sou desenvolvedor iOS no [VivaReal](https://itunes.apple.com/br/app/vivareal-imoveis-casas-condominios/id655245656?mt=8) e desenvolvedor/co-fundador no [Meatless](https://itunes.apple.com/us/app/meatless-sao-paulo-sp/id1080837095?l=pt&ls=1&mt=8), onde estou tentando reduzir o consumo de carne no mundo com alguns amigos.
 
 Quando entrei no VivaReal, um dos meus primeiros desafios foi desenvolver a nova página de detalhes do imóvel (PDP, do inglês, Property Details Page). Para isso, eu precisei utilizar UICollectionView, Auto Layout, Size Classes, capturar eventos de mudança de tamanho da tela, criar um layout específico para o iPad e suportar Multitasking. Um pequeno detalhe: eu nunca tinha trabalhado com nada disso. 🤓👍
 
@@ -52,7 +52,7 @@ A primeira coisa a se fazer quando implementando um Custom Layout é criar uma *
 - collectionViewContentSize
 - layoutAttributesForElementsInRect:
 
-O método prepareLayout possui a implementação mais complexa dos 3, pois ele varia de acordo com a complexidade do layout da sua Collection View. Os outros 2 métodos apenas retornam objetos que calculamos no prepareLayout, como veremos mais a frente.
+O método prepareLayout possui a implementação mais complexa dos 3, pois ele varia de acordo com a complexidade do layout da sua Collection View. Os outros 2 métodos apenas retornam objetos que calculamos no prepareLayout, como veremos mais à frente.
 
 ###Método prepareLayout
 
@@ -219,7 +219,7 @@ Feito isso, no layoutAttributesForElementsInRect:, basta iterarmos sobre o Array
 
 ###Definindo o novo layout da Collection View
 
-Uma vez que temos o nosso Custom Layout implementado, precisamos setá-lo como layout da nossa Collection View. Para isso, bastamos selecioná-la no Storyboard, abrir o Attributes Inspector, selecionar o tipo do layout como **Custom** e a classe do layout.
+Uma vez que temos o nosso Custom Layout implementado, precisamos defini-lo como layout da nossa Collection View. Para isso, bastamos selecioná-la no Storyboard, abrir o Attributes Inspector, selecionar o tipo do layout como **Custom** e a classe do layout.
 
 ![]({{ site.baseurl }}/img/borges/viva-storyboard5.png)
 
