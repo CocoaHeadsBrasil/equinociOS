@@ -104,6 +104,8 @@ A classe `Input` controla todo tipo de input feito no jogo na Unity3D, desde o a
 
 #### Multitouch
 
+`<Colocar um vídeo bonitinho mostrando o touch count aqui>`
+
 O `Input` possui suporte fácil ao multitouch, com a propriedade `Input.touches`, que nada mais é do que um array de [toques](http://docs.unity3d.com/ScriptReference/Touch.html), com a posição, delta de movimento e tempo, posição, pressão no caso de aparelhos como o 6S e até se ele veio do dedo do usuário ou de uma [Apple Pencil](http://docs.unity3d.com/ScriptReference/Touch-type.html).
 
 #### Swiping
