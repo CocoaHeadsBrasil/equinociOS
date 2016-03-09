@@ -67,8 +67,8 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **03/03/2016:** CollectionView: Uma nova abordagem de TableViews, por [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
 - **04/03/2016:** Scene Kit Overview, por [Lucas Farris](https://github.com/luksfarris)
 - **05/03/2016:** Testes de Aceitação em iOS, por [Felipe Valio](https://github.com/felipe-valio-movile)
-- **06/03/2016:** PIP - Picture in Picture, por [Douglas Fischer](https://github.com/DougFischer)
-- **07/03/2016:** (A definir), por [Rafael Nobre] (https://github.com/nobre84)
+- **06/03/2016:** UIKeyCommand: Teclas de atalho dentro do seu app, por [Douglas Fischer](https://github.com/DougFischer)
+- **07/03/2016:** Desmistificando Storyboards, por [Rafael Nobre] (https://github.com/nobre84)
 - **08/03/2016:** Desenvolvendo para Apple TV - compartilhando código e dependências entre plataformas, por [Tales Pinheiro](https://github.com/talesp)
 - **09/03/2016:** Em busca de um layout bonito e adaptativo: UICollectionView, Auto Layout e Size Classes, por [Rodrigo Borges] (https://github.com/rdgborges)
 - **10/03/2016:** Minimizando o acoplamento de Views e ViewControllers, por [Diogo Tridapalli](https://github.com/diogot)
@@ -92,7 +92,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **26/03/2016:**
 - **27/03/2016:** App Extensions - Today Notification, por [Renato Matos](https://github.com/renatosarro)
 - **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
-- **29/03/2016:**
+- **29/03/2016:** Reactivecocoa + MVVM, por [Alessandro Santos](https://github.com/delarge77)
 - **30/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
 
 ## Contato
