@@ -224,7 +224,7 @@ Uma vez que temos o nosso Custom Layout implementado, precisamos defini-lo como 
 ![]({{ site.baseurl }}/img/borges/viva-storyboard5.png)
 
 
-###Atualizando o layout após a transição de tamanho de tela
+### Atualizando o layout após a transição de tamanho de tela
 
 Precisamos avisar a collection View para recalcular a posição das células e área do conteúdo toda vez que houver uma mudança de tamanho ou orientação da tela.
 
