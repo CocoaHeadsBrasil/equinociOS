@@ -173,7 +173,7 @@ void Vibrar(){
 
 ### Integração com o mundo nativo
 
-A Unity permite que o código C# interaja com várias linguagens de programação específicas de outros sistemas, como no nosso caso, o Objective-C, através dos [Native Plugins](http://docs.unity3d.com/Manual/NativePlugins.html) 
+A Unity permite que o código C# interaja com várias linguagens de programação específicas de outros sistemas, como no nosso caso, o Objective-C, através dos [Native Plugins](http://docs.unity3d.com/Manual/NativePlugins.html). Não só isso, como ela também disponibiliza alguns wrappers básicos, para que você não se perca na burocracia de trazer o resultado do Obj-C para o C#.
 
 #### GameCenter
 
@@ -235,12 +235,9 @@ void Start(){
 ~~~
 
 
+#### Câmera
 
-#### Exemplo com a câmera
-
-Existem duas formas de se trabalhar com a câmera na Unity3D, e elas servem a propósitos diferentes. O jeito fácil é usando a classe `WebCamTexture`, e o jeito um pouco mais complicado é usando o próprio `UIImagePickerView`.
-
-##### O jeito fácil
+Como com os nossos outros exemplos, a Unity dá uma forma bem fácil de acessar a câmera também. Usando a classe `WebCamTexture`.
 
 <iframe src='https://gfycat.com/ifr/GloomySpitefulAmericanwigeon' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
 
@@ -292,26 +289,12 @@ E cada um dos estandartes na cena só faz isso:
         }
 ~~~
 
-Fazer funcionar direito é outra história. A texture que a Unity retornou no `WebCamTexture` está invertida. Se você brincar um pouco mais com isso, dá pra fazer funcionar bem, mas não é o nosso foco agora.
-
-
-##### O jeito correto
-
-`<TO-DO>`
-
-
-`<Vídeo do projeto """buildado""" capturando input da câmera e colocando no jogo>`
-
-`UIImagePickerView` nativo
-
-<!--
-Links úteis: dá uma olhada lá no teu Pocket, Mauricio
--->
+Fazer funcionar direito é outra história. A texture que a Unity retornou no `WebCamTexture` está invertida, mas como com o exemplo da aceleração, é possível brincar o suficiente com esses settings para deixar o input da câmera bem legalzinho :)
 
 
 ## Conclusão 
 
-Com esse material todo aí vocês já tem uma boa base para desenvolver o jogo de iOS que tanto queriam. Mal posso esperar para ver o que vocês vão fazer!
+Com esse material todo aí vocês já tem uma boa base para desenvolver o jogo usando as features do iOS que tanto queriam. Mal posso esperar para ver o que vocês vão fazer!
 
 O projeto que eu usei para fazer todas as imagens e vídeos utilizados para ilustrar os code samples estão no [GitHub](https://github.com/loloop/equinox) :D
 
