@@ -13,7 +13,7 @@ Quando entrei no VivaReal, um dos meus primeiros desafios foi desenvolver a nova
 
 O objetivo desse artigo é mostrar que com um esforço relativamente pequeno, você consegue aproveitar ao máximo o tamanho da tela do device do seu usuário (seja qual iDevice for) para criar uma interface bonita e adaptativa.
 
-##Property Details Page
+## Property Details Page
 
 No [app do VivaReal](https://itunes.apple.com/br/app/vivareal-imoveis-casas-condominios/id655245656?mt=8), a PDP é um View Controller que mostra detalhes de um imóvel selecionado pelo usuário. Ela é composta por várias seções com informações como preços do aluguel e condomínio, localização, descrição, formulário para contato e outros detalhes.
 
