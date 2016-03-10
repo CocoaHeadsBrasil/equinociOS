@@ -47,7 +47,7 @@ Imagine o caso em que você tem uma série de eventos futuros que você quer que
 
 Por exemplo: um aplicativo em que o usário pode logar com a sua conta e baixar todos os seus posts. Temos então um evento de `logIn` que, em caso de sucesso, dispara um evento de `fetchPosts` para aquele usuário. Tanto o evento de `logIn` como o de `fetchPosts` seriam funções que retornam um "Futuro" (no caso do _BrightFutures_, um `Future`). O resultado da execução do `logIn`, por exemplo, é um `future` que representa um erro (em caso de erro) ou um `userId` (em caso de sucesso). No caso do `fetchPosts`, o retorno seria um  `future` representando um erro (falha) ou um array de posts (sucesso). 
 
-Antes mesmo de ler sequer uma linha de código, a abstração acima faz sentido. O problema agora é como programar usando esse "arquitetura". No exemplo acima, o código seria algo assim (código retirado do [repositório do Bright Futures](https://github.com/Thomvis/BrightFutures)):
+Antes mesmo de ler sequer uma linha de código, a abstração acima faz sentido. O problema agora é como programar usando essa "arquitetura". No exemplo acima, o código seria algo assim (código retirado do [repositório do Bright Futures](https://github.com/Thomvis/BrightFutures)):
 
 ~~~swift
 User.logIn(username,password).flatMap { user in
@@ -129,7 +129,7 @@ self.messagesHandler.messages
 
 > O `disposeBag`, a grosso modo, é a forma do `RxSwift` liberar os recursos alocados, quando você acabar de observar a sequência (seja por opção ou porque ela terminou). Não vou entrar em detalhes sobre como usar o `dispose` do `RxSwift`. Não é algo muito complicado e você pode ler mais sobre o assunto [aqui](https://github.com/ReactiveX/RxSwift/blob/master/Documentation/GettingStarted.md#disposing).
  
-O `subscribeNext` é a forma que o seu `Observer` fala "a cada valor emitido, faça isso". O código acima é um exemplo de como observar mensagens recebidas em um aplicativo de mensagens instantâneas o disparar um som cada vez que uma mensagem chega. Os operadores `window` e `flatMap` garantem que haja um intervalo mínimo de 0.5 segundos entre cada som disparado (para saber mais, veja [essa pergunta no StackOverflow](http://stackoverflow.com/questions/35438268/rxswift-debounce-throttle-inverse)). No exemplo acima, não estamos reagindo em caso de erro, nem para os sinais de `completed`, já que, em teoria, esse _stream_ de mensagens recebidas nunca encerra.
+O `subscribeNext` é a forma que o seu `Observer` fala "a cada valor emitido, faça isso". O código acima é um exemplo de como observar mensagens recebidas em um aplicativo de mensagens instantâneas e disparar um som cada vez que uma mensagem chega. Os operadores `window` e `flatMap` garantem que haja um intervalo mínimo de 0.5 segundo entre cada som disparado (para saber mais, veja [essa pergunta no StackOverflow](http://stackoverflow.com/questions/35438268/rxswift-debounce-throttle-inverse)). No exemplo acima, não estamos reagindo em caso de erro, nem para os sinais de `completed`, já que, em teoria, esse _stream_ de mensagens recebidas nunca encerra.
 
 Uma forma comum de se usar esse paradigma de observar `streams` é com **binding**. [Data binding](https://en.wikipedia.org/wiki/Data_binding) é o processo de "conectar" a informação apresentada na sua UI com o seu modelo ou lógica de negócios. 
 
@@ -150,7 +150,7 @@ Usando o `RxSwift` por exemplo, a implementação de uma tela de Settings poderi
         }.bindTo(settingsLabel.rx_text)
          .addDisposableTo(disposeBag)
 ~~~
-> Se a sintaxe de`$0` e `$1` for meio etranha pra você, eles são recursos do próprio Swift. Recomendo a leitura do capítulo de _Closures_ do [The Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html).
+> Se a sintaxe de `$0` e `$1` for meio etranha pra você, eles são recursos do próprio Swift. Recomendo a leitura do capítulo de _Closures_ do [The Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html).
 
 E esse é o resultado:
 
