@@ -105,15 +105,53 @@ A classe `Input` controla todo tipo de input feito no jogo na Unity3D, desde o a
 #### Multitouch
 
 <iframe src='https://gfycat.com/ifr/RealCluelessDrongo' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
+<span class="caption text-muted">Testando com o UnityRemote no computador</span>
 
 O `Input` possui suporte fácil ao multitouch, com a propriedade `Input.touches`, que nada mais é do que um array de [toques](http://docs.unity3d.com/ScriptReference/Touch.html), com a posição, delta de movimento e tempo, posição, pressão no caso de aparelhos como o 6S e até se ele veio do dedo do usuário ou de uma [Apple Pencil](http://docs.unity3d.com/ScriptReference/Touch-type.html).
 
 #### Swiping
 
-`<TO-DO>`
+<iframe src='https://gfycat.com/ifr/OpulentSeparateArizonaalligatorlizard' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
+<span class="caption text-muted">Gravei da tela do iPhone pra mostrar como é fácil usar o UnityRemote</span>
 
-Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso nós temos uma alternativa bem legal: Usar uma lib externa, o [TouchKit](https://github.com/prime31/TouchKit)
+Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso nós temos uma alternativa bem legal: Usar uma lib externa, o [TouchKit](https://github.com/prime31/TouchKit).
 
+O uso do TouchKit é bem simples para detectar swiping:
+
+~~~ csharp
+
+        void Start () {            
+            TKSwipeRecognizer recognizer = new TKSwipeRecognizer(TKSwipeDirection.All); //É possível limitar as direções do swipe que o TK vai detectar   
+            
+            recognizer.gestureRecognizedEvent += (r) => {
+                    //Ação desejada no swipe vem aqui
+                    swipeText.text = r.completedSwipeDirection.ToString();
+                    Color color = Color.black;
+                    switch (r.completedSwipeDirection){
+                        case TKSwipeDirection.Down:
+                            color = Color.green;
+                            break;
+                        case TKSwipeDirection.Up:
+                            color = Color.blue;
+                            break;
+                        case TKSwipeDirection.Left:
+                            color = Color.magenta;
+                            break;
+                        case TKSwipeDirection.Right:
+                            color = Color.yellow;
+                            break;
+                        default:
+                            break;
+                    }
+                    background.color = color;
+            }; 
+                  
+            TouchKit.addGestureRecognizer(recognizer);
+        }
+
+~~~
+
+O `TKSwipeRecognizer` retorna valores bem completos sobre o swipe, com posição de início, posição final, direção e velocidade do swipe, de forma bem fácil de tratar no código. Além do Swipe, o TouchKit também traz informações sobre pinch, tap, long press, pan e até toques normais, caso necessário.
 
 #### Aceleração
 
