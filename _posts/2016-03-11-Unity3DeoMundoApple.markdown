@@ -139,10 +139,6 @@ Você muito provavelmente vai querer suavizar estes valores pro jogador não ach
 
 ~~~ csharp
 
-/*
-Eu ainda tenho de investigar essa solução, não tô muito confiante no translate desse jeito, acho que ele nem funciona direito?
-*/
-
         IEnumerator Accelerate(){
             Vector3 lastFramePosition = transform.localPosition;
             Vector3 velocity = Vector3.zero;            
