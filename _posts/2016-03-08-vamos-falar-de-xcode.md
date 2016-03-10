@@ -23,7 +23,7 @@ Mas o assunto é extenso, e o Xcode é uma ferramenta complexa e complicada, ent
 
 
 ## Projetos
-Em geral, a primeira coisa que fazemos quando vamos iniciar um novo aplicativo é criar um novo projeto. É ele que contém os arquivos com código fonte, esquemas de construção dos _targets_, configurações de build, entre outras coisas.
+Em geral, a primeira coisa que fazemos quando vamos iniciar um novo aplicativo é criar um novo projeto. É ele que contém os arquivos com código fonte, esquemas de construção dos _targets_, configurações de compilação, entre outras coisas.
 
 ![]({{ site.baseurl }}/img/talesp/project.png)
 
@@ -99,7 +99,7 @@ _Workspaces_ mantêm a referência para projetos/subprojetos, _save states_ (jan
 
 E como é o _workspace_ que registra o índice de símbolos, indexando todos os projetos dentro dele, _code completion_, _Jump to definition_ e outras funcionalidades sensíveis ao contexto/conteúdo funcionam de forma transparente entre os projetos. Então se você adiciona sub-projetos, navegar entre eles é bastante facilitado. Com isso, até mesmo refatorar código é feito entre vários projetos de um mesmo _workspace_.
 
-Por padrão, todos os projetos dentro de um mesmo _workspace_ são construídos no mesmo diretório, chamado _workspace build directory_, e cada _worskpace_ tem seu próprio diretório. E como todos os projetos são construídos nesse diretório, esses arquivos construídos são visíveis pelos projetos incluídos no _workspace_. O Xcode indexa esse diretório e tenta descobrir dependências implícitas. Assim, se um projeto de um aplicativo constrói também uma biblioteca como dependência direta, e esta tem um link -
+Por padrão, todos os projetos dentro de um mesmo _workspace_ são construídos no mesmo diretório, chamado _workspace build directory_, e cada _worskpace_ tem seu próprio diretório. E como todos os projetos são construídos nesse diretório, esses arquivos construídos são visíveis pelos projetos incluídos no _workspace_. O Xcode indexa esse diretório e tenta descobrir dependências implícitas. Assim, se um projeto de um aplicativo constrói também uma biblioteca como dependência direta, e esta tem um link para uma outra biblioteca - sendo que esta não faz parte do _workspace_ - o Xcode consegue identificar a dependencia implícita e compila também essa bilbioteca.
 
 Mesmo que você não crie - explicitamente ou através do *cocoapods*, por exemplo - um _workspace_, é gerado um automaticamente e implicitamente para você dentro do diretório do projeto. O diretório *project.xcworkspace* é outro arquivo _bundle_, e ao analisar seu conteúdo, vemos o arquivo XML "contents.xcworkspacedata" e o arquivo "/(your name)/xcuserdatad/UserInterfaceState.xcuserstate", que efetivamente contém os breakpoints, arquivos abertos, etc. O conteúdo do arquivo contents.xcworkspace é bastante simples, conforme podemos ver abaixo:
 
@@ -183,6 +183,6 @@ Outra funcionalidade da aba _Run_ que já foi muito mais usada no passado - na e
 
 # Conclusão
 
-Não quis de forma nenhuma descrever todas essas funcionalidades e conceitos de forma exaustiva, até porque ainda teria MUITO a escrever. Mas acho importante conhecer esses conceitos, nos ajudam na hora de configurar como o app é construído/arquitetado, como é compilado, nos permitem pensar em novas formas de 
+Não quis de forma nenhuma descrever todas essas funcionalidades e conceitos de forma exaustiva, até porque ainda teria MUITO a escrever. Mas acho importante conhecer esses conceitos, nos ajudam na hora de configurar como o app é construído/arquitetado, como é compilado, nos permitem pensar em novas formas de organizar nossos projetos.
 
-Espero que tenham gostado, e que no futuro eu consiga escrever um outro artigo que daria uma espécie de sequência para esse artigo. Bom proveito e bons _hacks_ na forma de construír seus apps :)
+Espero que tenham gostado, e que no futuro eu consiga escrever um outro artigo que daria uma espécie de sequência para esse artigo. Bom proveito e bons _hacks_ na forma de construir seus apps :)
