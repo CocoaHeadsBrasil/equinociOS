@@ -193,7 +193,7 @@ Para fazer a troca animada de layouts entre collection view, teremos mais ou men
 ### Conclusões
 
 Bem falado isso tudo, tentei abordar um pouco de como comecei com as `CollectionView` e o que podemos aproveitar desta classe. O nosso amigo [Rodrigo Borges](http://www.twitter.com/rdgborges) vai abordar este assunto mais afundo, então aqui foi apenas uma introdução :)
-O link do projeto completo está no meu [github](www.github.com/viniciuscarvalho), então se quiser discutir alguma alteração ou propor alguma mudança, será sempre bem-vindo.
+O link do projeto completo está no meu [github](https://github.com/Viniciuscarvalho/collectionview-guide), então se quiser discutir alguma alteração ou propor alguma mudança, será sempre bem-vindo.
 
  
 Vou deixar alguns links interessantes e que me ajudaram bastante. Um deles foi o [Invariante](http://invariante.com) dos amigos [Diogo Tridapalli](http://www.twitter.com/diogot) e [Bruno Koga](http://www.twitter.com/brunokoga) que tem um artigo interessante também falando sobre uma implementação de `UICollectionView` e outros mais. Vale a pena dar uma conferida.
