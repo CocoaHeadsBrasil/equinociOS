@@ -24,7 +24,7 @@ img, iframe{
 
 Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?
 
-Sim, funciona. Diferente de apps híbridos, que na maior parte do tempo são várias Web Views com uns hooks para acessar algumas funcionalidades nativas, o core da Unity é todo em C++ ([E o build que ela gera para o iOS também](http://blogs.unity3d.com/2015/05/06/an-introduction-to-ilcpp-internals/)) e ela implementa o [Metal](http://blogs.unity3d.com/2015/04/17/ios-64-bit-and-metal-update/) no iOS, e assim tem uma performance ótima mesmo quando comparada com o SceneKit
+Sim, funciona. Diferente de apps híbridos, que na maior parte do tempo são várias Web Views com uns hooks para acessar algumas funcionalidades nativas, o core da Unity é todo em C++ ([E o build que ela gera para o iOS também](http://blogs.unity3d.com/2015/05/06/an-introduction-to-ilcpp-internals/)) e ela implementa o [Metal](http://blogs.unity3d.com/2015/04/17/ios-64-bit-and-metal-update/) no iOS, e assim tem uma performance ótima mesmo quando comparada com o SceneKit.
 
 Agora que você já conhece um pouco da Unity e o core dela, vamos começar? :)
 
@@ -53,7 +53,7 @@ Testar builds em aparelhos iOS com a Unity é um processo demorado e chato. Para
 
 Para deixar o mais amigável para se trabalhar com o Git, nós precisamos mudar a forma como ela trata com alguns arquivos lá em `Edit > Project Settings > Editor Settings`. Precisamos mudar o Version Control Mode para _Visible Meta Files_ e o Asset Serialization Mode para _Force Text_. Isso faz com que a Unity não esconda os arquivos de configuração dela, e todos os arquivos que ela puder deixar como texto, como cenas, prefabs e até os ProjectSettings sejam textos.
 
-Fica bem mais fácil de identificar problemas assim, já que antes não era possível fazer diff dos arquivos, mas isso deixa os commits um número de linhas bem exagerado, como dá pra ver nos graphs do GitHub de um dos meus projetos
+Fica bem mais fácil de identificar problemas assim, já que antes não era possível fazer diff dos arquivos, mas isso deixa os commits um número de linhas bem exagerado, como dá pra ver nos graphs do GitHub de um dos meus projetos.
 
 ![3mi linhas de código]({{ site.baseurl }}/img/loloop/3MilhoesDeLinhas.png)
 
