@@ -66,7 +66,7 @@ Definem grupos
 |-----------------|---------------:|
 | `(...)` | Define um grupo para aplicação de um quantificador |
 | `...|...` | Define uma alternativa para a aplicação da expressão. A expressão deve dar _match_ à direita ou à esquerda |
-| `\n` | Recupa um _match_ no grupo _n_|
+| `\n` | Recupera um _match_ no grupo _n_|
 
 Viu como as expressões são bem simples e, na maioria dos casos, os caracteres até fazem algum sentido?
 
