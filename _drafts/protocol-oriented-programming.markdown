@@ -4,7 +4,7 @@ title:      "Protocol-Oriented Programming"
 subtitle:   "Vivendo em um mundo abstrato."
 author:     "Lourenço Marinho"
 header-img: "img/post-exemplo.jpg"
-category:   Categoria
+category:   ios
 ---
 
 > **Equinócio**
