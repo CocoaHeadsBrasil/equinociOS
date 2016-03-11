@@ -8,6 +8,8 @@ header-img: "img/nomeDoUsuario/imagem.jpg" (imagem de cabeçalho)
 category:   Categoria
 ---
 
+> Diego Ventura ([@venturadiego](https://twitter.com/venturadiego){:target="_blank"}) é carioca daqueles que fala xêro, bixcoitu e caô. É desenvolvedor iOS desde 2012 e faz parte do time mobile da OLXBrasil. Acredita que Objective-C é amor e Swift é paixão. Pra ele, o equinociOS é mais uma forma de retribuir *para* a comunidade tudo o que ele aprendeu *pela* comunidade.
+
 ## O que são expressões regulares
 Expressão regular, vulgo _regex_, é um padrão de caracter que tem como objetivo identificar em uma _string_ um padrão definido. Esse padrão pode ser palavras, caracteres específicos, números e expressões. Imagine o conjunto de palavras {sossego, prato, assadura, casa, passas} e você precisa separar todas as palavras que possuem `ss`. A primeira coisa que vem a mente é verificar palavra por palavra e checar se essa palavra contém `ss`. Com expressões regulares, você define um padrão e utiliza esse padrão para buscar as palavras que se encaixam nele. Se você for do tipo questionador, pode dizer: tá, mas isso eu faço com um `if` simples. Ok, concordo, mas e se quiser somente as palavras que contêm `ss` e que terminam com vogais (fica aí um exercício para quando terminar de ler o artigo)? É aí que entram as expressões regulares!
 
