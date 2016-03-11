@@ -79,19 +79,20 @@ As aplicações regulares no dia a dia do desenvolvedor são muitas. Você pode 
 ## Como usar expressões regulares no iOS
 Usar expressão regular no iOS é muito simples. Existe uma classe (`NSRegularExpression`) que pede no seu construtor a expressão e as opções que serão aplicadas no momento do _match_. Assim, caso você queira uma função para validar um campo CEP, por exemplo, pode fazer:
 
-```
+~~~ swift
 func validateZipCode(zipCode: String) -> Bool {
 	let regex = try! NSRegularExpression(pattern: "^[0-9]{2}[0-9]{3}-[0-9]{3}$", options: [.CaseInsensitive])
-	        
+
 	let regexResult = regex.firstMatchInString(zipCode, options:[], range: NSMakeRange(0, zipCode.characters.count)) != nil
-	
+
 	guard regexResult else {
 		return false
 	}
-	
+
 	return true
 }
-```
+~~~
+
 Uma dica para você praticar é o site [Regex Pal](http://www.regexpal.com). Nele, é possível definir uma _string_ e testar as suas expressões à vontade.
 
 Se quiser, crie uma expressão para o exemplo dado na primeira seção do artigo e deixe nos comentários. Só não vale ler os comentários anteriores ;)
