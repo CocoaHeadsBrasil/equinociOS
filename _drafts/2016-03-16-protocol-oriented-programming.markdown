@@ -3,6 +3,7 @@ layout:     post
 title:      "Protocol-Oriented Programming"
 subtitle:   "Vivendo em um mundo abstrato."
 author:     "Lourenço Marinho"
+date:       2016-03-16 00:00:00
 header-img: "img/post-exemplo.jpg"
 category:   ios
 ---
