@@ -5,6 +5,7 @@ subtitle:   "Minha experiência aprendendo programação reativa e funcional"
 date:       2016-03-14 00:00:00
 author:     "Bruno Koga"
 header-img: "img/brunokoga/stream.jpg"
+category:   "programação reativa"
 ---
 
 >☝️
