@@ -70,7 +70,7 @@ Definem grupos
 
 Viu como as expressões são bem simples e, na maioria dos casos, os caracteres até fazem algum sentido?
 
-## Qual as vantagem das expressões regulares
+## Qual a vantagem das expressões regulares
 A grande vantagem de usar expressões regulares é poupar tempo. Elas são uma maneira simples de encontrar padrões. Você poderia escrever um `if` gigantesco e varrer cada caracter de uma _string_ para validar o formato de um e-mail, por exemplo, ou pode usar um simples `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}`.
 
 ![Regex](https://imgs.xkcd.com/comics/regular_expressions.png)
