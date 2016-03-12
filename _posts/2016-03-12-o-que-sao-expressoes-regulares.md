@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Seja um desenvolvedor regular"
-subtitle:   "Adicionando expressões regulares não seu dia-a-dia"
+subtitle:   "Adicionando expressões regulares no seu dia-a-dia"
 date:       2016-03-12 00:00:00
 author:     "Diego Ventura"
 header-img: "img/home-bg.jpg"
