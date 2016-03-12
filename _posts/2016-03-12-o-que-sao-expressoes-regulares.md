@@ -4,11 +4,11 @@ title:      "Seja um desenvolvedor regular"
 subtitle:   "Adicionando expressões regulares não seu dia-a-dia"
 date:       2016-03-12 00:00:00
 author:     "Diego Ventura"
-header-img: "img/nomeDoUsuario/imagem.jpg" (imagem de cabeçalho)
-category:   Categoria
+header-img: "img/home-bg.jpg" (imagem de cabeçalho)
+category:   Regex
 ---
 
-> Diego Ventura ([@venturadiego](https://twitter.com/venturadiego){:target="_blank"}) é carioca daqueles que fala xêro, bixcoitu e caô. É desenvolvedor iOS desde 2012 e faz parte do time mobile da OLXBrasil. Acredita que Objective-C é amor e Swift é paixão. Pra ele, o equinociOS é mais uma forma de retribuir *para* a comunidade tudo o que ele aprendeu *pela* comunidade.
+> Diego Ventura ([@venturadiego](https://twitter.com/venturadiego){:target="_blank"}) é carioca daqueles que falam xêro, bixcoitu e caô. É desenvolvedor iOS desde 2012 e faz parte do time mobile da OLXBrasil. Acredita que Objective-C é amor e Swift é paixão. Pra ele, o equinociOS é mais uma forma de retribuir *para* a comunidade tudo o que ele aprendeu *pela* comunidade.
 
 ## O que são expressões regulares
 Expressão regular, vulgo _regex_, é um padrão de caracter que tem como objetivo identificar em uma _string_ um padrão definido. Esse padrão pode ser palavras, caracteres específicos, números e expressões. Imagine o conjunto de palavras {sossego, prato, assadura, casa, passas} e você precisa separar todas as palavras que possuem `ss`. A primeira coisa que vem a mente é verificar palavra por palavra e checar se essa palavra contém `ss`. Com expressões regulares, você define um padrão e utiliza esse padrão para buscar as palavras que se encaixam nele. Se você for do tipo questionador, pode dizer: tá, mas isso eu faço com um `if` simples. Ok, concordo, mas e se quiser somente as palavras que contêm `ss` e que terminam com vogais (fica aí um exercício para quando terminar de ler o artigo)? É aí que entram as expressões regulares!
@@ -70,8 +70,8 @@ Definem grupos
 
 Viu como as expressões são bem simples e, na maioria dos casos, os caracteres até fazem algum sentido?
 
-## Qual as vantagens das expressões regulares
-A grande vantagem de usar expressões regulares é poupar tempo. Elas são uma maneira simples de encontrar padrões. Você poderia escrever um `if` gigantesco e varrear cada caracter de uma _string_ para validar o formato de um e-mail, por exemplo, ou pode usar um simples `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}`.
+## Qual as vantagem das expressões regulares
+A grande vantagem de usar expressões regulares é poupar tempo. Elas são uma maneira simples de encontrar padrões. Você poderia escrever um `if` gigantesco e varrer cada caracter de uma _string_ para validar o formato de um e-mail, por exemplo, ou pode usar um simples `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}`.
 
 ![Regex](https://imgs.xkcd.com/comics/regular_expressions.png)
 
@@ -85,9 +85,9 @@ Usar expressão regular no iOS é muito simples. Existe uma classe (`NSRegularEx
 func validateZipCode(zipCode: String) -> Bool {
 	let regex = try! NSRegularExpression(pattern: "^[0-9]{2}[0-9]{3}-[0-9]{3}$", options: [.CaseInsensitive])
 
-	let regexResult = regex.firstMatchInString(zipCode, options:[], range: NSMakeRange(0, zipCode.characters.count)) != nil
+	let regexResult = regex.firstMatchInString(zipCode, options:[], range: NSMakeRange(0, utf16.count)) != nil
 
-	guard regexResult else {
+	if !regexResult {
 		return false
 	}
 
