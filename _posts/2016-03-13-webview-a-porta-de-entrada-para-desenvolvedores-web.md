@@ -2,7 +2,7 @@
 layout:     post
 title:      "WebView"
 subtitle:   "A Porta de entrada pra desenvolvedores web"
-date:       2016-03-12 00:00:00
+date:       2016-03-13 00:00:00
 author:     "Emiliano Barbosa"
 header-img: "img/home-bg.jpg"
 category:   WebView
