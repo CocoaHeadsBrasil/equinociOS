@@ -10,8 +10,8 @@ category:   WebView
 
 ## Introdução
 
-O desenvolvimento de aplicativos chegaram pra valer nas empresas, só que elas estão acabando de se tornar fluentes em mobile web e é natural ver como caminho viável colocar o site mobile dentro de uma app, afinal - Já tenho um site que parece um App, Porque não usar o mesmo? Eu acredito que em boa parte dos casos isso pode ser feito, mas é preciso ficar de olhos nos detalhes de implementação e principalmente a expectativa do usuário, que espera na maioria dos casos um desempenho superior ao de um site.
-A WebView pode ser implementada utilizando a WKWebView (WK) e a UIWebView (UI), essa última acompanha o sistema desde sua versão 2, a WK foi introduzida com a versão 8 e apresenta um desempenho muito superior. Sua implementação de uma reserva alguns desafios para as soluções que demandem comunicação do código nativo com o web, gerenciamento de cookies etc.
+O desenvolvimento de aplicativos chegou pra valer nas empresas, só que elas estão acabando de se tornar fluentes em mobile web e é natural ver como caminho viável colocar o site mobile dentro de uma app, afinal - Já tenho um site que parece um App, Porque não usar o mesmo? Eu acredito que em boa parte dos casos isso pode ser feito, mas é preciso ficar de olho nos detalhes de implementação e principalmente a expectativa do usuário, que espera na maioria dos casos um desempenho superior ao de um site.
+A WebView pode ser implementada utilizando a WKWebView (WK) e a UIWebView (UI), essa última acompanha o sistema desde sua versão 2, a WK foi introduzida com a versão 8 e apresenta um desempenho muito superior. Sua implementação reserva alguns desafios para as soluções que demandem comunicação do código nativo com o web, gerenciamento de cookies etc.
 Todos os exemplos de código desse artigo fazem parte desse projeto no Github: [equinociOS-WebView](https://github.com/emilianoeloi/equinociOS-WebView).
 
 ### Ponte de comunicação Javascript/Objective-C
@@ -93,11 +93,11 @@ Obviamente o inverso não se trata de enviar código nativo para a App, é preci
 }
 ~~~
 
-O Projeto [WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge) faz o trabalho descrito acima de uma maneire bem mais completa.
+O Projeto [WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge) faz o trabalho descrito acima de uma maneira bem mais completa.
 
 #### WKWebView
 
-O formato acima só seria obrigatório para atender a ~6% de base de dispositivos que ainda rodam o iOS7. Já para os aparelhos com iOS8+ a WKWebView apresentações uma solução bem mais elegante, veja
+O formato acima só seria obrigatório para atender a ~6% de base de dispositivos que ainda rodam o iOS7. Já para os aparelhos com iOS8+ a WKWebView apresentações uma solução bem mais elegante, veja:
 
 * Javascript
 
@@ -267,19 +267,19 @@ Nesse ponto que as coisas começam a complicar, o que se espera de um aplicativo
 
 #### Cache
 
-A política de cache padrão de um request é a `NSURLRequestUseProtocolCachePolicy` a imagem a baixo (obtida da própria referência da apple) descreve seu comportamento. Existem algumas outras políticas de para os diversos casos: Cache parcial sem cache etc.
+A política de cache padrão de um request é a `NSURLRequestUseProtocolCachePolicy`, a imagem abaixo (obtida da própria referência da Apple) descreve seu comportamento. Existem algumas outras políticas para os diversos casos: Cache parcial, sem cache etc.
 
 <img src="{{ site.baseurl }}/img/emilianoeloi/cache_policy.png">
 
 * Request com política de Cache
 
- ~~~objc
- -(void)loadWKWebViewWithUrl:(NSString *)absoluteUrl{
+~~~objc
+-(void)loadWKWebViewWithUrl:(NSString *)absoluteUrl{
     NSURL *url = [NSURL URLWithString:absoluteUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:1.0];
     [_wkWebView loadRequest:request];
 }
- ~~~
+~~~
 
 * Limpar Cache
 
@@ -287,14 +287,14 @@ No caso de utilização de WebView é notório o consumo de memória, em especí
 
 > In apps that run in iOS 8 and later, use the WKWebView class instead of using UIWebView. Additionally, consider setting the WKPreferences property javaScriptEnabled to false if you render files that are not supposed to run JavaScript. UIWebView Reference
 
- ~~~objc
- - (void)didReceiveMemoryWarning {
+~~~objc
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     [[NSURLCache sharedURLCache] setDiskCapacity:0];
     [[NSURLCache sharedURLCache] setMemoryCapacity:0];
 }
- ~~~
+~~~
 
  * HTML embarcado
 
@@ -310,11 +310,11 @@ Existe também a opção de carregar o HTML previamente embarcado no aparelho.
 
 ### HTML
 
-Preocupar-se com a performance do código web para uma WebView é ainda mais relevante, além de ela ser uma versão piorada do navegador, estarmos em um dispositivo que precisa otimizar o consumo de bateria. Então turbinar seu código vai ajudar substancialmente a sua WebView rodar suave. A idéia que o código seja escrito de maneira minimizar reflows, repaints e todo script que possa bloquear a interação do usuário.
+Preocupar-se com a performance do código web para uma WebView é ainda mais relevante, além de ela ser uma versão piorada do navegador, estarmos em um dispositivo que precisa otimizar o consumo de bateria. Então turbinar seu código vai ajudar substancialmente a sua WebView rodar suave. A idéia que o código seja escrito de maneira a minimizar reflows, repaints e todo script que possa bloquear a interação do usuário.
 
 ### WebKit
 
-Embora a WKWebView tenha sido lançada com o iOS8 em 2014 o Google Chrome, por exemplo só foi adotá-la no início desse ano e só usa para iOS9+. E como era de se esperar a diferença de performance é gritante. Segue abaixo um comparativo da UIWebView vs WKWebView. Um dos motivos que foi citado pelo Google pra não utilização do WK é não ter um caminho obvio para gerenciar cookies.
+Embora a WKWebView tenha sido lançada com o iOS8 em 2014 o Google Chrome, por exemplo, só foi adotá-la no início desse ano e só usa para iOS9+. E como era de se esperar a diferença de performance é gritante. Segue abaixo um comparativo da UIWebView vs WKWebView. Um dos motivos que foi citado pelo Google pra não utilização do WK é não ter um caminho obvio para gerenciar cookies.
 
 Observe no consumo de recursos da comparação abaixo:
 
@@ -323,13 +323,13 @@ Observe no consumo de recursos da comparação abaixo:
 
 ## Ferramenta de inspeção
 
-E para um desenvolvedor web treinada nada é mais fundamental do que o inspect do navegador, e para a WebView isso continua igual, obviamente que é a ferramenta do Safari. E de simples utilização, basta habilitar o modo desenvolvedor do Safari e o menu desenvolvedor ficará disponível.
+E para um desenvolvedor web treinado nada é mais fundamental do que o inspect do navegador, e para a WebView isso continua igual, obviamente que é a ferramenta do Safari. É de simples utilização, basta habilitar o modo desenvolvedor do Safari e o menu desenvolvedor ficará disponível.
 
 <img src="{{ site.baseurl }}/img/emilianoeloi/inspect.png">
 
 ## Browser inApp.
 
-E para os que querem manter seu usuário ainda no contexto do seu aplicativo, já que está disponível para iOS9+ o Safari View Controller, que é uma experiência completa de um browser dentro da sua App. Ele apresenta uma experiência consistente com o próprio Safari levando o auto-preenchimento de formulários cookies, ou seja se o usuário estiver logado no Safari estará logado na SVC.
+E para os que querem manter seu usuário ainda no contexto do seu aplicativo, já está disponível para iOS9+ o Safari View Controller, que é uma experiência completa de um browser dentro da sua App. Ele apresenta uma experiência consistente com o próprio Safari levando o auto-preenchimento de formulários, cookies, ou seja se o usuário estiver logado no Safari estará logado na SVC.
 
 ~~~objc
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -356,14 +356,14 @@ E para os que querem manter seu usuário ainda no contexto do seu aplicativo, j�
 
 ## Conclusão
 
-A WebView integra a App e seus recursos nativos à web, ou seja você pode ter o melhor dos dois mundo ao seu favor.
+A WebView integra a App e seus recursos nativos à web, ou seja, você pode ter o melhor dos dois mundos ao seu favor.
 Existem soluções para web mobile que beiram o inacreditável de tão boa de usar, muitas delas superam muitas Apps por aí, mas é muito interessante entender até onde soluções web podem chegar e principalmente até onde uma WebView pode solucionar o problema proposto.
-Existem cenários em que a solução pode parecer tanto um aplicativo que um usuário treinado não conseguir identificar, mas isso não será verdade em todos os casos, nos quais o conteúdo é complexo demais pra funcionar com fluidez, e o melhor para esses cacos é já deixar claro para o usuário que se trata de um acesso a web e isso já calibrará a expectativa dele.
+Existem cenários em que a solução pode parecer tanto um aplicativo que um usuário treinado não conseguirá identificar, mas isso não será verdade em todos os casos, nos quais o conteúdo é complexo demais pra funcionar com fluidez, e o melhor para esses casos é já deixar claro para o usuário que se trata de um acesso a web e isso já calibrará a expectativa dele.
 E essa série de artigos do CocoaHeads é uma ótima oportunidade para desenvolvedores web se envolverem com a plataforma e entender que é tão interessante quanto a web e poder ter mais insumos para desenvolver soluções para Mobile.
 
 ### Agradecimentos
 
-Agradeço [Solli](https://github.com/shonorio) pela inciativa do projeto que celebra o Equinócio e a todos os membros da comunidade do CocoaHeads que prontamente absorveu a sugestão e em poucos dias já deixaram tudo preparado para um mês de artigos. Pra mim é um privilégio.
+Agradeço [Solli](https://github.com/shonorio) pela inciativa do projeto que celebra o Equinócio e a todos os membros da comunidade do CocoaHeads que prontamente absorveram a sugestão e em poucos dias já deixaram tudo preparado para um mês de artigos. Pra mim é um privilégio.
 
 ### Referências
 
