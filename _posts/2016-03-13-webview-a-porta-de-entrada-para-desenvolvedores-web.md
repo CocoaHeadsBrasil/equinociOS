@@ -59,7 +59,8 @@ Para enviar um javascript para a página será necessário incluir o código no 
 }
 ~~~
 
-*JS to ObjC
+
+* JS to ObjC
 
 Obviamente o inverso não se trata de enviar código nativo para a App, é preciso estabelecer um protocolo de comunicação via url, por exemplo: `JStoObjC://title=equinociOS`, esse padrão deverá ser identificado do lado da App no método `webView: shouldStartLoadWithRequest: navigationType:` e então executar o código nativo.
 
@@ -152,6 +153,7 @@ A parte pesada aqui fica por conta do setup, no qual será necessário instancia
 ~~~
 
 * ObjC to JS
+
 ~~~objc
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
 
@@ -198,7 +200,7 @@ Na UI a manipulação de cookies é feito via `NSHTTPCookieStorage`.
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
- ~~~
+~~~
 
 * Obtendo um Cookie
 
