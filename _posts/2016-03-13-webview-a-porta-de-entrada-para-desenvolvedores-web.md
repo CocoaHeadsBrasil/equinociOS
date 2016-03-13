@@ -22,7 +22,7 @@ Se eu estou dentro de uma App é claro que queremos usar o melhor dos dois mundo
 
 Para enviar um javascript para a página será necessário incluir o código no método `'webView: shouldStartLoadWithRequest: navigationType:'`, assim antes do carregamento da página o código será incluído no contexto da página.
 
-```javascript
+~~~ javascript
 (function(){
     window.isInnerEquinocios = function(){
         return document.location.hostname == "equinocios.com"
@@ -41,9 +41,9 @@ Para enviar um javascript para a página será necessário incluir o código no 
         window.changeNavTitle();
     }
 })();
-```
+~~~
 
-```objc
+~~~objc
 - (void)injectJavascript:(NSString *)resource {
     NSString *jsPath = [[NSBundle mainBundle] pathForResource:resource ofType:@"js"];
     NSString *js = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:NULL];
@@ -57,13 +57,13 @@ Para enviar um javascript para a página será necessário incluir o código no 
     return YES;
 
 }
-```
+~~~
 
 *JS to ObjC
 
 Obviamente o inverso não se trata de enviar código nativo para a App, é preciso estabelecer um protocolo de comunicação via url, por exemplo: `JStoObjC://title=equinociOS`, esse padrão deverá ser identificado do lado da App no método `webView: shouldStartLoadWithRequest: navigationType:` e então executar o código nativo.
 
-```objc
+~~~objc
 -(BOOL)isJStoObjcSchema:(NSString *)url{
     return [url rangeOfString:@"JStoObjC://"].location != NSNotFound;
 }
@@ -90,7 +90,7 @@ Obviamente o inverso não se trata de enviar código nativo para a App, é preci
     NSLog(@"shoulrStart: %@",[request URL]);
     return YES;
 }
-```
+~~~
 
 O Projeto [WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge) faz o trabalho descrito acima de uma maneire bem mais completa.
 
@@ -100,7 +100,7 @@ O formato acima só seria obrigatório para atender a ~6% de base de dispositivo
 
 * Javascript
 
-```javascript
+~~~javascript
 (function(){
     window.isInnerEquinocios = function(){
         return document.location.hostname == "equinocios.com"
@@ -121,17 +121,17 @@ O formato acima só seria obrigatório para atender a ~6% de base de dispositivo
         window.changeNavTitle();
     }
 })()
-```
+~~~
 
 * JS to ObjC
 
 A parte pesada aqui fica por conta do setup, no qual será necessário instanciar o `WKUserContenetController`, adicionar o `messageHandler` e implementar o método que vai receber a mensagem vinda da página `userContentController:didReceiveScriptMessage:`.
 
-```objc
+~~~objc
 @interface ViewController () <WKNavigationDelegate, WKUIDelegate, UIWebViewDelegate, WKScriptMessageHandler>
-```
+~~~
 
-```objc
+~~~objc
 -(void)setupWKWebView{
     WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
     WKUserContentController *controller = [[WKUserContentController alloc]init];
@@ -143,16 +143,16 @@ A parte pesada aqui fica por conta do setup, no qual será necessário instancia
     self.wkWebView.navigationDelegate = self;
     self.wkWebView.UIDelegate = self;
 }
-```
+~~~
 
-```objc
+~~~objc
 -(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     self.navigationItem.title = message.body;
 }
-```
+~~~
 
 * ObjC to JS
-```objc
+~~~objc
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
 
     NSString *jsPath = [[NSBundle mainBundle] pathForResource:@"wk_script" ofType:@"js"];
@@ -160,7 +160,7 @@ A parte pesada aqui fica por conta do setup, no qual será necessário instancia
     [self.wkWebView evaluateJavaScript:js completionHandler:nil];
 
 }
-```
+~~~
 
 ### Trabalhando com Cookies
 
@@ -170,7 +170,7 @@ Na UI a manipulação de cookies é feito via `NSHTTPCookieStorage`.
 
 * Gravando um Cookie
 
-```objc
+~~~objc
 -(void)saveCookie:(NSString *)key value:(NSString *)value{
     NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
     [cookieProperties setObject:key forKey:NSHTTPCookieName];
@@ -184,11 +184,11 @@ Na UI a manipulação de cookies é feito via `NSHTTPCookieStorage`.
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
 
 }
-```
+~~~
 
 * Deletando um Cookie
 
-```objc
+~~~objc
 -(void)deleteCookie:(NSString *)key{
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
@@ -198,11 +198,11 @@ Na UI a manipulação de cookies é feito via `NSHTTPCookieStorage`.
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
- ```
+ ~~~
 
 * Obtendo um Cookie
 
-```objc
+~~~objc
 -(NSString *)cookie:(NSString *)key{
     NSArray *httpCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
     for (NSHTTPCookie *cookie in httpCookies) {
@@ -212,11 +212,11 @@ Na UI a manipulação de cookies é feito via `NSHTTPCookieStorage`.
     }
     return nil;
 }
-```
+~~~
 
 Já para Manipular o cookie na WK precisaremos trabalhar com uma implementação javascript, vejo isso como um benefício já que o desenvolvedor web poderá fazer implementações otimizadas de acordo com sua necessidade.
 
-```javascript
+~~~javascript
 window.cookieMng = {
         "set": function(cname,value){
             document.cookie=cname+"="+value;
@@ -236,9 +236,9 @@ window.cookieMng = {
             document.cookie=cname+"=";
         }
     }
-```
+~~~
 
-```objc
+~~~objc
 -(void)wkSaveCookie:(NSString *)key value:(NSString *)value{
     NSString *js = [NSString stringWithFormat:@"window.cookieMng.set('%@','%@');",key,value];
     [self.wkWebView evaluateJavaScript:js completionHandler:nil];
@@ -257,7 +257,7 @@ window.cookieMng = {
         completion(jsReturn);
     }];
 }
-```
+~~~
 
 ### Performance
 
@@ -271,13 +271,13 @@ A política de cache padrão de um request é a `NSURLRequestUseProtocolCachePol
 
 * Request com política de Cache
 
- ```objc
+ ~~~objc
  -(void)loadWKWebViewWithUrl:(NSString *)absoluteUrl{
     NSURL *url = [NSURL URLWithString:absoluteUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:1.0];
     [_wkWebView loadRequest:request];
 }
- ```
+ ~~~
 
 * Limpar Cache
 
@@ -285,26 +285,26 @@ No caso de utilização de WebView é notório o consumo de memória, em especí
 
 > In apps that run in iOS 8 and later, use the WKWebView class instead of using UIWebView. Additionally, consider setting the WKPreferences property javaScriptEnabled to false if you render files that are not supposed to run JavaScript. UIWebView Reference
 
- ```objc
+ ~~~objc
  - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     [[NSURLCache sharedURLCache] setDiskCapacity:0];
     [[NSURLCache sharedURLCache] setMemoryCapacity:0];
 }
- ```
+ ~~~
 
  * HTML embarcado
 
 Existe também a opção de carregar o HTML previamente embarcado no aparelho.
 
-```objc
+~~~objc
 -(void)loadUIWebViewWithLocalData{
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     [self.uiWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://equinocios.com"]];
 }
-```
+~~~
 
 ### HTML
 
@@ -329,7 +329,7 @@ E para um desenvolvedor web treinada nada é mais fundamental do que o inspect d
 
 E para os que querem manter seu usuário ainda no contexto do seu aplicativo, já que está disponível para iOS9+ o Safari View Controller, que é uma experiência completa de um browser dentro da sua App. Ele apresenta uma experiência consistente com o próprio Safari levando o auto-preenchimento de formulários cookies, ou seja se o usuário estiver logado no Safari estará logado na SVC.
 
-```objc
+~~~objc
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 
     NSString *absoluteUrl = [request URL].absoluteString;
@@ -350,7 +350,7 @@ E para os que querem manter seu usuário ainda no contexto do seu aplicativo, j�
     [self injectJavascript:@"ui_script"];
     return YES;
 }
-```
+~~~
 
 ## Conclusão
 
