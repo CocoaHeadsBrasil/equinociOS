@@ -4,7 +4,7 @@ title:      "WebView"
 subtitle:   "A Porta de entrada pra desenvolvedores web"
 date:       2016-03-13 00:00:00
 author:     "Emiliano Barbosa"
-header-img: "img/home-bg.jpg"
+header-img: "img/emilianoeloi/bg.jpg"
 category:   WebView
 ---
 
@@ -12,7 +12,7 @@ category:   WebView
 
 O desenvolvimento de aplicativos chegaram pra valer nas empresas, só que elas estão acabando de se tornar fluentes em mobile web e é natural ver como caminho viável colocar o site mobile dentro de uma app, afinal - Já tenho um site que parece um App, Porque não usar o mesmo? Eu acredito que em boa parte dos casos isso pode ser feito, mas é preciso ficar de olhos nos detalhes de implementação e principalmente a expectativa do usuário, que espera na maioria dos casos um desempenho superior ao de um site.
 A Webview pode ser implementada utilizando a WKWebView (WK) e a UIWebView (UI), essa última acompanha o sistema desde sua versão 2, a WK foi introduzida com a versão 8 e apresenta um desempenho muito superior. Sua implementação de uma reserva alguns desafios para as soluções que demandem comunicação do código nativo com o web, gerenciamento de cookies etc.
-Todos os exemplos de código desse artigo fazem parte desse projeto no github: [equinociOS-WebView]{https://github.com/emilianoeloi/equinociOS-WebView}.
+Todos os exemplos de código desse artigo fazem parte desse projeto no github: [equinociOS-WebView](https://github.com/emilianoeloi/equinociOS-WebView).
 
 ### Ponte de comunicação Javascript/Objective-C
 
@@ -92,7 +92,7 @@ Obviamente o inverso não se trata de enviar código nativo para a App, é preci
 }
 ```
 
-O Projeto [WebViewJavascriptBridge]{https://github.com/marcuswestin/WebViewJavascriptBridge} faz o trabalho descrito acima de uma maneire bem mais completa.
+O Projeto [WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge) faz o trabalho descrito acima de uma maneire bem mais completa.
 
 #### WKWebView
 
@@ -166,7 +166,7 @@ A parte pesada aqui fica por conta do setup, no qual será necessário instancia
 
 Mas nem tudo são flores, o WKWebView não consegue usar de forma satisfatória o 'NSHTTPCookieStorage', e nesse caso o potencial do Javascript deve ser utilizado no processo de manipulação de cookies. Caso o seu projeto tenha por exemplo, um login nativo e que precise passar o token para a página para mandar o usuário logado na web você vai precisar escrever, deletar ou ler cookies da Webview.
 
-Na UI a manipulação de cookies se dá de forma muito eficiente utilizando o 'NSHTTPCookieStorage'.
+Na UI a manipulação de cookies é feito via `NSHTTPCookieStorage`.
 
 * Gravando um Cookie
 
@@ -188,7 +188,7 @@ Na UI a manipulação de cookies se dá de forma muito eficiente utilizando o 'N
 
 * Deletando um Cookie
 
- ```objc
+```objc
 -(void)deleteCookie:(NSString *)key{
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
@@ -310,24 +310,20 @@ Existe também a opção de carregar o HTML previamente embarcado no aparelho.
 
 Preocupar-se com a performance do código web para uma webview é ainda mais relevante, além de ela ser uma versão piorada do navegador, estarmos em um dispositivo que precisa otimizar o consumo de bateria. Então turbinar seu código vai ajudar substancialmente a sua webview rodar suave. A idéia que o código seja escrito de maneira minimizar reflows, repaints e todo script que possa bloquear a interação do usuário.
 
-https://www.youtube.com/watch?v=ZTnIxIA5KGw
-
 ### WebKit
 
 Embora a WKWebView tenha sido lançada com o iOS8 em 2014 o Google Chrome, por exemplo só foi adotá-la no início desse ano e só usa para iOS9+. E como era de se esperar a diferença de performance é gritante. Segue abaixo um comparativo da UIWebView vs WKWebView. Um dos motivos que foi citado pelo Google pra não utilização do WK é não ter um caminho obvio para gerenciar cookies.
 
-[Chrome-48-for-iOS.001-640x470]
-
 Observe no consumo de recursos da comparação abaixo:
 
-<img src="{{ site.baseurl }}/img/emilianoeloi/ui_webview.gif">
-<img src="{{ site.baseurl }}/img/emilianoeloi/wk_webview.gif">
+<img src="http://emiliano.bocamuchas.org/__ui_to_gif_final.gif">
+<img src="http://emiliano.bocamuchas.org/__wk_to_gif_final.gif">
 
 ## Ferramenta de inspeção
 
 E para um desenvolvedor web treinada nada é mais fundamental do que o inspect do navegador, e para a webview isso continua igual, obviamente que é a ferramenta do Safari. E de simples utilização, basta habilitar o modo desenvolvedor do Safari e o menu desenvolvedor ficará disponível.
 
-<img src="{{ site.baseurl }}/img/emilianoeloi/inspect.gif">
+<img src="{{ site.baseurl }}/img/emilianoeloi/inspect.png">
 
 ## Browser inApp.
 
@@ -365,15 +361,15 @@ E essa série de artigos do CocoaHeads é uma ótima oportunidade para desenvolv
 
 ### Agradecimentos
 
-Agradeço [Solli]{https://github.com/shonorio} pela inciativa do projeto que celebra o Equinócio e a todos os membros da comunidade do CocoaHeads que prontamente absorveu a sugestão e em poucos dias já deixaram tudo preparado para um mês de artigos. Pra mim é um privilégio.
+Agradeço [Solli](https://github.com/shonorio) pela inciativa do projeto que celebra o Equinócio e a todos os membros da comunidade do CocoaHeads que prontamente absorveu a sugestão e em poucos dias já deixaram tudo preparado para um mês de artigos. Pra mim é um privilégio.
 
 ### Referências
 
-1. [AppStore] {https://developer.apple.com/support/app-store/}
-2. [WebViewJavascriptBridge] {https://github.com/marcuswestin/WebViewJavascriptBridge}
-3. [NSHTTPCookieStorage] {https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPCookieStorage_Class/}
-5. [Minimizing browser reflow] {https://developers.google.com/speed/articles/reflow#guidelines}
-6. [Rendering: repaint, reflow/relayout, restyle] {http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/}
-7. [Using JavaScript with WKWebView in iOS 8] {http://www.joshuakehn.com/2014/10/29/using-javascript-with-wkwebview-in-ios-8.html}
-8. [A faster, more stable Chrome on iOS] {http://blog.chromium.org/2016/01/a-faster-more-stable-chrome-on-ios.html}
-9. [Use WKWebView on iOS 9+] {https://bugs.chromium.org/p/chromium/issues/detail?id=423444}
+1. [AppStore](https://developer.apple.com/support/app-store/)
+2. [WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)
+3. [NSHTTPCookieStorage](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPCookieStorage_Class/)
+5. [Minimizing browser reflow](https://developers.google.com/speed/articles/reflow#guidelines)
+6. [Rendering: repaint, reflow/relayout, restyle](http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/)
+7. [Using JavaScript with WKWebView in iOS 8](http://www.joshuakehn.com/2014/10/29/using-javascript-with-wkwebview-in-ios-8.html)
+8. [A faster, more stable Chrome on iOS](http://blog.chromium.org/2016/01/a-faster-more-stable-chrome-on-ios.html)
+9. [Use WKWebView on iOS 9+](https://bugs.chromium.org/p/chromium/issues/detail?id=423444)
