@@ -11,8 +11,8 @@ category:   WebView
 ## Introdução
 
 O desenvolvimento de aplicativos chegaram pra valer nas empresas, só que elas estão acabando de se tornar fluentes em mobile web e é natural ver como caminho viável colocar o site mobile dentro de uma app, afinal - Já tenho um site que parece um App, Porque não usar o mesmo? Eu acredito que em boa parte dos casos isso pode ser feito, mas é preciso ficar de olhos nos detalhes de implementação e principalmente a expectativa do usuário, que espera na maioria dos casos um desempenho superior ao de um site.
-A Webview pode ser implementada utilizando a WKWebView (WK) e a UIWebView (UI), essa última acompanha o sistema desde sua versão 2, a WK foi introduzida com a versão 8 e apresenta um desempenho muito superior. Sua implementação de uma reserva alguns desafios para as soluções que demandem comunicação do código nativo com o web, gerenciamento de cookies etc.
-Todos os exemplos de código desse artigo fazem parte desse projeto no github: [equinociOS-WebView](https://github.com/emilianoeloi/equinociOS-WebView).
+A WebView pode ser implementada utilizando a WKWebView (WK) e a UIWebView (UI), essa última acompanha o sistema desde sua versão 2, a WK foi introduzida com a versão 8 e apresenta um desempenho muito superior. Sua implementação de uma reserva alguns desafios para as soluções que demandem comunicação do código nativo com o web, gerenciamento de cookies etc.
+Todos os exemplos de código desse artigo fazem parte desse projeto no Github: [equinociOS-WebView](https://github.com/emilianoeloi/equinociOS-WebView).
 
 ### Ponte de comunicação Javascript/Objective-C
 
@@ -164,7 +164,7 @@ A parte pesada aqui fica por conta do setup, no qual será necessário instancia
 
 ### Trabalhando com Cookies
 
-Mas nem tudo são flores, o WKWebView não consegue usar de forma satisfatória o 'NSHTTPCookieStorage', e nesse caso o potencial do Javascript deve ser utilizado no processo de manipulação de cookies. Caso o seu projeto tenha por exemplo, um login nativo e que precise passar o token para a página para mandar o usuário logado na web você vai precisar escrever, deletar ou ler cookies da Webview.
+Mas nem tudo são flores, o WKWebView não consegue usar de forma satisfatória o 'NSHTTPCookieStorage', e nesse caso o potencial do Javascript deve ser utilizado no processo de manipulação de cookies. Caso o seu projeto tenha por exemplo, um login nativo e que precise passar o token para a página para mandar o usuário logado na web você vai precisar escrever, deletar ou ler cookies da WebView.
 
 Na UI a manipulação de cookies é feito via `NSHTTPCookieStorage`.
 
@@ -261,7 +261,7 @@ window.cookieMng = {
 
 ### Performance
 
-Nesse ponto que as coisas começam a complicar, o que se espera de um aplicativo é que seja performático e uma Webview nem sempre entrega isso de forma aceitável, caso seu conteúdo seja complexo, com muitas imagens, fontes customizadas, chamadas ajax etc isso tende a degradar o carregamento das páginas e não haverá cache que ajudará um segundo carregamento, já que além da obtenção dos dados o que torna uma página web rápida é também como ela foi construída.
+Nesse ponto que as coisas começam a complicar, o que se espera de um aplicativo é que seja performático e uma WebView nem sempre entrega isso de forma aceitável, caso seu conteúdo seja complexo, com muitas imagens, fontes customizadas, chamadas ajax etc isso tende a degradar o carregamento das páginas e não haverá cache que ajudará um segundo carregamento, já que além da obtenção dos dados o que torna uma página web rápida é também como ela foi construída.
 
 #### Cache
 
@@ -281,7 +281,7 @@ A política de cache padrão de um request é a `NSURLRequestUseProtocolCachePol
 
 * Limpar Cache
 
-No caso de utilização de webview é notório o consumo de memória, em específico da UIWebView em iOS 8+, e limpar o cache em caso de MemoryWarning ajudará a manter o bom funcionamento do seu aplicativo.
+No caso de utilização de WebView é notório o consumo de memória, em específico da UIWebView em iOS 8+, e limpar o cache em caso de MemoryWarning ajudará a manter o bom funcionamento do seu aplicativo.
 
 > In apps that run in iOS 8 and later, use the WKWebView class instead of using UIWebView. Additionally, consider setting the WKPreferences property javaScriptEnabled to false if you render files that are not supposed to run JavaScript. UIWebView Reference
 
@@ -308,7 +308,7 @@ Existe também a opção de carregar o HTML previamente embarcado no aparelho.
 
 ### HTML
 
-Preocupar-se com a performance do código web para uma webview é ainda mais relevante, além de ela ser uma versão piorada do navegador, estarmos em um dispositivo que precisa otimizar o consumo de bateria. Então turbinar seu código vai ajudar substancialmente a sua webview rodar suave. A idéia que o código seja escrito de maneira minimizar reflows, repaints e todo script que possa bloquear a interação do usuário.
+Preocupar-se com a performance do código web para uma WebView é ainda mais relevante, além de ela ser uma versão piorada do navegador, estarmos em um dispositivo que precisa otimizar o consumo de bateria. Então turbinar seu código vai ajudar substancialmente a sua WebView rodar suave. A idéia que o código seja escrito de maneira minimizar reflows, repaints e todo script que possa bloquear a interação do usuário.
 
 ### WebKit
 
@@ -321,7 +321,7 @@ Observe no consumo de recursos da comparação abaixo:
 
 ## Ferramenta de inspeção
 
-E para um desenvolvedor web treinada nada é mais fundamental do que o inspect do navegador, e para a webview isso continua igual, obviamente que é a ferramenta do Safari. E de simples utilização, basta habilitar o modo desenvolvedor do Safari e o menu desenvolvedor ficará disponível.
+E para um desenvolvedor web treinada nada é mais fundamental do que o inspect do navegador, e para a WebView isso continua igual, obviamente que é a ferramenta do Safari. E de simples utilização, basta habilitar o modo desenvolvedor do Safari e o menu desenvolvedor ficará disponível.
 
 <img src="{{ site.baseurl }}/img/emilianoeloi/inspect.png">
 
@@ -355,9 +355,9 @@ E para os que querem manter seu usuário ainda no contexto do seu aplicativo, j�
 ## Conclusão
 
 A WebView integra a App e seus recursos nativos à web, ou seja você pode ter o melhor dos dois mundo ao seu favor.
-Existem soluções para web mobile que beiram o inacreditável de tão boa de usar, muitas delas superam muitas Apps por aí, mas é muito interessante entender até onde soluções web podem chegar e principalmente até onde uma webview pode solucionar o problema proposto.
+Existem soluções para web mobile que beiram o inacreditável de tão boa de usar, muitas delas superam muitas Apps por aí, mas é muito interessante entender até onde soluções web podem chegar e principalmente até onde uma WebView pode solucionar o problema proposto.
 Existem cenários em que a solução pode parecer tanto um aplicativo que um usuário treinado não conseguir identificar, mas isso não será verdade em todos os casos, nos quais o conteúdo é complexo demais pra funcionar com fluidez, e o melhor para esses cacos é já deixar claro para o usuário que se trata de um acesso a web e isso já calibrará a expectativa dele.
-E essa série de artigos do CocoaHeads é uma ótima oportunidade para desenvolvedoes web se envolverem com a plataforma e entender que é tão interessante quanto a web e poder ter mais insumos para desenvolver soluções para Mobile.
+E essa série de artigos do CocoaHeads é uma ótima oportunidade para desenvolvedores web se envolverem com a plataforma e entender que é tão interessante quanto a web e poder ter mais insumos para desenvolver soluções para Mobile.
 
 ### Agradecimentos
 
