@@ -13,12 +13,12 @@ header-img: "img/brunokoga/stream.jpg"
 >✌️
 >A maioria dos exemplos contidos nesse artigo foram retirados de projetos reais e de documentações ou exemplos providos pelos autores das bibliotecas citadas. Todos os respectivos links estão disponíveis no final do artigo.
 
-###Passado
+### Passado
 Programo para iOS desde 2009. Até 8 meses atrás, Objective-C (e o básico de C) eram as duas únicas linguagens que eu sabia programar. 
 
 E por muitos anos a minha abordagem para desenvolver software sempre envolveu: Objective-C, [programação 100% orientada a objetos](https://pt.wikipedia.org/wiki/Orientação_a_objetos) e [programação imperativa](https://pt.wikipedia.org/wiki/Programação_imperativa). Foi assim que aprendi a programar e foi assim que sempre programei.
  
-###Presente
+### Presente
 Em junho de 2015, logo após o lançamento do Swift 2.0, entrei num projeto 100% escrito em Swift (1.2). Era meu primeiro contato real com Swift. 
 
 ![]({{ site.baseurl }}/img/brunokoga/aleera.png)
@@ -36,7 +36,7 @@ E por fim: programação reativa. Até então, eu nunca tinha conseguido entende
 > **Opinião:** ![]({{ site.baseurl }}/img/brunokoga/rac.png)
 <span class="caption text-muted">meu snippet para `;rac` no TextExpander
 
-###Futuro
+### Futuro
 Voltando ao `BrightFutures`: na época, mesmo sem saber nada de programação funcional e programação reativa, foi fácil para eu entender a teoria e a filosofia por trás do _framework_: prover uma forma de tratar com código assíncrono e tratamento de erros através de [futuros e promessas](https://en.wikipedia.org/wiki/Futures_and_promises).
 
 E foi aí que comecei a entender _um pouco_ o que significava programação funcional e porque o Swift era uma linguagem que permitia a implementação e o uso de conceitos funcionais.
@@ -83,11 +83,11 @@ E é aí que entra a mágica do Swift ser tão restrito em relação a tipos (ou
 <span class="caption text-muted">a mesma estratégia funciona também para os parâmetros das funções concatenadas. Mesmo que você não entenda o código acima, a idéia é que você tem a segurança de saber que está trabalhando com o tipo de dado correto (diferentemente do Objective-C, onde não há essa garantia).
 
 
-###Resumindo
+### Resumindo
 
 `Futures` são ações futuras (assíncronas, com tratamento de erros). O paradigma da programação funcional permite transformar e encadear essas ações de uma forma clara e segura. Além disso, ao trabalhar com `Futures`, estamos trabalhando de uma forma "reativa". Em outras palavras, estamos programando baseado no "retorno" dos `futures`. Esses `futures` se responsabilizam de fazer o trabalho deles assincronamente. E ao encadear esses `futures`, estamos trabalhando com os conceitos funcionais. Por isso que, apesar de diferentes, esses dois termos são vistos comumente juntos: **Programação Reativa Funcional**.
 
-###RxSwift
+### RxSwift
 
 [RxSwift](https://github.com/ReactiveX/RxSwift) é a versão escrita em Swift do [ReactiveX](http://reactivex.io). O [ReactiveX](http://reactivex.io) por sua vez é uma biblioteca que possibilita o uso de programação baseada em eventos (reativa), de forma assíncrona e que pode ser composta e encadeada (funcional) através de [**operadores**](http://reactivex.io/documentation/operators.html).
 
@@ -157,19 +157,19 @@ E esse é o resultado:
 <center><img src="/img/brunokoga/bind.gif" alt=""/></center><span class="caption text-muted">Suas telas de Settings nunca mais serão as mesmas! ✨
 
 
-###E esse é só o começo
+### E esse é só o começo
 
 Acredite: esses são apenas os primeiros passos dentro do mundo de programação reativa e/ou funcional. Ainda existe muito a ser explorado e muito, muito a ser aprendido.
 Algo que tem me ajudado bastante nesse processo de aprendizado é ter a consciência de que o tema é extenso e não se aprende da noite pro dia (diferente de aprender uma nova linguagem de programação, por exemplo). A verdade é que Programação Funcional e Reativa são conceitos longos e complexos e que levam tempo para serem assimilados. Mas acredito que uma vez que você aprenda a teoria, a escolha de bibliotecas seja um "mero" detalhe.
 
 Espero que compartilhar a minha experiência possa ser útil para você começar a entender um pouco mais desses paradigmas de programação. Caso queira se aprofundar mais, coloquei alguns links nas **Referências** abaixo.
 
-###Agradecimentos
+### Agradecimentos
 * [Lars](https://twitter.com/larslockefeer) por me ensinar Swift e os conceitos do [BrightFutures](https://github.com/Thomvis/BrightFutures);
 * [Thomas](https://twitter.com/thomvis88) por ter escrito a [BrightFutures](https://github.com/Thomvis/BrightFutures);
 * [Mentos](https://twitter.com/gsampaio) por ter sido a inspiração para eu criar meu snippet `;rac` no TextExpander.
 
-###Referências
+### Referências
 Fontes utilizadas para a escrita deste artigo:
 
 * [Bright Futures](https://github.com/Thomvis/BrightFutures)
