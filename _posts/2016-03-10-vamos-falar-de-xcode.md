@@ -6,7 +6,7 @@ author:     "Tales Pinheiro"
 category:   "xcode"
 ---
 
-> Tales Pinheiro ([@talesp](https://twitter.com/talesp){:target="_blank"}) é mestre em computação pelo IME-USP, trabalhou por 8 anos com backend bancário programando principalmente em C, quando em 2007 (antes do anúncio do primeiro iPhone!) resolveu aprender Objective-C, e tem escrito Swift a pouco mais de 6 meses.
+> Tales Pinheiro ([@talesp](https://twitter.com/talesp){:target="_blank"}) é mestre em computação pelo IME-USP, trabalhou por 8 anos com backend bancário programando principalmente em C, quando em 2007 (antes do anúncio do primeiro iPhone!) resolveu aprender Objective-C, e tem escrito Swift há pouco mais de 6 meses.
 
 # Vamos falar de Xcode
 
