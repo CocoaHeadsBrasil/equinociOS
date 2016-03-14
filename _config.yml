@@ -12,9 +12,9 @@ email_username: contato@cocoaheads.com.br
 
 # Build settings
 markdown: kramdown
+paginate: 50
 highlighter: rouge
 permalink: pretty
-paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
 gems: [jekyll-paginate, jekyll-feed]
