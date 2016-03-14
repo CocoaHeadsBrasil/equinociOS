@@ -1,0 +1,25 @@
+ul.share {
+    text-align: right;
+    list-style-type: none;
+}
+
+ul.share li {
+    display: inline;
+    font-size: 30px;
+}
+
+.fa-twitter-square:hover {
+    color: #55ACEE;
+}
+
+.fa-facebook-square:hover {
+    color: #3B5998;
+}
+
+.fa-linkedin-square:hover {
+    color: #007BB5;
+}
+
+.fa-google-plus-square:hover {
+    color: #DD4B39;
+}
