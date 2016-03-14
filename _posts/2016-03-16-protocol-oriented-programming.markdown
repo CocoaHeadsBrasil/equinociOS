@@ -4,7 +4,7 @@ title:      "Protocol-Oriented Programming"
 subtitle:   "Vivendo em um mundo abstrato."
 author:     "Lourenço Marinho"
 date:       2016-03-16 00:00:00
-header-img: "img/post-exemplo.jpg"
+header-img: "img/lourencomarinho/pale_blue_dot.jpg"
 category:   ios
 ---
 
@@ -234,7 +234,7 @@ extension NSManagedObject {
 }
 ~~~
 
-Agora vamos adicionar a implementação padrão para o protocolo `CoreDataModel`. A primeira **Protocol Extension** que vamos criar vai definir qual tipo de contexto vamos usar e como ele será obtido. Extensões podem ser adicionadas em qualquer arquivo `.swift` do projeto.
+Agora vamos adicionar a implementação padrão para o protocolo `CoreDataModel`. A primeira **Protocol Extension** que vamos criar vai definir qual tipo de contexto vamos usar e como ele será obtido. Extensões podem ser adicionadas em qualquer arquivo `.swift` do projeto. Por motivo de simplicidade iremos assumir nesse artigo que o `NSManagedObjectContext` que vamos retornar está declarado no `AppDelegate` da nossa aplicação.
 
 ~~~ swift
 extension CoreDataModel where Self: NSManagedObject {
@@ -314,7 +314,3 @@ Isso é tudo pessoal! Espero ter ajudado nossa comunidade a crescer um pouco mai
 
 ---
 Podemos conversar mais aqui [@lopima](https://twitter.com/lopima) e [aqui](http://iosdevbr.herokuapp.com)!
-
-
-
-
