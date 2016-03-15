@@ -5,15 +5,17 @@ comments: true
 
 <!-- Post Header -->
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>{{ page.title }}</h1>
-                    {% if page.subtitle %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    {% endif %}
-                    <span class="meta">Postado por {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} em {{ page.date | date: "%-d/%m/%Y" }}</span>
+    <div class="intro-header-overlay" style="background:rgba(0,0,0,0.25)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{ page.title }}</h1>
+                        {% if page.subtitle %}
+                        <h2 class="subheading">{{ page.subtitle }}</h2>
+                        {% endif %}
+                        <span class="meta">Postado por {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} em {{ page.date | date: "%-d/%m/%Y" }}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,7 +28,7 @@ comments: true
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {% include share.html %}
-                
+
 				{{ content }}
 
                 <hr>
@@ -52,7 +54,7 @@ comments: true
                         * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
                         * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
                         */
-                        
+
                         /*
                         var disqus_config = function () {
                             this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable

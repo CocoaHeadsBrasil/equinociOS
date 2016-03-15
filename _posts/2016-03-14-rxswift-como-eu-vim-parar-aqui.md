@@ -21,7 +21,7 @@ E por muitos anos a minha abordagem para desenvolver software sempre envolveu: O
 ### Presente
 Em junho de 2015, logo após o lançamento do Swift 2.0, entrei num projeto 100% escrito em Swift (1.2). Era meu primeiro contato real com Swift. 
 
-![]({{ site.baseurl }}/img/brunokoga/aleera.png)
+![]({{ site.baseurl }}/img/brunokoga/aleera.jpg)
 <span class="caption text-muted">Logo eu me vingarei!
 
 

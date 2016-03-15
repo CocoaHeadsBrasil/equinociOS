@@ -89,7 +89,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **23/03/2016:** Método Swizzling, por [Fernanda Geraissate](https://github.com/fggeraissate)
 - **24/03/2016:** Fastlane, por [Luiz Alberto da Silva Oliveira] (https://github.com/betodr)
 - **25/03/2016:** Optionals e o Gato de Schrödinger, por [Francesco Perrotti-Garcia](https://github.com/fpg1503)
-- **26/03/2016:**
+- **26/03/2016:** Criando frameworks universais, por [Guilherme Sampaio](https://github.com/gsampaio)
 - **27/03/2016:** App Extensions - Today Notification, por [Renato Matos](https://github.com/renatosarro)
 - **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
 - **29/03/2016:** Reactivecocoa + MVVM, por [Alessandro Santos](https://github.com/delarge77)
