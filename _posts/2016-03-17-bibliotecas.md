@@ -6,8 +6,7 @@ author:     "Igor Ferreira"
 header-img: "img/igorcferreira/library.jpg"
 category:   "library"
 ---
-> Eu ([@icastanheda](https://twitter.com/icastanheda)) sou desenvolvedor mobile desde de 2012, quando ARC, storyboard e o Ice Cream Sandwich eram recentes no mundo. 
-> E, Hoje em dia, trabalho com desenvolvimento de bibliotecas para os ambientes Apple (OSX, iOS, WatchOS e tvOS).
+> Eu ([@icastanheda](https://twitter.com/icastanheda)) sou desenvolvedor mobile desde de 2012, quando ARC, storyboard e o Ice Cream Sandwich eram recentes no mundo.
 > Alguns de vocês já deve ter ouvido minha voz em um dos episódios do [Podcast do CocoaHeads Brasil](http://soundcloud.com/cocoaheadsbr).
 
 <br/>
