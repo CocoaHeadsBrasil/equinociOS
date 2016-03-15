@@ -7,7 +7,7 @@ author:     "Bruno Bilescky"
 header-img: "img/bgondim/header_programming.jpg"
 category:   "functional"
 ---
-> ### # Bruno Bilescky ([@bgondim](https://twitter.com/bgondim){:target="_blank"}) 
+> #### Bruno Bilescky ([@bgondim](https://twitter.com/bgondim){:target="_blank"}) 
 > `let currentJob = "desenvolvedor backend(java, ruby, c#) ".map { _ in "Desenvolvedor frontend(js) " }. map { _ in "desenvolvedor mobile (Objective-C, Java, C#" }.map { _ in "desenvolvedor iOS(Swift)" }`.
 > Estudante das artes de programação funcional e reativa
 
@@ -41,7 +41,7 @@ Porém o **Realm** não tem suporte nativo para RxSwift. No entanto, é muito si
 
 Bom vamos ao código:
 
->### # Talk is cheap. Show me the code
+>#### Talk is cheap. Show me the code
 >_Torvalds, Linus_
 
 ~~~swift
