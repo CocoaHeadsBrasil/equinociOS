@@ -7,7 +7,7 @@ author:     "Bruno Bilescky"
 header-img: "img/bgondim/header_programming.jpg"
 category:   "functional"
 ---
-> ####Bruno Bilescky ([@bgondim](https://twitter.com/bgondim){:target="_blank"}) 
+> ### # Bruno Bilescky ([@bgondim](https://twitter.com/bgondim){:target="_blank"}) 
 > `let currentJob = "desenvolvedor backend(java, ruby, c#) ".map { _ in "Desenvolvedor frontend(js) " }. map { _ in "desenvolvedor mobile (Objective-C, Java, C#" }.map { _ in "desenvolvedor iOS(Swift)" }`.
 > Estudante das artes de programação funcional e reativa
 
@@ -25,12 +25,12 @@ Agora, caso este seja o seu primeiro contato com esta biblioteca, ou você ainda
 
 ___
 
-###Fazendo mais com menos
+### Fazendo mais com menos
 Bom esta é a ideia deste post. Mostrar como podemos utilizar o paradigma da programação funcional, junto com RxSwift e com uma pitada de **Generics** para tornar o seu código mais reativo e funcional.
 
 E para isso eu desenvolvi um aplicativo de gerenciamento de dispesas ([github](https://github.com/brunogb/ExpenseTracker){:target="_blank"}) para ilustrar alguns pontos que quero abordar. Eu sugiro que você baixe o código, de uma olhada no projeto, brinque um pouco com o aplicativo e depois volte para continuarmos.
 
-###Bom, agora que você voltou podemos começar...
+### Bom, agora que você voltou podemos começar...
 Sobre a arquitetura do projeto, além do **RxSwift** para a programação reativa, estou utilizando o **[Realm](https://realm.io)** para gerenciar o banco de dados local, o **[Hue](https://github.com/hyperoslo/Hue)** para o gerenciamento de cores, o **[SnapKit](https://github.com/SnapKit/SnapKit)** para usar autolayout no código e o **[NibDesignable](https://github.com/mbogh/NibDesignable)** para gerenciar as telas e deixar mais leve nosso storyboard.
 
 Um dos recursos mais interessantes do **Realm**, a lista com _live update_ permite que façamos uma query no banco, que está sempre atualizada, incluindo atualizações que transações futuras podem efetuar na base, facilitando manter nossa UI sempre fresca e atualizada.
@@ -41,7 +41,7 @@ Porém o **Realm** não tem suporte nativo para RxSwift. No entanto, é muito si
 
 Bom vamos ao código:
 
->####Talk is cheap. Show me the code
+>### # Talk is cheap. Show me the code
 >_Torvalds, Linus_
 
 ~~~swift
@@ -102,7 +102,7 @@ struct AppState {
 
 Basicamente este é um objeto que representa o **_estado atual_** do aplicativo. Ele é responsável por rastrear as mudanças no banco de dados e expor os valores ja mapeados para serem consumidos pelas outras classes e funções. Vamos então analisar as partes deste código:
 
-###Mantendo sempre o "estado atual" atualizado...
+### Mantendo sempre o "estado atual" atualizado...
 
 ~~~swift
 let currentCategory = Variable<ExpenseCategory?>(nil)
@@ -147,7 +147,7 @@ Espero que essa analogia tenha facilitado um pouco as coisas.
 E por fim salvamos uma referencia a esse `Observable` em `self.entries`. Com isso, toda vez que `self.currentCategory` receber um novo valor distinto do anterior, iremos refazer nossa query e com isso atualizar a variável `self.entries` com os novos registros. 
 E como utilizamos aquele gist, `self.entries` vai sempre se manter atualizada com os registros filtrados do banco, mesmo após sua inicialização.
 
-###... Para sempre manter nossa UI atualizada.
+### ... Para sempre manter nossa UI atualizada.
 
 ~~~swift
 tableView.registerNib(R.nib.expenseDisplayTableViewCell)
@@ -175,7 +175,7 @@ AppState.current.currentExpensesTotal.map({ (value) -> String in
 ~~~
 Com esse código nossa UI vai estar sempre atualizada com a última categoria selecionada.
 
-###Ok, este RxSwift parace interessante mesmo, mas e a tal da programação funcional? Onde vamos utilizar?
+### Ok, este RxSwift parace interessante mesmo, mas e a tal da programação funcional? Onde vamos utilizar?
 Na verdade nós já estamos utilizando e talvez você não tenha percebido. Quando executamos: 
 
 ~~~swift
@@ -210,14 +210,14 @@ AppState.current.currentTintColor.subscribeNext(self.applyColor).addDisposableTo
 Na programação funcional, as funções que criamos são cidadãs de primeira classe, assim como objetos e value types, e podem ser passadas como parâmetros, serem referenciadas e executadas arbitráriamente.
 
 
-###Hummm, interessante, mas e o Generics? Onde ele se encaixa nessa história toda?
+### Hummm, interessante, mas e o Generics? Onde ele se encaixa nessa história toda?
 Generics te ajuda a escrever menos código e abranger mais situações. Ao escrever funções genericas você está aumentando o escopo onde estas funções podem ser utilizadas. E isso faz todo o sentido quando falamos de RxSwift e programação funcional.
 
 Além do que temos menos código para testar e manter.
 
 Praticamente todos os operadores que utilizamos do RxSwift são genéricos. `switchLatest`, `map`, `filter`, todos podem ser utilizados de maneira genérica, desde que os tipos de retorno desses `Observable`s conformem com os protocolos específicos.
 
-###Legal, mas tudo que você mostrou eu consigo fazer sem RxSwift, onde mais ele pode facilitar a minha vida?
+### Legal, mas tudo que você mostrou eu consigo fazer sem RxSwift, onde mais ele pode facilitar a minha vida?
 Um fato bem interessate da programação reativa é que nós podemos juntar as sequências, criando um fluxo bem complexo a partir de fluxos mais simples e fáceis de testar. E aí a programação reativa começa a brilhar, pois para juntar estes fluxos de maneira imperativa seria necessario muito mais códigos, além de refatoramentos e mudanças nas APIs dos métodos.
 
 Vamos, como exemplo, rastrear o status de conexão com a internet. Veja esta classe:
@@ -307,18 +307,18 @@ func tryConnection()-> Observable<NSData> {
 
 Depois basta executar: `tryConnection().subscribeNext(funcToParseJSON)` e pronto, temos aqui nossa requisição tolerante a quedas de internet.
 
-###Finalizando
+### Finalizando
 
 Bom RxSwift tem ainda diversos outros recursos, e infelizmente não vamos conseguir cobrir todos aqui. Espero que os recursos apresentados aqui, junto com os exemplos fornecidos possam lhe mostrar como pode ser simples e fácil de adicionar programação funcional/reativa no seu código ja existente, sem que você tenha que alterar a arquitetura do seu projeto.
 
 E isso é tudo pessoal! Até o próximo post! E acompanhem o desenvolvimento do [ExpenseTracker](https://github.com/brunogb/ExpenseTracker), pois pretendo evoluí-lo com o tempo adicionando mais recursos funcionais e reativos.
 
-####Agradecimentos
+### # Agradecimentos
 - A equipe do RxSwift pela ótima lib que eles entregam
 - A equipe do CocoaHeads BR pela iniciativa! (Valeu [Solli](https://github.com/shonorio)!!)
 
 
-####Referências
+### # Referências
 - [RxSwift](https://github.com/ReactiveX/RxSwift) - [Documentação](https://github.com/ReactiveX/RxSwift/blob/master/Documentation/) 
 - [Slack da comunidade RxSwift](http://slack.rxswift.org/)
 - [Turn Realm auto-updating Results into an RxSwift Observable sequence](https://gist.github.com/fpillet/4ceb477eeb2705fb5159) by [@fpillet](https://twitter.com/fpillet)
