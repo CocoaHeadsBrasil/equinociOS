@@ -184,7 +184,7 @@ Caso você esqueça de algum desses passos seu código, simplesmente, não compi
 
 Para frameworks, arrasta os arquivos para `Linked Frameworks and Libraries`, configura as demais flags e é isso, certo? Não. Isso funciona apenas para frameworks do sistema!
 
-Frameworks podem ser um pouco mais complicadas, especialmente quando se tratar de uma *universal framrwork* (trato disso mais abaixo). Sendo muito comum acabar com os error:
+Frameworks podem ser um pouco mais complicadas, especialmente quando se tratar de uma *universal framework* (trato disso mais abaixo). Sendo muito comum acabar com os error:
 
 **Library not loaded**
 
