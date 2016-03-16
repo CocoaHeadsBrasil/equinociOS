@@ -61,7 +61,7 @@ protocol GeneratorType {
 }
 ~~~
 
-Para ilustrar o uso de _Associated Types_,  criamos um  *Generator*  que produz constantes quando seu método `next()` é executado. 
+Vale ressaltar que em Swift 2.2 a palavra reservada `typealias` será substituída pela palavra [`associatedtype`](https://github.com/apple/swift-evolution/blob/master/proposals/0011-replace-typealias-associated.md) na definição de tipos associados. Para ilustrar o uso de _Associated Types_,  criamos um  *Generator*  que produz constantes quando seu método `next()` é executado. 
 
 ~~~swift
 class ConstantGenerator: GeneratorType {
@@ -298,7 +298,7 @@ final class Person: NSManagedObject, CoreDataModel {
 
 ~~~ swift
 let people = Person.all()
-print(results.dynamicType) // Array<Person>
+print(people.dynamicType) // Array<Person>
 ~~~
 
 ~~~ swift
