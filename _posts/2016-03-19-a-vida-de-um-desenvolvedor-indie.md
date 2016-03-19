@@ -2,7 +2,7 @@
 layout:     post
 title:      "A vida de um desenvolvedor indie"
 subtitle:   "A montanha-russa de glórias e frustações"
-date:       2016-03-20 00:00:00
+date:       2016-03-19 00:00:00
 author:     "Ricardo Borelli"
 header-img: "img/rabc/topBG.png"
 category:   "devlife"
