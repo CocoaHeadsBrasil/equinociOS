@@ -44,7 +44,7 @@ Quem me acompanha sabe que sou contra _BaaS_ [Backend-as-a-Service] (leia-se: [P
 
 Também sou desenvolvedor server-side. Foi onde comecei a programar e de onde, de um jeito ou de outro, sempre estive com um pé além do mobile. O que sempre vejo são os desenvolvedores independente falando que acham muito difícil fazer back-end, que querem focar no mobile para aproveitar o tempo livre que usam para desenvolver, que é caro e trabalhoso hospedar por conta própria.
 
-Até concordo com alguns pontos, mas nunca tivemos tantas ferramentas para facilitar e tanta concorrência de lugares para hospedar. Por [três euros](https://www.scaleway.com/pricing/) você consegue um servidor ARM simples! Com o Zewo, como no próximo artigo do Thiago, você pode desenvolver todo esse back-end direto em Swift, já usando uma linguagem que também serve para o mobile. A curva de aprendizagem para administrar e configurar o servidor não é muito diferente de quando se usa algum serviço pronto.
+Até concordo com alguns pontos, mas nunca tivemos tantas ferramentas para facilitar e tanta concorrência de lugares para hospedar. Por [três euros](https://www.scaleway.com/pricing/) você consegue um servidor ARM simples! Com o Zewo, [como no próximo artigo do Thiago](http://equinocios.com/open-source/2016/03/20/backend-usando-swift-sim-e-possivel/), você pode desenvolver todo esse back-end direto em Swift, já usando uma linguagem que também serve para o mobile. A curva de aprendizagem para administrar e configurar o servidor não é muito diferente de quando se usa algum serviço pronto.
 
 O que você precisa se preocupar é com o futuro do seu modelo de negócio.
 
