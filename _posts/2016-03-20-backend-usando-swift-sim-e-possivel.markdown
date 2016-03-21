@@ -246,7 +246,7 @@ let package = Package(
         .Package(url: "https://github.com/Zewo/Router.git", majorVersion: 0, minor: 3),
         .Package(url: "https://github.com/Zewo/LogMiddleware.git", majorVersion: 0, minor: 3),
         .Package(url: "https://github.com/Zewo/HTTPFile.git", majorVersion: 0, minor: 3),
-        .Package(url: "https://github.com/Zewo/Sideburns.git", majorVersion: 0, minor: 2)
+        .Package(url: "https://github.com/Zewo/Sideburns.git", majorVersion: 0, minor: 3)
     ]
 )
 ```
@@ -316,7 +316,9 @@ O que adicionaremos agora ao nosso `Sources/main.swift`:
 O resultado final do nosso `main.swift`
 
 ```swift
-import Zewo
+import HTTPServer
+import Router
+import LogMiddleware
 import HTTPFile
 import Mustache
 import Sideburns
