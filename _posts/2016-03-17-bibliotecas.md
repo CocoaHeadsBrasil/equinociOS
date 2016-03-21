@@ -43,7 +43,7 @@ Além disso, são formas de produção e distribuição de código que não são
 
 <center><img alt="Static library e framework" src="{{ site.baseurl }}/img/igorcferreira/library_types.jpg"/></center>
 
-Aí está a primeira coisa que gostaria de trazer a tona: A diferença entre **Library** e **Framework**! Só que para explicar melhor a diferença temos que, primeiro, declarar a diferença entre **static link** e **dinamyc link**.
+Aí está a primeira coisa que gostaria de trazer a tona: A diferença entre **Library** e **Framework**! Só que para explicar melhor a diferença temos que, primeiro, declarar a diferença entre **static link** e **dynamic link**.
 
 **Static & Dynamic**
 
