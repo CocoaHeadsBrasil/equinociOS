@@ -134,7 +134,7 @@ Olhando para o código (em um projeto começado do zero), a framework tem 2 arqu
 
 - *Info.plist*: O arquivo .framework precisa de um arquivo de informações sobre o binário. Nele contém nome, língua, versão e outras coisas básicas.
 
-- *[Umbrella header](https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Tasks/IncludingFrameworks.html)*: O umbrella header é um arquivo .h que importa, ou incluí, todos os demais headers da biblioteca. Assim, é possível apenas usar `#import <TestFramework/TestFramework.h>` em vez de importar cada arquivo individualmente.
+- *[Umbrella header](https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Tasks/IncludingFrameworks.html)*: O umbrella header é um arquivo .h que importa, ou inclui, todos os demais headers da biblioteca. Assim, é possível apenas usar `#import <TestFramework/TestFramework.h>` em vez de importar cada arquivo individualmente.
 
 No seu umbrella header, você encontrará a exportação de duas constantes:
 
@@ -298,7 +298,7 @@ Estamos em um período de transição entre o Objective-C e o Swift (pelo menos 
 
 ### Arquitetura
 
-Agora que o conceito e detalhamento de frameworks e static library foi feito, é importante saber que a arquitetura de uma boa biblioteca incluí, também, a simplicidade de uso, proteção de entrada (`NSAssert`) e design da camada pública da sua API. É isso que o cliente irá ver e usar!
+Agora que o conceito e detalhamento de frameworks e static library foi feito, é importante saber que a arquitetura de uma boa biblioteca inclui, também, a simplicidade de uso, proteção de entrada (`NSAssert`) e design da camada pública da sua API. É isso que o cliente irá ver e usar!
 
 Não vou entrar em detalhes sobre isso aqui porque esse post já está gigante. Talvez outro dia.
 
