@@ -226,7 +226,7 @@ Por ter configurado  o [LogMiddleware](https://github.com/Zewo/LogMiddleware){:t
 ![]({{ site.baseurl }}/img/tholanda/hello-world-showing-log-on-console.png)
 
 Enfim, depois de tanta explicação, esse é o nosso *Hello World* usando *[Swift](https://www.swift.org){:target="_blank"}* e *[Zewo](http://zewo.io){:target="_blank"}*. 
-Por que não incrementar um pouco mais esse exemplo ? Fique tranquilo que a partir de agorax não serei tão detalhista! ~~será?~~ 😌
+Por que não incrementar um pouco mais esse exemplo ? Fique tranquilo que a partir de agora não serei tão detalhista! ~~será?~~ 😌
 
 <br>
 
