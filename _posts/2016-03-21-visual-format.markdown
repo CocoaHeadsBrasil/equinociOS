@@ -28,12 +28,12 @@ Trata-se de uma linguagem muito simples e resumida, mas com um poder de fogo con
 
 Digamos que nosso objetivo é preencher a view principal com um retângulo. Esse código cria a view:
 
-```swift
+~~~swift
 let v1 = UIView(frame: CGRectZero)
 v1.backgroundColor = UIColor(red:0.5134,  green:0.8424,  blue:0.9366, alpha:0.6)
 v1.translatesAutoresizingMaskIntoConstraints = false
 self.view.addSubview(v1)
-```
+~~~
 
 Observações importantes:
 - Note que eu não defini o frame que desejamos para a _v1_. Vamos deixar o foco do nosso assunto tratar disso mais além!
@@ -41,10 +41,10 @@ Observações importantes:
 
 Uma vez tendo _v1_ sido adicionada à view principal, vamos alinhá-lo com nossas intenções de layout:
 
-```swift
+~~~swift
 self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v1]|", options: [], metrics: nil, views: ["v1":v1]))
 self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v1]|", options: [], metrics: nil, views: ["v1":v1]))
-```
+~~~
 
 O resultado:
 
@@ -55,15 +55,15 @@ Eu sei, sem graça. Mas você conseguiu o que queria, não?! Lição brinde: pro
 ### Incrementando de leve
 Vamos adicionar uma margem = 20 nesse layout. Mudaremos a string de `H:|[v1]|` para:
 
-```swift
+~~~swift
 H:|-20-[v1]-20-|
-```
+~~~
 
 e `V:|[v1]|` para:
 
-```swift
+~~~swift
 V:|-20-[v1]-20-|
-```
+~~~
 
 Aí teremos como resultado:
 
@@ -95,7 +95,7 @@ Começando a ficar mais sério o papo, vamos adicionar mais views. Mantenha sua 
 
 Esse é o código completo até agora com as duas views em nosso layout
 
-```swift
+~~~swift
 let v1 = UIView(frame: CGRectZero)
 v1.backgroundColor = UIColor(red:0.5134,  green:0.8424,  blue:0.9366, alpha:0.6)
 v1.translatesAutoresizingMaskIntoConstraints = false
@@ -113,7 +113,8 @@ self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-
 // constraints para a view 2        
 self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v2]-20-|", options: [], metrics: nil, views: ["v2":v2]))
 self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[v1]-20-[v2]-20-|", options: [], metrics: nil, views: ["v1":v1, "v2":v2]))
-```
+~~~
+
 Esse é o resultado:
 
 <img src="{{ site.baseurl }}/img/dbonates/double.png">
@@ -128,17 +129,17 @@ Nesse trecho, além de adicionar a própria view:
 
 Ainda é um exemplo simples, mas você já consegue imaginar onde isso pode parar? Se estamos definindo uma string, por exemplo, que tal se ela embutir valores de variáveis? Exemplo:
 
-```swift
+~~~swift
 let padding:CGFloat = 10.0
-```
+~~~
 poderíamos alterar a string de visual format para:
 
-```swift
+~~~swift
 "V:[v1]-\(padding)-[v2]-\(padding)-|"
-```
+~~~
 Isso pode ir mais longe:
 
-```swift
+~~~swift
 // constraints para a view 1
 self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-\(pad)-[v1]-\(pad)-|", options: [], metrics: nil, views: ["v1":self.v1]))
 self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-\(pad)-[v1(==v2)]-\(pad)-[v2]", options: [], metrics: nil, views: ["v1":self.v1,"v2":self.v2]))
@@ -162,7 +163,7 @@ self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[v3]-
 // constraints para o label dentro de view 4
 v4.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[swipeDownInfo]-|", options: [], metrics: nil, views: ["swipeDownInfo" : swipeDownInfo]))
 v4.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[swipeDownInfo]-|", options: [], metrics: nil, views: ["swipeDownInfo" : swipeDownInfo]))     
-```
+~~~
 
 vai produzir isso:
 <img src="{{ site.baseurl }}/img/dbonates/fourbars.png">
