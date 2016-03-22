@@ -2,7 +2,7 @@
 layout:     post
 title:      "Introdução sobre Runtime em Objective-C"
 subtitle:   ""
-date:       2013-03-23 12:00:00
+date:       2013-03-23 12:00:00 
 author:     "Fernanda Gadeia Geraissate"
 header-img: "img/fggeraissate/relogio.jpg" 
 category:   "runtime"
