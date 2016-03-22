@@ -2,7 +2,7 @@
 layout:     post
 title:      "App Extension - Today Widget"
 subtitle:   "Introdução ao Today Extension"
-date:       2016-03-22 00:00:00
+date:       2016-03-27 00:00:00
 author:     "Renato Matos"
 header-img: "img/renatosarro/header-renatosarro.jpg"
 category:   ios
