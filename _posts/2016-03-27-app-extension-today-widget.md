@@ -70,28 +70,28 @@ Neste post, abordaremos 4 pontos principais sobre a implementação do **Today W
 
 Abra o **Xcode** e clique em **Create a new Xcode project**. Para este exemplo, podemos criar um Single View Application. Defina um nome para o seu projeto e let's play a game =)
 
-![]({{ site.baseurl }}/img/renatosarro/img1.png)
+<img src="{{ site.baseurl }}/img/renatosarro/img1.png">
 
 Com o projeto aberto, clique em **File > New > Target**.
 
 Em Application Extension, selecione **Today Extension**.
 
-![]({{ site.baseurl }}/img/renatosarro/img2.png)
+<img src="{{ site.baseurl }}/img/renatosarro/img2.png">
 
 Defina um nome para o projeto.
 
-![]({{ site.baseurl }}/img/renatosarro/img3.png)
+<img src="{{ site.baseurl }}/img/renatosarro/img3.png">
 
 Após isto, você será questionado se deseja ativar um scheme para o seu novo Target. 
 
 ######Particularmente, prefiro já ativar, pois desta forma você poderá rodar e debugar o seu target de forma independente.
-![]({{ site.baseurl }}/img/renatosarro/img4.png)
+<img src="{{ site.baseurl }}/img/renatosarro/img4.png">
 
 >Se preferir, não precisa ativar agora, pode adicionar depois se achar necessário
 
 Ao rodar o projeto você pode notar que ele já se encontra disponível no **Today Notification**.
 
-![]({{ site.baseurl }}/img/renatosarro/img5.png)
+<img src="{{ site.baseurl }}/img/renatosarro/img5.png">
 
 ###Manipulando Elementos Visuais
 
