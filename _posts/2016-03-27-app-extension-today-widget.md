@@ -17,6 +17,7 @@ Essa feature, tem como objetivo melhorar a **experiência do usuário** na forma
 
 Uma das partes mais interessantes, é que você pode expandir uma ou mais funcionalidades do seu app para outros app's, fazendo com os usuários possam interagir com seu app, mesmo se estiverem utilizando outro aplicativo.
 
+
 ---
 
 ### Podemos criar 6 tipos de extensions:
