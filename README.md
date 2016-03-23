@@ -87,7 +87,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
 - **22/03/2016:** 
 - **23/03/2016:** Método Swizzling, por [Fernanda Geraissate](https://github.com/fggeraissate)
-- **24/03/2016:** 
+- **24/03/2016:** Fastlane, por [Fábio Nogueira de Almeida](https://github.com/fabiotk)
 - **25/03/2016:** Optionals e o Gato de Schrödinger, por [Francesco Perrotti-Garcia](https://github.com/fpg1503)
 - **26/03/2016:** Criando frameworks universais, por [Guilherme Sampaio](https://github.com/gsampaio)
 - **27/03/2016:** App Extensions - Today Notification, por [Renato Matos](https://github.com/renatosarro)
