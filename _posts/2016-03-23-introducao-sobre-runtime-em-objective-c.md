@@ -20,11 +20,11 @@ Embora o runtime funcione na maior parte do tempo por debaixo dos panos, é inte
 
 Aqui será mostrado uma visão geral sobre o assunto, para mais detalhes é recomendado ler o “[Objective-C Runtime Programming Guide](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1)”.
 
-##Algumas definições
+## Algumas definições
 
 Para saber como o runtime funciona é importante entender algumas definições. Selector, método e implementação podem num primeiro momento parecer que são a mesma coisa, mas na verdade são diferentes etapas de um processo feito em tempo de execução. Os termos mais importantes serão descritos abaixo. Não esqueça de importar a biblioteca `<objc/runtime.h>` caso queira explorar os parâmetros a seguir.
 
-###Selector
+### Selector
 
 Um [selector](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/c/tdef/SEL) (`typedef struct objc_selector *SEL`) nada mais é do que o nome de um método, como por exemplo `viewDidAppear:`, `setObject:forKey:`, etc. Note que o ":" faz parte do selector e serve para identificar quando é preciso passar parâmetros para um método. Para trabalhar diretamente com um selector, basta fazer, por exemplo:
 
@@ -34,7 +34,7 @@ SEL selector = @selector(viewDidAppear:)
 SEL aSelector = NSSelectorFromString(@"viewDidAppear:")
 ~~~
 
-###Method
+### Method
 
 Um [método](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/c/tdef/Method) (`typedef struct objc_method *Method`) é a combinação de um selector e sua implementação. Para acessar um método de uma instância ou classe, basta fazer:
 
@@ -50,7 +50,7 @@ Method method = class_getClassMethod(class, selector);
 
 O método `class_getInstanceMethod(class, selector)` retorna o método de instância que corresponde a implementação de um selector em uma dada classe, ou NULL, caso, por exemplo, a classe ou a classe pai não tiver o método de instância para um selector específico.
 
-###Implementation
+### Implementation
 
 Uma [implementação](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/c/tag/IMP) (`id (*IMP)(id, SEL, …`)) é basicamente o que está escrito dentro do bloco de um código. Um objeto do tipo IMP é um tipo de dado que aponta para o início da função que implementa o método. O primeiro argumento (id) aponta para a memória de uma dada instância de uma classe (ou no caso de um método de classe, um ponteiro para uma [metaclasse](http://www.cocoawithlove.com/2010/01/what-is-meta-class-in-objective-c.html)), também chamado de "receiver" (aquele que recebe o método), o segundo é o nome do método (SEL) e os restantes são os parâmetros que um método requere. A implementação pode ser adquirida da seguinte forma:
 
@@ -58,7 +58,7 @@ Uma [implementação](https://developer.apple.com/library/mac/documentation/Coco
 IMP implementation = method_getImplementation(method);
 ~~~
 
-###Message
+### Message
 
 Enviar uma [mensagem](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/doc/uid/TP40001418-CH1g-88778) é invocar um selector junto com os parâmetros que serão enviados para um "receiver". Por exemplo, ao fazer:
 
@@ -74,7 +74,7 @@ objc_msgSend(button, @selector(setTitle:forState:), @"title", UIControlStateNorm
 
 e, assim, a mensagem enviada para o “receiver” button é o selector “setTitle:forState:” mais os argumentos “title” e “UIControlStateNormal”. É possível guardar uma mensagem em um objeto do tipo [NSInvocation](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSInvocation_Class/) para invocá-la posteriormente.
 
-###Method Signature
+### Method Signature
 
 A assinatura de um método ([NSMethodSignature](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSMethodSignature_Class/)) representa os tipos de dados que são aceitos e retornados por um método. Pode ser obtido por:
 
@@ -84,7 +84,7 @@ NSMethodSignature *signature = [receiver methodSignatureForSelector:selector];
 
 onde o receiver é o objeto que implementa o método e o selector é o nome do método, como já foi discutido anteriormente.
 
-###Invocation
+### Invocation
 
 Um objeto do tipo [NSInvocation](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSInvocation_Class/) é usado para guardar e enviar mensagens para um dado objeto. Ele contém todos os elementos necessários para enviar uma mensagem: um "receiver", um selector, parâmetros de envio e o valor que será retornado. Um exemplo de como implementar um objeto desse tipo é:
 
@@ -131,7 +131,7 @@ Se o leitor estiver familiarizado com testes unitários e usou o OCMock, já dev
 
 No caso, o objeto manager terá o retorno do bloco de resposta "mockado" toda vez que o método `successBlock:errorBlock:` for chamado. Note que o primeiro argumento é referenciado com o índice 2, o segundo a 3 e assim por diante (caso houvesse), devido ao fato do que foi discutido acima.
 
-##Juntando o quebra-cabeça
+## Juntando o quebra-cabeça
 
 Com estas definições em mente fica mais fácil entender como o processo em runtime funciona e como estes conceitos estão relacionados. 
 
@@ -147,7 +147,7 @@ Os objetos instanciados por sua vez possuem um ponteiro para a estrutura de clas
 
 Para acelerar o processo o sistema possui um cache para cada classe, que associa os selectors às implementações assim que vão sendo usadas. Quando uma mensagem for enviada, a função `objc_msgSend` checa primeiro esse cache antes de verificar a "dispatch table". Assim quanto mais tempo o programa for executado, mais rapidamente as mensagens serão enviadas.
 
-##Método Swizzling
+## Método Swizzling
 
 Uma das formas de se aplicar esses conceitos sobre runtime é através do método Swizzling, que consiste em modificar a "dispatch table", trocando selectors e implementações de dois métodos entre si.
 
@@ -274,6 +274,6 @@ Para finalizar, é necessário chamar o método `swizzlingViewDidAppear` no mét
 
 Como o método Swizzling muda o estado global da classe é preciso garantir que o código seja executado apenas uma vez, e por isso está sendo utilizado `dispatch_once`.
 
-##Cuidados a serem tomados
+## Cuidados a serem tomados
 
 Embora os conceitos acima forneçam ferramentas poderosas, deve-se tomar o máximo de cautela antes de aplicá-los. Além da maior parte do tempo não ser necessário usá-los explicitamente, não entender a fundo como o processo funciona, ou caso haja alguma modificação interna da linguagem, pode fazer com que o aplicativo quebre quando menos se espere. No caso do método Swizzling, há o problema de haver conflito com métodos com mesmo nome, além de tornar o código mais difícil de debugar. A dica final é: pense em todas as possibilidades antes de utilizar os exemplos citados acima.
