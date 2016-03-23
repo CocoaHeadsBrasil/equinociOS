@@ -52,7 +52,7 @@ O método `class_getInstanceMethod(class, selector)` retorna o método de instâ
 
 ###Implementation
 
-Uma [implementação](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/c/tag/IMP) (`id (*IMP)(id, SEL, …`)) é basicamente o que está escrito dentro do bloco de um código. Um objeto do tipo IMP é um tipo de dado que aponta para o início da função que implementa o código. O primeiro argumento (id) aponta para a memória de uma dada instância de uma classe (ou no caso de um método de classe, um ponteiro para uma [metaclasse](http://www.cocoawithlove.com/2010/01/what-is-meta-class-in-objective-c.html)), também chamado de "receiver" (aquele que recebe o método), o segundo é o nome do método (SEL) e os restantes são os parâmetros que um método requere. A implementação pode ser adquirida da seguinte forma:
+Uma [implementação](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/c/tag/IMP) (`id (*IMP)(id, SEL, …`)) é basicamente o que está escrito dentro do bloco de um código. Um objeto do tipo IMP é um tipo de dado que aponta para o início da função que implementa o método. O primeiro argumento (id) aponta para a memória de uma dada instância de uma classe (ou no caso de um método de classe, um ponteiro para uma [metaclasse](http://www.cocoawithlove.com/2010/01/what-is-meta-class-in-objective-c.html)), também chamado de "receiver" (aquele que recebe o método), o segundo é o nome do método (SEL) e os restantes são os parâmetros que um método requere. A implementação pode ser adquirida da seguinte forma:
 
 ~~~objc
 IMP implementation = method_getImplementation(method);
