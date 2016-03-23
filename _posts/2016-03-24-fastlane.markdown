@@ -8,13 +8,13 @@ header-img: "img/fabiotk/header.jpeg"
 category:   ios
 ---
 
-A Apple em seu ambiente de desenvolvimento fornece ferramentas para a implementação de processos automatizados, porém isso se restringe apenas na executação de testes unitários e envio do código fonte para a _itunes connect_. O processo de configuração das informações do app na loja é toda feita manualmente e esse processo pode levar horas e até mesmo dias para ser concluído.
+A Apple em seu ambiente de desenvolvimento fornece ferramentas para a implementação de processos automatizados, porém isso se restringe apenas na execução de testes unitários e envio do código fonte para a _iTunes Connect_. O processo de configuração das informações do app na loja é toda feita manualmente e esse processo pode levar horas e até mesmo dias para ser concluído.
 
 Dentro do processo de configuração da loja uma das tarefas mais demoradas e complexas é a de criar e manter as _screenshots_. Pensando na dificuldade que o desenvolvedor possui em realizar o processo de _deploy_ o fastlane foi criado para automatizar essas tarefas.
 
 Fastlane possui diversas ferramentas que auxilia o desenvolvedor. Ferramentas de automatização de processos, tais como: captura de _screenshots_, envio de informação e do código fonte diretamente para a loja, execução de testes, geração automática de  novos _provisioning profiles_, certificados de distribuição e certificados de _push notification_.
 
-O conjunto de ferramentas que o fastlane possui é separado por funcionalidades. São treze ferramentas voltadas para o desenvolvimento iOS e duas para o Android. Cada uma dessas ferramentas possui um comportamento especifico e ambas se comunicam entre si.
+O conjunto de ferramentas que o fastlane possui é separado por funcionalidades. São treze ferramentas voltadas para o desenvolvimento iOS e duas para o Android. Cada uma dessas ferramentas possui um comportamento específico e comunicam-se entre si.
 
 
 Neste artigo será abordado um básico sobre todas as ferramentas disponíveis e um estudo de caso para exemplificar o processo de criação de **screenshots** utilizando o **snapshot** e o **frameit**.
@@ -30,28 +30,28 @@ A integração contínua é um processo originado do desenvolvimento com metodol
 
 ##deliver
 
-O processo de submissão de aplicativo para a loja da Apple é um trabalho manual que as vezes pode levar horas. Precisamos criar textos informativos, _screenshots_ para diversos dispositivos em diversos idiomas e ainda por cima enviar o arquivo ipa do projeto.
+O processo de submissão de aplicativos para a loja da Apple é um trabalho manual que as vezes pode levar horas. Precisamos criar textos informativos, _screenshots_ para diversos dispositivos em diversos idiomas e ainda por cima enviar o arquivo ipa do projeto.
 Para solucionar esse problema foi desenvolvido o deliver. Com ele é possível com apenas uma única linha de comando realizar todas essas operações de uma maneira automática.
 
 ##snapshot
 
-Um dos processos mais demorados que existe na submissão de aplicativos para a loja é o momento de enviar _screenshots_. É preciso ter 5 imagens para cada dispositivo e caso o aplicativo possua um ou mais idiomas, o desenvolvedor precisa fazer outra sessão de _screenshots_ para aquele determinado idioma. <br />
+Um dos processos mais demorados que existe na submissão de aplicativos para a loja é o momento de enviar _screenshots_. É preciso ter 5 imagens para cada dispositivo e caso o aplicativo possua mais de um idioma, o desenvolvedor precisa fazer outra sessão de _screenshots_ para cada idioma adicional. <br />
 O desenvolvedor precisa acessar o simulador de cada dispositivo com o determinado idioma e navegar tela por tela, salvando e anexando as imagens na loja.
 
 A ferramenta snapshot é um automatizador para esse tipo de processo. Nele é possível mapear os momentos em que o simulador irá capturar uma imagem. Após a configuração com apenas uma linha de comando a ferramenta fornece todas as imagens com as configurações desejadas sem precisar de nenhuma intervenção do desenvolvedor.
 
 ##frameit
 
-No lançamento do iOS 7 a Apple orientou os desenvolvedores a não utilização de _screenshots_ customizadas. Foi sugerido como uma boa pratica imagens com apenas o conteúdo do aplicativo sem a utilização de textos explicativos, mockup e fundos ilustrativos. Porém mesmo com essa orientação, ainda existe diversos desenvolvedores que preferem enviar suas imagens customizadas. E é nesse processo que o frameit é utilizado. <br />
+No lançamento do iOS 7 a Apple orientou os desenvolvedores a não utilização de _screenshots_ customizadas. Foi sugerido como uma boa prática imagens com apenas o conteúdo do aplicativo sem a utilização de textos explicativos, mockup e fundos ilustrativos. Porém mesmo com essa orientação, ainda existem diversos desenvolvedores que preferem enviar suas imagens customizadas. E é nesse processo que o frameit é utilizado. <br />
 Ele é uma ferramenta de suporte ao snapshot. Após utilizar o snapshot para tirar as _screenshots_ do aplicativo, o frameit é utilizado para inserir informações, mockups e planos de fundos customizados para cada uma das imagem adquirida.
 
 
 O _framework_ fornece uma entrada de dados em formato json para que o desenvolvedor insira a formatação de títulos, descrição do produto, imagens e cores afim de automatizar toda a criação das imagens.
-Em um processo normal do dia a dia do desenvolvedor, é preciso de um editor de imagem para a customização do plano de fundo e navegar imagem por imagem a afim de inserir as informações desejadas. Com o frameit é muito mais simples. Basta preencher um json com as informações desejadas e executar uma única linha de comando para que inicie a criação das novas _screenshots_ customizadas.
+Em um processo normal do dia a dia do desenvolvedor, é preciso de um editor de imagem para a customização do plano de fundo e navegar imagem por imagem a fim de inserir as informações desejadas. Com o frameit é muito mais simples. Basta preencher um json com as informações desejadas e executar uma única linha de comando para que inicie a criação das novas _screenshots_ customizadas.
 
 ##cert
 
-Foi desenvolvido com o intuito de ajudar o desenvolvedor a gastar o seu tempo desenvolvendo do que perdendo tempo na administração dos certificados. O desenvolvedor Apple precisa possuir certificados para desenvolver e distribuir sua aplicação para os usuários.
+Foi desenvolvido com o intuito de ajudar o desenvolvedor a gastar o seu tempo desenvolvendo, ao invés de gastá-lo na administração dos certificados. O desenvolvedor Apple precisa possuir certificados para desenvolver e distribuir sua aplicação para os usuários.
 
 ##sigh
 
@@ -64,25 +64,25 @@ fastlane possui três ferramentas que trabalham com administração de certifica
 
 ##produce
 
-Fastlane e suas ferramentas foram criadas sempre pensando na automatização dos processos no decorrer do desenvolvimento para a plataforma da Apple. E sendo assim, não poderia falta um automatizador para criar um novo aplicativo na iTunes connect.
+Fastlane e suas ferramentas foram criadas sempre pensando na automatização dos processos no decorrer do desenvolvimento para a plataforma da Apple. E sendo assim, não poderia falta um automatizador para criar um novo aplicativo na iTunes Connect.
 
 Com o produce consegue-se criar um aplicativo e inserir todas as informações necessárias apenas utilizando o terminal. Pode ser integrado também no final de uma rotina de integração contínua. Para que se o aplicativo não existir na loja, o próprio _framework_ consiga criar e colocar todas as informações poupando o tempo do desenvolvedor.
 
 ##scan
 
-Assim como boa prática em integrações contínua e desenvolvimento de _software_. É altamente recomendado que exista testes unitários para garantir uma melhor qualidade no _software_ e para garantir que os testes estejam funcionando corretamente. O scan é a maneira mais fácil de executar os testes unitários de sua aplicação. Caso algum testes falhe a integração contínua irá falhar e assim não disponibilizará uma versão com defeito para o usuário.
+Assim como boa prática em integração contínua e desenvolvimento de _software_, é altamente recomendado que existam testes unitários para garantir uma melhor qualidade no _software_ e para garantir que os testes estejam funcionando corretamente. O scan é a maneira mais fácil de executar os testes unitários de sua aplicação. Caso algum teste falhe a integração contínua irá falhar e assim não disponibilizará uma versão com defeito para o usuário.
 
 ##gym
 
-Para enviar o aplicativo para a loja. Precisa-se construir o projeto pelo Xcode, entrar no site da iTunes Connect e anexar o arquivo da aplicação. A utilização do gym é baseada em executar todo o processo de arquivamento e anexo da aplicação na loja com apenas uma linha de comando.
+Para enviar o aplicativo para a loja precisa-se construir o projeto pelo Xcode, entrar no site da iTunes Connect e anexar o arquivo da aplicação. A utilização do gym é baseada em executar todo o processo de arquivamento e anexo da aplicação na loja com apenas uma linha de comando.
 
 ##pilot
 
-É a melhor forma de gerênciar o envio de build para usuários testers. O pilot auxilia na distribuição das versões de teste do aplicativo com grupos de pessoas a distância é de uma maneira muito simples. Apple recentemente comprou uma empresa chamada TestFlight que possui um _software_ de compartilhamento de aplicações para testes e com essa mudança, o _software_ foi integrado dentro da iTunnes Connect, afim de fornecer um novo recurso para o auxílio de seus desenvolvedores.
+É a melhor forma de gerenciar o envio de build para usuários testers. O pilot auxilia na distribuição das versões de teste do aplicativo com grupos de pessoas a distância e de uma maneira muito simples e integrado ao _TestFlight_, _software_ de compartilhamento de aplicações para testes adquirido pela Apple e integrado ao iTunes Connect como um novo recurso para o auxílio de seus desenvolvedores.  
 
 ##boarding
 
-Ferramenta que cria uma página simples da internet para cadastro de usuários testers do TestFlight. Auxilio o desenvolvedor no momento de cadastrar novos usuários testers. Basta enviar a página de cadastro para o futuro testers e assim que preencher um novo registro de tester no TestFlight será realizado.
+Ferramenta que cria uma página simples da internet para cadastro de usuários testers do TestFlight. Auxilia o desenvolvedor no momento de cadastrar novos usuários testers. Basta enviar a página de cadastro para o futuro tester, e um novo registro de tester no TestFlight será realizado.
 
 
 ##Spaceship
@@ -91,21 +91,21 @@ Biblioteca Ruby que fornece as API dos sites da iTunes Connect e Apple Developer
 
 #Estudo de caso
 
-Neste estudo de caso será abordado todo o processo que envolve a captura de _screenshots_ das telas do aplicativo utilização a ferramenta snapshot e customizar com textos e mockups utilizando a ferramenta frameit. A Figura 1 apresenta a página de informações de um aplicativo com suas imagens de _screenshots_.
+Neste estudo de caso será abordado todo o processo que envolve a captura de _screenshots_ das telas do aplicativo utilizando a ferramenta snapshot e a customização com textos e mockups utilizando a ferramenta frameit. A Figura 1 apresenta a página de informações de um aplicativo com suas imagens de _screenshots_.
 
 ![]({{ site.baseurl }}/img/fabiotk/itunes.png)
 <span class="caption text-muted">Exemplos de screenshots customizadas</span>
 
 A utilização do fastlane pode ser integrado com algum servidor de Integração contínua (Travis, Greenhouse, britise.io, jenkins, etc..) ou em qualquer outro computador. O fastlane está disponível como uma gem do Ruby. Portanto, é necessário apenas executar a seguinte linha de comando que o Ruby ficará responsável por todo o processo de instalação `sudo gem install fastlane`.
-Após a instalação, o próximo passo é a implementação do fastlane no projeto. O comando `fastlane init` inicializará a inclusão do _framework_ dentro do projeto escolhido automaticamente. Após a instalação no projeto. O instalador criará uma pasta chamada fastlane com arquivos de configuração.
+Após a instalação, o próximo passo é a implementação do fastlane no projeto. O comando `fastlane init` inicializará a inclusão do _framework_ dentro do projeto escolhido automaticamente. Após a instalação no projeto, o instalador criará uma pasta chamada fastlane com arquivos de configuração.
 
 
 ## Mapeando telas do app utilizando testes de interface
 
 Para realizar o mapeamento das views que serão transformadas em imagens, o _framework_ utilizada uma funcionalidade recentemente lançada pela Apple que se chama UI Tests. <br />
-UI Tests é uma funcionalidade integra no Xcode que auxilia o desenvolvedor na criação de testes de interface do usuário. Nela é possível criar testes unitários utilizando as interações do usuário na aplicação. <br />
+UI Tests é uma funcionalidade integrada no Xcode que auxilia o desenvolvedor na criação de testes de interface do usuário. Nela é possível criar testes unitários utilizando as interações do usuário na aplicação. <br />
 
-Para mapear as views é obrigatório a importação do arquivo `snapshotHelper` que se encontra no diretório padrão do fastlane no projeto. Esse arquivo possui métodos que iremos utilizar na criação dos testes unitários. Com o arquivo importado, é necessário a criação de uma classe de `UI Test Case Class` e implementar a sobreescrita do método `setUp()`.
+Para mapear as views é obrigatório a importação do arquivo `snapshotHelper`, que se encontra no diretório padrão do fastlane no projeto. Esse arquivo possui métodos que iremos utilizar na criação dos testes unitários. Com o arquivo importado, é necessário a criação de uma classe de `UI Test Case Class` e implementar a sobreescrita do método `setUp()`.
 
 ~~~swift
 override func setUp() {
@@ -137,7 +137,7 @@ func testTakeScreenshots() {
 
 
 ##Configurando a ferramenta snapshot
-A configuração do arquivo snapfile que se encontra dentro da pasta fastlane do projeto possui ações que define algumas configurações que são permitidas. Tipo de dispositivo, idioma, diretório e versão do sistema operacional são algumas das opções que podem ser utilizadas. <br />
+O _snapfile_, arquivo que se encontra dentro da pasta fastlane do projeto, possui configurações que permitem definir o tipo de dispositivo, idioma, diretório e versão do sistema operacional que podem ser utilizadas. <br />
 
 Segue um exemplo de configuração do arquivo `snapfile`.
 
@@ -165,9 +165,9 @@ output_directory "./fastlane/screenshots"
  workspace "./alldayDO.xcworkspace"
 ~~~
 
-Da mesma forma que temos um arquivo para configuração da ferramenta snapfile, o fastlane possui um arquivo que administra o uso de suas ferramentas. E nesse arquivo é utilizado as `lanes` para a criação de fluxos de tarefas.
+Da mesma forma que temos um arquivo para configuração da ferramenta snapshot, o fastlane possui um arquivo que administra o uso de suas ferramentas. E nesse arquivo é utilizado as `lanes` para a criação de fluxos de tarefas.
 
-A seguir está um exemplo de uma lane chamado `screenshots` do faz uso da ferramenta snapshot.
+A seguir está um exemplo de uma lane chamado `screenshots`, que faz uso da ferramenta snapshot.
 
 ~~~
 default_platform :ios
@@ -187,9 +187,9 @@ Após as configurações do fastlane e do snapshot é necessário realizar a exe
 ![]({{ site.baseurl }}/img/fabiotk/snapshot.png)
 <span class="caption text-muted">Sumário das atividades do snapshot a serem executadas e o simulador em execução</span>
 
-Assim que finalizada a execução com sucesso, as imagens serão salvas no diretório padrão ou no diretório especificado anteriormente. Dentro desse diretório deve conter imagens de todos os dispositivos em seus respectivos idiomas.
+Assim que finalizada a execução com sucesso, as imagens serão salvas no diretório padrão ou no diretório especificado anteriormente. Esse diretório conterá as imagens de todos os dispositivos em seus respectivos idiomas.
 
-A imagem a seguir mostra o resultado da execução do snapshot. Perceba que foi criado duas pastas para cada idioma. Português e Inglês. E dentro dessas pastas contém todas as capturas de telas dos dispositivos iPhone 4, iPhone 5 e iPhone 5s. Todos os modelos de dispositivos que configuramos anteriormente.
+A imagem a seguir mostra o resultado da execução do snapshot. Perceba que foram criadas duas pastas para cada idioma, português e inglês. E essas pastas contêm todas as capturas de telas dos dispositivos iPhone 4, iPhone 5 e iPhone 5s, todos os modelos de dispositivos que configuramos anteriormente.
 
 ![]({{ site.baseurl }}/img/fabiotk/diretorio.png)
 <span class="caption text-muted">Resultado final das capturas de telas</span>
@@ -199,9 +199,9 @@ A imagem a seguir mostra o resultado da execução do snapshot. Perceba que foi 
 Neste tópico será abordado como realizar customizações automáticas das *screenshots* que capturamos. <br />
 Para iniciar a customização das imagens é necessário realizar o _download_ das imagens de _mockup_ dos dispositivos da Apple e exportar no diretório `~/.frameit/devices_frames`. Após ter escolhido os dispositivos, o próximo passo será definir textos, fontes e plano de fundo, do qual são configurados em uma estrutura json no arquivo `framefile.json` .
 
-**Esse processo de customização não possui a necessidade de um editor de imagem. A ferramente proporciona ao desenvolvedor a possibilidade de criar imagens customizadas sem ter nenhum conhecimento técnico de ferramenta de edição de imagem**.
+**Esse processo de customização não possui a necessidade de um editor de imagem. A ferramente proporciona ao desenvolvedor a possibilidade de criar imagens customizadas sem ter nenhum conhecimento técnico de ferramentas de edição de imagem**.
 
-A seguir possui uma demonstração de um lane utilizando captura e customização de telas e imagens mostrando uma tela capturada e sua customização feita com um mockup de iPhone.
+A seguir vemos uma demonstração de um lane utilizando captura e customização de telas e imagens mostrando uma tela capturada e sua customização feita com um mockup de iPhone.
 
 ~~~
   desc "Capturando telas e realizando customização"
@@ -216,13 +216,13 @@ A seguir possui uma demonstração de um lane utilizando captura e customizaçã
 <span class="caption text-muted">Captura de tela pelo snapshot</span>
 
 ![]({{ site.baseurl }}/img/fabiotk/dashboardCustomizado.png)
-<span class="caption text-muted">Imagem captura dentro de um mockup feito pelo frameit</span>
+<span class="caption text-muted">Imagem capturada dentro de um mockup feito pelo frameit</span>
 
 #Conclusão
 
 Percebemos claramente a vantagem que se tem quando automatizamos nosso processo de *deploy*. Conseguimos poupar tempo, esforço e ainda garantir mais qualidade no que está sendo enviado para a loja.<br />
-A importância de um aplicativo testado e sem erros é essencial na disputa pelo mercado dentro da Apple Store.
-Pode ser dito que o fastlane é uma das ferramentas mais utilizadas para integrar a integração contínua com o ambiente de desenvolvimento da Apple.
+Um aplicativo testado e sem erros é essencial na disputa pelo mercado dentro da Apple Store.
+Pode ser dito que o fastlane é uma das ferramentas mais utilizadas para adotar a integração contínua com o ambiente de desenvolvimento da Apple.
 
 Bons códigos e caso tenham alguma dúvida e só perguntar =)
 
