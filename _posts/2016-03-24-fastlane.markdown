@@ -8,7 +8,7 @@ header-img: "img/fabiotk/header.jpeg"
 category:   ios
 ---
 
-A Apple em seu ambiente de desenvolvimento fornece ferramentas para a implementação de processos automatizados, porém isso se restringe apenas na execução de testes unitários e envio do código fonte para a _iTunes Connect_. O processo de configuração das informações do app na loja é toda feita manualmente e esse processo pode levar horas e até mesmo dias para ser concluído.
+A Apple em seu ambiente de desenvolvimento fornece ferramentas para a implementação de processos automatizados, porém isso se restringe apenas na execução de testes unitários e envio do código fonte para a iTunes Connect. O processo de configuração das informações do app na loja é toda feita manualmente e esse processo pode levar horas e até mesmo dias para ser concluído.
 
 Dentro do processo de configuração da loja uma das tarefas mais demoradas e complexas é a de criar e manter as _screenshots_. Pensando na dificuldade que o desenvolvedor possui em realizar o processo de _deploy_ o fastlane foi criado para automatizar essas tarefas.
 
@@ -91,19 +91,21 @@ Biblioteca Ruby que fornece as API dos sites da iTunes Connect e Apple Developer
 
 #Estudo de caso
 
-Neste estudo de caso será abordado todo o processo que envolve a captura de _screenshots_ das telas do aplicativo utilizando a ferramenta snapshot e a customização com textos e mockups utilizando a ferramenta frameit. A Figura 1 apresenta a página de informações de um aplicativo com suas imagens de _screenshots_.
+Neste estudo de caso será abordado todo o processo que envolve a captura de _screenshots_ das telas do aplicativo utilizando a ferramenta snapshot e a customização com textos e mockups utilizando a ferramenta frameit.
 
 ![]({{ site.baseurl }}/img/fabiotk/itunes.png)
 <span class="caption text-muted">Exemplos de screenshots customizadas</span>
 
 A utilização do fastlane pode ser integrado com algum servidor de Integração contínua (Travis, Greenhouse, britise.io, jenkins, etc..) ou em qualquer outro computador. O fastlane está disponível como uma gem do Ruby. Portanto, é necessário apenas executar a seguinte linha de comando que o Ruby ficará responsável por todo o processo de instalação `sudo gem install fastlane`.
+
+
 Após a instalação, o próximo passo é a implementação do fastlane no projeto. O comando `fastlane init` inicializará a inclusão do _framework_ dentro do projeto escolhido automaticamente. Após a instalação no projeto, o instalador criará uma pasta chamada fastlane com arquivos de configuração.
 
 
 ## Mapeando telas do app utilizando testes de interface
 
-Para realizar o mapeamento das views que serão transformadas em imagens, o _framework_ utilizada uma funcionalidade recentemente lançada pela Apple que se chama UI Tests. <br />
-UI Tests é uma funcionalidade integrada no Xcode que auxilia o desenvolvedor na criação de testes de interface do usuário. Nela é possível criar testes unitários utilizando as interações do usuário na aplicação. <br />
+Para realizar o mapeamento das views que serão transformadas em imagens, o _framework_ utilizada uma funcionalidade recentemente lançada que se chama **UI Tests**. <br />
+UI Tests é uma funcionalidade integrada ao Xcode que auxilia o desenvolvedor na criação de testes de interface do usuário. Nela é possível criar testes unitários utilizando as interações do usuário na aplicação. <br />
 
 Para mapear as views é obrigatório a importação do arquivo `snapshotHelper`, que se encontra no diretório padrão do fastlane no projeto. Esse arquivo possui métodos que iremos utilizar na criação dos testes unitários. Com o arquivo importado, é necessário a criação de uma classe de `UI Test Case Class` e implementar a sobreescrita do método `setUp()`.
 
@@ -179,7 +181,7 @@ platform :ios do
 end
 ~~~
 
-Após as configurações do fastlane e do snapshot é necessário realizar a execução do lane criado.<br /> No terminal execute o comando `fastlane screenshots` e perceba que o simulador começara a ser executado e todo o processo de captura estará sendo feito automaticamente.
+Após as configurações do fastlane e do snapshot é necessário realizar a execução do lane criado.<br /> No terminal execute o comando `fastlane screenshots` e perceba que o simulador será executado e todo o processo de captura estará sendo feito automaticamente.
 
 ![]({{ site.baseurl }}/img/fabiotk/terminal.png)
 <span class="caption text-muted">Executando o lane screenshots</span>
@@ -187,7 +189,7 @@ Após as configurações do fastlane e do snapshot é necessário realizar a exe
 ![]({{ site.baseurl }}/img/fabiotk/snapshot.png)
 <span class="caption text-muted">Sumário das atividades do snapshot a serem executadas e o simulador em execução</span>
 
-Assim que finalizada a execução com sucesso, as imagens serão salvas no diretório padrão ou no diretório especificado anteriormente. Esse diretório conterá as imagens de todos os dispositivos em seus respectivos idiomas.
+Assim que finalizada a execução, as imagens serão salvas no diretório padrão ou no diretório especificado anteriormente. Esse diretório conterá as imagens de todos os dispositivos em seus respectivos idiomas.
 
 A imagem a seguir mostra o resultado da execução do snapshot. Perceba que foram criadas duas pastas para cada idioma, português e inglês. E essas pastas contêm todas as capturas de telas dos dispositivos iPhone 4, iPhone 5 e iPhone 5s, todos os modelos de dispositivos que configuramos anteriormente.
 
@@ -197,11 +199,11 @@ A imagem a seguir mostra o resultado da execução do snapshot. Perceba que fora
 ##Customizando as screenshots com o frameit
 
 Neste tópico será abordado como realizar customizações automáticas das *screenshots* que capturamos. <br />
-Para iniciar a customização das imagens é necessário realizar o _download_ das imagens de _mockup_ dos dispositivos da Apple e exportar no diretório `~/.frameit/devices_frames`. Após ter escolhido os dispositivos, o próximo passo será definir textos, fontes e plano de fundo, do qual são configurados em uma estrutura json no arquivo `framefile.json` .
+Para iniciar a customização das imagens é necessário realizar o _download_ das imagens de [mockup](https://developer.apple.com/app-store/marketing/guidelines/#images) dos dispositivos da Apple e exportar no diretório `~/.frameit/devices_frames`. Após ter escolhido os dispositivos, o próximo passo será definir textos, fontes e plano de fundo, do qual são configurados em uma estrutura json no arquivo `framefile.json` .
 
 **Esse processo de customização não possui a necessidade de um editor de imagem. A ferramente proporciona ao desenvolvedor a possibilidade de criar imagens customizadas sem ter nenhum conhecimento técnico de ferramentas de edição de imagem**.
 
-A seguir vemos uma demonstração de um lane utilizando captura e customização de telas e imagens mostrando uma tela capturada e sua customização feita com um mockup de iPhone.
+A seguir será apresentado uma demonstração de `lane` utilizando snapshot e frameit. Também consta imagens ilustrando o resultado final de cada ferramenta.
 
 ~~~
   desc "Capturando telas e realizando customização"
@@ -216,11 +218,11 @@ A seguir vemos uma demonstração de um lane utilizando captura e customização
 <span class="caption text-muted">Captura de tela pelo snapshot</span>
 
 ![]({{ site.baseurl }}/img/fabiotk/dashboardCustomizado.png)
-<span class="caption text-muted">Imagem capturada dentro de um mockup feito pelo frameit</span>
+<span class="caption text-muted">Imagem customizada gerada utilizando mockup do dispositivo pelo frameit</span>
 
 #Conclusão
 
-Percebemos claramente a vantagem que se tem quando automatizamos nosso processo de *deploy*. Conseguimos poupar tempo, esforço e ainda garantir mais qualidade no que está sendo enviado para a loja.<br />
+É notável a vantagem que se tem quando é utilizado o fastlane no processo de *deploy*. É economizado tempo, esforço e ainda garantimos mais qualidade no que está sendo enviado para a loja.<br />
 Um aplicativo testado e sem erros é essencial na disputa pelo mercado dentro da Apple Store.
 Pode ser dito que o fastlane é uma das ferramentas mais utilizadas para adotar a integração contínua com o ambiente de desenvolvimento da Apple.
 
@@ -231,6 +233,7 @@ Obs: Se aventure pelas outras ferramentas do fastlane, elas são bem legais.
 # Referências
 
 [Fastlane](https://fastlane.tools/) <br />
-[Martin Fowler](http://martinfowler.com/articles/continuousIntegration.html)
+[Martin Fowler](http://martinfowler.com/articles/continuousIntegration.html) <br />
+[Mockup dos produtos da Apple](https://developer.apple.com/app-store/marketing/guidelines/#images)
 
 > Fábio Nogueira de Almeida <a href="http://www.twitter.com/fabink" target="_blank">@fabintk</a>
