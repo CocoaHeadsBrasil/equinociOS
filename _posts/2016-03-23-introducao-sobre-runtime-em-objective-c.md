@@ -149,7 +149,7 @@ Para acelerar o processo o sistema possui um cache para cada classe, que associa
 
 ##Método Swizzling
 
-Uma das formas de se aplicar esses conceitos sobre runtime é através do método Swizzling, que consiste em modificar a "dispatch table" trocando selectors e implementações de dois métodos entre si.
+Uma das formas de se aplicar esses conceitos sobre runtime é através do método Swizzling, que consiste em modificar a "dispatch table", trocando selectors e implementações de dois métodos entre si.
 
 Imagine que se queira, por exemplo, adicionar um log toda vez que uma tela aparece:
 
