@@ -16,7 +16,7 @@ Alguns leitores estão familiarizados com bibliotecas como [Specta](https://gith
 
 Isto fornece uma flexibilidade que pode ser aproveitada de diversas maneiras. Uma das mais conhecidas é consultar informações sobre um dado objeto, através de métodos como `isKindOfClass:`, `respondsToSelector:`, `conformsToProtocol:` e assim por diante. Pode-se também adicionar novos métodos, chamá-los e até mudar a sua implementação em runtime. Isto é comumente utilizado no OCMock, quando, por exemplo, um objeto "mockado" não mais depende de um serviço para obter a resposta de uma chamada, e sim, retorna um JSON que foi previamente setado.
 
-Embora o runtime funcione na maior parte do tempo por debaixo dos panos, é interessante estudar mais sobre o assunto não só para entender melhor como a linguagem funciona mas também para evitar dar passos que muitas vezes são executados de forma corriqueira sem entender muito bem a razão pela qual estão sendo executados.
+Embora o runtime funcione na maior parte do tempo por debaixo dos panos, é interessante estudar mais sobre o assunto não só para entender melhor como a estrutura da linguagem funciona mas também para entender a razão pela qual alguns passos são realizados.
 
 Aqui será mostrado uma visão geral sobre o assunto, para mais detalhes é recomendado ler o “[Objective-C Runtime Programming Guide](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1)”.
 
