@@ -16,7 +16,7 @@ Alguns leitores estão familiarizados com bibliotecas como [Specta](https://gith
 
 Isto fornece uma flexibilidade que pode ser aproveitada de diversas maneiras. Uma das mais conhecidas é consultar informações sobre um dado objeto, através de métodos como `isKindOfClass:`, `respondsToSelector:`, `conformsToProtocol:` e assim por diante. Pode-se também adicionar novos métodos, chamá-los e até mudar a sua implementação em runtime. Isto é comumente utilizado no OCMock, quando, por exemplo, um objeto "mockado" não mais depende de um serviço para obter a resposta de uma chamada, e sim, retorna um JSON que foi previamente setado.
 
-Embora o runtime funcione na maior parte do tempo por debaixo dos panos, é interessante estudar mais sobre o assunto não só para entender melhor como a linguagem funciona mas também para evitar passos que muitas vezes são executados de forma corriqueira sem entender muito bem o por que.
+Embora o runtime funcione na maior parte do tempo por debaixo dos panos, é interessante estudar mais sobre o assunto não só para entender melhor como a estrutura da linguagem funciona mas também para entender a razão pela qual alguns passos são realizados.
 
 Aqui será mostrado uma visão geral sobre o assunto, para mais detalhes é recomendado ler o “[Objective-C Runtime Programming Guide](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1)”.
 
@@ -52,7 +52,7 @@ O método `class_getInstanceMethod(class, selector)` retorna o método de instâ
 
 ###Implementation
 
-Uma [implementação](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/c/tag/IMP) (`id (*IMP)(id, SEL, …`)) é basicamente o que está escrito dentro do bloco de um código. Um objeto do tipo IMP é um tipo de dado que aponta para o início da função que implementa o código. O primeiro argumento (id) aponta para a memória de uma dada instância de uma classe (ou no caso de um método de classe, um ponteiro para uma [metaclasse](http://www.cocoawithlove.com/2010/01/what-is-meta-class-in-objective-c.html)), também chamado de "receiver" (aquele que recebe o método), o segundo é o nome do método (SEL) e os restantes são os parâmetros que um método requere. A implementação pode ser adquirida da seguinte forma:
+Uma [implementação](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html#//apple_ref/c/tag/IMP) (`id (*IMP)(id, SEL, …`)) é basicamente o que está escrito dentro do bloco de um código. Um objeto do tipo IMP é um tipo de dado que aponta para o início da função que implementa o método. O primeiro argumento (id) aponta para a memória de uma dada instância de uma classe (ou no caso de um método de classe, um ponteiro para uma [metaclasse](http://www.cocoawithlove.com/2010/01/what-is-meta-class-in-objective-c.html)), também chamado de "receiver" (aquele que recebe o método), o segundo é o nome do método (SEL) e os restantes são os parâmetros que um método requere. A implementação pode ser adquirida da seguinte forma:
 
 ~~~objc
 IMP implementation = method_getImplementation(method);
@@ -140,16 +140,16 @@ No Objective-C, a estrutura de uma classe possui:
 * Um ponteiro para a classe pai (ou superclass)
 * Uma "dispatch table", onde cada entrada associa um selector a uma implementação.
 
-Os objetos instanciados por sua vez possuem um ponteiro para a estrutura de classe, chamado `isa`, que dá ao objeto acesso a sua classe e, por meio da classe, a todas as classes que herda. Ao enviar uma mensagem a um objeto, a função `objc_msgSend(receiver, selector, arg1, arg 2, etc…)` segue o isa que aponta para a estrutura de classe e tenta encontrar o selector na "dispatch table". Caso não encontre, a função segue o ponteiro que aponta para a superclass e tenta encontrar o selector na “dispatch table” dela. Falhas sucessivas fazem com que `objc_msgSend` vá subindo na hierarquia de classes até chegar na classe NSObject. Uma vez localizado o selector, o `objc_msgSend` chama o método correspondente e repassa os parâmetros, caso contrário, ocorre uma exceção. Dessa forma, as implementações são escolhidas em tempo de execução.
+Os objetos instanciados por sua vez possuem um ponteiro para a estrutura de classe, chamado `isa`, que dá ao objeto acesso a sua classe e, por meio da classe, a todas as classes que herda. Ao enviar uma mensagem a um objeto, a função `objc_msgSend(receiver, selector, arg1, arg 2, etc…)` segue o isa que aponta para a estrutura de classe e tenta encontrar o selector na "dispatch table". Caso não encontre, a função segue o ponteiro que aponta para a superclass e tenta encontrar o selector na “dispatch table” dela. Falhas sucessivas fazem com que `objc_msgSend` vá subindo na hierarquia de classes até chegar na classe NSObject. Uma vez localizado o selector, o `objc_msgSend` chama o método correspondente e repassa os parâmetros, caso contrário, ocorre uma exceção. Dessa forma as implementações são escolhidas em tempo de execução.
 
 ![]({{ site.baseurl }}/img/fggeraissate/messaging.gif)
 <span class="caption text-muted">Créditos: https://developer.apple.com</span>
 
-Para acelerar o processo, o sistema possui um cache para cada classe, que associa os selectors às implementações assim que vão sendo usadas. Quando uma mensagem for enviada, a função `objc_msgSend` checa primeiro esse cache antes de verificar a "dispatch table". Assim quanto mais tempo o programa for executado, mais rapidamente as mensagens serão enviadas.
+Para acelerar o processo o sistema possui um cache para cada classe, que associa os selectors às implementações assim que vão sendo usadas. Quando uma mensagem for enviada, a função `objc_msgSend` checa primeiro esse cache antes de verificar a "dispatch table". Assim quanto mais tempo o programa for executado, mais rapidamente as mensagens serão enviadas.
 
 ##Método Swizzling
 
-Uma das formas de se aplicar esses conceitos sobre runtime é através do método Swizzling, que consiste em modificar a "dispatch table" trocando selectors e implementações de dois métodos entre si.
+Uma das formas de se aplicar esses conceitos sobre runtime é através do método Swizzling, que consiste em modificar a "dispatch table", trocando selectors e implementações de dois métodos entre si.
 
 Imagine que se queira, por exemplo, adicionar um log toda vez que uma tela aparece:
 
