@@ -2,7 +2,7 @@
 layout:     post
 title:      "Introdução sobre Runtime em Objective-C"
 subtitle:   ""
-date:       2013-03-23 12:00:00 
+date:       2016-03-23 00:00:00 
 author:     "Fernanda Gadeia Geraissate"
 header-img: "img/fggeraissate/relogio.jpg" 
 category:   "runtime"
@@ -10,7 +10,7 @@ category:   "runtime"
 
 # Introdução sobre Runtime em Objective-C
 
-Alguns leitores estão familiarizados com bibliotecas como [Specta](https://github.com/specta/specta), [OCMock](http://ocmock.org/) e [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa). O que num primeiro momento pode parecer mágica, estas ferramentas na verdade exploram ao máximo o fato do Objective-C ser uma linguagem dinâmica, isto é, o código em questão toma decisões em tempo de execução ("runtime") [sempre que possível](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1).
+Alguns leitores estão familiarizados com bibliotecas como [Specta](https://github.com/specta/specta), [OCMock](http://ocmock.org/) e [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa). O que em um primeiro momento pode parecer mágica, estas ferramentas na verdade exploram ao máximo o fato do Objective-C ser uma linguagem dinâmica, isto é, o código em questão toma decisões em tempo de execução ("runtime") [sempre que possível](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1).
 
 ![]({{ site.baseurl }}/img/fggeraissate/bobruntime.jpg)
 
@@ -22,7 +22,7 @@ Aqui será mostrado uma visão geral sobre o assunto, para mais detalhes é reco
 
 ##Algumas definições
 
-Para saber como o runtime funciona é importante entender algumas definições. Selector, método e implementação podem num primeiro momento parecer que são a mesma coisa, mas na verdade são diferentes etapas de um processo feito em tempo de execução. Os termos mais importantes serão descritos a baixo. Não esqueça de implementar a biblioteca `<objc/runtime.h>` caso queira explorar os parâmetros a seguir.
+Para saber como o runtime funciona é importante entender algumas definições. Selector, método e implementação podem num primeiro momento parecer que são a mesma coisa, mas na verdade são diferentes etapas de um processo feito em tempo de execução. Os termos mais importantes serão descritos abaixo. Não esqueça de importar a biblioteca `<objc/runtime.h>` caso queira explorar os parâmetros a seguir.
 
 ###Selector
 
@@ -114,7 +114,7 @@ void invokeSelector(id receiver, SEL selector, NSArray *arrayArguments) {
 }
 ~~~
 
-Note que os argumentos são setados a partir do índice 2. Isto porque os índices 0 e 1 são reservados para os argumentos self e _cmd, respectivamente, e devem ser setados explicitamente como mostrado a cima, onde self é igual ao receiver e _cmd é o selector.
+Note que os argumentos são setados a partir do índice 2. Isto porque os índices 0 e 1 são reservados para os argumentos self e _cmd, respectivamente, e devem ser setados explicitamente como mostrado acima, onde self é igual ao receiver e _cmd é o selector.
 
 Se o leitor estiver familiarizado com testes unitários e usou o OCMock, já deve ter se deparado com a seguinte situação:
 
@@ -129,7 +129,7 @@ Se o leitor estiver familiarizado com testes unitários e usou o OCMock, já dev
 }] successBlock:[OCMArg any] errorBlock:[OCMArg any]];
 ~~~
 
-No caso, o objeto manager terá o retorno do bloco de resposta "mockado" toda vez que o método `successBlock:errorBlock:` for chamado. Note que o primeiro argumento é referenciado com o índice 2, o segundo a 3 e assim por diante (caso houvesse), devido ao fato do que foi discutido a cima.
+No caso, o objeto manager terá o retorno do bloco de resposta "mockado" toda vez que o método `successBlock:errorBlock:` for chamado. Note que o primeiro argumento é referenciado com o índice 2, o segundo a 3 e assim por diante (caso houvesse), devido ao fato do que foi discutido acima.
 
 ##Juntando o quebra-cabeça
 
@@ -171,7 +171,7 @@ Agora imagine repetir este processo para uma UIViewController, UITableViewContro
 
 Resumidamente, será implementado o método `extensionViewDidAppear:` (que conterá a implementação do log) e será trocado a implementação dele com o do `viewDidAppear:`. Assim quando for enviado a mensagem para a viewController com o selector `viewDidAppear:`, será na verdade executado a implementação de `extensionViewDidAppear:`. Além do log, o método `extensionViewDidAppear:` irá chamar `[self extensionViewDidAppear:]`. Como os selectors estão trocados, a implementação de `viewDidAppear:` será executada e o processo poderá continuar normalmente. O código a seguir pode ser encontrado no [Github](https://github.com/fggeraissate/FGSwizzlingExample).
 
-O primeiro passo é criar uma categoria e implementar a biblioteca `<objc/runtime.h>`:
+O primeiro passo é criar uma categoria e importar a biblioteca `<objc/runtime.h>`:
 
 ~~~objc
 #import "UIViewController+Swizzling.h"
@@ -212,7 +212,7 @@ Method methodSwizz = class_getInstanceMethod(class, selectorSwizz);
 */
 ~~~
 
-Primeiro é resgatado a classe do objeto no qual o método `viewDidAppear:` é implementado. Depois, guarda-se os selectors e métodos de `viewDidAppear:` e `extensionViewDidAppear:`. As linhas comentadas a cima mostram como fazer este mesmo processo para métodos de classe. Feito isso será pego a implementação dos respectivos métodos:
+Primeiro é resgatado a classe do objeto no qual o método `viewDidAppear:` é implementado. Depois, guarda-se os selectors e métodos de `viewDidAppear:` e `extensionViewDidAppear:`. As linhas comentadas acima mostram como fazer este mesmo processo para métodos de classe. Feito isso será pego a implementação dos respectivos métodos:
 
 ~~~objc
 IMP implementationOriginal = method_getImplementation(methodOriginal);
@@ -228,7 +228,7 @@ BOOL didAddMethod = class_addMethod(class,
                                     method_getTypeEncoding(methodSwizz));
 ~~~
 
-Em caso de sucesso, o próximo passo será fazer com que a classe em questão adicione um método com o nome de `extensionViewDidAppear:` mas com a implementação do método original. Caso contrário, significa que a classe já contém uma implementação com o dado nome. Neste caso, é necessário apenas trocas suas implementações:
+Em caso de sucesso, o próximo passo será fazer com que a classe em questão adicione um método com o nome de `extensionViewDidAppear:` mas com a implementação do método original. Caso contrário, significa que a classe já contém uma implementação com o dado nome. Neste caso, é necessário apenas trocar suas implementações:
 
 ~~~objc
 if (didAddMethod) {
@@ -276,4 +276,4 @@ Como o método Swizzling muda o estado global da classe é preciso garantir que 
 
 ##Cuidados a serem tomados
 
-Embora os conceitos a cima forneçam ferramentas poderosas, deve-se tomar o máximo de cautela antes de aplicá-los. Além da maior parte do tempo não ser necessário usá-los explicitamente, não entender a fundo como o processo funciona, ou caso haja alguma modificação interna da linguagem, pode fazer com que o aplicativo quebre quando menos se espere. No caso do método Swizzling, há o problema de haver conflito com métodos com mesmo nome, além de tornar o código mais difícil de debugar. A dica final é: pense em todas as possibilidades antes de utilizar os exemplos citados a cima.
+Embora os conceitos acima forneçam ferramentas poderosas, deve-se tomar o máximo de cautela antes de aplicá-los. Além da maior parte do tempo não ser necessário usá-los explicitamente, não entender a fundo como o processo funciona, ou caso haja alguma modificação interna da linguagem, pode fazer com que o aplicativo quebre quando menos se espere. No caso do método Swizzling, há o problema de haver conflito com métodos com mesmo nome, além de tornar o código mais difícil de debugar. A dica final é: pense em todas as possibilidades antes de utilizar os exemplos citados acima.
