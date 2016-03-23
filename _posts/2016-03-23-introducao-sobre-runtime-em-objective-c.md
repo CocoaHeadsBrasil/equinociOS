@@ -140,12 +140,12 @@ No Objective-C, a estrutura de uma classe possui:
 * Um ponteiro para a classe pai (ou superclass)
 * Uma "dispatch table", onde cada entrada associa um selector a uma implementação.
 
-Os objetos instanciados por sua vez possuem um ponteiro para a estrutura de classe, chamado `isa`, que dá ao objeto acesso a sua classe e, por meio da classe, a todas as classes que herda. Ao enviar uma mensagem a um objeto, a função `objc_msgSend(receiver, selector, arg1, arg 2, etc…)` segue o isa que aponta para a estrutura de classe e tenta encontrar o selector na "dispatch table". Caso não encontre, a função segue o ponteiro que aponta para a superclass e tenta encontrar o selector na “dispatch table” dela. Falhas sucessivas fazem com que `objc_msgSend` vá subindo na hierarquia de classes até chegar na classe NSObject. Uma vez localizado o selector, o `objc_msgSend` chama o método correspondente e repassa os parâmetros, caso contrário, ocorre uma exceção. Dessa forma, as implementações são escolhidas em tempo de execução.
+Os objetos instanciados por sua vez possuem um ponteiro para a estrutura de classe, chamado `isa`, que dá ao objeto acesso a sua classe e, por meio da classe, a todas as classes que herda. Ao enviar uma mensagem a um objeto, a função `objc_msgSend(receiver, selector, arg1, arg 2, etc…)` segue o isa que aponta para a estrutura de classe e tenta encontrar o selector na "dispatch table". Caso não encontre, a função segue o ponteiro que aponta para a superclass e tenta encontrar o selector na “dispatch table” dela. Falhas sucessivas fazem com que `objc_msgSend` vá subindo na hierarquia de classes até chegar na classe NSObject. Uma vez localizado o selector, o `objc_msgSend` chama o método correspondente e repassa os parâmetros, caso contrário, ocorre uma exceção. Dessa forma as implementações são escolhidas em tempo de execução.
 
 ![]({{ site.baseurl }}/img/fggeraissate/messaging.gif)
 <span class="caption text-muted">Créditos: https://developer.apple.com</span>
 
-Para acelerar o processo, o sistema possui um cache para cada classe, que associa os selectors às implementações assim que vão sendo usadas. Quando uma mensagem for enviada, a função `objc_msgSend` checa primeiro esse cache antes de verificar a "dispatch table". Assim quanto mais tempo o programa for executado, mais rapidamente as mensagens serão enviadas.
+Para acelerar o processo o sistema possui um cache para cada classe, que associa os selectors às implementações assim que vão sendo usadas. Quando uma mensagem for enviada, a função `objc_msgSend` checa primeiro esse cache antes de verificar a "dispatch table". Assim quanto mais tempo o programa for executado, mais rapidamente as mensagens serão enviadas.
 
 ##Método Swizzling
 
