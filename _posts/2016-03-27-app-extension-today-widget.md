@@ -114,14 +114,15 @@ Agora abra o Storyboard. Note que temos um object **View Controller** adicionado
 
 >Para o post não ficar muito longo e cansativo, dividi a implementação em 3 passos que podemos acompanhar nos vídeos abaixo. Enjoy!
 
-/**** VIDEO SOBRE COMPONENTES VISUAIS E IMPLEMENTACAO ****/
-lista estática - mock
-/**** VIDEO SOBRE COMPONENTES VISUAIS E IMPLEMENTACAO ****/
+###Passo 1 - Customizando layout e comportamento
+<iframe width="420" height="315" src="https://www.youtube.com/embed/8QfoSwfIvbU" frameborder="0" allowfullscreen></iframe>
 
+###Passo 2 - Chamada simples de API
 /**** VIDEO SOBRE ATUALIZAR O CONTEUDO ****/
 lista dinâmica - api
 /**** VIDEO SOBRE ATUALIZAR O CONTEUDO ****/
 
+###Passo 3 - Chamando uma ação dentro do app
 /**** VIDEO SOBRE ABRIR UM APP ****/
 custom url scheme
 /**** VIDEO SOBRE ABRIR UM APP ****/
