@@ -57,7 +57,7 @@ Foi desenvolvido com o intuito de ajudar o desenvolvedor a gastar o seu tempo de
 
 É uma ferramenta muito similar ao cert, porém o sigh trata de administrar os _provisioning profiles_. Do qual é utilizado para autorizar que uma aplicação seja utilizadas em dispositivos de testes.
 
-##PEM
+## PEM
 
 fastlane possui três ferramentas que trabalham com administração de certificados e profiles. cert é utilizado para certificados, sigh para _provisioning profile_ e o PEM utiliza-se para a administração de _push notification profiles_.
 
