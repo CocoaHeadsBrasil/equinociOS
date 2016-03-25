@@ -20,14 +20,14 @@ O [Swift Programming Guide](https://developer.apple.com/library/ios/documentatio
 é x” ou “não há valor algum”. Usá-los é semelhante a usar nil com ponteiros em Objective-C mas eles funcionam para todos os tipos, não só para classes. Eles não só são mais seguros e expressivos do que ponteiros nulos, como estão no coração de muitas das funcionalidades mais poderosas de Swift.
 
 
-Desenvolvedores de Objective-C nunca se preocuparam muito com nulabilidade, enviar uma mensagem para `nil` simplesmente retornava `nil` e isso era lindo (ou pelo menos pensavamos assim). Toda conversa de bar com nossos colegas desenvolvedores Java eram um bom motivo para trazer *null pointer exceptions* à tona. Foi com essa mentalidade que eu e muitas colegas começamos a desenvolver em Swift, mas este não é um bom caminho. Depois de muita reflexão e discussão considero que a raiz de todo mal esteja em tentar fazer encarar `Optional`s da mesma forma que encaravamos `nil`. Uma maneira que gosto de abordar esse tema é usando a metafora do *Gato de Schrödinger*.
+Desenvolvedores de Objective-C nunca se preocuparam muito com nulabilidade, enviar uma mensagem para `nil` simplesmente retornava `nil` e isso era lindo (ou pelo menos pensávamos assim). Toda conversa de bar com nossos colegas desenvolvedores Java eram um bom motivo para trazer *null pointer exceptions* à tona. Foi com essa mentalidade que eu e muitas colegas começamos a desenvolver em Swift, mas este não é um bom caminho. Depois de muita reflexão e discussão considero que a raiz de todo mal esteja em tentar fazer encarar `Optional`s da mesma forma que encarávamos `nil`. Uma maneira que gosto de abordar esse tema é usando a metáfora do *Gato de Schrödinger*.
 
 
 # *Gato de Schrödinger*
 
 ## O que é?
 
-Uma experiência mental na qual um gato é imaginado em uma caixa com uma fonte de radiação e um veneno que será liberado assim que essa fonte (imprevisivelmente) emitir radiação. O gato é (de acordo com a mecânica quântica) considerado ao mesmo simultâneamente vivo e morto até que a caixa seja aberta e o gato observado.
+Uma experiência mental na qual um gato é imaginado em uma caixa com uma fonte de radiação e um veneno que será liberado assim que essa fonte (imprevisivelmente) emitir radiação. O gato é (de acordo com a mecânica quântica) considerado ao mesmo simultaneamente vivo e morto até que a caixa seja aberta e o gato observado.
 
 ## Modelando
 
@@ -59,7 +59,7 @@ case .Dead:
 
 ## Abordagem Inicial
 
-Voltando para Optionals podemos dizer que como o gato é possível modelá-los com dois estados: **alguma coisa** ou **nada**.
+Voltando para Optionals podemos dizer que, como o gato, é possível modelá-los com dois estados: **alguma coisa** ou **nada**.
 
 ~~~swift
 enum MyOptional {
@@ -91,7 +91,7 @@ O problema dessa abordagem é que perdemos toda a **magia** dos tipos: se checam
 
 # Genéricos
 
-Outra funcionalidade excepcional de Swift são os [genéricos](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179): de forma (incrivelmente) resumida genéricos permitem que você trabalhe com uma estrutura de forma genérica (faz sentido, não?) e reusável que funcionem em cima de qualquer tipo!
+Outra funcionalidade excepcional de Swift são os [genéricos](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179): de forma (incrivelmente) resumida, genéricos permitem que você trabalhe com uma estrutura de forma genérica (faz sentido, não?) e reusável que funcionem em cima de qualquer tipo!
 
 
 ~~~swift
@@ -114,7 +114,7 @@ E isso **faz muito sentido**: na nossa abstração queremos expressar a ausênci
 ## Inicializadores de `Optional`
 
 ### Nada
-Criar um `Optional` é tão simples quanto `Optional<Int>()` ou `Optional<MyNeatType>()` porém se tentarmos fazer algo como `MyOptional<MyNeatType>()` obtemos um erro:
+Criar um `Optional` é tão simples quanto `Optional<Int>()` ou `Optional<MyNeatType>()`, porém se tentarmos fazer algo como `MyOptional<MyNeatType>()` obtemos um erro:
 
 > *error:* '`MyOptional<MyNeatType>`' cannot be constructed because it has no accessible initializers
 
@@ -149,9 +149,9 @@ init(_ some: T) {
 
 ![]({{ site.baseurl }}/img/fpg1503/box.png)
 
-Definindo desse jeito `Optional`s se mostram como excelentes caixas: pode haver um valor dentro, mas só saberemos ao abrir a caixa (ou desembrulhar o valor). Uma das excelentes belezas disso é que `MyOptional<Int>` é **intrinsecamente diferente** de `Int` e enquanto somar dois `Int`s faz sentido tentar somar dois Optionals mostrará que só devemos efeutar essa operação se ambos existirem, mas primeiro **é necessário checar**.
+Definindo desse jeito `Optional`s se mostram como excelentes caixas: pode haver um valor dentro, mas só saberemos ao abrir a caixa (ou desembrulhar o valor). Uma das excelentes belezas disso é que `MyOptional<Int>` é **intrinsecamente diferente** de `Int` e enquanto somar dois `Int`s faz sentido tentar somar dois Optionals mostrará que só devemos efetuar essa operação se ambos existirem, mas primeiro **é necessário checar**.
 
-Esse tipo de questionamento é exatamente o que não faziamos em Objective-C (e se fazíamos não tinhamos como expressar). Como saber se um método de Objective-C pode retornar ou receber `nil`? Olhe a documentação, se você tiver sorte estará lá. Isso mudou um pouco com as [anotações de nulabilidade](https://developer.apple.com/swift/blog/?id=25) mas ainda não é parte de nosso mindset.
+Esse tipo de questionamento é exatamente o que não fazíamos em Objective-C (e se fazíamos não tinhamos como expressar). Como saber se um método de Objective-C pode retornar ou receber `nil`? Olhe a documentação, se você tiver sorte estará lá. Isso mudou um pouco com as [anotações de nulabilidade](https://developer.apple.com/swift/blog/?id=25) mas ainda não é parte de nosso mindset.
 
 
 ## Desembrulhando
@@ -178,7 +178,7 @@ if case .Some(let number) = optionalNumber {
 }
 ~~~
 
-Essa sintáxe é muito parecida com nosso tão amado `if let`, não é mesmo? Isso acontece pois **Optionals são enums!** Sim, sua vida é uma mentira! Optionals não passam de um enum e açúcar sintático!
+Essa sintaxe é muito parecida com nosso tão amado `if let`, não é mesmo? Isso acontece pois **Optionals são enums!** Sim, sua vida é uma mentira! Optionals não passam de um enum e açúcar sintático!
 
 
 # Açúcar sintático e Optionals
@@ -230,7 +230,7 @@ extension MyOptional: NilLiteralConvertible {
 
 O ponto de interrogação como sufixo de um tipo é puro açúcar sintático e por isso não é possível usá-lo para nosso Optional 😕
 
-### Inicilaizadores Falíveis
+### Inicializadores Falíveis
 
 Agora que entendemos melhor o que são Optionals vemos que inicializadores falíveis não fazem muito sentido! Se a única maneira de eu representar a ausência de um valor é com `Optional` então inicializadores falíveis seriam impossíveis. 
 
@@ -292,7 +292,7 @@ Em contêineres podemos implementar `map` e `flatMap`, de maneira resumida:
 Pensando em Listas achatar `[[1, 2], 3, [4, [5]]]` produz `[1, 2, 3, 4, [5]]` (notem que apenas uma camada é achatada).
 
 ## Mas alguém usa isso?
-Sim! Antigamente achava que nem mas cada vez mais vejo colegas usando `map` e `flatMap` para reduzir mutabilidade dentro de funções e criar códigos mais expressivos. É estranho no começo mas depois de pouquíssimo tempo você vai falar *como eu vivi até hoje sem isso?*.
+Sim! Antigamente achava que nem, mas cada vez mais vejo colegas usando `map` e `flatMap` para reduzir mutabilidade dentro de funções e criar códigos mais expressivos. É estranho no começo, mas depois de pouquíssimo tempo você vai falar: *como eu vivi até hoje sem isso?*.
 
 ## `map`
 
@@ -324,7 +324,7 @@ Por ser de um idioma funcional não queremos que nosso `map` seja usado por seu 
 
 ## `flatMap`
 
-Poderíamos implementar o `flatMap` usando `map` e desembrulhando o valor porém é mais fácil fazer uma implementação análoga à do `map` porém sem reembrulhar o retorno:
+Poderíamos implementar o `flatMap` usando `map` e desembrulhando o valor, porém é mais fácil fazer uma implementação análoga à do `map` porém sem reembrulhar o retorno:
 
 ---
 
@@ -347,10 +347,10 @@ A parte boa é: você consegue usar ele como um `Optional`, ou seja, é possíve
 
 ## IBOutlet
 
-O Xcode gosta de nos atraplhar. Um dos jeitos dele de fazer isso excepcionalmente bem é: quando criamos IBOutlets eles por padrão são `ImplicitlyUnwrappedOptional`s. Você poderia contra-argumentar que se funciona na sua máquina vai funcionar sempre e isso é o Xcode incentivando *fail-fast* para evitar que outlets sejam errôneamente desligados. Normalmente eu concordaria com você mas depois de ver **diversos crashes** (em projetos diverentes) por IBOutlets que estavam `nil` eu preferia parar de arriscar.
+O Xcode gosta de nos atrapalhar. Um dos jeitos dele de fazer isso excepcionalmente bem é: quando criamos IBOutlets eles por padrão são `ImplicitlyUnwrappedOptional`s. Você poderia contra-argumentar que se funciona na sua máquina vai funcionar sempre e isso é o Xcode incentivando *fail-fast* para evitar que outlets sejam erroneamente desligados. Normalmente eu concordaria com você, mas depois de ver **diversos crashes** (em projetos diferentes) por IBOutlets que estavam `nil` eu preferiria parar de arriscar.
 
 
-Como mencionei antes eu poderia simplesmente tratá-los como `Optional`s mas como eu quero incentivar todos do meu time a fazerem isso criei um [pluginzinho](http://github.com/fpg1503/OptionalOutlets/) para deixá-los `Optional` automaticamente para mim! Se você preferir pode arrumar um por um, basta trocar o `!` por um `?`.
+Como mencionei antes eu poderia simplesmente tratá-los como `Optional`s, mas como eu quero incentivar todos do meu time a fazerem isso criei um [pluginzinho](http://github.com/fpg1503/OptionalOutlets/) para deixá-los `Optional` automaticamente para mim! Se você preferir pode arrumar um por um, basta trocar o `!` por um `?`.
 
 
 # Optionals e boas práticas 
@@ -379,7 +379,7 @@ if let aUnwrapped = a {
 }
 ~~~
 
-Porém recentemente podemos simplesmente fazer todos os desembrulhamentos de uma só vez:
+Porém a partir do Swift 1.2 podemos simplesmente fazer todos os desembrulhamentos de uma só vez:
 
 ~~~swift
 if let aUnwrapped = a, bUnwrapped = b, cUnwrapped = c {
@@ -391,7 +391,7 @@ if let aUnwrapped = a, bUnwrapped = b, cUnwrapped = c {
 
 ![]({{ site.baseurl }}/img/fpg1503/everytime.jpg)
 
-O **force unwrap** (ou desembrulho forçado) é equivalente a dizer: **eu tenho certeza que tem uma coisa aqui!**. Se você estiver errado o app crasha. 
+O **force unwrap** (ou desembrulho forçado) é equivalente a dizer: **eu tenho certeza que tem uma coisa aqui!**. Se você estiver errado o app crasha.  
 > Tenho um amigo que gosta de dizer que Optionals são caixas que podem ter bombas dentro.
 
 Você abriria a caixa de uma vez ou faria um furinho primeiro para ver o que está lá? Imaginei...
@@ -400,7 +400,7 @@ Se seus crashes começarem a mostrar `EXC_BREAKPOINT` ou crashes na `linha 0` eu
 
 ### Não confiar no Xcode
 
-Como mencionamos antes o Xcode gosta de nos atrapalhar: vive sugerindo que façamos o force unwrap o que acabo gerando códigos como o abaixo
+Como mencionamos antes, o Xcode gosta de nos atrapalhar: vive sugerindo que façamos o force unwrap o que acabo gerando códigos como o abaixo
 
 `self?.collectionView?.indexPathsForSelectedItems()!`
 
@@ -423,7 +423,7 @@ let value = self?.someOptionalObject?.someOptionalValue ?? defaultValue
 
 # Em suma
 
-Opcionalidade é intrisicamente de nulabilidade e tentar tratar os dois como a mesma coisa pode te levar a fazer muitos erros. `Optional` é um tipo e ele te dá *type-safety* do que pode não existir.
+Opcionalidade é diferente de nulabilidade e tentar tratar os dois como a mesma coisa pode te levar a fazer muitos erros. `Optional` é um tipo e ele te dá *type-safety* do que pode não existir.
 
 Optionals te trazem mais segurança e te livram de muita dor de cabeça: vamos supor que haja uma sequência de `n` funções chamadas de maneira aninhada para processar um valor, em linguagens sem Optionals temos que tratar a ausência desse valor em todas elas; já nas com eles basta tratar este caso nas mais externas. O fato de `Optional` ser um tipo distinto garante que nenhuma das outras pode ser chamada com um valor que não existe.
 
