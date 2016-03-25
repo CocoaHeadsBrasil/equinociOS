@@ -149,9 +149,9 @@ init(_ some: T) {
 
 ![]({{ site.baseurl }}/img/fpg1503/box.png)
 
-Definindo desse jeito `Optional`s se mostram como excelentes caixas: pode haver um valor dentro, mas só saberemos ao abrir a caixa (ou desembrulhar o valor). Uma das excelentes belezas disso é que `MyOptional<Int>` é **intrinsecamente diferente** de `Int` e enquanto somar dois `Int`s faz sentido tentar somar dois Optionals mostrará que só devemos efetuar essa operação se ambos existirem, mas primeiro **é necessário checar**.
+Definindo desse jeito, `Optional`s se mostram como excelentes caixas: pode haver um valor dentro, mas só saberemos ao abrir a caixa (ou desembrulhar o valor). Uma das excelentes belezas disso é que `MyOptional<Int>` é **intrinsecamente diferente** de `Int` e, enquanto somar dois `Int`s faz sentido, tentar somar dois Optionals mostrará que só devemos efetuar essa operação se ambos existirem. Mas primeiro **é necessário checar**.
 
-Esse tipo de questionamento é exatamente o que não fazíamos em Objective-C (e se fazíamos não tinhamos como expressar). Como saber se um método de Objective-C pode retornar ou receber `nil`? Olhe a documentação, se você tiver sorte estará lá. Isso mudou um pouco com as [anotações de nulabilidade](https://developer.apple.com/swift/blog/?id=25) mas ainda não é parte de nosso mindset.
+Esse tipo de questionamento é exatamente o que não fazíamos em Objective-C (e se fazíamos, não tínhamos como expressar). Como saber se um método de Objective-C pode retornar ou receber `nil`? Olhe a documentação, se você tiver sorte estará lá. Isso mudou um pouco com as [anotações de nulabilidade](https://developer.apple.com/swift/blog/?id=25) mas ainda não é parte de nosso mindset.
 
 
 ## Desembrulhando
@@ -159,7 +159,7 @@ Esse tipo de questionamento é exatamente o que não fazíamos em Objective-C (e
 Desembrulhar nossos Optionals é bem simples! Eles são enumerações e trabalhar com enumerações em Swift é **incrivelmente prazeroso**:
 
 ### switch
-~~~
+~~~swift
 let optionalNumber = MyOptional<Int>(3)
 switch optionalNumber {
 case .None:
@@ -200,7 +200,7 @@ if let number = optionalNumber {
 
 Consigo criar Optionals que representam a ausência de um valor usando `nil`. Isso é facilmente implementado! Swift tem `LiteralConvertibles` que, de forma bem resumida, são coisas que podem ser criadas a partir de um [literal](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/zzSummaryOfTheGrammar.html#//apple_ref/doc/uid/TP40014097-CH38-ID458). 
 
-Há um artigo fenomenal do [@mattt](https://twitter.com/mattt){:target="_blank"}) no [NSHipster sobre Swift Literal Convertibles](http://nshipster.com/swift-literal-convertible/) então não entrarei em muitos detalhes aqui. Como brinde se você sempre se perguntou **o que ocorre quando uso um literal** recomendo fortemente dar uma olhada nos [docs do Swift](https://github.com/apple/swift/blob/master/docs/Literals.rst).
+Há um artigo fenomenal do [@mattt](https://twitter.com/mattt){:target="_blank"} no [NSHipster sobre Swift Literal Convertibles](http://nshipster.com/swift-literal-convertible/) então não entrarei em muitos detalhes aqui. Como brinde se você sempre se perguntou **o que ocorre quando uso um literal** recomendo fortemente dar uma olhada nos [docs do Swift](https://github.com/apple/swift/blob/master/docs/Literals.rst).
 
 ### `NilLiteralConvertible`
 Como o próprio nome sugere `NilLiteralConvertible`s são coisas que podem ser criadas a partir de um `nil`. É um protocolo que define uma única função:
@@ -211,10 +211,10 @@ protocol NilLiteralConvertible {
 }
 ~~~
 
-Nativamente este protocolo é implementado por `Optional` e `ImplicltlyUnwrappedOptional`. A título de curiosidade ele também é usado por `UnsafePointer`, `UnsafeMutablePointer`, `AutoReleasingUnsafeMutablePointer` e `COpaquePointer` mas eles fogem do escopo deste artigo.
+Nativamente este protocolo é implementado por `Optional` e `ImplicltlyUnwrappedOptional`. A título de curiosidade, ele também é usado por `UnsafePointer`, `UnsafeMutablePointer`, `AutoReleasingUnsafeMutablePointer` e `COpaquePointer` mas eles fogem do escopo deste artigo.
 
 
-Como vimos, basta criar uma extensão para nosso `enum` que lida o caso, notem que **a ausência é representada pela tupla vazia**:
+Como vimos, basta criar uma extensão para nosso `enum` que lida o caso. Notem que **a ausência é representada pela tupla vazia**:
 
 ~~~swift
 extension MyOptional: NilLiteralConvertible {
@@ -232,7 +232,7 @@ O ponto de interrogação como sufixo de um tipo é puro açúcar sintático e p
 
 ### Inicializadores Falíveis
 
-Agora que entendemos melhor o que são Optionals vemos que inicializadores falíveis não fazem muito sentido! Se a única maneira de eu representar a ausência de um valor é com `Optional` então inicializadores falíveis seriam impossíveis. 
+Agora que entendemos melhor o que são Optionals, vemos que inicializadores falíveis não fazem muito sentido! Se a única maneira de eu representar a ausência de um valor é com `Optional` então inicializadores falíveis seriam impossíveis. 
 
 Considere que um inicializador sempre retorna o tipo dele: como retornaríamos outro tipo!? Tomemos como exemplo um dos mais famosos inicializadores falíveis: o de `NSURL`: 
 
@@ -289,14 +289,14 @@ Em contêineres podemos implementar `map` e `flatMap`, de maneira resumida:
 - `map(f)` aplica uma função `f` a cada valor contido no contêiner e insere os resultados em um novo contêiner.
 - `flatMap` faz a mesma coisa porém ao final "achata" o contêinter, ou seja, cria um contêiner com o conteúdo de seus sub-contêineres.
 
-Pensando em Listas achatar `[[1, 2], 3, [4, [5]]]` produz `[1, 2, 3, 4, [5]]` (notem que apenas uma camada é achatada).
+Pensando em listas, achatar `[[1, 2], 3, [4, [5]]]` produz `[1, 2, 3, 4, [5]]` (notem que apenas uma camada é achatada).
 
 ## Mas alguém usa isso?
 Sim! Antigamente achava que nem, mas cada vez mais vejo colegas usando `map` e `flatMap` para reduzir mutabilidade dentro de funções e criar códigos mais expressivos. É estranho no começo, mas depois de pouquíssimo tempo você vai falar: *como eu vivi até hoje sem isso?*.
 
 ## `map`
 
-Implementar `map` é simples: se há um valor retornamos o valor da aplicação de `f` nele, se não retornamos `.None`:
+Implementar `map` é simples: se há um valor, retornamos o valor da aplicação de `f` nele. Senão, retornamos `.None`:
 
 ~~~swift
 func map<U>(f: (T -> U)) -> MyOptional<U> {
@@ -308,7 +308,7 @@ func map<U>(f: (T -> U)) -> MyOptional<U> {
 }
 ~~~
 
-Porém há um problema: isso não funcionaria se `f throws`. Isso é facilmente resolvido usando `rethrows`:
+Porém, há um problema: isso não funcionaria se `f throws`. Isso é facilmente resolvido usando `rethrows`:
 
 ~~~swift
 func map<U>(f: (T throws -> U)) rethrows -> MyOptional<U> {
@@ -324,9 +324,7 @@ Por ser de um idioma funcional não queremos que nosso `map` seja usado por seu 
 
 ## `flatMap`
 
-Poderíamos implementar o `flatMap` usando `map` e desembrulhando o valor, porém é mais fácil fazer uma implementação análoga à do `map` porém sem reembrulhar o retorno:
-
----
+Poderíamos implementar o `flatMap` usando `map` e desembrulhando o valor. Porém, é mais fácil fazer uma implementação análoga à do `map` sem reembrulhar o retorno:
 
 ~~~swift
 @warn_unused_result
@@ -341,7 +339,7 @@ func flatMap<U>(f: (T throws -> MyOptional<U>)) rethrows -> MyOptional<U> {
 
 # `ImplicitlyUnwrappedOptionals`
 
-`ImplicitlyUnwrappedOptional` é o **irmão malvado** do `Optional`, ele é como um `Optional` mas, como o nome sugere, você consegue acessar seu valor sem precisar desembrulhá-lo. O problema disso é: se o valor não existe o app crasha. A principal razão de sua existência é para ponte com Objective-C.
+`ImplicitlyUnwrappedOptional` é o **irmão malvado** do `Optional`. Ele é como um `Optional` mas, como o nome sugere, você consegue acessar seu valor sem precisar desembrulhá-lo. O problema disso é: se o valor não existe o app crasha. A principal razão de sua existência é para ponte com Objective-C.
 
 A parte boa é: você consegue usar ele como um `Optional`, ou seja, é possível fazer o desembrulho condicional, *Optional chaining* e até mesmo usar *nil coalescing*. 
 
@@ -392,6 +390,7 @@ if let aUnwrapped = a, bUnwrapped = b, cUnwrapped = c {
 ![]({{ site.baseurl }}/img/fpg1503/everytime.jpg)
 
 O **force unwrap** (ou desembrulho forçado) é equivalente a dizer: **eu tenho certeza que tem uma coisa aqui!**. Se você estiver errado o app crasha.  
+
 > Tenho um amigo que gosta de dizer que Optionals são caixas que podem ter bombas dentro.
 
 Você abriria a caixa de uma vez ou faria um furinho primeiro para ver o que está lá? Imaginei...
@@ -400,17 +399,17 @@ Se seus crashes começarem a mostrar `EXC_BREAKPOINT` ou crashes na `linha 0` eu
 
 ### Não confiar no Xcode
 
-Como mencionamos antes, o Xcode gosta de nos atrapalhar: vive sugerindo que façamos o force unwrap o que acabo gerando códigos como o abaixo
+Como mencionamos antes, o Xcode gosta de nos atrapalhar: vive sugerindo que façamos o force unwrap, o que acaba gerando códigos como o abaixo:
 
 `self?.collectionView?.indexPathsForSelectedItems()!`
 
 Esse é o código que chamamos popularmente de **Swift Safadão**
 ![]({{ site.baseurl }}/img/fpg1503/99popt.jpg)
 
-O problema dele é que se qualquer coisa não existir haverá um crash. Não gostamos de crashes.
+O problema dele é que se qualquer coisa não existir, haverá um crash. Não gostamos de crashes.
 
 ### Quando usar force unwrap
-Idealmente? **nunca**. Na prática? Depende do seu nível de desconfiança. Se você está criando uma `NSURL` a partir de uma `String` constante e funciona em dev provavelmente não haverá problemas em produção. Pessoalmente eu gosto de checar sempre, se der errado eu normalmente logo um erro **non-fatal** para entender o que está acontecendo.
+Idealmente? **Nunca**. Na prática? Depende do seu nível de desconfiança. Se você está criando uma `NSURL` a partir de uma `String` constante e funciona em dev provavelmente não haverá problemas em produção. Pessoalmente eu gosto de checar sempre, se der errado eu normalmente logo um erro **non-fatal** para entender o que está acontecendo.
 
 
 ## Nil coalescing
@@ -425,7 +424,7 @@ let value = self?.someOptionalObject?.someOptionalValue ?? defaultValue
 
 Opcionalidade é diferente de nulabilidade e tentar tratar os dois como a mesma coisa pode te levar a fazer muitos erros. `Optional` é um tipo e ele te dá *type-safety* do que pode não existir.
 
-Optionals te trazem mais segurança e te livram de muita dor de cabeça: vamos supor que haja uma sequência de `n` funções chamadas de maneira aninhada para processar um valor, em linguagens sem Optionals temos que tratar a ausência desse valor em todas elas; já nas com eles basta tratar este caso nas mais externas. O fato de `Optional` ser um tipo distinto garante que nenhuma das outras pode ser chamada com um valor que não existe.
+Optionals te trazem mais segurança e te livram de muita dor de cabeça. Vamos supor que haja uma sequência de `n` funções chamadas de maneira aninhada para processar um valor. Em linguagens sem Optionals, temos que tratar a ausência desse valor em todas as chamadas. Já nas com Optionals, basta tratar este caso nas mais externas. O fato de `Optional` ser um tipo distinto garante que nenhuma das outras chamadas sejam executadas com um valor que não existe.
 
 O desembrulho forçado é incrivelmente perigoso e os opcionais desembrulhados implicitamente são **being evil for no reason**. Evite usá-los, seu *crash-free* (e seus usuários) agradecem.
 
