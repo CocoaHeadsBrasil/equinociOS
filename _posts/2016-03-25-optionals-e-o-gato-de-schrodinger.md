@@ -12,13 +12,15 @@ category:   "optionals"
 > Francesco Perrotti-Garcia ([@fpg1503](https://twitter.com/fpg1503){:target="_blank"}) é desenvolvedor iOS. Atualmente trabalha no [PlayKids](https://playkidsapp.com){:target="_blank"}) fazendo a melhor família de aplicativos para crianças do mundo. Programa desde os 12 anos e nos últimos 5 está cada vez mas envolvido com desenvolvimento iOS. Swift mudou sua maneira de ver o mundo e até de como programar em Objective-C. Adora gatos e nas horas vagas gosta de viajar, cozinhar e tirar fotos.
 
 
-# O que são `Optional`s?
+# O que são Optionals?
 
-O [Swift Programming Guide](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309) define `Optional` como *tipos opcionais lidam com a ausência de um valor. Eles dizem “há um valor e ele 
-é `x`” ou “não há valor algum”. Usá-los é semelhante a usar `nil` com ponteiros em Objectice-C mas eles funcionam para todos os tipos, não só para classes. Eles não são só mais seguros e expressivos do que ponteiros nulos, eles estão no coração de muitas das funcionalidades mais poderosas de Swift.*
+O [Swift Programming Guide](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309) define `Optional` como:
+
+> [...] tipos opcionais lidam com a ausência de um valor. Eles dizem “há um valor e ele 
+é x” ou “não há valor algum”. Usá-los é semelhante a usar nil com ponteiros em Objective-C mas eles funcionam para todos os tipos, não só para classes. Eles não só são mais seguros e expressivos do que ponteiros nulos, como estão no coração de muitas das funcionalidades mais poderosas de Swift.
 
 
-Desenvolvedores de Objective-C nunca se preocuparam muito com nulabilidade, enviar uma mensagem para `nil` simplesmente retornava `nil` e isso era lindo (ou pelo menos nós pensavamos assim). Toda conversa de bar com nossos colegas desenvolvedores Java eram um bom motivo para trazer *null pointer exceptions* à tona. Foi com essa mentalidade que eu e muitas colegas começamos a desenvolver em Swift, mas este não é um bom caminho. Depois de muita reflexão e discussão considero que a raiz de todo mal esteja em tentar fazer encarar `Optional`s da mesma forma que encaravamos `nil`. Uma maneira que gosto de abordar esse tema é usando a metafora do *Gato de Schrödinger*.
+Desenvolvedores de Objective-C nunca se preocuparam muito com nulabilidade, enviar uma mensagem para `nil` simplesmente retornava `nil` e isso era lindo (ou pelo menos pensavamos assim). Toda conversa de bar com nossos colegas desenvolvedores Java eram um bom motivo para trazer *null pointer exceptions* à tona. Foi com essa mentalidade que eu e muitas colegas começamos a desenvolver em Swift, mas este não é um bom caminho. Depois de muita reflexão e discussão considero que a raiz de todo mal esteja em tentar fazer encarar `Optional`s da mesma forma que encaravamos `nil`. Uma maneira que gosto de abordar esse tema é usando a metafora do *Gato de Schrödinger*.
 
 
 # *Gato de Schrödinger*
@@ -57,7 +59,7 @@ case .Dead:
 
 ## Abordagem Inicial
 
-Dizendo que Optionals são como o gato podemos modelá-los também com dois estados: **alguma coisa** ou **nada**.
+Voltando para Optionals podemos dizer que como o gato é possível modelá-los com dois estados: **alguma coisa** ou **nada**.
 
 ~~~swift
 enum MyOptional {
@@ -167,7 +169,7 @@ case .Some(let number):
 }
 ~~~
 
-### Pattern matching
+### Pattern Matching
 
 ~~~swift
 let optionalNumber = MyOptional<Int>(42)
@@ -212,7 +214,7 @@ protocol NilLiteralConvertible {
 Nativamente este protocolo é implementado por `Optional` e `ImplicltlyUnwrappedOptional`. A título de curiosidade ele também é usado por `UnsafePointer`, `UnsafeMutablePointer`, `AutoReleasingUnsafeMutablePointer` e `COpaquePointer` mas eles fogem do escopo deste artigo.
 
 
-Como vimos, basta criar uma extensão para nossa enum que lida o caso, notem que a ausência é representada pela tupla vazia:
+Como vimos, basta criar uma extensão para nosso `enum` que lida o caso, notem que **a ausência é representada pela tupla vazia**:
 
 ~~~swift
 extension MyOptional: NilLiteralConvertible {
@@ -226,8 +228,7 @@ extension MyOptional: NilLiteralConvertible {
 
 ### Ponto de Interrogação
 
-O ponto de interrogação como sulfixo de um tipo é puro açúcar sintático e por isso não é possível usá-lo para nosso Optional 😕
-
+O ponto de interrogação como sufixo de um tipo é puro açúcar sintático e por isso não é possível usá-lo para nosso Optional 😕
 
 ### Inicilaizadores Falíveis
 
@@ -283,7 +284,7 @@ init?(password: String) {
 
 Sim, Optionals são mônadas e há uma excelente talk sobre mônadas chamada [Monads are not Monsters](https://www.youtube.com/watch?v=vg7cOF30Svo) da UIKont de 2015 (obrigado [@talesp](https://twitter.com/talesp){:target="_blank"} pela recomendação!) mas para simplificar vamos só dizer que Optionals são contêineres.
 
-Em contêineres podemos implementar `map` e `flatMap`: de maneira resumida
+Em contêineres podemos implementar `map` e `flatMap`, de maneira resumida:
 
 - `map(f)` aplica uma função `f` a cada valor contido no contêiner e insere os resultados em um novo contêiner.
 - `flatMap` faz a mesma coisa porém ao final "achata" o contêinter, ou seja, cria um contêiner com o conteúdo de seus sub-contêineres.
@@ -295,7 +296,7 @@ Sim! Antigamente achava que nem mas cada vez mais vejo colegas usando `map` e `f
 
 ## `map`
 
-Implementar `map` é simples: se há um valor aplicamos `f` nele, se não retornamos `.None`:
+Implementar `map` é simples: se há um valor retornamos o valor da aplicação de `f` nele, se não retornamos `.None`:
 
 ~~~swift
 func map<U>(f: (T -> U)) -> MyOptional<U> {
@@ -340,9 +341,9 @@ func flatMap<U>(f: (T throws -> MyOptional<U>)) rethrows -> MyOptional<U> {
 
 # `ImplicitlyUnwrappedOptionals`
 
-`ImplicitlyUnwrappedOptional` é o irmão malvado do `Optional`, ele é como um `Optional` mas, como o nome sugere, você consegue acessar seu valor sem precisar fazer unwrap. O problema disse é: se o valor não existe, o app crasha. A principal razão de sua existência é para ponte com Objective-C.
+`ImplicitlyUnwrappedOptional` é o **irmão malvado** do `Optional`, ele é como um `Optional` mas, como o nome sugere, você consegue acessar seu valor sem precisar desembrulhá-lo. O problema disso é: se o valor não existe o app crasha. A principal razão de sua existência é para ponte com Objective-C.
 
-A parte boa é: você consegue usar ele como um `Optional`, ou seja, é possível fazer unwrap condicional, *Optional chaining* e até mesmo *nil coalescing*. 
+A parte boa é: você consegue usar ele como um `Optional`, ou seja, é possível fazer o desembrulho condicional, *Optional chaining* e até mesmo usar *nil coalescing*. 
 
 ## IBOutlet
 
@@ -355,7 +356,7 @@ Como mencionei antes eu poderia simplesmente tratá-los como `Optional`s mas com
 # Optionals e boas práticas 
 
 
-## Evitar a *Piramyd of doom*
+## Evitar a *Piramyd of Doom*
 
 
 Vamos supor o seguinte caso
@@ -378,7 +379,7 @@ if let aUnwrapped = a {
 }
 ~~~
 
-Porém recentemente podemos simplesmente fazer todos os desembrulhamentos de uma vez só
+Porém recentemente podemos simplesmente fazer todos os desembrulhamentos de uma só vez:
 
 ~~~swift
 if let aUnwrapped = a, bUnwrapped = b, cUnwrapped = c {
@@ -386,7 +387,7 @@ if let aUnwrapped = a, bUnwrapped = b, cUnwrapped = c {
 }
 ~~~
 
-## Evitar **force unwrap**
+## Evitar o **force unwrap**
 
 ![]({{ site.baseurl }}/img/fpg1503/everytime.jpg)
 
@@ -403,7 +404,7 @@ Como mencionamos antes o Xcode gosta de nos atrapalhar: vive sugerindo que faça
 
 `self?.collectionView?.indexPathsForSelectedItems()!`
 
-Esse é o código que nos chamamos popularmente de **Swift Safadão**
+Esse é o código que chamamos popularmente de **Swift Safadão**
 ![]({{ site.baseurl }}/img/fpg1503/99popt.jpg)
 
 O problema dele é que se qualquer coisa não existir haverá um crash. Não gostamos de crashes.
