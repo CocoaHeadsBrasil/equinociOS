@@ -115,17 +115,22 @@ Agora abra o Storyboard. Note que temos um object **View Controller** adicionado
 >Para o post não ficar muito longo e cansativo, dividi a implementação em 3 passos que podemos acompanhar nos vídeos abaixo. Enjoy!
 
 ###Passo 1 - Customizando layout e comportamento
+
 <iframe width="420" height="315" src="https://www.youtube.com/embed/8QfoSwfIvbU" frameborder="0" allowfullscreen></iframe>
 
 ###Passo 2 - Chamada simples de API
-/**** VIDEO SOBRE ATUALIZAR O CONTEUDO ****/
-lista dinâmica - api
-/**** VIDEO SOBRE ATUALIZAR O CONTEUDO ****/
 
-###Passo 3 - Chamando uma ação dentro do app
-/**** VIDEO SOBRE ABRIR UM APP ****/
-custom url scheme
-/**** VIDEO SOBRE ABRIR UM APP ****/
+<iframe width="420" height="315" src="https://www.youtube.com/embed/srBzeF6U0TA" frameborder="0" allowfullscreen></iframe>
 
+###Passo 3 - Enviando uma ação para outro aplicativo
 
+Para finalizar, vamos fazer nosso **Widget** se comunicar com nosso aplicativo. Esta comunicação será realilizada através de um **Custom [URL Scheme](https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899)**.
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/ce5kynUKUKg" frameborder="0" allowfullscreen></iframe>
+
+--
+
+E assim finalizamos nossa introdução ao **Today Extension**. Não deixem de compartilhar, comentar, perguntar e continuar acompanhando o ***EquinociOS***. Tem muito conteúdo bacana pra ver :D
+
+#Carry on!
 
