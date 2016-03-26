@@ -6,15 +6,15 @@ author:     "Guilherme Martinez Sampaio"
 header-img: "img/gsampaio/brick.jpg"
 category:   "frameworks"
 ---
-> Guilherme Sampaio [@gsampaio](https://twitter.com/gsampaio) trabalha desenvolvendo apps para crianças no PlayKids. Gosta de boas praticas de engenharia de software e arquitetura de software.
+> Guilherme Sampaio [@gsampaio](https://twitter.com/gsampaio) trabalha desenvolvendo apps para crianças no PlayKids. Gosta de boas práticas de engenharia de software e arquitetura de software.
 
-Durante o ultimo ano tivemos o lançamento de duas novas plataformas de desenvolvimento da Apple, o tvOS e o watchOS. Com isso cada vez mais é mais importante compartilharmos código entre diversos projetos.
+Durante o último ano tivemos o lançamento de duas novas plataformas de desenvolvimento da Apple: o tvOS e o watchOS. Com isso cada vez mais é importante compartilharmos código entre diversos projetos.
 
-Assim neste post iremos tratar de como criar e distribuir frameworks para várias plataformas, alem de mostrar dicas de como melhorar a qualidade de seus frameworks. Mas antes disso, caso não tenha lido ainda o [post do Igor](http://equinocios.com/library/2016/03/17/bibliotecas/) sobre bibliotecas é uma ótima oportunidade!
+Assim, neste post iremos tratar de como criar e distribuir frameworks para várias plataformas, além de mostrar dicas de como melhorar a qualidade de seus frameworks. Mas antes disso, caso não tenha lido ainda o [post do Igor](http://equinocios.com/library/2016/03/17/bibliotecas/) sobre bibliotecas, esta é uma ótima oportunidade!
 
 ## Zen
 
-Para efeitos de demonstração vamos criar um framework que simplesmente fará wrap da API Zen do Github. Toda vez que fizermos `GET` para esta API iremos receber de volta uma frase inspiradora. Para testar o seu funcionamento basta abrir o seu terminal e digitar `curl -X GET https://api.github.com/zen`.
+Para efeitos de demonstração, vamos criar um framework que simplesmente fará wrap da API Zen do Github. Toda vez que fizermos `GET` para esta API iremos receber de volta uma frase inspiradora. Para testar o seu funcionamento basta abrir o seu terminal e digitar `curl -X GET https://api.github.com/zen`.
 
 ![]({{ site.baseurl }}/img/gsampaio/zen.png)
 <span class="caption text-muted">Exemplo de uso da API</span>
@@ -27,9 +27,9 @@ Começamos criando um novo workspace dentro do Xcode. Depois iremos criar dois p
 <span class="caption text-muted">Workspace com os dois projetos</span>
 
 
-Após criar os dois projetos, vamos __linkar__ o nosso framework dentro do nosso target de exemplo. Para isso basta clicar no projeto de exemplo e adicionar na sessão __Linked Frameworks and Libraries__ e adicionar o nosso framework. Note que como não iremos distribuir a app de exemplo, não teremos problema por ela não estar _Embedded Binaries_.
+Após criar os dois projetos, vamos __linkar__ o nosso framework dentro do nosso target de exemplo. Para isso basta clicar no projeto de exemplo e adicionar na sessão __Linked Frameworks and Libraries__ o nosso framework. Note que como não iremos distribuir a app de exemplo, não teremos problema por ela não estar nos _Embedded Binaries_.
 
-Agora que temos tudo pronto para compilar o Exemple, vamos começar a implementar o nosso framework. Começamos criando dois arquivos, o primeiro `Zen.swift`, e o segundo `ZenResponse.swift`. 
+Agora que temos tudo pronto para compilar o Exemplo, vamos começar a implementar o nosso framework. Começamos criando dois arquivos, o primeiro `Zen.swift`, e o segundo `ZenResponse.swift`. 
 
 ~~~swift 
 //  Zen.swift
@@ -78,9 +78,9 @@ public struct Zen {
 }
 ~~~
 
-Note que por se tratar de um framework, temos que nos preocupar com a visibilidade dos nossos tipos. Swift tem como padrão a visibilidade _internal_, por tanto como queremos que `Zen` seja exposto precisamos marcar ele como _public_, bem como toda função que queremos expor para a aplicação que usará o nosso código. 
+Note que por se tratar de um framework, temos que nos preocupar com a visibilidade dos nossos tipos. Swift tem como padrão a visibilidade _internal_, portanto como queremos que `Zen` seja exposto precisamos marcá-lo como _public_, bem como toda função que queremos expor para a aplicação que usará o nosso código. 
 
-Por conta disso tivemos que criar um `public init()` mesmo que o swift, por padrão, crie initializers para structs. 
+Por conta disso, tivemos que criar um `public init()` mesmo que o Swift, por padrão, crie initializers para structs. 
 
 Como a nossa função `retrieveZen` retorna de forma assíncrona, criamos um enum `ZenResponse` que encapsula a lógica de sucesso e falha, como podemos ver no próximo snippet. 
 
@@ -108,11 +108,11 @@ public func ==(lhs: ZenResponse, rhs: ZenResponse) -> Bool {
 }
 ~~~
 
-Este enumerador representa ou um sucesso com o tipo associado `String`, ou uma falha com um tipo associado `NSError?`. Estendemos o nosso tipo para conformar com Equatable, o que é uma [boa pratica para value types em swift](https://developer.apple.com/videos/play/wwdc2015/414/?time=1115)
+Este enumerador representa um sucesso com o tipo associado `String`, ou uma falha com um tipo associado `NSError?`. Estendemos o nosso tipo para conformar com Equatable, o que é uma [boa prática para value types em swift](https://developer.apple.com/videos/play/wwdc2015/414/?time=1115)
 
 ### Projeto de Exemplo
 
-Com isso acabamos a implementação do nosso framework, agora vamos implementar no view controller do exemplo uma maneira fácil de mostrar para os usuários do nosso framework como ele funciona. Para fins de demonstração vamos colocar tudo dentro do próprio view controller, na vida real considere separar a lógica de apresentação da lógica de network. [O Diogo escreveu um post execelente](http://equinocios.com/arquitetura/2016/03/08/minimizando-acoplamento-view-e-viewcontrollers/) falando como arquitetar um app, recomendo dar uma olhada nele. 
+Com isso acabamos a implementação do nosso framework. Agora vamos implementar no view controller do exemplo uma maneira fácil de mostrar para os usuários do nosso framework como ele funciona. Para fins de demonstração, vamos colocar tudo dentro do próprio view controller. Na vida real considere separar a lógica de apresentação da lógica de network. [O Diogo escreveu um post excelente](http://equinocios.com/arquitetura/2016/03/08/minimizando-acoplamento-view-e-viewcontrollers/) falando como arquitetar um app, recomendo dar uma olhada nele. 
 
 
 ~~~swift
@@ -142,7 +142,7 @@ class ViewController: UIViewController {
 }
 ~~~
 
-Fazendo algumas alterações no storyboard conseguimos chegar a um exemplo parecido com a imagem abaixo. 
+Fazendo algumas alterações no Storyboard conseguimos chegar a um exemplo parecido com a imagem abaixo. 
 ![]({{site.baseurl}}/img/gsampaio/exemplo-ios.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
 ### Criando um framework para TV
@@ -151,11 +151,11 @@ Uma vez que temos o nosso framework para iOS, vamos criar um framework para tvOS
 
 ![]({{site.baseurl}}/img/gsampaio/tvos-framework.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
-Como não estamos usando nenhuma API que não esta disponível em ambas as plataformas podemos adicionar diretamente ao framework tvOS os arquivos `Zen.swift` e `ZenResponse.swift`.
+Como não estamos usando nenhuma API que não está disponível em ambas as plataformas, podemos adicionar diretamente ao framework tvOS os arquivos `Zen.swift` e `ZenResponse.swift`.
 
 ![]({{site.baseurl}}/img/gsampaio/target-membership.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
-Caso fosse necessário no futuro diversificar o que esta disponível para cada plataforma podemos usar as marcações de OS ou availability como como mostro abaixo. 
+Caso fosse necessário no futuro diversificar o que esta disponível para cada plataforma, poderíamos usar as marcações de OS ou availability como mostro abaixo. 
 
 ~~~swift
 
@@ -171,29 +171,29 @@ if #available(tvOS 9.1, *) {
 
 ~~~
 
-Pronto com isso temos o nosso framework tvOS. Agora podemos criar um mesmo projeto de exemplo para tvOS e colocar o mesmo código do ViewController de exemplo do iOS e chegamos ao resultado abaixo. 
+Pronto, com isso temos o nosso framework tvOS. Agora podemos criar outro projeto de exemplo para tvOS e colocar o mesmo código do ViewController de exemplo do iOS, e chegamos ao resultado abaixo. 
 
 ![]({{site.baseurl}}/img/gsampaio/exemplo-tvos.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
 ## Distribuindo seu framework
 
-Agora que temos os nossos frameworks prontos, vamos pensar em como distribuir eles. Para isso daremos suporte tanto ao Carthage quanto ao CocoaPods que são os dois gerenciadores de dependência mais utilizados pela comunidade. 
+Agora que temos os nossos frameworks prontos, vamos pensar em como distribuí-los. Para isso daremos suporte tanto ao Carthage quanto ao CocoaPods, que são os dois gerenciadores de dependência mais utilizados pela comunidade. 
 
 ### Carthage
 
-O [Carthage](https://github.com/Carthage/Carthage) é um gerenciador de dependência para iOS/OSX/watchOS/tvOS que não tem um repositório central de dependências. Para utilizar ele você precisa criar um `Cartfile` no seu projeto e adicionar as referencias ao repositórios que deseja utilizar. Ao rodar `carthage update` no seu projeto o Carthage irá fazer checkout de todas as dependências e procurar por shared build schemes dentro dos projetos das dependências buildando um a um. 
+O [Carthage](https://github.com/Carthage/Carthage) é um gerenciador de dependência para iOS/OSX/watchOS/tvOS que não tem um repositório central de dependências. Para utilizá-lo você precisa criar um `Cartfile` no seu projeto e adicionar as referências ao repositórios que deseja utilizar. Ao rodar `carthage update` no seu projeto, o Carthage irá fazer checkout de todas as dependências e procurar por shared build schemes dentro dos projetos das dependências, buildando um a um. 
 
-Para adicionarmos o suporte ao Carthage a única alteração que vamos ter que fazer no nosso workspace é fazer com que nossos frameworks estejam com seu build scheme marcados com _Shared_. Para isso vá em _Product_ > _Scheme_ > _Manage Schemes_ e marque ambos os frameworks como shared. 
+Para adicionarmos o suporte ao Carthage, a única alteração que vamos ter que fazer no nosso workspace é fazer com que nossos frameworks estejam com seu build scheme marcados com _Shared_. Para isso vá em _Product_ > _Scheme_ > _Manage Schemes_ e marque ambos os frameworks como shared. 
 
 ![]({{site.baseurl}}/img/gsampaio/shared-schemes.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
-Pronto para testar basta criar um novo projeto do Xcode criar um `Cartfile`, adicionar a referencia para o repositório que contem o framework e rodar `carthage update`. Depois disso teremos uma nova pasta Carthage no seu diretório com duas pastas Build e Checkouts. Na pasta Build você encontrara ambos os framework buildados. 
+Pronto. Para testar basta criar um novo projeto do Xcode, criar um `Cartfile`, adicionar a referência para o repositório que contém o framework e rodar `carthage update`. Depois disso, teremos uma nova pasta Carthage no seu diretório com duas pastas: Build e Checkouts. Na pasta Build você encontrará ambos os framework buildados. 
 
 ### CocoaPods
 
-CocoaPods é o gerenciados de dependências mais famoso para desenvolvimento para as plataformas da Apple. Diferente do Carthage o CocoaPods contem um repositório central de `pods` e ele faz a integração automática com o seu projeto criando um workspace onde ele compila todas as dependências que você tiver junto com o seu projeto. 
+CocoaPods é o gerenciador de dependências mais famoso para desenvolvimento para as plataformas da Apple. Diferente do Carthage, o CocoaPods contém um repositório central de `pods`, fazendo a integração automática e criando um workspace onde todas as dependências são compiladas junto com o seu projeto. 
 
-Para permitir o uso do CocoaPods precisamos criar um `podspec` que indica para ele quais arquivos ele vai usar para buildar os frameworks. 
+Para permitir o uso do CocoaPods precisamos criar um `podspec`, que indica quais arquivos serão usados para buildar os frameworks: 
 
 ~~~ruby
 Pod::Spec.new do |s|
@@ -220,19 +220,19 @@ end
 
 ~~~
 
-Agora basta criar um novo projeto e um `Podfile` e adicionar `pod 'Zen', :path=> "path do nosso podspec"`.
+Agora, basta criar um novo projeto e um `Podfile`, adicionando a linha `pod 'Zen', :path=> "path do nosso podspec"`.
 
 ## Utilitários
 
-Agora que sabemos como criar e distribuímos frameworks, iremos plugar alguma ferramentas que irão ajudar na qualidade. Nesta sessão vamos abordar __Testes Unitários e Cobertura__, __Documentação__ e __Integração Continua__. 
+Agora que sabemos como criamos e distribuímos frameworks, iremos plugar alguma ferramentas que irão ajudar na qualidade. Nesta sessão vamos abordar __Testes Unitários e Cobertura__, __Documentação__ e __Integração Contínua__. 
 
 ### Testes unitários e cobertura de código. 
 
-Para termos certeza, ou ao menos segurança, que o nosso código funciona vamos adicionar casos de testes aos nossos frameworks e depois vamos gerar relatórios de cobertura para entender melhor quais partes do nosso código estamos testando. 
+Para termos certeza - ou ao menos segurança - que o nosso código funciona, vamos adicionar casos de testes aos nossos frameworks e depois vamos gerar relatórios de cobertura para entender melhor quais partes do nosso código estamos testando. 
 
 #### Testes Unitários
 
-Vamos começar implementando testes no arquivo `ZenTests.swift` dentro do target `ZenTests`. Para executar os testes, vamos criar uma fake classe de `NSURLSession` e `NSURLSessionDataTask` e vamos mockar o seu funcionamento para injetarmos o resultado que queremos.
+Vamos começar implementando testes no arquivo `ZenTests.swift`, dentro do target `ZenTests`. Para executar os testes, vamos criar uma fake classe de `NSURLSession` e `NSURLSessionDataTask` para mockar seu funcionamento e injetarmos o resultado que queremos.
 
 ~~~swift
 //  ZenTests.swift
@@ -287,11 +287,11 @@ private final class FakeURLSessionDataTask : NSURLSessionDataTask {
 
 ~~~
 
-Não vou entrar em mais detalhes sobre a implementação de testes de network, mas caso você tenha mais interesse recomendo dar uma olhada no [DVR](http://github.com/venmo/DVR) e no [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs).
+Não vou entrar em mais detalhes sobre a implementação de testes de network, mas caso você tenha mais interesse, recomendo dar uma olhada no [DVR](http://github.com/venmo/DVR) e no [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs).
 
 #### Cobertura de testes
 
-Uma das mudanças do Xcode 7 foi a integração de cobertura de testes dentro da IDE, para isso precisamos editar o scheme Zen marcar de `Gather coverage data` na area de `Test` do scheme Zen, como ilustra a imagem abaixo. 
+Uma das mudanças do Xcode 7 foi a integração de cobertura de testes dentro da IDE. Para isso, precisamos editar o scheme Zen, marcar `Gather coverage data` na área de `Test` do scheme Zen, como ilustra a imagem abaixo:
 
 ![]({{site.baseurl}}/img/gsampaio/cobertura-xcode.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
@@ -302,39 +302,39 @@ Rodando nossos testes unitários, agora é possível olhar a cobertura dentro do
 
 #### Slather
 
-[Slather](https://github.com/SlatherOrg/slather) é uma ferramenta para gerar relatórios de cobertura de código. Com ele é possível gerar relatórios HTML para visualizar cobertura de testes, assim como relatórios XML para uso em ambientes de integração continua. 
+[Slather](https://github.com/SlatherOrg/slather) é uma ferramenta para gerar relatórios de cobertura de código. Com ele, é possível gerar relatórios HTML para visualizar cobertura de testes, assim como relatórios XML para uso em ambientes de integração contínua. 
 
-Para fins de exemplo iremos gerar um HTML com o relatório de cobertura. Para isso basta instalar o Slather e rodar o comando baixo.
+Para fins de exemplo, iremos gerar um HTML com o relatório de cobertura. Para isso, basta instalar o Slather e rodar o comando abaixo:
 
 `slather coverage --html --show Zen/Zen.xcodeproj`
 
 ![]({{site.baseurl}}/img/gsampaio/slather.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
-Caso exista interesse é possível plugar o slather dentro do seu ambiente de integração continua e enviar relatórios de cobertura para serviços como o [Coveralls](https://coveralls.io) e assim acompanhar a evolução da cobertura do seu projeto. Um exemplo é o [VENCore](https://github.com/venmo/VENCore) que tem [seus relatórios de cobertura](https://coveralls.io/github/venmo/VENCore) publicados.
+Caso exista interesse, é possível plugar o slather dentro do seu ambiente de integração continua e enviar relatórios de cobertura para serviços como o [Coveralls](https://coveralls.io), e assim acompanhar a evolução da cobertura do seu projeto. Um exemplo é o [VENCore](https://github.com/venmo/VENCore), que tem [seus relatórios de cobertura](https://coveralls.io/github/venmo/VENCore) publicados.
 
 ### Documentação 
 
-Uma vez que temos um testes unitários e relatórios de cobertura queremos agora garantir que conseguimos gerar a documentação para que seja mais fácil utilizar o nosso framework.
+Uma vez que temos testes unitários e relatórios de cobertura, queremos agora garantir que conseguimos gerar a documentação para que seja mais fácil utilizar o nosso framework.
 
-Caso você não seja familiar com o formato de documentação do Swift recomendo dar uma olhada no [post da Erika Sadun](http://ericasadun.com/2015/06/14/swift-header-documentation-in-xcode-7/). Talvez você deve ter percebido que o arquivo `Zen.swift` já esta documentado com Swift Header Documentation.
+Caso você não seja familiar com o formato de documentação do Swift, recomendo dar uma olhada [neste post da Erika Sadun](http://ericasadun.com/2015/06/14/swift-header-documentation-in-xcode-7/). Talvez você tenha percebido que o arquivo `Zen.swift` já esta documentado com Swift Header Documentation.
 
-Outro ponto importante de documentação é escrever um `README.md`  bem explicativo para as pessoas que encontrarem o seu framework, saibam exatamente o que ele faz e todas as suas capacidades. O [Alamofire](https://github.com/Alamofire/Alamofire) tem um excelente `README.md` para se inspirar. 
+Outro ponto importante de documentação é escrever um `README.md` bem explicativo para que as pessoas que encontrarem o seu framework saibam exatamente o que ele faz e todas as suas capacidades. O [Alamofire](https://github.com/Alamofire/Alamofire) tem um excelente `README.md` para se inspirar. 
 
 #### Jazzy ♪♫
 
-Para gerar documentação HTML e ser compatível com o [CocoaDocs](http://cocoadocs.org) vamos utilizar o [Jazzy](https://github.com/realm/jazzy). Uma vez documentado o seu framework basta instalarmos o Jazzy e rodarmos o comando abaixo para gerar o HTML. 
+Para gerar documentação HTML e ser compatível com o [CocoaDocs](http://cocoadocs.org) vamos utilizar o [Jazzy](https://github.com/realm/jazzy). Uma vez documentado o seu framework, basta instalarmos o Jazzy e rodarmos o comando abaixo para gerar o HTML: 
 
 `jazzy -x -scheme,Zen` 
 
 ![]({{site.baseurl}}/img/gsampaio/jazzy.png){:style="display: block; margin-left: auto; margin-right: auto;" }
 
-### Integração continua
+### Integração contínua
 
-Por fim agora que temos testes e documentação queremos ter um processo de integração continua para nos ajudar em tasks relacionadas ao nosso framework. Para isso recomendo dar uma olhada no [Travis CI](https://travis-ci.org), ou no [Circle CI](https://circleci.com), ou no [Jenkins](https://jenkins-ci.org) para executar as suas tasks. 
+Por fim, agora que temos testes e documentação, queremos ter um processo de integração contínua para nos ajudar em tasks relacionadas ao nosso framework. Para isso recomendo dar uma olhada no [Travis CI](https://travis-ci.org), no [Circle CI](https://circleci.com) ou no [Jenkins](https://jenkins-ci.org) para executar as suas tasks. 
 
 #### Fastlane
 
-Nesta ultima semana tivemos [um excelente post sobre o fastlane](http://equinocios.com/ios/2016/03/24/fastlane/) feito pelo Fábio. Assim não entrarei muito em detalhes, apenas listarei algumas actions que podem ajudar no test/deploy do seu framework. 
+Nesta última semana tivemos [um excelente post sobre o fastlane](http://equinocios.com/ios/2016/03/24/fastlane/) feito pelo [Fábio](http://www.twitter.com/fabintk). Assim, não entrarei muito em detalhes, apenas listarei algumas actions que podem ajudar no test/deploy do seu framework. 
 
 | Action               | Descrição                                                                                   |
 |----------------------|---------------------------------------------------------------------------------------------|
@@ -346,11 +346,11 @@ Nesta ultima semana tivemos [um excelente post sobre o fastlane](http://equinoci
 
 ## Considerações finais
 
-Gosto muito do conceito de criar frameworks pequenos e ir expandido a sua aplicação em cima deles. Recomendo assistir a talk sobre [Library Oriented Programming](https://realm.io/news/justin-spahr-summers-library-oriented-programming/) do Justin Spahr Summers, que conta sobre desenvolver frameworks. 
+Gosto muito do conceito de criar frameworks pequenos e ir expandindo a sua aplicação em cima deles. Recomendo assistir a talk sobre [Library Oriented Programming](https://realm.io/news/justin-spahr-summers-library-oriented-programming/) do Justin Spahr Summers, que conta sobre desenvolver frameworks. 
 
-Por fim, muitas das praticas que aplicamos nestes frameworks, é aplicável ao seus aplicativos. Testes/Cobertura e Integração continua são excelentes exemplos.
+Por fim, muitas das práticas que aplicamos nestes frameworks são aplicáveis ao seus aplicativos. Testes/Cobertura e Integração contínua são excelentes exemplos.
 
-Se tiverem alguma duvida me procurem no [twitter](https://twitter.com/gsampaio) ou no slack do [iOSDevBR](http://iosdevbr.herokuapp.com/).
+Se tiverem alguma dúvida me procurem no [twitter](https://twitter.com/gsampaio) ou no slack do [iOSDevBR](http://iosdevbr.herokuapp.com/).
 
 Espero que tenham gostado!
 
