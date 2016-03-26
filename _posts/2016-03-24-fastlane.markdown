@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Fastlane"
+title:      "Fastlane"f
 subtitle:   "Automatizando o processo de deploy"
 date:       2016-03-24 00:00:00
 author:     "Fábio Nogueira de Almeida"
@@ -236,4 +236,4 @@ Obs: Se aventure pelas outras ferramentas do fastlane, elas são bem legais.
 [Martin Fowler](http://martinfowler.com/articles/continuousIntegration.html) <br />
 [Mockup dos produtos da Apple](https://developer.apple.com/app-store/marketing/guidelines/#images)
 
-> Fábio Nogueira de Almeida <a href="http://www.twitter.com/fabink" target="_blank">@fabintk</a>
+> Fábio Nogueira de Almeida <a href="http://www.twitter.com/fabintk" target="_blank">@fabintk</a>
