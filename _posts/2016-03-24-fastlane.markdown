@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Fastlane"f
+title:      "Fastlane"
 subtitle:   "Automatizando o processo de deploy"
 date:       2016-03-24 00:00:00
 author:     "Fábio Nogueira de Almeida"
