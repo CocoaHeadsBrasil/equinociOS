@@ -270,4 +270,152 @@ passar um `Float` para uma função que espera um `Int`.
 
 E agora...
 
+## Vamos Falar de Swift?
+
+> *Ufa, finalmente! Um post entitulado "Swift In The Sky With Types" e até
+agora nada demais sobre Swift?!*
+
+Agora, gostaria de levantar algumas coisas que vão além do que vimos na seção
+anterior.
+
+### *Type-Safety*
+
+Como podemos encontrar na própria [documentação provida pela Apple](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309):
+
+> Swift is a *type-safe* language, which means the language helps you to be
+clear about the types of values your code can work with. If part of your code
+expects a `String`, type safety prevents you from passing it an `Int` by
+mistake.
+
+Assim, sabemos que **todas** as variáveis têm um tipo declarado e **todas** as
+funções/métodos têm assinaturas de tipo que declaram os tipos de seus argumentos
+e retornos. E por fim, o nosso amigo compilador verifica se todos os seus tipos
+estão coerentes e não compila seu programa caso não estejam - erros em tempo de
+compilação são 💖.
+
+> *Bônus*: Swift nos permite definir várias "versões" de uma mesma função, só
+que com diferentes assinaturas de tipos - e a que "versão" que será chamada
+será aquela cujos argumentos forem compatíveis com a assinatura de tipo.
+
+>  ```swift
+
+>  // Uma simples função que retorna o fatorial de um valor.
+
+>  // Pela anotação de tipo, temos que fatorial recebe um `Int` e o mapeia para
+>  // um `Int`.
+
+>  func fatorial(n: Int) -> Int {
+>    return n == 0 ? 1 : n * fatorial(n — 1)
+>  }
+
+>  // Agora, pela anotação de tipo, temos que fatorial recebe um `Float` e
+>  // mapeia este para um `Float`.
+
+>  func fatorial(n: Float) -> Float {
+>    return n == 0.0 ? 1.0 : n * fatorial(n — 1.0)
+>  }
+
+>  // Chamando nossa função com um `Int`, teremos um `Int` de retorno.
+>  fatorial(3)   // => 6
+
+>  // Chamando nossa função com um `Float`, teremos um `Float` de retorno.
+>  fatorial(3.0) // => 6.0
+>  ```
+
+### *Type Inference*
+
+Se você é daqueles que se assusta com a possibilidade de ter que declarar tipo
+de cada variável do seu código, relaxe! Swift usa a inferência de tipos para -
+<strike>adivinha?</strike> - inferir quais os tipos suas variáveis têm. Caso
+queira, você pode declarar explicitamente o tipo de suas variáveis, mas, na
+prática, muitas vezes você não precisa: Swift irá inferir o tipo de uma `var`
+se você atribuir a ela um valor inicial.
+
+```swift
+// Aqui, inicializamos uma variável `x`, dando a esta o valor `1`. Como
+// fornecemos um valor inicial, não precisamos declarar explicitamente o tipo
+// de `x`: Swift irá inferir que esta se trata de um `Int`.
+var x = 1
+
+// Desta vez, declaramos uma variável, mas sem atribuir valor a esta - assim,
+// Swift não pode inferir seu tipo e precisamos definir este explicitamente.
+// Logo após a declaração, atribuimos a ela o valor `2` - e caso atribuíssemos
+// um valor de tipo não coerente com a declaração, teríamos um erro do compilador.
+var y:Int
+y = 2
+```
+
+### *Generics*
+
+Os conhecidos *Generics* nos permitem declarar uma variável que, na execução,
+pode ser atribuído a um conjunto de tipos definidos por nós.
+
+Em Swift, um *array* pode conter dados de qualquer tipo: ao criarmos um *array*
+de `Int`s, `Float`s ou `String`s, por exemplo, o tipo dos valores que este vai
+carregar é definido quando o mesmo é declarado - e assim, temos neles um bom
+exemplo do uso de *Generics*.
+
+O uso destes começa com **funções genéricas**, como uma simples função para
+imprimir elementos de um array:
+
+```swift
+// Funções genéricas usam placeholders ao invés de um tipo real, como `String`,
+// `Int` ou `Float`. Em nossa função, o placeholder é `T` - mas poderia ser
+// qualquer outro: `T` é "apenas" convenção.
+
+// O uso do placeholder não indica que a função aceita um tipo `T` mas sim que
+// `T` será substituído por um tipo real que é determinada quando a função é
+// chamada.
+
+func imprimeElementos<T>(a: [T]) {
+    for elemento in a {
+        println(elemento)
+    }
+}
+```
+
+E a brincadeira com estas pode ir além: poderíamos, por exemplo, ter algo do tipo:
+
+```swift
+func someFunction<T, U>(a: T, b: U) {}
+```
+
+Onde especificamos mais de um *Generic*.
+
+Porém, a diversão não para nas funções genéricas: temos os tipos genéricos!
+Estes são, basicamente, *classes*, *enumerations* e *structs* que trabalham com
+qualquer tipo - se você se lembrou de *array*s e *dictionaries*, você pegou a
+ideia.
+
+Assim, podemos ter coisas como:
+
+```swift
+// Um exemplo de necessidade comum, por exemplo, é obter um valor randômico de
+// uma coleção - e podemos implementar isso com Generics!
+
+// Temos uma estrutura que é genérica sobre o tipo `T`.
+struct MinhaColecao<T> {
+
+    // Temos uma propriedade, um array do tipo T para armazenar o conjunto de
+    // dados passados durante a inicialização.
+    let itens: [T]
+
+    init(itens: [T]) {
+        self.itens = itens
+    }
+
+    // E, por fim, temos uma função genérica que cuida do resto :)
+    func geraAleatorio() -> T {
+        let indice = Int(arc4random_uniform(UInt32(itens.count)))
+        return itens[indice]
+    }
+}
+```
+
+E, ao testarmos:
+
+```swift
+let teste = MinhaColecao(itens: ["s", "w", "i", "f", "t"])
+teste.geraAleatorio() // => "f"
+```
 
