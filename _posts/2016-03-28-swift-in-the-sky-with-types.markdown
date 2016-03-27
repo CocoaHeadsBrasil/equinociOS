@@ -487,4 +487,31 @@ solução para o meu problema - através de tipos.
 E tudo isso faz você se sentir bem mais confiante sobre seu próprio código - e
 isso é tão divertido quanto ouvir a faixa *Lucy In The Sky With Diamonds* ☺️.
 
+## Referências
+
+Aqui ficam apenas alguns posts, livros, vídeos etc. nos quais me baseiei ao
+longo da escrita deste post - e que eu acho que mereceriam um tempo da atenção
+de vocês.
+
+- [**Hole-driven Haskell**](https://www.youtube.com/watch?v=52VsgyexS8Q&feature=youtu.be)
+  > *Screencast* por [Matthew Brecknell](http://matthew.brecknell.net/).
+
+- [**May Your Data Ever Be Coherent**](https://www.youtube.com/watch?v=gVXt1RG_yN0)
+  > *Talk* por [Daniel Spiewak](http://www.codecommit.com/blog/).
+
+- [**On Understanding Types,Data Abstraction, and Polymorphism**](http://lucacardelli.name/papers/onunderstanding.a4.pdf)
+  > Artigo por [Luca Cardelli](http://lucacardelli.name/).
+
+- [**Structure and Interpretation of Computer Programs**](https://mitpress.mit.edu/sicp/full-text/book/book.html)
+  > O famoso *Livro do Mago* é sempre uma referência!
+
+- [**The Swift Programming Language (Swift 2.2) - The Basics**](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html)
+  > Documentação oficial provida pela Apple.
+
+- [**Type Systems**](http://lucacardelli.name/Papers/TypeSystems.pdf)
+  > Artigo por [Luca Cardelli](http://lucacardelli.name/).
+
+- [**Types and Programming Languages**](https://www.cis.upenn.edu/~bcpierce/tapl/)
+  > Livro de [Benjamin Pierce](http://www.cis.upenn.edu/~bcpierce/).
+
 
