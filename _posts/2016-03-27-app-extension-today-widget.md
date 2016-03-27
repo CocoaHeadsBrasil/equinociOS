@@ -5,7 +5,7 @@ subtitle:   "Introdução ao Today Extension"
 date:       2016-03-27 00:00:00
 author:     "Renato Matos"
 header-img: "img/renatosarro/header-renatosarro.jpg"
-category:   Today Extension
+category:   extensions
 ---
 
 # App Extensions
@@ -133,4 +133,8 @@ Para finalizar, vamos fazer nosso **Widget** se comunicar com nosso aplicativo. 
 E assim finalizamos nossa introdução ao **Today Extension**. Não deixem de compartilhar, comentar, perguntar e continuar acompanhando o ***EquinociOS***. Tem muito conteúdo bacana pra ver :D
 
 #Carry on!
+
+
+
+>[Renato Matos](www.twitter.com/rmatos_) - Desenvolvedor iOS na Concrete Solutions, divide o tempo da empresa com a startup de desenvolvimento digital Studio WO. Gosta de estudar tudo relacionado a desenvolvimento, desde iOS e Android até API, Front/Backend, Web, UX e Banco de Dados. Nas poucas horas vagas, toca piano e faz tricô.
 
