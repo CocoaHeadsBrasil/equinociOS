@@ -67,7 +67,7 @@ Neste post, abordaremos 4 pontos principais sobre a implementação do **Today W
 
 --
 
-###Setup Inicial
+### Setup Inicial
 
 Abra o **Xcode** e clique em **Create a new Xcode project**. Para este exemplo, podemos criar um Single View Application. Defina um nome para o seu projeto e *let's play a game* =)
 
@@ -85,7 +85,7 @@ Defina um nome para o projeto.
 
 Após isto, você será questionado se deseja ativar um scheme para o seu novo Target. 
 
-######Particularmente, prefiro já ativar, pois desta forma você poderá rodar e debugar o seu target de forma independente.
+###### Particularmente, prefiro já ativar, pois desta forma você poderá rodar e debugar o seu target de forma independente.
 <img src="{{ site.baseurl }}/img/renatosarro/img4.png">
 
 >Se preferir, não precisa ativar agora, pode adicionar depois se achar necessário
@@ -94,7 +94,7 @@ Ao rodar o projeto você pode notar que ele já se encontra disponível no **Tod
 
 <img src="{{ site.baseurl }}/img/renatosarro/img5.png">
 
-###Manipulando Elementos Visuais
+### Manipulando Elementos Visuais
 
 Outra coisa bacana do **Today Extension** é a liberdade que você tem para manipular os elementos visuais, como se estivesse trabalhando em uma tela do seu app.
 
@@ -112,15 +112,15 @@ Agora abra o Storyboard. Note que temos um object **View Controller** adicionado
 
 >Para o post não ficar muito longo e cansativo, dividi a implementação em 3 passos que podemos acompanhar nos vídeos abaixo. *Enjoy*!
 
-###Passo 1 - Customizando layout e comportamento
+### Passo 1 - Customizando layout e comportamento
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/8QfoSwfIvbU" frameborder="0" allowfullscreen></iframe>
 
-###Passo 2 - Chamada simples de API
+### Passo 2 - Chamada simples de API
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/srBzeF6U0TA" frameborder="0" allowfullscreen></iframe>
 
-###Passo 3 - Enviando uma ação para outro aplicativo
+### Passo 3 - Enviando uma ação para outro aplicativo
 
 Para finalizar, vamos fazer nosso **Widget** se comunicar com nosso aplicativo. Esta comunicação será realizada através de um **[Custom URL Scheme](https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899)**.
 
@@ -130,5 +130,5 @@ Para finalizar, vamos fazer nosso **Widget** se comunicar com nosso aplicativo. 
 
 E assim finalizamos nossa introdução ao **Today Extension**. Não deixem de compartilhar, comentar, perguntar e continuar acompanhando o ***[equinociOS](http://www.equinocios.com)***. Tem muito conteúdo bacana pra ver :D
 
-#Carry on!
+# Carry on!
 
