@@ -196,3 +196,78 @@ adequação de aspectos importantes das definições de uma linguagem"*, de form
 a *"evitar a escrita de código incorreto pelo simples fato de o compilador não
 deixar"*.
 
+### O Que Temos Por Aí?
+
+Esta seção serve mais para contextualizar Swift entre outras linguagens antes
+de falaramos especificamente desta.
+
+As linguagens se dividem em duas categorias: **tipadas** e **não-tipadas** - ou
+*unitipadas*.
+
+> *Bônus*: Até a forma como pensamos na definição de tipos pode variar dentro
+desse espectro, mas isso é tema para outras discussões - e vamos manter a nossa
+definição alcançada nas seções anteriores.
+
+Na primeira, temos representantes como *Haskell*, *O'Caml*, *F#*, entre muitas
+outras, incluindo nossa querida *Swift*. Nestas, as expressões têm tipos
+diferentes, e quando se combina uma expressão particular, os tipos devem estar
+coerentes - assim, se você tem uma expressão `Int` + `Int`, não é possível
+escrever `"Swift"` + `1`, porque `"Swift"` não tem o tipo `Int`.
+
+Na segunda, também temos representantes de peso, como: *Clojure*, *Erlang* e
+*Scheme*. Nestas, todas as expressões têm o mesmo tipo, portanto, não há
+restrições em como as expressões podem ser combinadas - assim, a mesma expressão
+do exemplo anterior seria um construção válida, pois seria uma expressão do tipo
+`Object` + `Object` - ou algo assim.
+
+Atualmente - até onde eu sei - exemplos que temos de mais poderosos e
+espressivos em relação a sistemas de tipos são os de
+[Agda](http://wiki.portal.chalmers.se/agda/pmwiki.php),
+[Idris](http://www.idris-lang.org/) e [Coq](https://coq.inria.fr/), que possuem
+tipagem dependente e indutiva - programar nestas é realmente uma experiência
+incrível de interação com seu *type checker*.
+
+Um pouco mais abaixo - mas ainda proporcionando lindezas relacionadas a tipos -
+temos aquelas que se baseiam em variações do modelo *Hindley–Milner* - do qual
+você pode achar uma explicação bem interessante [aqui](http://akgupta.ca/blog/2013/05/14/so-you-still-dont-understand-hindley-milner/) -, como *Haskell*, *ML*, *OCaml*,
+[Rust](https://www.rust-lang.org/), [Scala](http://scala-lang.org/) e...
+*Swift*.
+
+Ainda sobre classificações, temos que *Swift* é:
+
+- **Estaticamente Tipada**: Ou seja, todas as suas *variáveis*, *constantes*,
+*funções* etc. devem ter seus tipos declarados - ou inferidos, como veremos mais
+adiante - antecipadamente. Então, o compilador, ao compilar seu programa, usa
+essas declarações de tipo para verificar se não há erros. Se houver um erro de
+tipo, o programa não será compilado.
+
+  ```swift
+  var x = 5
+  x = "Swift" // => Aqui temos um erro
+  ```
+
+- **Fortemente Tipada**: O que nos diz que, sempre que você usar uma variável,
+ou passar algo como um argumento de uma função, Swift irá verificar, em tempo
+de compilação, se este é do tipo correto - assim, você não pode, por exemplo,
+passar um `Float` para uma função que espera um `Int`.
+
+  ```swift
+
+  // Uma simples função que retorna o fatorial de um valor.
+
+  // Pela anotação de tipo, temos que fatorial recebe um `Int` e o mapeia para
+  // um `Int`.
+
+  func fatorial(n: Int) -> Int {
+    return n == 0 ? 1 : n * fatorial(n — 1)
+  }
+  // Chamando nossa função com um `Int`, teremos um `Int` de retorno.
+  fatorial(3)   // => 6
+
+  // Chamando nossa função com um `Float`, teremos um erro.
+  fatorial(3.0) // => Erro.
+  ```
+
+E agora...
+
+
