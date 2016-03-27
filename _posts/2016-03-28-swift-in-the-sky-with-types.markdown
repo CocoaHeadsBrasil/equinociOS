@@ -419,3 +419,72 @@ let teste = MinhaColecao(itens: ["s", "w", "i", "f", "t"])
 teste.geraAleatorio() // => "f"
 ```
 
+## Concluindo
+
+> Falou quase nada de Swift.
+
+É, verdade. Perto do que se tem a ser dito, não foi dito quase nada de nada.
+Cada um desses tópicos sobre Swift - até os mais primitivos - renderia/mereceria
+um post ou talk sobre. E com os tópicos mais teóricos discutidos no post não é
+muito diferente - na verdade, é sim: estes é que renderiam/mereceriam mais posts
+e talks para serem discutidos!
+
+Na verdade, o objetivo maior do post é apenas levantar cada um destes tópicos em
+sua mente - e o fazer pensar e buscar mais sobre eles.
+
+> Eu realmente ganho algo?
+
+Você pode ainda estar se perguntando se todas estas palavras relacionadas a
+teoria dos tipos - e outras áreas de estudo comumente associadas a projeto e
+implementação de linguagem - que soam algo muito *apenas da Academia* realmente
+afetam a forma como você escreve aplicações do mundo real; para resolver
+problemas reais.
+
+Bem, eu confesso que, quando comecei a interessar mais por esse assunto, também
+tinha muitos pensamentos assim - algo do tipo: *"Poxa, até ontem eu escrevia
+código que funcionava e não entendia nada disso! Não vai ser agora que vou
+precisar"*.
+
+O que eu não me ligava muito era que a formo como eu modelo meus dados afeta -
+e muito! - a forma como eu interajo com estes. E:
+
+- Poder deduzir o que uma função faz a partir de sua assinatura de tipo - algo
+inclusive muito útil para tornar o código mais legível e compreensível -;
+
+- Ter o processo de refatoração facilitado, uma vez que conto com um monte de
+erros de compilação para me dizer onde as coisas começarama a dar errado;
+
+- Ter a garantia que as relações entre meus dados estão ocorrendo da forma que
+deveriam.
+
+São etapas que, diria eu, são necessárias para se atingir a coerência requerida
+para se interagir corretamente com uma informação - e isso, colega, causa
+grande impacto no seu software final.
+
+> Poxa, agora o compilador será meu inimigo?
+
+**tl;dr**: De forma alguma, galera.
+
+A priori, pode soar <strike>muito chato</strike> doloroso travar uma *"luta"*
+contra um *type checker* apenas para ver um programa que você **tem certeza de
+que está correto** compilado. Alguns chegam até a ver como uma péssima
+característica da linguagem se pensarmos em num conceito de *bom* para uma lang
+definido através da métrica "ser *developer-friendly*".
+
+Porém, um ponto que eu penso ser interessante de se discutir é o fato de que a
+noção técnica de *melhor* envolve aspectos - estes indo muito além do sistema
+de tipos, como: seu modelo de execução, o quão segura esta é, maneiras que se
+usa pra obter melhor expressividade - que nem sempre, **a primeira vista**, se
+alinham com a felicidade do desenvolvedor.
+
+Particularmente, o tempo me mostrou que, ao programar em uma linguagem que me
+faça pensar cuidadosamente sobre tipos, acabo chegando em um código melhor
+projetado, mais fácil de manter, que falha mais rápido - caso este haja de
+falhar, claro -, melhor documentado etc. Assim, passei a ver o compilador não
+como um inimigo, mas como uma ferramenta que me guia de uma bela forma a
+solução para o meu problema - através de tipos.
+
+E tudo isso faz você se sentir bem mais confiante sobre seu próprio código - e
+isso é tão divertido quanto ouvir a faixa *Lucy In The Sky With Diamonds* ☺️.
+
+
