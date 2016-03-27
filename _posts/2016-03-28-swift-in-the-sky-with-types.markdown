@@ -32,7 +32,7 @@ que esta seja realmente instanciada em execução - o que significa que pode ser
 tarde demais, uma vez que você não sabe se algum erro de tipo estava em seu
 código e quebrou antes de executá-lo.
 
-Além disso, nós não podemos contar com caras como o `instanceof` e o` typeof`:
+Além disso, nós não podemos contar com caras como o `instanceof` e o ` typeof`:
 eles não funcionam de forma consistente - o que acaba nos mostrando que
 verificação de tipos em JavaScript é um problema - e você provavelmente tem que
 fazer alguns *workarounds* para ajudar você a superar tal inconsistência - ou
@@ -64,7 +64,7 @@ aceito. Na *Filosofia*, temos uma definição parecida com isso:
 ou cálculo*.
 
 Ao adentrarmos na *Computação*, começamos a pensar de uma forma ou pouco
-deferente sobre *dados* - ou melhor dizendo: um pouco mais *específica* para o
+diferente sobre *dados* - ou melhor dizendo: um pouco mais *específica* para o
 contexto em que estamos - e encontramos definições como:
 
 > *Quantidades*, *caracteres* ou *símbolos* dos quais operações são executadas
@@ -165,7 +165,7 @@ Esse conceito aqui também é sempre legal de se pensar sobre, garanto.
 Um dos principais objetivos de uma linguagem de programação deve ser a
 capacidade de orientar programador a uma abordagem de *Correctness-by-Design*.
 Isto é, um programa que é válido nesta linguagem, também deve ser um programa
-que funciona como o esperado - ou seja, o sistema simplesmente não poderá chegar
+que funciona como o esperado - ou seja: o sistema simplesmente não poderá chegar
 a um estado inválido; um estado que não cumpre os requisitos de tal programa.
 
 Para tanto, a linguagem deve fazer um esforço de rejeitar programas que possam
@@ -264,7 +264,6 @@ de compilação, se este é do tipo correto - assim, você não pode, por exempl
 passar um `Float` para uma função que espera um `Int`.
 
   ```swift
-
   // Uma simples função que retorna o fatorial de um valor.
 
   // Pela anotação de tipo, temos que fatorial recebe um `Int` e o mapeia para
@@ -444,7 +443,7 @@ teste.geraAleatorio() // => "f"
 É... Verdade! Perto do que se tem a ser dito, não foi dito quase nada de nada.
 Cada um desses tópicos sobre Swift - até os mais primitivos - renderia/mereceria
 um post ou talk sobre. E com os tópicos mais teóricos discutidos no post não é
-muito diferente - na verdade, é sim: estes é que renderiam/mereceriam mais posts
+muito diferente - de fato, é sim: estes é que renderiam/mereceriam mais posts
 e talks para serem discutidos!
 
 Na verdade, o objetivo maior do post é apenas levantar cada um destes tópicos em
@@ -470,7 +469,7 @@ e muito! - a forma como eu interajo com estes. E:
 inclusive muito útil para tornar o código mais legível e compreensível -;
 
 - Ter o processo de refatoração facilitado, uma vez que conto com um monte de
-erros de compilação para me dizer onde as coisas começarama a dar errado;
+erros de compilação para me dizer onde as coisas começaram a dar errado;
 
 - Ter a garantia que as relações entre meus dados estão ocorrendo da forma que
 deveriam.
@@ -507,7 +506,7 @@ isso é tão divertido quanto ouvir a faixa *Lucy In The Sky With Diamonds* ☺�
 
 ## Referências
 
-Aqui ficam apenas alguns posts, livros, vídeos etc. nos quais me baseiei ao
+Aqui ficam apenas alguns posts, livros, vídeos etc. nos quais me baseei ao
 longo da escrita deste post - e que eu acho que mereceriam um tempo da atenção
 de vocês.
 
