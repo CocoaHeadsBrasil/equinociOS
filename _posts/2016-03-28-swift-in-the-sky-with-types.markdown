@@ -4,7 +4,7 @@ title:      "Swift In The Sky With Types"
 subtitle:   "Ou apenas mais uma conversa sobre linguagens, compiladores, tipos e... Swift!"
 date:       2016-03-28 00:15:00
 author:     "Matheus Brasil"
-header-img: "img/mabrasil/bg.jpg"
+header-img: "img/mabrasil/cover.png"
 category:   swift
 ---
 
