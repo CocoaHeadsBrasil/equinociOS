@@ -69,9 +69,9 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **05/03/2016:** Testes de Aceitação em iOS, por [Felipe Valio](https://github.com/felipe-valio-movile)
 - **06/03/2016:** UIKeyCommand: Teclas de atalho dentro do seu app, por [Douglas Fischer](https://github.com/DougFischer)
 - **07/03/2016:** Desmistificando Storyboards, por [Rafael Nobre] (https://github.com/nobre84)
-- **08/03/2016:** Desenvolvendo para Apple TV - compartilhando código e dependências entre plataformas, por [Tales Pinheiro](https://github.com/talesp)
+- **08/03/2016:** Minimizando o acoplamento entre Views e ViewControllers, por [Diogo Tridapalli](https://github.com/diogot)
 - **09/03/2016:** Em busca de um layout bonito e adaptativo: UICollectionView, Auto Layout e Size Classes, por [Rodrigo Borges] (https://github.com/rdgborges)
-- **10/03/2016:** Minimizando o acoplamento de Views e ViewControllers, por [Diogo Tridapalli](https://github.com/diogot)
+- **10/03/2016:** Vamos falar de Xcode, por [Tales Pinheiro](https://github.com/talesp)
 - **11/03/2016:** Unity3D e o Mundo Apple, por [Mauricio Cardozo] (https://github.com/loloop)
 - **12/03/2016:** Seja um desenvolvedor regular: Adicionando expressões regulares não seu dia-a-dia, por [Diego Ventura] (https://github.com/diegoventura)
 - **13/03/2016:** WebView: A porta de entrada para desenvolvedores web, por [Emiliano E. S. Barbosa] (https://github.com/emilianoeloi)
@@ -80,16 +80,16 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **16/03/2016:** Protocol-Oriented Programming, por [Lourenço Marinho](https://github.com/lourenco-marinho)
 - **17/03/2016:** Bibliotecas, por [Igor Ferreira](https://github.com/igorcferreira)
 - **18/03/2016:** iBeacon, por [Gabriel Oliva](https://github.com/gabrieloliva)
-- **19/03/2016:** Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
-- **20/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
+- **19/03/2016:** A vida de um desenvolvedor indie, por [Ricardo Borelli](https://github.com/rabc)
+- **20/03/2016:** Usando Swift no desenvolvimento do seu backend usando Zewo, por [Thiago Holanda](https://github.com/unnamedd)
 
 ## Artigos extras
 - **21/03/2016:** Resolvendo UI complexas com Auto Layout usando a linguagem Visual Format, por [Daniel Bonates](https://github.com/dbonates)
-- **22/03/2016:** Implementando o Facebook iOS SDK, por [Gabriel Ribeiro](https://github.com/gabrielribeiro)
+- **22/03/2016:** 
 - **23/03/2016:** Método Swizzling, por [Fernanda Geraissate](https://github.com/fggeraissate)
-- **24/03/2016:** Fastlane, por [Luiz Alberto da Silva Oliveira] (https://github.com/betodr)
+- **24/03/2016:** Fastlane, por [Fábio Nogueira de Almeida](https://github.com/fabiotk)
 - **25/03/2016:** Optionals e o Gato de Schrödinger, por [Francesco Perrotti-Garcia](https://github.com/fpg1503)
-- **26/03/2016:**
+- **26/03/2016:** Criando frameworks universais, por [Guilherme Sampaio](https://github.com/gsampaio)
 - **27/03/2016:** App Extensions - Today Notification, por [Renato Matos](https://github.com/renatosarro)
 - **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
 - **29/03/2016:** Reactivecocoa + MVVM, por [Alessandro Santos](https://github.com/delarge77)
