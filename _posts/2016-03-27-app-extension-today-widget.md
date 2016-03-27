@@ -42,6 +42,7 @@ Obter informações relevantes ou executar ações rápidas no Centro de Notific
 
 
 ---
+
 ## Today Notification - Widget
 
 Neste post vamos abordar o **Today Notification**. A idéia aqui é dar uma introdução ao assunto, e estimular você a explorar mais esta feature que tanto agrega à experiência que o usuário tem ao utilizar seu app.
