@@ -28,7 +28,7 @@ esse post...
 Eu, Matheus, sou originalmente desenvolvedor JavaScript. E, como em outras
 linguagens, tenho de lidar com alguns *probleminhas*. Por exemplo, sua tipagem
 dinâmica pode ser problemática: JavaScript não sabe que tipo uma variável é até
-que esta seja realmente instanciada em execução - o que significa que pode ser
+que esta seja realmente atribuída em execução - o que significa que pode ser
 tarde demais, uma vez que você não sabe se algum erro de tipo estava em seu
 código e quebrou antes de executá-lo.
 
@@ -44,7 +44,7 @@ relacionadas a tipos presenciadas em algumas linguagens - bem como sistemas de
 tipos exemplares que pude experimentar em linguagems como
 [Haskell](https://www.haskell.org/), [OCaml](https://ocaml.org/) e
 [F#](http://fsharp.org/)- me fez ter sempre tal tópico em mente ao começar em
-uma linguagem - e, há alguns meses atrás, quando comecei a estudar a linguagem
+uma linguagem - e, há alguns meses, quando comecei a estudar a linguagem
 da Apple, não foi diferente.
 
 ## Mas Antes...
@@ -220,7 +220,7 @@ As linguagens se dividem em duas categorias: **tipadas** e **não-tipadas** - ou
 desse espectro, mas isso é tema para outras discussões - e vamos manter a nossa
 definição alcançada nas seções anteriores.
 
-Na primeira, temos representantes como *Haskell*, *O'Caml*, *F#*, entre muitas
+Na primeira, temos representantes como *Haskell*, *OCaml*, *F#*, entre muitas
 outras, incluindo nossa querida *Swift*. Nestas, as expressões têm tipos
 diferentes, e quando se combina uma expressão particular, os tipos devem estar
 coerentes - assim, se você tem uma expressão `Int` + `Int`, não é possível
@@ -254,7 +254,7 @@ essas declarações de tipo para verificar se não há erros. Se houver um erro 
 tipo, o programa não será compilado.
 
   ```swift
-  var x = 5
+  var x: Int = 5
   x = "Swift" // => Aqui temos um erro
   ```
 
@@ -308,7 +308,9 @@ compilação são 💖.
 
 > *Bônus*: Swift nos permite definir várias "versões" de uma mesma função, só
 que com diferentes assinaturas de tipos - e a que "versão" que será chamada
-será aquela cujos argumentos forem compatíveis com a assinatura de tipo.
+será aquela cujos argumentos forem compatíveis com a assinatura de tipo -
+inclusive, há um monte de coisas legais relacionadas a Swift e seu suporte a
+polimorfismo Ad-hoc.
 
 >  ```swift
 
