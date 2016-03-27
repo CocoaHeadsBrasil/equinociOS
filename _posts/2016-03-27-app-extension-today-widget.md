@@ -5,7 +5,7 @@ subtitle:   "Introdução ao Today Extension"
 date:       2016-03-27 00:00:00
 author:     "Renato Matos"
 header-img: "img/renatosarro/header-renatosarro.jpg"
-category:   ios
+category:   extensions
 ---
 
 # App Extensions
@@ -16,6 +16,7 @@ category:   ios
 Essa feature, tem como objetivo melhorar a **experiência do usuário** na forma em que ele se relaciona com seu app.
 
 Uma das partes mais interessantes, é que você pode expandir uma ou mais funcionalidades do seu app para outros app's, fazendo com os usuários possam interagir com seu app, mesmo se estiverem utilizando outro aplicativo.
+
 
 ---
 
@@ -113,17 +114,27 @@ Agora abra o Storyboard. Note que temos um object **View Controller** adicionado
 
 >Para o post não ficar muito longo e cansativo, dividi a implementação em 3 passos que podemos acompanhar nos vídeos abaixo. Enjoy!
 
-/**** VIDEO SOBRE COMPONENTES VISUAIS E IMPLEMENTACAO ****/
-lista estática - mock
-/**** VIDEO SOBRE COMPONENTES VISUAIS E IMPLEMENTACAO ****/
+###Passo 1 - Customizando layout e comportamento
 
-/**** VIDEO SOBRE ATUALIZAR O CONTEUDO ****/
-lista dinâmica - api
-/**** VIDEO SOBRE ATUALIZAR O CONTEUDO ****/
+<iframe width="420" height="315" src="https://www.youtube.com/embed/8QfoSwfIvbU" frameborder="0" allowfullscreen></iframe>
 
-/**** VIDEO SOBRE ABRIR UM APP ****/
-custom url scheme
-/**** VIDEO SOBRE ABRIR UM APP ****/
+###Passo 2 - Chamada simples de API
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/srBzeF6U0TA" frameborder="0" allowfullscreen></iframe>
+
+###Passo 3 - Enviando uma ação para outro aplicativo
+
+Para finalizar, vamos fazer nosso **Widget** se comunicar com nosso aplicativo. Esta comunicação será realilizada através de um **Custom [URL Scheme](https://developer.apple.com/library/ios/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899)**.
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/ce5kynUKUKg" frameborder="0" allowfullscreen></iframe>
+
+--
+
+E assim finalizamos nossa introdução ao **Today Extension**. Não deixem de compartilhar, comentar, perguntar e continuar acompanhando o ***EquinociOS***. Tem muito conteúdo bacana pra ver :D
+
+#Carry on!
 
 
+
+>[Renato Matos](www.twitter.com/rmatos_) - Desenvolvedor iOS na Concrete Solutions, divide o tempo da empresa com a startup de desenvolvimento digital Studio WO. Gosta de estudar tudo relacionado a desenvolvimento, desde iOS e Android até API, Front/Backend, Web, UX e Banco de Dados. Nas poucas horas vagas, toca piano e faz tricô.
 
