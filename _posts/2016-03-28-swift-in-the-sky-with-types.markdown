@@ -78,11 +78,10 @@ informação.
 E, como podemos ler no famigerado
 [*Livro do Mago*](https://mitpress.mit.edu/sicp/full-text/book/book.html):
 
-> [...] Computational processes are abstract beings that inhabit computers. As
-they evolve, processes manipulate other abstract things called data. The
-evolution of a process is directed by a pattern of rules called a program.
-People create programs to direct processes. In effect, we conjure the spirits
-of the computer with our spells.
+> [...] *Processos computacionais* são seres abstratos que habitam computadores.
+A medida que evoluem, os processos manipulam outros seres abstratas chamados
+**dados**. A evolução de um processo é dirigida por um padrão de regras chamado
+*programa*. As pessoas criam programas para direcionar processos. [...]
 
 Dados são uma das partes mais importantes da arte de programar.
 
@@ -137,13 +136,13 @@ Bem, [Benjamin Pierce](http://www.cis.upenn.edu/~bcpierce/), em seu livro
 [Types and Programming Languages](https://www.cis.upenn.edu/~bcpierce/tapl/),
 nos conta que:
 
-> A type system is a tractable syntactic method for proving the absence of
-certain program behaviors by classifying phrases according to the kinds of
-values they compute.
+> Um sistema de tipos é um método sintático tratável para provar o não
+cumprimento de certos comportamentos do programa através da classificação de
+*expressões* de acordo com os tipos de valores que estas computam.
 
 Eu diria que uma das chaves para entendermos o tópico é o trecho:
 
-> [...] for proving the absence of certain program behaviors [...]
+> [...] provar o não cumprimento de certos comportamentos do programa [...]
 
 a partir do qual podemos ver que, para todo sistema de tipos específico,
 haverá uma lista de coisas que este visa a provar - do que exatamente consiste
@@ -187,19 +186,20 @@ expressiva quanto a feita pelo ilustre pesquisador
 [Luca Cardelli](http://lucacardelli.name/), da
 [Microsoft Research](http://research.microsoft.com/en-us/default.aspx):
 
-> The fundamental purpose of a type system is to prevent the occurrence of
-execution errors during the running of aprogram.
+> O propósito fundamental de um sistema de tipo é **evitar a ocorrência de
+erros durante a execução de um programa**.
 
 Ainda subjetivo? Ele vai além:
 
-> Type systems provide conceptual tools with which to judge the adequacy of
-important aspects of language definitions. Informal language descriptions
-often fail to specify the type structure of a language in sufficient detail
-to allow unambiguous implementation. It often happens that different
-compilers for the same language implement slightly different type systems.
-Moreover, many language definitions have been found to be type unsound,
-allowing a program to crash even though it is judged acceptable by a
-typechecker.
+> Sistemas de tipos fornecem ferramentas conceituais para julgar a adequação
+de aspectos importantes de definições da linguagem. Descrições de linguagem
+informais muitas vezes não conseguem especificar a estrutura de tipos de uma
+linguagem com detalhes suficientes de maneira a evitar a aplicação equívoca.
+Muitas vezes, acontece que diferentes compiladores para a mesma linguagem
+implementam sistemas de tipo ligeiramente diferentes. Além disso, muitas
+definições de linguagens se mostraram para ser defeituosas no quesito tipos,
+permitindo que um programa quebre - mesmo sendo considerado aceitável por um
+*typechecker*.
 
 Assim, vemos no nosso sistema de tipos a figura responsável por *"julgar a
 adequação de aspectos importantes das definições de uma linguagem"*, de forma a
@@ -295,10 +295,10 @@ anterior.
 
 Como podemos encontrar na própria [documentação provida pela Apple](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309):
 
-> Swift is a *type-safe* language, which means the language helps you to be
-clear about the types of values your code can work with. If part of your code
-expects a `String`, type safety prevents you from passing it an `Int` by
-mistake.
+> Swift é uma linguagem *type-safe*, o que significa a linguagem ajuda você a
+ser claro sobre os tipos dos valores com os quais seu código pode trabalhar. Se
+parte do seu código espera uma `String`, a segurança de tipos impede que você
+possa, por engano, passar um `Int`.
 
 Assim, sabemos que **todas** as variáveis têm um tipo declarado e **todas** as
 funções/métodos têm assinaturas de tipo que declaram os tipos de seus argumentos
@@ -443,10 +443,11 @@ teste.geraAleatorio() // => "f"
 > Falou quase nada de Swift!
 
 É... Verdade! Perto do que se tem a ser dito, não foi dito quase nada de nada.
-Cada um desses tópicos sobre Swift - até os mais primitivos - renderia/mereceria
-um post ou talk sobre. E com os tópicos mais teóricos discutidos no post não é
-muito diferente - de fato, é sim: estes é que renderiam/mereceriam mais posts
-e talks para serem discutidos!
+Cada um desses tópicos sobre Swift - até os mais primitivos -, juntamente com
+alguns que não explorei para evitar textão - como *Phantom Types*,
+*Typeclasses* etc. - renderia/mereceria um post ou talk sobre. E com os tópicos
+mais teóricos discutidos no post não é muito diferente - de fato, é sim: estes
+é que renderiam/mereceriam mais posts e talks para serem discutidos!
 
 Na verdade, o objetivo maior do post é apenas levantar cada um destes tópicos em
 sua mente - e o fazer pensar e buscar mais sobre eles.
