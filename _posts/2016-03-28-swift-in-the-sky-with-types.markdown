@@ -55,6 +55,8 @@ alguns conceitos mais "gerais".
 
 ### Dados?
 
+![Dados?]({{ site.baseurl }}/img/mabrasil/data.png)
+
 Esse é um conceito bem primitivo - e que muitas vezes não é discutido e só
 aceito. Na *Filosofia*, temos uma definição parecida com isso:
 
@@ -98,6 +100,8 @@ tópico.
 
 ### Tipos de Dados?
 
+![Tipos de Dados?]({{ site.baseurl }}/img/mabrasil/data-types.png)
+
 > **tl;dr**: Uma representação específica de algum(ns) dado(s).
 
 Basicamente, essa galera aqui te diz como interagir com uma determinado
@@ -119,6 +123,8 @@ A propósito, guarde bem, também, essa palavra: **correto** - pois ela ainda se
 discutida mais a frente.
 
 ### Sistemas de Tipos?
+
+![Sistemas de Tipos?]({{ site.baseurl }}/img/mabrasil/type-system.png)
 
 > **tl;dr**: Sistemas do tipo são, em sua essência, estruturas de análise de
 programas.
@@ -152,6 +158,8 @@ número inteiro - e aí temos nossa prova.
 
 ### *Correctness-by-Design*
 
+![Correctness-by-Design]({{ site.baseurl }}/img/mabrasil/correctness-by-design.png)
+
 Esse conceito aqui também é sempre legal de se pensar sobre, garanto.
 
 Um dos principais objetivos de uma linguagem de programação deve ser a
@@ -166,6 +174,8 @@ você literalmente não pode escrever código incorreto pelo simples fato de o
 compilador não deixar.
 
 ### *Correctness-by-Design* & Sistemas de Tipos
+
+![Correctness-by-Design & Sistemas de Tipos]({{ site.baseurl }}/img/mabrasil/correctness-by-design-and-type-systems.png)
 
 Agora que já temos um ideia geral em torno de sistemas de tipos e de como
 linguagens devem ser projetadas de modo a naturalmente evitar que programas
@@ -197,6 +207,8 @@ a *"evitar a escrita de código incorreto pelo simples fato de o compilador não
 deixar"*.
 
 ### O Que Temos Por Aí?
+
+![O Que Temos Por Aí?]({{ site.baseurl }}/img/mabrasil/what-we-have.png)
 
 Esta seção serve mais para contextualizar Swift entre outras linguagens antes
 de falaramos especificamente desta.
@@ -280,6 +292,8 @@ anterior.
 
 ### *Type-Safety*
 
+![Type-Safety]({{ site.baseurl }}/img/mabrasil/type-safety.png)
+
 Como podemos encontrar na própria [documentação provida pela Apple](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309):
 
 > Swift is a *type-safe* language, which means the language helps you to be
@@ -324,6 +338,8 @@ será aquela cujos argumentos forem compatíveis com a assinatura de tipo.
 
 ### *Type Inference*
 
+![Type Inference]({{ site.baseurl }}/img/mabrasil/type-inference.png)
+
 Se você é daqueles que se assusta com a possibilidade de ter que declarar tipo
 de cada variável do seu código, relaxe! Swift usa a inferência de tipos para -
 <strike>adivinha?</strike> - inferir quais os tipos suas variáveis têm. Caso
@@ -346,6 +362,8 @@ y = 2
 ```
 
 ### *Generics*
+
+![Generics]({{ site.baseurl }}/img/mabrasil/generics.png)
 
 Os conhecidos *Generics* nos permitem declarar uma variável que, na execução,
 pode ser atribuído a um conjunto de tipos definidos por nós.
@@ -421,9 +439,9 @@ teste.geraAleatorio() // => "f"
 
 ## Concluindo
 
-> Falou quase nada de Swift.
+> Falou quase nada de Swift!
 
-É, verdade. Perto do que se tem a ser dito, não foi dito quase nada de nada.
+É... Verdade! Perto do que se tem a ser dito, não foi dito quase nada de nada.
 Cada um desses tópicos sobre Swift - até os mais primitivos - renderia/mereceria
 um post ou talk sobre. E com os tópicos mais teóricos discutidos no post não é
 muito diferente - na verdade, é sim: estes é que renderiam/mereceriam mais posts
@@ -513,5 +531,3 @@ de vocês.
 
 - [**Types and Programming Languages**](https://www.cis.upenn.edu/~bcpierce/tapl/)
   > Livro de [Benjamin Pierce](http://www.cis.upenn.edu/~bcpierce/).
-
-
