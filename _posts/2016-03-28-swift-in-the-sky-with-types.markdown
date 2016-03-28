@@ -13,10 +13,8 @@ category:   swift
 > 1. Esse post é baseado experiências - e eu não sou nenhum tipo de *dono da
 verdade*: se você tem alguma opinião sobre isso - concordando, discordando,
 complementando -, sinta-se livre para compartilhá-la.
-
 > 2. Nem tudo nesse post é sobre Swift: boa parte dele está relacionado a
 experiências bem gerais relacionadas a projeto de linguagens de programação.
-
 > 3. Há boatos que a experiência de ler o post é enriquecida ouvindo-se o álbum
 [Sgt. Pepper's Lonely Hearts Club Band](https://play.spotify.com/album/6QaVfG1pHYl1z15ZxkvVDW) ☺️.
 
@@ -32,7 +30,7 @@ que esta seja realmente atribuída em execução - o que significa que pode ser
 tarde demais, uma vez que você não sabe se algum erro de tipo estava em seu
 código e quebrou antes de executá-lo.
 
-Além disso, nós não podemos contar com caras como o `instanceof` e o ` typeof`:
+Além disso, nós não podemos contar com caras como o `instanceof` e o `typeof`:
 eles não funcionam de forma consistente - o que acaba nos mostrando que
 verificação de tipos em JavaScript é um problema - e você provavelmente tem que
 fazer alguns *workarounds* para ajudar você a superar tal inconsistência - ou
