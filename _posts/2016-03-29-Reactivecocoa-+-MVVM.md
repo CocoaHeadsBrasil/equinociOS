@@ -2,7 +2,7 @@
 layout:     post
 title:      "Reactivecocoa + MVVM"
 subtitle:   "Utilizando Reactivecocoa e MVVM"
-date:       2016-03-12 00:00:00
+date:       2016-03-27 00:00:00
 author:     "Alessandro Santos"
 header-img: "img/home-bg.jpg"
 category:   Regex
@@ -11,14 +11,14 @@ category:   Regex
 > Alessandro Santos ([@andydelarge](https://twitter.com/andydelarge){:target="_blank"}) Carioca , desenvolvedor iOS desde 2011 , atualmente faz parte (orgulhosamente) do time iOS da 99 Taxis, e esta prestes a realizar o sonho em Trabalhar fora do pais .
 
 ## Introdução
-A utilização dos paradigmas de linguagens funcional e/ou reativas parecem estar "na moda" já a algum tempo, em linguagens como scala, ou até mesmo com o  lançamento do swift . O que a maioria parece não saber, ou ignorar, é que "qualquer" linguagem permite o uso destes conceitos , sendo que algumas dão um "pouco mais de trabalho" para utilizar estas técnicas . O seu uso muitas vezes pode parecer como conhecmos "uma bazuca para matar formiga" e embora possamos nos beneficiar destas tecnicas escrevendo menos código , o seu uso deve ser bem avaliado.  Para começarmos de forma simples , vamos ver um pouco do seu uso como bindings utilizando o framework Reactivecocoa em um padrão de arquitetura conhecido como MVVM.
+A utilização dos paradigmas de linguagens funcional e/ou reativas parecem estar "na moda" já a algum tempo, em linguagens como scala, ou até mesmo com o  lançamento do swift . O que a maioria parece não saber, ou ignorar, é que "qualquer" linguagem permite o uso destes conceitos , sendo que algumas dão um "pouco mais de trabalho" para utilizar estas técnicas . É importante ressaltar que o uso do Reactivecocoa  muitas vezes pode parecer como conhecemos "uma bazuca para matar formiga" e embora possamos nos beneficiar destas técnicas escrevendo menos código , o seu uso deve ser bem avaliado.  Para começarmos de forma simples , vamos ver um pouco do seu uso como bindings em um padrão de arquitetura conhecido como MVVM.
 
 
 ## Reactivecocoa
 Reactivecocoa (RAC) nada mais é que um framework , inspirado pelo paradigma funcional e reativo de programação. Existem várias matérias explicando os conceitos de programação reativa e funcional (inclusive aqui no blog) , portanto vamos nos ater ao seu uso apenas para o uso de "bindings" na arquiterura MVVM .
 
 ## Bindings
-Utilizar Reactivecocoa para efetuar bindings , significa obter apenas algumas adições , no mecanismo já existente de KVO em Objective-C. Existe algo novo, que o Reactivecocoa traz para o KVO ? Uma interface mais amigavel com certeza , adionando ainda , as habilidades de se descrever regras , de um estado de um modelo de dados  para o estado da interface de forma declarativa .
+Utilizar Reactivecocoa para efetuar bindings , significa obter apenas algumas adições , no mecanismo já existente de KVO em Objective-C. Existe algo novo, que o Reactivecocoa traz para o KVO ? Uma interface mais amigável com certeza , adionando ainda , as habilidades de se descrever regras , de um estado de um modelo de dados  para o estado da interface de forma declarativa .
 
 ## MVVM
 ![]({{ site.baseurl }}/img/Delarge/MVVMPattern.png)
@@ -31,9 +31,12 @@ tornando as aplicações mais faceis de serem desenvolvidas e testadas. Reúne t
 ![]({{ site.baseurl }}/img/Delarge/MVVMReactiveCocoa.png)
 
 No contexto deste post , de utilizar ReactiveCocoa somente para binding de dados , usando a arquitetura MVVM , o ReactiveCocoa executa uma função muito especifica. Ele fornece uma espécie de "ponte" da viewmodel para a view ,  monitorando todas as mudanças realizadas no modelo de dados, e mapeando estas mudanças para as properties da viewmodel efetuando qualquer lógica de negócios necessária .
-Para dar um exemplo , imagine que nosso modelo de dados , contenha uma property NSDate chamada de dateAdded, e nós iremos monitorar suas mudanças , para  atualizar outra property também chamada de dateAdded, mas esta, do nosso viewmodel. A property dateAdded do nosso modelo , como dito anteriormente , será uma NSDate enquanto a do nosso viewmodel será uma NSString. O binding irá parecer com algo descrito abaixo (Dentro do metodo init em nossa viewmodel) :
+Para dar um exemplo , imagine que nosso modelo de dados , contenha uma property NSDate chamada de dateAdded, e nós iremos monitorar suas mudanças , para  atualizar outra property também chamada de dateAdded, mas esta, do nosso viewmodel. A property dateAdded do nosso modelo , como dito anteriormente , será uma NSDate enquanto a do nosso viewmodel será uma NSString. O binding irá parecer com algo descrito abaixo :
 
 ~~~objc
+@property (nonatomic) NSString *dateAdded;
+@property (nonatomic) Model *model;
+
 RAC(self,dateAdded)=[RACObserve(self.model,dateAdded)
 	map:^(NSDate *date){
 	 return [[ViewModel dateFormatter] stringFromDate:date];
@@ -48,6 +51,37 @@ RAC(self.label,text) = RACObserve(self.viewModel,dateAdded);
 ~~~
 
 Aqui nós estamos abstraindo toda a lógica de se transformar um NSDate para uma NSString para a nossa viewmodel , onde nós podemos escrever testes unitários para ela . Pode parecer um pouco confuso neste exemplo e um tanto quanto trivial como podemos ver , mas como vimos isso ajuda a reduzir significamente a quantidade de código de lógica de UI de nossas viewcontrollers.
+Desta forma toda vez que a property dateAdded do nosso modelo , for modificada a property dateAdded do modelo será populada com o valor correspondente. E nós criamos uma conexão "invisível" entre elas. Essa é a razão pela qual chamamos reativa: duas properties estão agora relacionadas , então as mudanças que ocorrerem em uma , irá afetar reativamente a outra.    
+
+## Mas o que seria um view-model ?
+
+Resumindo , é a parte que trata da lógica de como se representam os dados . Os dados raramente são representados em sua aplicação da mesma forma em que são persistidos , quase sempre são transformados antes . Assim como citamos no exemplo acima , precisamos transformar um NSDate para uma NSString para melhor compreensão do usuário . E é para isto que um viewmodel serve : Ele possui o modelo de dados , transforma-o , e normaliza-o para ser exibido posteriormente pela UI. O viewmodel não é responsável apenas por estas transformações , mas também por ações associadas ao modelo .
+
+## Desacoplando e compondo ViewModels.
+Esta e uma parte importante , em qualquer parte no desenvolvimento de software - poder ser facilmente desacoplado. Na maioria das vezes , um particular viewmodel serve toda uma tela do aplicativo , fazendo mais de uma coisa dinâmicamente. Agora imagine outro ViewModel servindo outra view com alguma coisa em comum com esta outra. Neste cenário viewmodels podem ser refatoradas , de forma com que funcionalidades em comum são movidas para uma terceira viewmodel. Isso nos permite ter um código mais granular e menos dependente. Como reusar uma viewmodel em comum ? Simplesmente crie uma property de outra viewmodel conectando entradas e saídas desta forma :
+
+~~~objc
+@property (nonatomic) SubViewModel *subViewModel;
+@property (nonatomic) Model *inputModel;
+@property (nonatomic) NSString *outputValue;
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        //tune subViewModel
+        RAC(self, subViewModel.model) = RACObserve(self, inputModel);
+
+        //tune output
+        RAC(self, outputValue) = RACObserve(self, subViewModel.itsOutputValue);
+			}
+		return self;
+}
+~~~
+
+## Testabilidade
+
+Aparentemente viewmodels possuem um padrão muito conveniente para se cobrir com testes , por possuir entrada e saída de dados . Testes possuem um padrão muito bem definido : Setar valores arbitrários de entrada e checar os valores esperados em sua saída .
+Viewmodels que fazem uso de FRP , particularmente ReactiveCocoa , fazem de mandeira mais limpa e direta como implementar a funcionalidade desejada. Isto não significa necessariamente que você escreverá menos código , mas com certeza o fará de maneira mais limpa. Quanto mais claramente você entender o que precisa fazer , menos erros irá cometer. E esta é a vantagem principal do ReactiveCocoa e porque MVVM é tão bom : permitem com que você cometa cada vez menos erros.
 
 ## E agora ? Como proceder ?
 As utilizações do Reactivecocoa vão MUITO além de simples bindings . Seu conteúdo é bastante vasto e sua curva de aprendizado bastante alta . Desde simples bindings até camadas de conexão , vale a pena o seu estudo , por tornar sua aplicação reativa com todas as vantagens que isto pode oferecer .   
