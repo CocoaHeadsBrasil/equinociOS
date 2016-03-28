@@ -342,11 +342,11 @@ fatorial(3.0) // => 6.0
 ![Type Inference]({{ site.baseurl }}/img/mabrasil/type-inference.png)
 
 Se você é daqueles que se assusta com a possibilidade de ter que declarar tipo
-de cada variável do seu código, relaxe! Swift usa a inferência de tipos para -
-<strike>adivinha?</strike> - inferir quais os tipos suas variáveis têm. Caso
-queira, você pode declarar explicitamente o tipo de suas variáveis, mas, na
-prática, muitas vezes você não precisa: Swift irá inferir o tipo de uma `var`
-se você atribuir a ela um valor inicial.
+de cada variável do seu código, relaxe! Swift usa a inferência de tipos 
+para - <strike>adivinha?</strike> - inferir quais os tipos suas variáveis têm. 
+Caso queira, você pode declarar explicitamente o tipo de suas variáveis, mas, 
+na prática, muitas vezes você não precisa: Swift irá inferir o tipo de uma 
+`var` se você atribuir a ela um valor inicial.
 
 ~~~swift
 // Aqui, inicializamos uma variável `x`, dando a esta o valor `1`. Como
@@ -396,7 +396,7 @@ func imprimeElementos<T>(a: [T]) {
 E a brincadeira com estas pode ir além: poderíamos, por exemplo, ter algo do tipo:
 
 ~~~swift
-func someFunction<T, U>(a: T, b: U) {}
+func minhaFuncao<T, U>(a: T, b: U) {}
 ~~~
 
 Onde especificamos mais de um *Generic*.
