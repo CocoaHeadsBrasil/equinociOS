@@ -10,7 +10,7 @@ category:   swift
 
 > Antes de tudo, algumas coisas a se levar em consideração:
 >
-> 1. Esse post é baseado experiências - e eu não sou nenhum tipo de *dono da
+> 1. Esse post é baseado em experiências - e eu não sou nenhum tipo de *dono da
 verdade*: se você tem alguma opinião sobre isso - concordando, discordando,
 complementando -, sinta-se livre para compartilhá-la.
 >
