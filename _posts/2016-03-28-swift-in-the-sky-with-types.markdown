@@ -79,7 +79,7 @@ E, como podemos ler no famigerado
 [*Livro do Mago*](https://mitpress.mit.edu/sicp/full-text/book/book.html):
 
 > [...] *Processos computacionais* são seres abstratos que habitam computadores.
-A medida que evoluem, os processos manipulam outros seres abstratas chamados
+A medida que evoluem, os processos manipulam outros seres abstratos chamados
 **dados**. A evolução de um processo é dirigida por um padrão de regras chamado
 *programa*. As pessoas criam programas para direcionar processos. [...]
 
@@ -90,7 +90,7 @@ pensamos sobre como essas informações são passadas a um computador - afinal,
 eles não sabem o que um *número* é, ou o que o *infográfico de seu documento*
 é, ou o que a *URL* da sua página é - e assim por diante.
 
-E assim chegamos a - já esperada - conclusão de que, se queremos passar a nosso
+Então chegamos a - já esperada - conclusão de que, se queremos passar a nosso
 computador qualquer um desses *pedaços de informação*, precisamos saber
 representá-los de alguma maneira que o computador entenda.
 
