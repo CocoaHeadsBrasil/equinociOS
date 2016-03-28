@@ -135,5 +135,5 @@ E assim finalizamos nossa introdução ao **Today Extension**. Não deixem de co
 
 
 
->[Renato Matos](www.twitter.com/rmatos_) - Desenvolvedor iOS na Concrete Solutions, divide o tempo da empresa com a startup de desenvolvimento digital Studio WO. Gosta de estudar tudo relacionado a desenvolvimento, desde iOS e Android até API, Front/Backend, Web, UX e Banco de Dados. Nas poucas horas vagas, toca piano e faz tricô.
+>[Renato Matos](https://twitter.com/rmatos_) - Desenvolvedor iOS na Concrete Solutions, divide o tempo da empresa com a startup de desenvolvimento digital Studio WO. Gosta de estudar tudo relacionado a desenvolvimento, desde iOS e Android até API, Front/Backend, Web, UX e Banco de Dados. Nas poucas horas vagas, toca piano e faz tricô.
 
