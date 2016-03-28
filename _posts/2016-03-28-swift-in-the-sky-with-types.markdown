@@ -91,7 +91,7 @@ eles não sabem o que um *número* é, ou o que o *infográfico de seu documento
 é, ou o que a *URL* da sua página é - e assim por diante.
 
 E assim chegamos a - já esperada - conclusão de que, se queremos passar a nosso
-computador qualquer uma dessas *pedaços de informação*, precisamos saber
+computador qualquer um desses *pedaços de informação*, precisamos saber
 representá-los de alguma maneira que o computador entenda.
 
 Guarda bem essa palavra: **representação** - pois ela nos leva ao próximo
@@ -103,13 +103,13 @@ tópico.
 
 > **tl;dr**: Uma representação específica de algum(ns) dado(s).
 
-Basicamente, essa galera aqui te diz como interagir com uma determinado
+Basicamente, essa galera aqui te diz como interagir com um determinado
 *pedaço de informação* e ainda pode dizer como essa informação (dado) é
 representada por meio de outras informações mais primitivas - ou *vice-versa*:
 como interpretar dados mais primitivos a partir de um determinado tipo de dados.
 
 Se o ato de programar consiste em gerenciar processos de tal forma que eles
-possam manipular dados, **é de importância trivial que tais processos manipulem
+possam manipular dados, **é de importância crucial que tais processos manipulem
 dados de forma eficiente e correta**.
 
 Seguindo o raciocínio, modelar dados de forma que estes possam ser *manipulados
@@ -149,7 +149,7 @@ haverá uma lista de coisas que este visa a provar - do que exatamente consiste
 tal prova é deixado em aberto.
 
 Uma forma prática de tentar enxergar isso é pensar em simples expressões. Por
-exemplo, uma vez que o verificador de tipos pega expressão `1 + 2`, este pode
+exemplo, uma vez que o verificador de tipos pega a expressão `1 + 2`, este pode
 "olhar" para o `1` e inferir que se trata de um inteiro, olhar para o `2` - e
 também inferir que este é um inteiro - e, em seguida, olhar para o operador
 `+`, e saber que, quando `+` é aplicada a dois inteiros, o resultado é um
@@ -162,7 +162,7 @@ número inteiro - e aí temos nossa prova.
 Esse conceito aqui também é sempre legal de se pensar sobre, garanto.
 
 Um dos principais objetivos de uma linguagem de programação deve ser a
-capacidade de orientar programador a uma abordagem de *Correctness-by-Design*.
+capacidade de orientar o programador a uma abordagem de *Correctness-by-Design*.
 Isto é, um programa que é válido nesta linguagem, também deve ser um programa
 que funciona como o esperado - ou seja: o sistema simplesmente não poderá chegar
 a um estado inválido; um estado que não cumpre os requisitos de tal programa.
@@ -176,7 +176,7 @@ compilador não deixar.
 
 ![Correctness-by-Design & Sistemas de Tipos]({{ site.baseurl }}/img/mabrasil/correctness-by-design-and-type-systems.png)
 
-Agora que já temos um ideia geral em torno de sistemas de tipos e de como
+Agora que já temos uma ideia geral em torno de sistemas de tipos e de como
 linguagens devem ser projetadas de modo a naturalmente evitar que programas
 feitos nestas atinjam estados inválidos, você deve estar se perguntando: qual é
 a exata relação entre ambos?
@@ -197,7 +197,7 @@ informais muitas vezes não conseguem especificar a estrutura de tipos de uma
 linguagem com detalhes suficientes de maneira a evitar a aplicação equívoca.
 Muitas vezes, acontece que diferentes compiladores para a mesma linguagem
 implementam sistemas de tipo ligeiramente diferentes. Além disso, muitas
-definições de linguagens se mostraram para ser defeituosas no quesito tipos,
+definições de linguagens se mostraram ser defeituosas no quesito tipos,
 permitindo que um programa quebre - mesmo sendo considerado aceitável por um
 *typechecker*.
 
@@ -249,35 +249,35 @@ Ainda sobre classificações, temos que *Swift* é:
 
 - **Estaticamente Tipada**: Ou seja, todas as suas *variáveis*, *constantes*,
 *funções* etc. devem ter seus tipos declarados - ou inferidos, como veremos mais
-adiante - antecipadamente. Então, o compilador, ao compilar seu programa, usa
+adiante - antecipadamente. Então o compilador, ao compilar seu programa, usa
 essas declarações de tipo para verificar se não há erros. Se houver um erro de
 tipo, o programa não será compilado.
 
-  ```swift
-  var x: Int = 5
-  x = "Swift" // => Aqui temos um erro
-  ```
+~~~swift
+var x: Int = 5
+x = "Swift" // => Aqui temos um erro
+~~~
 
 - **Fortemente Tipada**: O que nos diz que, sempre que você usar uma variável,
 ou passar algo como um argumento de uma função, Swift irá verificar, em tempo
-de compilação, se este é do tipo correto - assim, você não pode, por exemplo,
+de compilação, se este é do tipo correto - assim você não pode, por exemplo,
 passar um `Float` para uma função que espera um `Int`.
 
-  ```swift
-  // Uma simples função que retorna o fatorial de um valor.
+~~~swift
+// Uma simples função que retorna o fatorial de um valor.
 
-  // Pela anotação de tipo, temos que fatorial recebe um `Int` e o mapeia para
-  // um `Int`.
+// Pela anotação de tipo, temos que fatorial recebe um `Int` e o mapeia para
+// um `Int`.
 
-  func fatorial(n: Int) -> Int {
-    return n == 0 ? 1 : n * fatorial(n — 1)
-  }
-  // Chamando nossa função com um `Int`, teremos um `Int` de retorno.
-  fatorial(3)   // => 6
+func fatorial(n: Int) -> Int {
+  return n == 0 ? 1 : n * fatorial(n — 1)
+}
+// Chamando nossa função com um `Int`, teremos um `Int` de retorno.
+fatorial(3)   // => 6
 
-  // Chamando nossa função com um `Float`, teremos um erro.
-  fatorial(3.0) // => Erro.
-  ```
+// Chamando nossa função com um `Float`, teremos um erro.
+fatorial(3.0) // => Erro.
+~~~
 
 E agora...
 
@@ -295,7 +295,7 @@ anterior.
 
 Como podemos encontrar na própria [documentação provida pela Apple](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309):
 
-> Swift é uma linguagem *type-safe*, o que significa a linguagem ajuda você a
+> Swift é uma linguagem *type-safe*, o que significa que a linguagem ajuda você a
 ser claro sobre os tipos dos valores com os quais seu código pode trabalhar. Se
 parte do seu código espera uma `String`, a segurança de tipos impede que você
 possa, por engano, passar um `Int`.
@@ -307,35 +307,35 @@ estão coerentes e não compila seu programa caso não estejam - erros em tempo 
 compilação são 💖.
 
 > *Bônus*: Swift nos permite definir várias "versões" de uma mesma função, só
-que com diferentes assinaturas de tipos - e a que "versão" que será chamada
+que com diferentes assinaturas de tipos - e a "versão" que será chamada
 será aquela cujos argumentos forem compatíveis com a assinatura de tipo -
 inclusive, há um monte de coisas legais relacionadas a Swift e seu suporte a
 polimorfismo Ad-hoc.
 
->  ```swift
+~~~swift
 
->  // Uma simples função que retorna o fatorial de um valor.
+// Uma simples função que retorna o fatorial de um valor.
 
->  // Pela anotação de tipo, temos que fatorial recebe um `Int` e o mapeia para
->  // um `Int`.
+// Pela anotação de tipo, temos que fatorial recebe um `Int` e o mapeia para
+// um `Int`.
 
->  func fatorial(n: Int) -> Int {
->    return n == 0 ? 1 : n * fatorial(n — 1)
->  }
+func fatorial(n: Int) -> Int {
+  return n == 0 ? 1 : n * fatorial(n — 1)
+}
 
->  // Agora, pela anotação de tipo, temos que fatorial recebe um `Float` e
->  // mapeia este para um `Float`.
+// Agora, pela anotação de tipo, temos que fatorial recebe um `Float` e
+// mapeia este para um `Float`.
 
->  func fatorial(n: Float) -> Float {
->    return n == 0.0 ? 1.0 : n * fatorial(n — 1.0)
->  }
+func fatorial(n: Float) -> Float {
+  return n == 0.0 ? 1.0 : n * fatorial(n — 1.0)
+}
 
->  // Chamando nossa função com um `Int`, teremos um `Int` de retorno.
->  fatorial(3)   // => 6
+// Chamando nossa função com um `Int`, teremos um `Int` de retorno.
+fatorial(3)   // => 6
 
->  // Chamando nossa função com um `Float`, teremos um `Float` de retorno.
->  fatorial(3.0) // => 6.0
->  ```
+// Chamando nossa função com um `Float`, teremos um `Float` de retorno.
+fatorial(3.0) // => 6.0
+~~~
 
 ### *Type Inference*
 
@@ -348,7 +348,7 @@ queira, você pode declarar explicitamente o tipo de suas variáveis, mas, na
 prática, muitas vezes você não precisa: Swift irá inferir o tipo de uma `var`
 se você atribuir a ela um valor inicial.
 
-```swift
+~~~swift
 // Aqui, inicializamos uma variável `x`, dando a esta o valor `1`. Como
 // fornecemos um valor inicial, não precisamos declarar explicitamente o tipo
 // de `x`: Swift irá inferir que esta se trata de um `Int`.
@@ -360,7 +360,7 @@ var x = 1
 // um valor de tipo não coerente com a declaração, teríamos um erro do compilador.
 var y:Int
 y = 2
-```
+~~~
 
 ### *Generics*
 
@@ -377,7 +377,7 @@ exemplo do uso de *Generics*.
 O uso destes começa com **funções genéricas**, como uma simples função para
 imprimir elementos de um array:
 
-```swift
+~~~swift
 // Funções genéricas usam placeholders ao invés de um tipo real, como `String`,
 // `Int` ou `Float`. Em nossa função, o placeholder é `T` - mas poderia ser
 // qualquer outro: `T` é "apenas" convenção.
@@ -391,13 +391,13 @@ func imprimeElementos<T>(a: [T]) {
         println(elemento)
     }
 }
-```
+~~~
 
 E a brincadeira com estas pode ir além: poderíamos, por exemplo, ter algo do tipo:
 
-```swift
+~~~swift
 func someFunction<T, U>(a: T, b: U) {}
-```
+~~~
 
 Onde especificamos mais de um *Generic*.
 
@@ -408,7 +408,7 @@ ideia.
 
 Assim, podemos ter coisas como:
 
-```swift
+~~~swift
 // Um exemplo de necessidade comum, por exemplo, é obter um valor randômico de
 // uma coleção - e podemos implementar isso com Generics!
 
@@ -429,14 +429,14 @@ struct MinhaColecao<T> {
         return itens[indice]
     }
 }
-```
+~~~
 
 E, ao testarmos:
 
-```swift
+~~~swift
 let teste = MinhaColecao(itens: ["s", "w", "i", "f", "t"])
 teste.geraAleatorio() // => "f"
-```
+~~~
 
 ## Concluindo
 
@@ -488,13 +488,13 @@ grande impacto no seu software final.
 A priori, pode soar <strike>muito chato</strike> doloroso travar uma *"luta"*
 contra um *type checker* apenas para ver um programa que você **tem certeza de
 que está correto** compilado. Alguns chegam até a ver como uma péssima
-característica da linguagem se pensarmos em num conceito de *bom* para uma lang
+característica da linguagem se pensarmos em um conceito de *bom* para uma lang
 definido através da métrica "ser *developer-friendly*".
 
 Porém, um ponto que eu penso ser interessante de se discutir é o fato de que a
 noção técnica de *melhor* envolve aspectos - estes indo muito além do sistema
 de tipos, como: seu modelo de execução, o quão segura esta é, maneiras que se
-usa pra obter melhor expressividade - que nem sempre, **a primeira vista**, se
+usa pra obter melhor expressividade - que nem sempre, **à primeira vista**, se
 alinham com a felicidade do desenvolvedor.
 
 Particularmente, o tempo me mostrou que, ao programar em uma linguagem que me
