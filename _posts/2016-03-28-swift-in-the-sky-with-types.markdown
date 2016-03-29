@@ -3,7 +3,7 @@ layout:     post
 title:      "Swift In The Sky With Types"
 subtitle:   "Ou apenas mais uma conversa sobre linguagens, compiladores, tipos e... Swift!"
 date:       2016-03-28 00:15:00
-author:     "Matheus Brasil"
+author:     "Matheus Albuquerque"
 header-img: "img/mabrasil/cover.png"
 category:   swift
 ---
@@ -25,12 +25,12 @@ experiências bem gerais relacionadas a projeto de linguagens de programação.
 > Algumas coisas que me levaram a pensar sobre *Sistemas de Tipos* - e a escrever
 esse post...
 
-Eu, Matheus, sou originalmente desenvolvedor JavaScript. E, como em outras
-linguagens, tenho de lidar com alguns *probleminhas*. Por exemplo, sua tipagem
-dinâmica pode ser problemática: JavaScript não sabe que tipo uma variável é até
-que esta seja realmente atribuída em execução - o que significa que pode ser
-tarde demais, uma vez que você não sabe se algum erro de tipo estava em seu
-código e quebrou antes de executá-lo.
+Eu, [Matheus](https://github.com/mabrasil), sou originalmente desenvolvedor
+JavaScript. E, como em outras linguagens, tenho de lidar com alguns *probleminhas*.
+Por exemplo, sua tipagem dinâmica pode ser problemática: JavaScript não sabe
+que tipo uma variável é até que esta seja realmente atribuída em execução - o
+que significa que pode ser tarde demais, uma vez que você não sabe se algum
+erro de tipo estava em seu código e quebrou antes de executá-lo.
 
 Além disso, nós não podemos contar com caras como o `instanceof` e o `typeof`:
 eles não funcionam de forma consistente - o que acaba nos mostrando que
