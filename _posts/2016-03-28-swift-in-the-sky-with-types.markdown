@@ -14,7 +14,7 @@ category:   swift
 verdade*: se você tem alguma opinião sobre isso - concordando, discordando,
 complementando -, sinta-se livre para compartilhá-la.
 
-> 2. Nem tudo nesse post é sobre Swift: boa parte dele está relacionado a
+> 2. Nem tudo nesse post é sobre Swift: boa parte dele está relacionada a
 experiências bem gerais relacionadas a projeto de linguagens de programação.
 
 > 3. Há boatos que a experiência de ler o post é enriquecida ouvindo-se o álbum
@@ -41,7 +41,7 @@ usar caras como o [TypeScript](http://www.typescriptlang.org/) ou o
 
 O que tudo isso tem a ver com Swift? Bem, o contato com algumas inconsistências
 relacionadas a tipos presenciadas em algumas linguagens - bem como sistemas de
-tipos exemplares que pude experimentar em linguagems como
+tipos exemplares que pude experimentar em linguagens como
 [Haskell](https://www.haskell.org/), [OCaml](https://ocaml.org/) e
 [F#](http://fsharp.org/)- me fez ter sempre tal tópico em mente ao começar em
 uma linguagem - e, há alguns meses, quando comecei a estudar a linguagem
@@ -79,7 +79,7 @@ E, como podemos ler no famigerado
 [*Livro do Mago*](https://mitpress.mit.edu/sicp/full-text/book/book.html):
 
 > [...] *Processos computacionais* são seres abstratos que habitam computadores.
-A medida que evoluem, os processos manipulam outros seres abstratos chamados
+À medida que evoluem, os processos manipulam outros seres abstratos chamados
 **dados**. A evolução de um processo é dirigida por um padrão de regras chamado
 *programa*. As pessoas criam programas para direcionar processos. [...]
 
@@ -142,7 +142,7 @@ cumprimento de certos comportamentos do programa através da classificação de
 
 Eu diria que uma das chaves para entendermos o tópico é o trecho:
 
-> [...] provar o não cumprimento de certos comportamentos do programa [...]
+> [...] provar o não cumprimento de certos comportamentos do programa [...].
 
 a partir do qual podemos ver que, para todo sistema de tipos específico,
 haverá uma lista de coisas que este visa a provar - do que exatamente consiste
@@ -168,7 +168,7 @@ que funciona como o esperado - ou seja: o sistema simplesmente não poderá cheg
 a um estado inválido; um estado que não cumpre os requisitos de tal programa.
 
 Para tanto, a linguagem deve fazer um esforço de rejeitar programas que possam
-estar errados - ou, ao menos, torná-los mais difíceis de se escrever. Assim,
+estar errados - ou, ao menos, torná-los mais difíceis de escrever. Assim,
 você literalmente não pode escrever código incorreto pelo simples fato de o
 compilador não deixar.
 
@@ -202,7 +202,7 @@ permitindo que um programa quebre - mesmo sendo considerado aceitável por um
 *typechecker*.
 
 Assim, vemos no nosso sistema de tipos a figura responsável por *"julgar a
-adequação de aspectos importantes das definições de uma linguagem"*, de forma a
+adequação de aspectos importantes das definições de uma linguagem"*, de forma
 a *"evitar a escrita de código incorreto pelo simples fato de o compilador não
 deixar"*.
 
@@ -211,7 +211,7 @@ deixar"*.
 ![O Que Temos Por Aí?]({{ site.baseurl }}/img/mabrasil/what-we-have.png)
 
 Esta seção serve mais para contextualizar Swift entre outras linguagens antes
-de falaramos especificamente desta.
+de falarmos especificamente desta.
 
 As linguagens se dividem em duas categorias: **tipadas** e **não-tipadas** - ou
 *unitipadas*.
@@ -233,11 +233,11 @@ do exemplo anterior seria um construção válida, pois seria uma expressão do 
 `Object` + `Object` - ou algo assim.
 
 Atualmente - até onde eu sei - exemplos que temos de mais poderosos e
-espressivos em relação a sistemas de tipos são os de
+expressivos em relação a sistemas de tipos são os de
 [Agda](http://wiki.portal.chalmers.se/agda/pmwiki.php),
 [Idris](http://www.idris-lang.org/) e [Coq](https://coq.inria.fr/), que possuem
 tipagem dependente e indutiva - programar nestas é realmente uma experiência
-incrível de interação com seu *type checker*.
+incrível de interação com seu *typechecker*.
 
 Um pouco mais abaixo - mas ainda proporcionando lindezas relacionadas a tipos -
 temos aquelas que se baseiam em variações do modelo *Hindley–Milner* - do qual
@@ -283,7 +283,7 @@ E agora...
 
 ## Vamos Falar de Swift?
 
-> *Ufa, finalmente! Um post entitulado "Swift In The Sky With Types" e até
+> *Ufa, finalmente! Um post intitulado "Swift In The Sky With Types" e até
 agora nada demais sobre Swift?!*
 
 Agora, gostaria de levantar algumas coisas que vão além do que vimos na seção
@@ -309,7 +309,7 @@ compilação são 💖.
 > *Bônus*: Swift nos permite definir várias "versões" de uma mesma função, só
 que com diferentes assinaturas de tipos - e a "versão" que será chamada
 será aquela cujos argumentos forem compatíveis com a assinatura de tipo -
-inclusive, há um monte de coisas legais relacionadas a Swift e seu suporte a
+inclusive, há um monte de coisas legais relacionadas à Swift e seu suporte a
 polimorfismo Ad-hoc.
 
 ~~~swift
@@ -342,10 +342,10 @@ fatorial(3.0) // => 6.0
 ![Type Inference]({{ site.baseurl }}/img/mabrasil/type-inference.png)
 
 Se você é daqueles que se assusta com a possibilidade de ter que declarar tipo
-de cada variável do seu código, relaxe! Swift usa a inferência de tipos 
-para - <strike>adivinha?</strike> - inferir quais os tipos suas variáveis têm. 
-Caso queira, você pode declarar explicitamente o tipo de suas variáveis, mas, 
-na prática, muitas vezes você não precisa: Swift irá inferir o tipo de uma 
+de cada variável do seu código, relaxe! Swift usa a inferência de tipos
+para - <strike>adivinha?</strike> - inferir quais os tipos suas variáveis têm.
+Caso queira, você pode declarar explicitamente o tipo de suas variáveis, mas,
+na prática, muitas vezes você não precisa: Swift irá inferir o tipo de uma
 `var` se você atribuir a ela um valor inicial.
 
 ~~~swift
@@ -356,7 +356,7 @@ var x = 1
 
 // Desta vez, declaramos uma variável, mas sem atribuir valor a esta - assim,
 // Swift não pode inferir seu tipo e precisamos definir este explicitamente.
-// Logo após a declaração, atribuimos a ela o valor `2` - e caso atribuíssemos
+// Logo após a declaração, atribuímos a ela o valor `2` - e caso atribuíssemos
 // um valor de tipo não coerente com a declaração, teríamos um erro do compilador.
 var y:Int
 y = 2
@@ -454,7 +454,7 @@ sua mente - e o fazer pensar e buscar mais sobre eles.
 
 > Eu realmente ganho algo?
 
-Você pode ainda estar se perguntando se todas estas palavras relacionadas a
+Você pode ainda estar se perguntando se todas estas palavras relacionadas à
 teoria dos tipos - e outras áreas de estudo comumente associadas a projeto e
 implementação de linguagem - que soam algo muito *apenas da Academia* realmente
 afetam a forma como você escreve aplicações do mundo real; para resolver
@@ -486,7 +486,7 @@ grande impacto no seu software final.
 **tl;dr**: De forma alguma, galera.
 
 A priori, pode soar <strike>muito chato</strike> doloroso travar uma *"luta"*
-contra um *type checker* apenas para ver um programa que você **tem certeza de
+contra um *typechecker* apenas para ver um programa que você **tem certeza de
 que está correto** compilado. Alguns chegam até a ver como uma péssima
 característica da linguagem se pensarmos em um conceito de *bom* para uma lang
 definido através da métrica "ser *developer-friendly*".
@@ -498,7 +498,7 @@ usa pra obter melhor expressividade - que nem sempre, **à primeira vista**, se
 alinham com a felicidade do desenvolvedor.
 
 Particularmente, o tempo me mostrou que, ao programar em uma linguagem que me
-faça pensar cuidadosamente sobre tipos, acabo chegando em um código melhor
+faça pensar cuidadosamente sobre tipos, acabo chegando a um código melhor
 projetado, mais fácil de manter, que falha mais rápido - caso este haja de
 falhar, claro -, melhor documentado etc. Assim, passei a ver o compilador não
 como um inimigo, mas como uma ferramenta que me guia de uma bela forma a
