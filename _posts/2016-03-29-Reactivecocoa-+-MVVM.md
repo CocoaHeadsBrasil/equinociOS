@@ -2,7 +2,7 @@
 layout:     post
 title:      "ReactiveCocoa + MVVM"
 subtitle:   "Utilizando ReactiveCocoa e MVVM"
-date:       2016-03-27 00:00:00
+date:       2016-03-29 00:00:00
 author:     "Alessandro Santos"
 header-img: "img/home-bg.jpg"
 category:   Regex
