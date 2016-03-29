@@ -10,7 +10,7 @@ category:   swift
 
 > Antes de tudo, algumas coisas a se levar em consideração:
 
-> 1. Esse post é baseado experiências - e eu não sou nenhum tipo de *dono da
+> 1. Esse post é baseado em experiências - e eu não sou nenhum tipo de *dono da
 verdade*: se você tem alguma opinião sobre isso - concordando, discordando,
 complementando -, sinta-se livre para compartilhá-la.
 
@@ -32,7 +32,7 @@ que esta seja realmente atribuída em execução - o que significa que pode ser
 tarde demais, uma vez que você não sabe se algum erro de tipo estava em seu
 código e quebrou antes de executá-lo.
 
-Além disso, nós não podemos contar com caras como o `instanceof` e o ` typeof`:
+Além disso, nós não podemos contar com caras como o `instanceof` e o `typeof`:
 eles não funcionam de forma consistente - o que acaba nos mostrando que
 verificação de tipos em JavaScript é um problema - e você provavelmente tem que
 fazer alguns *workarounds* para ajudar você a superar tal inconsistência - ou
