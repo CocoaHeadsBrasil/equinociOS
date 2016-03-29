@@ -5,7 +5,7 @@ subtitle:   "Utilizando ReactiveCocoa e MVVM"
 date:       2016-03-29 00:00:00
 author:     "Alessandro Santos"
 header-img: "img/home-bg.jpg"
-category:   Regex
+category:   arquitetura
 ---
 
 > Alessandro Santos ([@andydelarge](https://twitter.com/andydelarge){:target="_blank"}) Carioca, desenvolvedor iOS desde 2011, atualmente faz parte (orgulhosamente) do time iOS da 99 Táxis, e está prestes a realizar o sonho em Trabalhar fora do país.
