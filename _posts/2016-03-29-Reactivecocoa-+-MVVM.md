@@ -21,14 +21,14 @@ ReactiveCocoa (RAC) nada mais é que um framework, inspirado pelo paradigma func
 Utilizar ReactiveCocoa para efetuar bindings significa obter apenas algumas adições, no mecanismo já existente de KVO em Objective-C. Existe algo novo, que o ReactiveCocoa traz para o KVO? Uma interface mais amigável com certeza, adicionando ainda, as habilidades de se descrever regras, de um estado de um modelo de dados para o estado da interface de forma declarativa.
 
 ## MVVM
-![]({{ site.baseurl }}/img/Delarge/MVVMPattern.png)
+![]({{ site.baseurl }}/img/delarge/MVVMPattern.png)
 
 Model-View-ViewModel, ou MVVM como é conhecido, trata-se de um design pattern que consiste em separar lógicas de UI, da lógica de negócios,
 tornando as aplicações mais fáceis de serem desenvolvidas e testadas. Reúne todos os dados brutos que podem vir de banco de dados, webservices e etc, aplica lógicas e formata estes dados para apresentação em uma ViewController. Expõe via properties somente a informação que a ViewController precisa saber para efetuar o trabalho de mostrar os dados em uma view.
 
 ## MVVM e binding de dados
 
-![]({{ site.baseurl }}/img/Delarge/MVVMReactiveCocoa.png)
+![]({{ site.baseurl }}/img/delarge/MVVMReactiveCocoa.png)
 
 No contexto deste post, de utilizar ReactiveCocoa somente para binding de dados, usando a arquitetura MVVM, o ReactiveCocoa executa uma função muito específica. Ele fornece uma espécie de "ponte" da ViewModel para a view, monitorando todas as mudanças realizadas no modelo de dados e mapeando estas mudanças para as properties da ViewModel efetuando qualquer lógica de negócios necessária.
 Para dar um exemplo, imagine que nosso modelo de dados contenha uma property do tipo NSDate chamada de dateAdded. Nós iremos monitorar suas mudanças para atualizar uma property do nosso ViewModel, também chamada de dateAdded, mas esta, do nosso ViewModel. A property dateAdded do nosso modelo, como dito anteriormente, será uma NSDate enquanto a do nosso ViewModel será uma NSString. O binding irá parecer com algo descrito abaixo:
