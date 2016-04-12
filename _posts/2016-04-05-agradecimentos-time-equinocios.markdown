@@ -52,7 +52,7 @@ Adorei a oportunidade! Foi muito bom pra praticar a escrita de artigos simples e
 ## Douglas Fischer ([@DougDiskin](https://twitter.com/DougDiskin){:target="_blank"})
 [http://equinocios.com/open-source/2016/03/06/uikeycommand-teclas-de-atalho-dentro-do-seu-app/](http://equinocios.com/open-source/2016/03/06/uikeycommand-teclas-de-atalho-dentro-do-seu-app/){:target="_blank"}
 
-Foi excelente ver a comunidade nacional conseguir movimentar um projeto tão bacana tão rapidamente. Da idéia até a execução foram apenas poucos dias. Um grande orgulho! O CocoaHeads tem evoluído dos encontros regionais para grandes ações em conjunto, contemplando participantes de todo o mundo, indo muito além das barreiras geográficas. Vale lembrar que essa iniciativa já está rendendo frutos. Em breve teremos uma curadoria de artigos em um Medium específico do CocoaHeads Br. Você já pode ir nos seguindo por lá: [https://medium.com/cocoaheads-br](https://medium.com/cocoaheads-br){:target="_blank"} ;) Até a próxima!
+Foi excelente ver a comunidade nacional conseguir movimentar um projeto tão bacana tão rapidamente. Da ideia até a execução foram apenas poucos dias. Um grande orgulho! O CocoaHeads tem evoluído dos encontros regionais para grandes ações em conjunto, contemplando participantes de todo o mundo, indo muito além das barreiras geográficas. Vale lembrar que essa iniciativa já está rendendo frutos. Em breve teremos uma curadoria de artigos em um Medium específico do CocoaHeads BR. Você já pode ir nos seguindo por lá: [https://medium.com/cocoaheads-br](https://medium.com/cocoaheads-br){:target="_blank"} ;) Até a próxima!
 <br><br>
 
 ---
@@ -85,7 +85,7 @@ Muito obrigado a todos da comunidade iOS do Brasil que ajudaram no sucesso do Eq
 ## Tales Pinheiro de Andrade ([@talesp](https://twitter.com/talesp){:target="_blank"})
 [http://equinocios.com/xcode/2016/03/10/vamos-falar-de-xcode/](http://equinocios.com/xcode/2016/03/10/vamos-falar-de-xcode/){:target="_blank"}
 
-Conheci a idéia do projeto via @shonorio na época que participei - rapidamente - da comunidade SP Perl Mongers. Quando ele propôs fazermos na comunidade iOS, não pensei duas vezes: tínhamos que fazer! A comunidade rapidamente se organizou, e o projeto foi um sucesso! A comunidade nacional está madura, colaborativa e integrada. Parabéns a todos os envolvidos, mal espero o que vem por aí!
+Conheci a ideia do projeto via @shonorio na época que participei - rapidamente - da comunidade SP Perl Mongers. Quando ele propôs fazermos na comunidade iOS, não pensei duas vezes: tínhamos que fazer! A comunidade rapidamente se organizou, e o projeto foi um sucesso! A comunidade nacional está madura, colaborativa e integrada. Parabéns a todos os envolvidos, mal espero o que vem por aí!
 <br><br>
 
 ---
@@ -117,7 +117,7 @@ Agradeço Solli pela inciativa do projeto que celebra o Equinócio e a todos os 
 ## Bruno Koga ([@brunokoga](https://twitter.com/brunokoga){:target="_blank"})
 [http://equinocios.com/2016/03/14/rxswift-como-eu-vim-parar-aqui/](http://equinocios.com/2016/03/14/rxswift-como-eu-vim-parar-aqui/){:target="_blank"}
 
-O equinociOS é mais uma prova de que a comunidade iOS no Brasil amadureceu muito nos últimos meses. Tenho certeza que muitos outros projetos nascerão inspirados no equinóciOS. Parabéns ao CocoaHeads Brasil e a todos que de alguma forma participaram na publicação dos artigos!
+O equinociOS é mais uma prova de que a comunidade iOS no Brasil amadureceu muito nos últimos meses. Tenho certeza que muitos outros projetos nascerão inspirados no equinociOS. Parabéns ao CocoaHeads Brasil e a todos que de alguma forma participaram na publicação dos artigos!
 <br><br>
 
 ---
@@ -150,7 +150,7 @@ Participar dessa iniciativa foi uma oportunidade única, pois temos uma forma de
 ## Gabriel Oliva ([@gabrieloliva_](https://twitter.com/gabrieloliva_){:target="_blank"})
 [http://equinocios.com/ibeacon/2016/03/18/ibeacon/](http://equinocios.com/ibeacon/2016/03/18/ibeacon/){:target="_blank"}
 
-Foi uma honra fazer parte de um projeto desse porte e apoiado por tanto desenvolvedores bons! Esse foi o primeiro passo pra fazer a comunidade iOS brasileira mais forte, mais unida e produzindo conteúdo de altíssima qualidade. Well done mates!
+Foi uma honra fazer parte de um projeto desse porte e apoiado por tanto desenvolvedores bons! Esse foi o primeiro passo pra fazer a comunidade iOS brasileira mais forte, mais unida e produzindo conteúdo de altíssima qualidade. *Well done mates*!
 <br><br>
 
 ---
@@ -158,7 +158,7 @@ Foi uma honra fazer parte de um projeto desse porte e apoiado por tanto desenvol
 ## Ricardo Borelli ([@rabc](https://twitter.com/rabc){:target="_blank"})
 [http://equinocios.com/devlife/2016/03/19/a-vida-de-um-desenvolvedor-indie/](http://equinocios.com/devlife/2016/03/19/a-vida-de-um-desenvolvedor-indie/){:target="_blank"}
 
-Foi muito bom ver como a comunidade iOS cresceu tanto em número quanto em qualidade através desse EquinociOS, há tempos não via um conteúdo tão bom. Parabéns a todos os escritores e obrigado aos leitores pelo prestígio, espero que os posts sirvam de incentivo e ajuda a muitos de vocês.
+Foi muito bom ver como a comunidade iOS cresceu tanto em número quanto em qualidade através desse EquinociOS, há tempos não via um conteúdo tão bom. Parabéns a todos os escritores e obrigado aos leitores pelo prestígio, espero que os *posts* sirvam de incentivo e ajuda a muitos de vocês.
 <br><br>
 
 ---
