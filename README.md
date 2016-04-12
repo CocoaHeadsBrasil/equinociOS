@@ -93,7 +93,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **27/03/2016:** App Extensions - Today Notification, por [Renato Matos](https://github.com/renatosarro)
 - **28/03/2016:** Swift in the sky with types, por [Matheus Brasil](https://github.com/mabrasil)
 - **29/03/2016:** Reactivecocoa + MVVM, por [Alessandro Santos](https://github.com/delarge77)
-- **30/03/2016:** Testes Unitários, por [Solli Honorio] (https://github.com/shonorio)
+- **30/03/2016:** 
 
 ## Contato
 Para desenvolvedores que acharam a iniciativa interessante e quiserem se juntar e conhecer a comunidade de desenvolvedores iOS brasileira, se cadastre no [Slack do iOSDevBr](http://iosdevbr.herokuapp.com/).
