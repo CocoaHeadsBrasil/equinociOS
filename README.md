@@ -62,13 +62,13 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 
 
 ## Data de Publicação
-- **01/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
-- **02/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **01/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[01/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
+- **02/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[02/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **03/03/2017:** [[#131](https://github.com/CocoaHeadsBrasil/equinociOS/issues/131)] Introdução e casos de uso: Map, Filter e Reduce. artigo - by [@ezefranca](https://github.com/ezefranca) 
-- **04/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
-- **05/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **04/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[04/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
+- **05/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[05/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **06/03/2017:** [[#125](https://github.com/CocoaHeadsBrasil/equinociOS/issues/125)] Por que a interface gráfica é um XML? - by [@ronflima](https://github.com/ronflima) 
-- **07/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **07/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[07/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **08/03/2017:** [[#133](https://github.com/CocoaHeadsBrasil/equinociOS/issues/133)] LLDB é seu amigo artigo - by [@Bunn](https://github.com/Bunn) 
 - **09/03/2017:** [[#138](https://github.com/CocoaHeadsBrasil/equinociOS/issues/138)] Snapshot Testing artigo - by [@chrisfsampaio](https://github.com/chrisfsampaio) 
 - **10/03/2017:** [[#129](https://github.com/CocoaHeadsBrasil/equinociOS/issues/129)] Reporte de Bugs Para a Apple artigo - by [@fjcaetano](https://github.com/fjcaetano) 
@@ -80,7 +80,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **16/03/2017:** [[#126](https://github.com/CocoaHeadsBrasil/equinociOS/issues/126)] Eu preciso reativar minha aplicação? artigo - by [@Viniciuscarvalho](https://github.com/Viniciuscarvalho) 
 - **17/03/2017:** [[#132](https://github.com/CocoaHeadsBrasil/equinociOS/issues/132)] Enums pra você e pro seu código artigo - by [@dbonates](https://github.com/dbonates) 
 - **18/03/2017:** [[#130](https://github.com/CocoaHeadsBrasil/equinociOS/issues/130)] Componentes de interface com responsabilidade única artigo - by [@ronanrodrigo](https://github.com/ronanrodrigo) 
-- **19/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **19/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[19/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **20/03/2017:** [[#121](https://github.com/CocoaHeadsBrasil/equinociOS/issues/121)] Garimpando UIView desmistificando o Core Animator artigo - by [@renatosarro](https://github.com/renatosarro) 
 
 ## Artigos extras
