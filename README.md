@@ -62,28 +62,39 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 
 
 ## Data de Publicação
-- **01/03/2017:** 
-- **02/03/2017:** 
-- **03/03/2017:** 
-- **04/03/2017:** 
-- **05/03/2017:** 
-- **06/03/2017:** 
-- **07/03/2017:** 
-- **08/03/2017:** 
-- **09/03/2017:** 
-- **10/03/2017:** 
-- **11/03/2017:** 
-- **12/03/2017:** 
-- **13/03/2017:** 
-- **14/03/2017:** 
-- **15/03/2017:** 
-- **16/03/2017:** 
-- **17/03/2017:** 
-- **18/03/2017:** 
-- **19/03/2017:** 
-- **20/03/2017:** 
+- **01/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **02/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **03/03/2017:** [[#131](https://github.com/CocoaHeadsBrasil/equinociOS/issues/131)] Introdução e casos de uso: Map, Filter e Reduce. artigo - by @ezefranca 
+- **04/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **05/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **06/03/2017:** [[#125](https://github.com/CocoaHeadsBrasil/equinociOS/issues/125)] Por que a interface gráfica é um XML? - by @ronflima 
+- **07/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **08/03/2017:** [[#133](https://github.com/CocoaHeadsBrasil/equinociOS/issues/133)] LLDB é seu amigo artigo - by @Bunn 
+- **09/03/2017:** [[#138](https://github.com/CocoaHeadsBrasil/equinociOS/issues/138)] Snapshot Testing artigo - by @chrisfsampaio 
+- **10/03/2017:** [[#129](https://github.com/CocoaHeadsBrasil/equinociOS/issues/129)] Reporte de Bugs Para a Apple artigo - by @fjcaetano 
+- **11/03/2017:** [[#143](https://github.com/CocoaHeadsBrasil/equinociOS/issues/143)] TBD artigo - by @talesp 
+- **12/03/2016:** [[#123](https://github.com/CocoaHeadsBrasil/equinociOS/issues/123)] Testes de UI com Embassy e Ambassador artigo - by @emannuelOC 
+- **13/03/2017:** [[#118](https://github.com/CocoaHeadsBrasil/equinociOS/issues/118)] Um mergulho na construção de módulos nativos para React Native artigo - by @emilianoeloi 
+- **14/03/2017:** [[#124](https://github.com/CocoaHeadsBrasil/equinociOS/issues/124)] Começando a implementar VIPER artigo - by @vitormesquita 
+- **15/03/2017:** [[#119](https://github.com/CocoaHeadsBrasil/equinociOS/issues/119)] TBD - (Provalvelmente meta programação) artigo - by @fpg1503 
+- **16/03/2016:** [[#126](https://github.com/CocoaHeadsBrasil/equinociOS/issues/126)] Eu preciso reativar minha aplicação? artigo - by @Viniciuscarvalho 
+- **17/03/2017:** [[#132](https://github.com/CocoaHeadsBrasil/equinociOS/issues/132)] Enums pra você e pro seu código artigo - by @dbonates 
+- **18/03/2017:** [[#130](https://github.com/CocoaHeadsBrasil/equinociOS/issues/130)] Componentes de interface com responsabilidade única artigo - by @ronanrodrigo 
+- **19/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new)]**
+- **20/03/2017:** [[#121](https://github.com/CocoaHeadsBrasil/equinociOS/issues/121)] Garimpando UIView desmistificando o Core Animator artigo - by @renatosarro 
 
 ## Artigos extras
+- **21/03/2017:** [[#122](https://github.com/CocoaHeadsBrasil/equinociOS/issues/122)] Falando sobre App Coordinator artigo - by @shonorio 
+- **22/03/2017:** [[#137](https://github.com/CocoaHeadsBrasil/equinociOS/issues/137)] Layout, composição e testes A/B artigo - by @brunogb 
+- **23/03/2017:** [[#139](https://github.com/CocoaHeadsBrasil/equinociOS/issues/139)] Machine Learning em Swift artigo - by @luksfarris 
+- **24/03/2017:** [[#127](https://github.com/CocoaHeadsBrasil/equinociOS/issues/127)] Sincronização de dados com CloudKit artigo - by @insidegui 
+- **25/03/2017:** [[#140](https://github.com/CocoaHeadsBrasil/equinociOS/issues/140)] Gerenciando subscriptions com IAP artigo - by @reprotector 
+- **26/03/2017:** [[#142](https://github.com/CocoaHeadsBrasil/equinociOS/issues/142)] Integração Contínua com Travis CI artigo - by @serralvo 
+- **27/03/2017:** [[#136](https://github.com/CocoaHeadsBrasil/equinociOS/issues/136)] CoreBluetooth na prática artigo - by @LeonardoCardoso 
+- **28/03/2017:** [[#135](https://github.com/CocoaHeadsBrasil/equinociOS/issues/135)] Adotando Handoff em apps iOS e macOS artigo - by @rafaelnobrepd 
+- **29/03/2017:** [[#134](https://github.com/CocoaHeadsBrasil/equinociOS/issues/134)] Interfaces Assíncronas com AssyncDisplayKit artigo - by @gugaoliveira 
+- **30/03/2017:** [[#141](https://github.com/CocoaHeadsBrasil/equinociOS/issues/141)] Persistência de dados usando Core Data artigo - by @douglastaquary 
+- **31/03/2017:** [[#120](https://github.com/CocoaHeadsBrasil/equinociOS/issues/120)] 5 motivos para não utilizar Storyboard artigo - by @shonorio 
 
 
 ## Contato
