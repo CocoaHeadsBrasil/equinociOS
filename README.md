@@ -6,9 +6,9 @@ No dia 20 de março acontece o [Equinócio](https://pt.wikipedia.org/wiki/Equin�
 Para colaborar com algum artigo, o autor deve seguir o seguinte fluxo:
 
 1. Abrir uma [issue](https://github.com/CocoaHeadsBrasil/equinociOS/issues) contendo:
-	- Título do artigo
-	- Descrição sucinta do artigo
-	- Data de publicação
+    - Título do artigo
+    - Descrição sucinta do artigo
+    - Data de publicação
 2. Escrever o artigo e fazer o Pull Request para esse repositório, no branch `gh-pages`
 3. Certificar-se de que o artigo se encontra sob a licença [Creative Commons](https://br.creativecommons.org/)
 
@@ -22,15 +22,15 @@ Para colaborar com algum artigo, o autor deve seguir o seguinte fluxo:
 
 **Todos os posts** devem conter o seguinte cabeçalho:
 
-	---
-	layout:     post
-	title:      "Titulo do Artigo"
-	subtitle:   "Subtitulo do Artigo"
-	date:       YYYY-MM-DD 12:00:00
-	author:     "Nome do Autor"
-	header-img: "img/nomeDoUsuario/imagem.jpg" (imagem de cabeçalho)
-	category:   Categoria
-	---
+    ---
+    layout:     post
+    title:      "Titulo do Artigo"
+    subtitle:   "Subtitulo do Artigo"
+    date:       YYYY-MM-DD 12:00:00
+    author:     "Nome do Autor"
+    header-img: "img/nomeDoUsuario/imagem.jpg" (imagem de cabeçalho)
+    category:   Categoria
+    ---
 
 ### Como salvar imagens
 Caso seu post tenha imagens, você deve adiciona-las no diretório [`img`](https://github.com/CocoaHeadsBrasil/equinociOS/tree/gh-pages/img). **Porém não insira a imagem na raíz do diretório!** Crie um novo diretório com o nome do seu usuário e salve suas imagens nele. ;)
@@ -66,9 +66,9 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **02/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[02/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **03/03/2017:** [[#131](https://github.com/CocoaHeadsBrasil/equinociOS/issues/131)] Introdução e casos de uso: Map, Filter e Reduce. artigo - by [@ezefranca](https://github.com/ezefranca) 
 - **04/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[04/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
-- **05/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[05/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
+- **05/03/2017:** [[#146](https://github.com/CocoaHeadsBrasil/equinociOS/issues/146)] Introdução a Arquitetura evolutiva - by [@cs-bruno-mazzo ](https://github.com/cs-bruno-mazzo) 
 - **06/03/2017:** [[#125](https://github.com/CocoaHeadsBrasil/equinociOS/issues/125)] Por que a interface gráfica é um XML? - by [@ronflima](https://github.com/ronflima) 
-- **07/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[07/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
+- **07/03/2017:** [[#145](https://github.com/CocoaHeadsBrasil/equinociOS/issues/145)] Animações utilizando auto-layout e spring animations - by [@KaiqueDamato](https://github.com/KaiqueDamato) 
 - **08/03/2017:** [[#133](https://github.com/CocoaHeadsBrasil/equinociOS/issues/133)] LLDB é seu amigo artigo - by [@Bunn](https://github.com/Bunn) 
 - **09/03/2017:** [[#138](https://github.com/CocoaHeadsBrasil/equinociOS/issues/138)] Snapshot Testing artigo - by [@chrisfsampaio](https://github.com/chrisfsampaio) 
 - **10/03/2017:** [[#129](https://github.com/CocoaHeadsBrasil/equinociOS/issues/129)] Reporte de Bugs Para a Apple artigo - by [@fjcaetano](https://github.com/fjcaetano) 
