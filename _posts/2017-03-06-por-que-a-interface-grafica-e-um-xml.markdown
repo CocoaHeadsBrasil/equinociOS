@@ -155,4 +155,19 @@ faz com que o código torne-se bastante flexível a ponto de existirem casos de
 desenvolvedores que nunca precisaram customizar a classe de uma view para
 desenhar alguma coisa que o framework não suportava desenhar.
 
+Sem dúvida, cedo ou tarde todo desenvolvedor precisará especializar alguma
+classe visual do UIKit. No entanto, é possível criar comportamentos altamente
+customizados apenas usando as classes fornecidas, o que demonstra o poder que
+uma representação pode ter.
 
+# Concluindo...
+
+A sua interface gráfica é construída com base em um XML por que a linguagem de
+marcação é simples, poderosa e permite representar virtualmente qualquer
+combinação possível de elementos. Dentro do universo Apple, o Xcode ainda
+permite representar nos seus XMLs classes customizadas que podem ter suas
+propriedades editadas no Interface Builder.
+
+Ao representar em um documento como a sua interface deve ficar, economiza-se
+muito código, deixando para o framework todo o _heavy lifting_ necessário para
+desenhar e dar comportamento à interface gráfica.
