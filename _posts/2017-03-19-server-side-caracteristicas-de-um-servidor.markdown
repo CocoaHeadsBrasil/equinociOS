@@ -4,7 +4,7 @@ title:      "Server-side: características de um servidor"
 subtitle:   "Um pouco sobre a arquitetura dos servidores"
 date:       2017-02-15 00:00:00
 author:     "Ronaldo Faria Lima"
-header-img: "img/ronflima/background.jpg"
+header-img: "img/ronflima/server-background.jpeg"
 category:   server
 ---
 
@@ -241,9 +241,9 @@ Neste cenário o processo neto é adotado pelo sistema de inicialização e
 torna-se, efetivamente, dissociado do seu terminal. Isto é tão simples de ser
 realizado que dá para fazer num shell script:
 
-```shell
-{ { a=0; while [ $a -lt 10 ]; do sleep 10; a=$((a+1)); echo "Executado $a vezes" >> $HOME/output.txt; done }& }&
-```
+
+    { { a=0; while [ $a -lt 10 ]; do sleep 10; a=$((a+1)); echo "Executado $a vezes" >> $HOME/output.txt; done }& }&
+
 
 Este comando meio esquisito inicia um contador que escreve um arquivo texto a
 cada 10 segundos, durante 100 segundos. Se antes de finalizar o script você
@@ -253,19 +253,17 @@ O truque é bem simples: cria-se um processo filho e dentro deste processo filho
 cria-se outro processo filho. Em C, teríamos algo assim usando a forma clássica
 de criação de processos-filho:
 
-```c
-if (fork() == 0) {
     if (fork() == 0) {
-        /* Aqui vai o seu processo. Este é o processo-neto */
+        if (fork() == 0) {
+            /* Aqui vai o seu processo. Este é o processo-neto */
+        } else {
+            /* Termina o processo-fiho sem esperar o sincronismo */
+            exit(0);
+        }
     } else {
-        /* Termina o processo-fiho sem esperar o sincronismo */
+        /* Termina o processo-pai sem esperar para sincronizar. */
         exit(0);
     }
-} else {
-    /* Termina o processo-pai sem esperar para sincronizar. */
-    exit(0);
-}
-```
 
 Trabalhar com multi-processos no unix sempre foi um assunto confuso. A chamada
 de sistema _fork_ retorna ao processo pai o PID do processo filho. Para o
@@ -351,3 +349,46 @@ seu processo possa, automaticamente, escalar-se para usar mais e mais CPU à
 medida em que a demanda aumenta. Assim, o seu processo começa a usar mais CPU e
 torna-se mais eficiente.
 
+## Multi-processos
+
+Não é incomum um daemon ser arquitetado para usar diversos processos, cada um
+com uma finalidade bem determinada. Um _pattern_ muito comum é o _pipeline_. A
+ideia do pipeline é implementar um workflow usando vários processos. Cada passo
+do workflow é realizado por um processo que, ao finalizar, passa para o processo
+subsequente a requisição com o resultado do seu processamento.
+
+Este tipo de design é muito usado para permitir o processamento paralelo e exige
+alguma forma de comunicação entre os processos. Ao invés de inventar moda, use
+alguma forma de IPC: pipes, message queues, semáforos, etc. Tudo isto está
+presente e disponível no seu linux ou unix há anos, sendo uma maneira muito
+eficiente e estável de permitir que vários processos troquem informações entre
+si.
+
+Assim, quando vários processos estão na mesma máquina, não há a necessidade de
+usar sistemas de mensagens distribuídas, como o MQ Series ou o Rabbit MQ. O
+próprio linux/unix já lhe dá as message queues prontas para uso.
+
+# Swift Server-side
+
+A linguagem Swift tem ganhado destaque no desenvolvimento de aplicações do lado
+do servidor. Porém, swift não tem wrappers nativos para integrar chamadas de
+sistema com a linguagem. Assim, a forma de realizar isto é importar código C
+para o seu software, o que muitas vezes exige a necessidade de escrever wrappers
+em C antes de importá-los para o seu código em Swift.
+
+Por exemplo, a função ```sigaction``` tem uma implementação no macOS que exige
+que um wrapper C seja criado no intuito de manter o código portável para o
+linux. Assim, cedo ou tarde será necessário escrever algum código em C para que
+você integre, adequadamente, o seu servidor Swift no linux ou unix.
+
+# Conclusão
+
+A correta integração do software server-side com o sistema operacional traz
+benefícios inúmeros, tornando seu software mais robusto e usando as
+características do sistema operacional como o _syslog_. A integração com o
+sistema de inicialização também é importante para garantir a correta
+inicialização/término da sua aplicação.
+
+Como os sistemas unix foram escritos basicamente em C, cedo ou tarde será
+necessário escrever algum código para que seja possível integrar-se o seu
+servidor swift ao sistema operacional.
