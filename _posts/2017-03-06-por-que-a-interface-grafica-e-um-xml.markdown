@@ -2,7 +2,7 @@
 layout:     post
 title:      "Por que a interface gráfica é um XML?"
 subtitle:   "Entenda um pouco da programação por definições"
-date:       2017-02-15 00:00:00
+date:       2017-03-06 00:00:00
 author:     "Ronaldo Faria Lima"
 header-img: "img/ronflima/background.jpg"
 category:   ios

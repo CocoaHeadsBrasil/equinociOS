@@ -2,7 +2,7 @@
 layout:     post
 title:      "Server-side: características de um servidor"
 subtitle:   "Um pouco sobre a arquitetura dos servidores"
-date:       2017-02-15 00:00:00
+date:       2017-03-19 00:00:00
 author:     "Ronaldo Faria Lima"
 header-img: "img/ronflima/server-background.jpeg"
 category:   server
