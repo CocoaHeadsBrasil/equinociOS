@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Introdução e casos de uso: Map, Filter e Reduce."
-date:       2017-03-03 04:19:00
+date:       2017-03-03 02:19:00
 author:     "Ezequiel França"
 header-img: "img/ezefranca/header.jpg"
 category:   "swift"
