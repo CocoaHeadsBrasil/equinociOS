@@ -57,8 +57,8 @@ fazer aplicações para o seu ambiente operacional gráfico. Sim, estou falando 
 Windows antes de tornar-se um sistema operacional de fato. Foi quando surgiram
 os arquivos _res_. Os scripts de recursos permitiam ao programador criar ícones,
 menus e janelas. A ideia era simplificar o trabalho do programador deixando-o
-com uma linguagem mais simples que, ao ser interpretada por um interpretador,
-permitisse que a interface fosse criada com mais facilidade.
+com uma linguagem mais simples que, ao ser interpretada, permitisse que a
+interface fosse criada com mais facilidade.
 
 Os arquivos _res_ eram efetivamente compilados e geravam todo o código
 necessário para que seu conteúdo fosse exibido corretamente para o usuário
@@ -95,8 +95,8 @@ _boiler plate_.
 Até então cada solução usava uma forma proprietária para descrever os dados
 necessários para fornecer às bibliotecas para que estas pudessem realizar seu
 trabalho. Porém, em 1996, apareceu o XML como uma solução simples e portável
-para criação de documentos estruturados, qualquer documento estruturado,
-qualquer que fosse a estrutura deste documento.
+para criação de documentos estruturados, qualquer que fosse a estrutura desejada
+para organizar a informação.
 
 Com o aparecimento do XML e, consequentemente dos _parsers_, diversos frameworks
 começaram a usá-lo para configuração ou processamento de instruções. O XML é
@@ -123,7 +123,7 @@ XML.
 Atualmente existem os _push parsers_ XML que são mais eficientes e econômicos
 que os _parsers_ baseados em DOM. No entanto, nada é mais eficiente que uma
 representação binária que pode ser lida em blocos, como é o caso dos arquivos
-NIB.
+NIB. 
 
 # O poder da representação
 
