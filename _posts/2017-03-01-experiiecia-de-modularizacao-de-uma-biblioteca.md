@@ -8,181 +8,166 @@ category:   "arquitetura"
 
 > Tales Pinheiro ([@talesp](https://twitter.com/talesp){:target="_blank"}) é mestre em computação pelo IME-USP, trabalhou por 8 anos com backend bancário programando principalmente em C, quando em 2007 (antes do anúncio do primeiro iPhone!) resolveu aprender Objective-C. Ataulemte é um dos lideres do capitulo iOS na Concrete Solutions, onde continua em um projeto Objective-C, mas ajudando outros em Swift
 
-# Experiências na modularização de um projeto de um SDK
+# A história inicial
 
+Nos ultimos pouco mais de dois anos, a consultoria em que trabalho vem desenvolvendo diversos aplicativos para uma das maiores empresas do Brasil. Nós fomos inicalmente responsáveis por reescrever nativamente e melhorar os dois principais aplicativos desse cliente, pois as versões iniciais eram desenvolvidas numa tecnologia hibrida.
 
+Para facilitar a nossa vida e por questões de segurança (menos pessoas conhecendo áreas criticas do cliente), resolvemos criar um SDK/Framework com as partes comuns aos aplicativos, incluindo nele as partes comuns aos diversos aplicativos.
 
-# Cenário inicial
+Os projetos cresceram, o SDK cresceu, os times aumentaram em tamanho e em número e, é claro, a complexidade aumentou em todoas as pontas. Precisavamos novamente simplificar a nossa vida.
 
-- SDK comum a vários apps gerenciados por um time
-	- inclui bibliotecas estáticas desenvolvidas por outra empresa (segurança)
-	- além do time que gerencia, mais times internos "desconhecidos" alterando o código
-- Cada app usando o SDK desenvolvido por um ou mais times, de uma ou mais consultorias
-	- Questões estratégicas do cliente
-- Merges dificeis, manutenção complicada, versionamento insuficiente
-- Apps com suporte ao iOS 7, exigindo _linkagem_ estática
+Eu passei um tempo em um time responsável por manter o funcionamento do fluxo e desenvolvimento, que garante a coisas como documentação de _coding style_, cobertura de código, qualidade de código, _merges_ solicitados pelos diversos times, entre outras coisas da qualidade geral do projeto, de um dos aplicativos (temos outro time responsável pelo menos no outro grande aplicativo desse cliente), mas atualmente estou no time do SDK.
 
+Esse é um projeto menor, tocado por menos pessoas, mas bastante complexo, inicialmente desenvolvido por apenas um time, mas que já engloba dois (o meu time e um time de outra consultoria, especializada em segurança), com um terceiro entrando em breve.
 
-## SDK "atual"
+Por questões estratégicas, normalmente clientes desse tamanho não querem/podem depender de uma unica consultoria, e ao longo do tempo algumas consultorias foram adicionadas ao projeto.
+
+Com o aumento da complexidade dos projetos e da quantidade de pessoas e empresas - com culturas e opiniões diferentes sobre coisas como arquitetura dos projetos - algo precisava ser feito para manter a sanidade dos times. Modularizar apenas com um SDK comum aos projetos não era suficiente.
+
+Além disso, precisei fazer uma prova de conceito usando o SDK e esbarrei em um problema: ele depende do `UIKit`. Por ser uma base de código menor, resolvemos modularizar ainda mais, começando pelo SDK.
+
+## Cenário inicial do SDK
+
+Como disse antes, o SDK é comum a vários apps gerenciados pelo meu time (a parte _core_) com outro time de outra consultoria desenvolvendo pequenas bibliotecas da parte de segurança do aplicativo, que são enviadas para nós como bibliotecas que são _linkadas_ estaticamente ao nosso SDK. Esporadicamente algumas pessoas direto do cliente ainda fazem um _bypass_ no nosso time/processo em pequenas partes do projeto, para dicionar uma _feature_ para um dos projetos principais, mas esquecendo do outro, causando _bug_ (identificado em desenvolvimento pelos times do outro projeto ainda em desenvolvimento). E está entrando um time de outra consultoria para mexer no SDK. 
+
+Os aplicativos atualmente suportam o iOS 7, e isso exige que a distribuição do SDK seja como biblioteca para linkagem estática. Já temos no cliente aplicativos sendo desenvolvidos com suporte apenas ao iOS 9+, sendo escrito em Swift, mas como dependencias em Swift devem ser _frameworks_ dinâmicos, esse projeto teve inicialmente que usar CocoaPods para adicionar o SDK estaticamente, e o Carthage _linkando_ dinâmicamente as dependencias de terceiros escritas em Swift, mas o time de _devops_ do cliente barrou o Carthage - por enquanto, apenas CocoaPods pode ser usado nesse cliente.
+
+<!--
+Do lado dos aplicativos, temos projeto com mais ou menos 5 times de consultorias diferentes - com culturas diferentes - além de áreas diferentes no cliente exigindo a entrada de novas _features_ em prazos/datas específicas. Isso tudo deixa os _merge_ e a manutenção complicada, e o lançamento de novas versões gera bastante atrito.
+-->
+
+Como disse anteriormente, o SDK atual compreende então de três grandes áreas, todas distribuídas como um "framework" - não no sentido de _framework_ dinâmico criado pelo Xcode, mas numa estrutura similar criada via script, que embute os _assets_ (storyboards, `XIB`s e imagens) e funcionalidades das três áreas abaixo:
 
 - Comunicação
 - Segurança
 - UI Comum aos projetos
-	- Redesign ocorrendo nos apps, exigindo _proxy_ determinando qual interface usada
-		- `LoginViewController` vs `LoginViewControllerNew`
-	- Problema adicional: SDK unico atrelado a dependencia de UIKit, impedindo porte para watchOS e macOS
-- Sample (costuma estar desatualizado)
+
+Além disso, o time do SDK mantem um projeto Sample, para que os times dos apps saibam como usar o SDK. Esse sample tem o código fonte aberto internamente, mas o SDK é distribuído compilado.
 
 
 ## SDK "atual"
 
 ![]({{ site.baseurl }}/img/talesp/iphone-sample-ios.png)
 
-# Proposta
+Além dos problemas acima, esbarramos em um novo recentemente. Um grande redesign está ocorrendo nos apps, melhorando o design e a usabilidade geral dos apps, mas que não serão lançados ao mesmo tempo. Como o SDK também inclui telas, agora telas antigas que deverão ter suporte e novas em desenvolvimento, uma solução paleativa foi criada: criar um _proxy_ que determina qual a interface usada. Então, num exemplo simples, se tinhamos uma classe/tela `LoginViewController`, tivemos que adicionar a "nova" `LoginViewControllerNew`, e o proxy determina quem será usado. Além de duplicar classes, temos também _assets_ duplicados. E como pretendemos (pelo menos o time de SDK está se adiantando para isso, ainda não tem previsão de desenvolvimento) flexibilizar o SDK, poderia dar à área de negócios a decisão de lançar para outras plataformas Apple (watchOS, tvOS, macOS), hoje estamos intimamente "presos" ao UIKit.
 
-- Separar em 3 componentes principais
-	- _core_
-		- menor e mais simples
-	- segurança
-		- será mantido por outro time/consultoria
-	- UI
-		- versionamento do design simplificado
-- Distribuição e versionamento individual via CocoaPods
-- Futuramente modularizar o app inteiro
-	- Elimiação do _merge hell_
-	- facil verificação de pontos criticos e features "problemáticas"
-	- granulação dos indicadores de qualidade
+# Nossa proposta
 
+Pensamos então em separar os três compentes em 3 bibliotecas
+
+- _core_: menor base de código emais simples de manutenção
+- segurança: poderá ser mantida por outro time/consultoria
+- UI: com versionamento do design simplificado, podendo criar novas "versões" com interfaces para macOS e WatchOS
+
+Para iniciar a modularização, resolvemos focar em separar inicialmente apenas a parte de UI, que agora passará a ter duas versões _major_: a versão `1.0.0` seria a versão atual, e a versão `2.0.0` será a versão do redesign. 
+
+Futuramente pretendemos modularizar as maiores aplicações, o que eliminará o _merge hell_, vai facilitar a verificação de pontos críticos e _feature_ problemáticas, além de uma melhor granulação dos indicadores da cobertura de qualidade, facilitando a manutenção, administração e evolução do produto.
+
+Nossa proposta então é tornar o SDK independente da UI, podendo ser criado um aplicativo _Sample_ contendo apenas as funcionalidades "_core_", como abaixo:
 
 ![]({{ site.baseurl }}/img/talesp/proposed-arch-core.png)
 
-
+Ou um Sample que inclui a interface, com a biblioteca de UI tendo a biblioteca _core_ como dependencia via CocoaPods.
 ![]({{ site.baseurl }}/img/talesp/proposed-arch-full.png)
 
 
 # Primeiro passo: Separar a UI
 
-1. Criado novo projeto, que deve conter apenas código de UI
-2. Movido código de UI para novo projeto (mas não de testes de UI)
-3. Removido TODOS os arquivos de UI do projeto _core_
-4. Removido Sample (irá se tornar novo "app", já em desenvolvimento
+O processo geral - já efetuado - pode ser descrito de forma bastante simples. Foi:
 
-__Problemas:__ 
-- telas incluídas no _core_ são chamadas por métodos de rede, não pelos apps principais
-- _core_ não pode depender de UI
-- para times que usam novas libs, comunicação deve ser transparente e sem configuração
+1. Criado um novo projeto, que contém apenas código de UI e _assets_
+2. Movido código de UI para novo projeto (mas inicialmente não foi movido o código de testes de UI)
+3. Removido TODOS os arquivos de UI do projeto _core_ e eliminada a dependencia do UIKit
+4. Removido Sample (que está se tornando um novo "app", já em desenvolvimento) do _workspace_ do projeto do SDK.
+
+Mas temos aqui um problema:
+
+Algumas telas incluídas no _core_ são chamadas por métodos do _core_, não pelos apps principais. Por exemplo, alguns erros de comunicação já são exibidos para o usuário via chamada do _core_. Mas o _core_ não pode depender de UI. Além disso, para times que usam a nova biblioteca de UI, desejamos que a comunicação deve ser transparente e sem configuração.
+
+Como ter duas bibliotecas se comunicando, com o _core_ chamando métodos de UI sem saber da existência desses ou do UIKit?
 
 
 # Protocolos, ao resgate
 
-- _core_ define protocolos de exibição de interface
-- biblioteca de UI adota e implementa os métodos
-- truqes de _runtime_ do Objective-C (validos em Swift se classe herda de `NSObject`)
+Na nossa solução, a biblioteca _core_ define alguns protocolos de exibição de interface, que são então adotados pela biblioteca de UI - que tem o _core_ como dependencia.
+
+Mas queriamos que a biblioteca de UI fosse apenas adicionada ao Podfile dos aplicativos. Não queria ter que adicionar ao SDK a responsabilidade de registrar as classes de UI, nem ao desenvolvedor dos aplicativos chamar algum método de configuração. Alguns truqes de _runtime_ do Objective-C (validos em Swift se classe herda de `NSObject`) podem nos ajudar com isso. Mas antes...
 
 
 # Pequeno desvio: vamos falar sobre inicialização de objetos, bibliotecas e _frameworks_
 
+Para melhor entender a solução, vou explicar um pouco dobre o processo de inicialização de bibliotecas e de objetos em Objective-C.
 
-# Um pouco sobre inicialização de objetos
+## Um pouco sobre inicialização de objetos
 
-- magia do _runtime_ Objective-C
+Praticamente toda classe da Foundation e do UIKit herda de `NSObject` (com excessão de algumas que herdam de `NSProxy`, mas não vem ao caso para nossa solução). E classes que herdam de `NSObject` podem implementar dois métodos que podem ser bastante uteis nesse problema. Para entender melhor os dois, recomendo altamente o artigo [Friday Q&A 2009-05-22: Objective-C Class Loading and Initialization](https://www.mikeash.com/pyblog/friday-qa-2009-05-22-objective-c-class-loading-and-initialization.html), do Mike Ash (inclusive, recomendo fortemente o blog dele como um todo. ele está meio parado, mas o conteúdo é riquissimo).
+
 - `+load`
-	- chamado quando biblioteca é carregada em memória
-		- linkagem estática: na inicialização do app
+	- esse método é chamado quando biblioteca é carregada em memória. Se implementar esse método numa classe de seu aplicativo, o método será chamado na inicialização do aplicativo, mesmo que a classe nunca seja referenciada durante o ciclo de vida do aplicativo. Por exemplo, se você tem uma classe que cuida de impressão, mas o usuário nunca mandar imprimir nada, e você implementar esse método nessa classe, ainda sim o método será chamado.
+	- Se o método é implementado em uma biblioteca de terceiros, depende do tipo de _linkagem_ da biblioteca com seu aplicativo:
+		- linkagem estática: na inicialização do aplicativo
 		- linkagem dinâmica: na primeira chamada de um método da biblioteca
 - `+initialize`
-	- chamado quando primeiro método da classe é chamado
-	- _lazy_
-	- seria necessário time dos apps chamarem método de configuração para cada classe
+	- Esse método é um pouco mais _lazy_, e só é chamado quando primeiro método da classe é chamado. Assim, se durante a vida da aplicação, uma referência qualquer - chamada de método de classe, instância ou algo como `NSStringFromClass` ou `NSClassFromString` - não for chamada, esse método não é chamado. Além disso, é garantido pelo runtime que esse método será chamado apenas uma vez por class, na primeira referencia da mesma por terceiros.
+
+O método `+load` tem ainda uma caracteristica especial em relação ao _runtime_: se a classe e uma ou mais categorias implementar o método `+load`, todos serão executados
 
 
 ### Observação sobre `initialize` em Swift - Xcode 8.3 beta 3
 
+O documento de _Release Notes_ do Xcode 8.3 beta 3 inclui a seguinte observação.
+> Swift will now warn when an NSObject subclass attempts to override the class `initialize` method. Swift doesn't guarantee that references to class names trigger Objective-C class realization if they have no other side effects, leading to bugs when Swift code attempts to override initialize. (28954946)
 
-> Swift will now warn when an NSObject subclass attempts to override the class initialize method. Swift doesn't guarantee that references to class names trigger Objective-C class realization if they have no other side effects, leading to bugs when Swift code attempts to override initialize. (28954946)
+É bom tomar cuidado com isso, caso esteja usando Swift e pensar em uma implementação parecida
 
-
-## "Linkagem" estática vs dinâmica
-
-- funciona como forma de gerenciamento de dependencias
-- determinam quando o código objeto da biblioteca/_framework_ é carregado em memória
-- determinam como o código objeto da biblioteca/_framework_ é distribuído e incluído no projeto final
-
+E já que temos falado um pocuo sobre _linkagem_ estática e dinámica, e sobre bibliotecas e _frameworks_, vamos explicar um pouco sobre elas.
 
 ## "Linkagem" estática vs dinâmica
 
-- linkagem estática:
-	- código objeto é incluído diretamento no binário alvo
-	- Binários maiores e de inicialização mais lenta
-	- padrão pré-iOS 8
+_Linkar_ uma biblioteca ou framewor ao seu projeto funciona como a forma mais básica de gerenciamento de dependencias e distribuição/reutilização de código - seu ou de terceiros - em multiplos projetos. Mas a forma como você _linka_ a biblioteca ou framework impacta no tamanho do executavel, como a biblioteca ou _framework_ é distribuído e em que momento eles são carregados em memória e seu conteúdo é executado.
 
 
-## Linkagem dinamica
+### _Linkagem_ estática
 
-- '_linkagem_' dinâmica:
-	- nenhum código da biblioteca é adicionado ao binário
-	- carregado em memória em tempo de execução no instante que um de seus simbolos é requisitado
-	- como código não é anexado ao binário, pode ser atualizado sem recompilação
-	- Possuem processo de inicialização e finalização/limpeza próprios
+Vamos começar explicando a _linkagem_ estática. Nela, o conteúdo executável da biblioteca ou _framework_ que você está _linkando_ ao seu projeto é anexado diretamente ao binário final. No caso de um aplicativo iOS, por exemplo, não é ao arquivo `meuapp.ipa`, mas ao executável embutido dentro do arquivo ipa. Para quem não sabe, o arquivo ipa é na verdade um arquivo comprimido, contendo seu applicativo, informações da App Store e de _code signing_. Você pode alterar a extensão para `.zip`, descomprimir e abrir a pasta `Payload`, e lá estará seu aplicativo em um pacote com a extensão `.app`. Se clicar com o direito, e selecionar a opção "Mostrar conteúdo do pacote", vai encontrar dentro desta pasta coissa como _assets_, uma pasta chamada `_CodeSignature` com a assinatura/hash dos arquivos embutidos no pacote (para anti-tampering, e evitar que arquivos sejam modificados embutindo código malicioso) e seu binário efetivamente, no formato de executável Unix.
 
+Assim, _linkar_ estáticamente uma biblioteca ou framework (falaremos um pouco mais sobre este daqui a pouco) ao seu projeto deixa este executável maior, consequentemente com maior tempo de inicialização do aplicativo em memória.
+Mas até o iOS 8, esta era a unica forma de _linkar_ código de terceiro ao seu projeto
 
-## dinâmico
-![]({{ site.baseurl }}/img/talesp/mono-dynamic.png)
-
-
-
-### Bibliotecas (_libraries_) vs Arcabouços (_Frameworks_)
-- bibliotecas:
-	- Binário Match-O carregado na inicialização ou execução
-	- evita repetição da cópia do código executável entre aplicação e extensões - código só existe em um local
-	- responsável por avisar ao _linker_ ocódigo adicional necessário
-	- usam a extensão `.dylib`
-- _frameworks_:
-	- analogo a bibliotecas
-	- embutidos em um pacote
-	- permite versionamento da biblioteca
-	- pode incluir _assets_
-
-^ match-o: https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html
-
-
-## linkagem estática
-
-- inclui o código objeto diretamente no binário alvo
-- aumento do tamanho do binário alvo
-- aumento do tempo de inicialização do app
-- alteração na biblioteca exige recompilação do binário alvo
-- unico método de incluir código de terceiros até iOS 8
-
-
-### Bibliotecas estática vs _Frameworks_ estático
-- biblioteca:
-	- recipiente de conjunto de código objeto - arquivo `*.o` gerado pelo compilador
-	- usam extensão `.a` - `ar`_chive_ junta
-	- ideal para incluir um conjunto de arquivos objetos de uma unica biblioteca de código
-
-
-### Bibliotecas estática vs _Frameworks_ estático
-- biblioteca:
-	- _linker_ só pode usar arquivos objetos de uma arquitetura:
-		- dois formatos _container_:
-			1. arquivos objeto de mesma arquitura em unico `ar`_chive_
-			2. binário _fat_ Match-O, criado com comando `lipo`
-
-^ binario gordo: formato simples q armazena multiplos arqs de diff arquiteturas
-
-
-### Bibliotecas estática vs _Frameworks_ estático
-- _framework_:
-	- pacote contendo um arquivo de biblioteca estática
-	- forma conveniente de publicar _assets_ como imagens, fontes, arquivos de áudio, etc
-- Criado manualmente ou via script - Xcode não tem template
-
-
-## estático
-
+Na imagem abaixo podemos ver que o _linker_ pega os diversos arquivos compilados e as diversas bibliotecas que você inclui no seu projeto e gera um binário final. Esse binário contém seu código e as bibliotecas compiladas,e carrega tudo no _heap_ de memória durante a execução
 ![]({{ site.baseurl }}/img/talesp/mono-static.png)
 
+### Linkagem dinamica
+
+A segunda forma  de _linkar_ código de terceiro ao seu projeto é a dinâmica: Nesse, nenhum código ou conteúdo executável é anexado diretamente ao binário principal. O _linker_ apenas adiciona referências ao conteúdo executável da biblioteca dinâmica, como endereços de memória e referência ao arquivo onde o executável deve buscar o código objeto e conteúdo executável.
+
+Assim, a principio, carregar o aplicativo em memória é mais rápido, pois a biblioteca é carregada dinâmicamente quando um de seus simbolos é requisitado. No iOS, watcOS e tvOS não é possível, mas no macOS você pode distribuir uma nova versão da biblioteca sem ter que distribuir uma nova versão do aplicativo, já que o novo código é buscado/carregado na nova inicalização do aplicativo. Além disso, as bibliotecas dinâmicas possuem ciclo de vida e processo de inicialização e finalização/limpeza de memória própios.
+
+Mas não é porque o binário final do aplicativo fica menor que podemos sair adicionando diversas bibliotecas ao projeto no iOS: no processo de inicialização, a assinatura do seu aplicativo e de todas as bibliotecas é verificada, o que é um processo também demorado.
+
+Na imagem abaixo podemos ver que, diferente da _linkagem_ estática, aqui apenas a referência as bibliotecas dinâmicas é adicionada ao seu aplicativo, e que as bibliotecas são carregadas, durante a execução, na pilha de memória, e não no _heap_ junto com o aplicativo.
+![]({{ site.baseurl }}/img/talesp/mono-dynamic.png)
+
+## Bibliotecas (_libraries_) vs Arcabouços (_Frameworks_)
+
+Temos falado aqui de bibliotecas, mas e os _frameworks_?
+
+De forma mais técnica, uma biblioteca é um arquivo em formato binário [Match-O](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html), que dependendo da forma de _linkagem_, é carregado na inicalização do aplicativo ou dinâmicamente de acordo com a necessidade.
+
+Bibliotecas dinâmicas evitam a repetição/cópia de código entre a aplicação e extensões - como extensões de teclado, _Today extenions_ e da Siri - pois o binário existe em apenas um local - com a linkagem estática, o conteúdo da biblioteca é copiado dentro de cada extensão. 
+
+Ao compilar um ou mais arquivos fontes, cada um gera um arquivo `*.o`, chamado de arquivo objeto, que contém o código executável daquele arquivo. Uma biblioteca é um recipiente para um conjunto de arquivos objetos. Bibliotecas estáticas usam a extensão `.a`, gerado ao `ar`quivar um conjunto de arquivos objeto, e bibliotecas dinâmicas possuem a extensão `.dylib`.
+
+Uma caracteristica do processo de _linkagem_ é que na compilação o _linker_ só pode usar arquivos objeto de uma arquitetura. Por isso existem dois "formatos" de biblioteca estática, chamados de _container_:
+
+1. arquivos objeto de mesma arquitura em unico `ar`_chive_
+2. binário _fat_ Match-O, criado com comando `lipo`
+
+Com o comando `lipo` é possível pegar diversos arquivos de biblioteca com os mesmo arquivos objetos mas em diferentes arquiteturas, e incluir tudo em um unico "binário gordo", facilitando a distribuição.
+
+Já os _frameowrks_ são analogos a bibliotecas, mas funcionam como um pacote, onde é possível incluir _assets_ (sons, imagens, vídeos, fontes, etc), _storyboards_, arquivos `NIB` (a versão compilada do `XIB`) entre outras coisas. Frameworks dinâmicos pode também ser [versionados](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/VersionInformation.html#//apple_ref/doc/uid/20002255-BCIECADD)
+
+Infelizmente o Xcode não possui um _template_ para criação de bibliotecas estáticas, mas é possível cria-las via _script_, sendo assim possível distribuir o nosso SDK como um _framework_, mas para linkagem estática, distribuindo assim em conjunto as imagens e storyboards comuns aos aplicativos.
 
 # Voltando a programação normal
 
@@ -388,3 +373,4 @@ UI:
 - [CocoaPods: Working With Internal Pods Without Hassle](http://albertodebortoli.com/blog/2014/03/11/cocoapods-working-with-internal-pods/)
 - [Objective-C Class Loading and Initialization](https://www.mikeash.com/pyblog/friday-qa-2009-05-22-objective-c-class-loading-and-initialization.html)
 - [Using CocoaPods to Modularize a Big iOS App](http://product.hubspot.com/blog/architecting-a-large-ios-app-with-cocoapods)
+- [Framework Programming Guide](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Frameworks.html)
