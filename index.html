@@ -14,7 +14,7 @@ description: "No mês de Março o CocoaHeads Brasil irá trazer 20 artigos de vo
         </h3>
         {% endif %}
     </a>
-    <p class="post-meta">Postado por {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} em {{ post.date | date: "%-d/%m/%Y" }}</p>
+    <p class="post-meta">Postado por {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} em {{ post.date | date: site.date_format }}</p>
 </div>
 <hr>
 {% endfor %}
