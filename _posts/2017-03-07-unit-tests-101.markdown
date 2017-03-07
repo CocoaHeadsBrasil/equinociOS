@@ -1,0 +1,183 @@
+![alt text](images/check.png "XCTest Checkmark")
+
+# Unit Tests 101 - iOS 🤓
+
+## Por que eu devo testar?
+
+Não é preciso escrever muito para convencer sobre a importância de testes unitários em um app. Se você programa há algum tempo, já passou por um daqueles momentos em que é preciso fazer várias alterações em uma parte do código e fica aquele frio na barriga porque não tem nada garantindo que o código que você alterou estava relacionado - magicamente? - com várias outras partes do app, que já não vão mais funcionar como deveriam. Nessas horas, uma boa cobertura de testes faz muito bem pra nossa saúde mental e cardíaca, para o app e para os usuários.
+
+Se você não programa há muito tempo, talvez ainda não tenha sentido falta dos testes unitários. Nesse caso, você pode escolher acreditar que eles fazem bem e se proteger ou esperar para aprender com a vida. Ambas as abordagens têm vantagens e desvantagens. Eu sugeriria a primeira, mas no fim das contas, _it's up to you_.
+
+## Testes unitários != TDD && Testes unitários != Testes de UI
+
+É importante diferenciar "testes unitários" de "TDD" e "Testes de UI" --  esses são termos que você provavelmente vai encontrar por aí enquanto estiver pesquisando por testes. Os *testes unitários* servem para verificar se cada _unidade_ (classe, struct, enum, etc.) está funcionando da maneira que deveria. A ideia básica é criar um ambiente controlado (substituindo os objetos ou _value types_ com os quais ela se relaciona por mocks, stubs, etc.) onde é possível observar o comportamento dessa classe (verificar se os métodos que deveriam ter sido chamados foram chamados e se as properties que deveriam ter sido alteradas foram alteradas).
+
+Quando falamos de "TDD" estamos nos referindo a uma *metodologia* de desenvolvimento. É um _jeito de fazer as coisas_. Funciona mais ou menos assim: antes de escrever o código para implementar uma dada feature, você deve escrever os testes unitários pra esse código. Uma vez escritos os testes - que obviamente não vão passar! - você deve implementar a feature, fazendo com que os testes passem. Depois disso você deve refatorar o código sabendo que se você fizer alguma besteira os testes vão te avisar.
+
+Os Testes de UI são bem diferentes. Neles você "vê" o seu app pelo lado de fora. Você interage com o app como um usuário, com touches, swipes, etc. e verifica se os elementos que deveriam aparecer aparecem e se as alterações estão de acordo com o comportamento esperado. Não são as _unidades_ que são testadas e sim o _comportamento_ do app como um todo.
+
+Nesse tutorial a gente vai falar de *Testes Unitários* -- em breve a gente deve ter por aqui alguns artigos sobre UI Tests e TDD.
+
+## Testando as unidades
+
+Como eu mencionei acima, a ideia de um teste unitário é garantir que uma classe ou value type está funcionando como deveria, ou seja, quando chamamos um determinado método, com determinados parâmetros, os diferentes objetos e structs com os quais ela se relacionam terão os seus métodos chamados com os parâmetros certos. São três As: _Arrange_, _Act_ e _Assert_.
+
+Imagina a seguinte classe:
+
+```swift
+class ViewController {
+    
+    var messagePresenter: MessagePresenter? // MessagePresenter é um protocol 😉
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        messagePresenter = AlertMessagePresenter()
+    }
+
+    func displayAlert() {
+        messagePresenter?.presentMessage("Something happened!", on: self)
+    }
+
+}
+```
+
+Para testar o `ViewController` é preciso garantir duas coisas: (1) que após o `viewDidLoad` o `messagePresenter` terá sido inicializado, (2) que ao chamar o método `displayAlert` o `messagePresenter` terá o método `presentMessage` chamado e os parâmetros passados para o `messagePresenter` estão corretos.
+
+Um pouco de mão-na-massa pra tudo isso fazer sentido.
+
+### Xcode 💚
+
+~~Quase~~ tudo relacionado aos nossos testes está no "Tests Navigator".
+
+![alt text](images/navigator.png "Test Navigator")
+
+Ao selecionar essa tab, você vai achar um botão de adicionar na parte de baixo da tela à esquerda.
+
+![alt text](images/addButton.png "Create New Test Class")
+
+Crie uma nova "Classe de Teste" chamada `ViewControllerTests`. Em geral as classes de teste têm o nome da classe que elas vão testar + "Tests".
+Os métodos de teste devem começar com `test..` e não devem receber nenhum parâmetro e não devem retornar nada:
+
+```swift
+func testSomething() {
+    // ...
+}
+```
+
+Os métodos `setUp` e `tearDown` são sempre chamados antes e depois de cada teste, respectivamente. No nosso exemplo eles não vão ser necessários.
+
+⚠️ Não deixe de importar o seu target no arquivo de testes:
+
+```swift
+import XCTest
+@testable import TutorialUnitTests // sem esse import o seu projeto não fica visível aqui!!!
+```
+
+### Let's do our bestest (best + test, got it? 😜)
+
+Vamos começar com o básico. Após o `viewDidLoad` o view controller deve ter inicializado o seu `messagePresenter`. Vamos testar se isso está acontecendo:
+
+```swift
+    func testLoading() {
+        // Arrange
+        guard let sut = getViewController() else { return } // `sut` é uma convenção: Subject Under Test
+        
+        // Act
+        _ = sut.view
+        
+        // Assert
+        XCTAssert(sut.messagePresenter != nil, "It should have initialized its messagePresenter.")
+    }
+```
+
+Para facilitar as coisas, eu coloquei um storyboard identifier no viewController e criei um metodozinho bem simples que cria o viewController para ser testado:
+
+```swift
+    func getViewController() -> ViewController? {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SimpleVC") as? ViewController else {
+                XCTAssert(false, "No viewController with that identifier")
+                return nil
+        }
+        return vc
+    }
+
+```
+
+O "arrange" e o "act" nesse caso são bem simples. Basta criar o `viewController` e chamar a property `view` e o método `viewDidLoad` será chamado (isso acontece porque no `getter` da `view` o `viewController` chama o método `loadView` e ao final desse método o `viewDidLoad` é chamado).
+
+Para verificar se tudo aconteceu como devia nós chamamos a função `XCTAssert` que recebe uma expressão que deve resultar em um `Bool` e uma mensagem que será exibida se o teste falhar.
+
+Execute o teste clicando no losango à esquerda da assinatura do teste ou com os atalhos (`cmd + u` para executar todos os testes ou `cmd + option + ctrl + u` para executar o arquivo atual de testes). Se tudo estiver certo, o teste deve passar e o losango ficará verde com um check branco ✅. Para validar que o teste funciona de fato você pode comentar a linha onde o `messagePresenter` é inicializado e rodar os testes novamente. O teste deve falhar e o losango vai ficar vermelho com um "x". Se isso não acontecer, chame os bombeiros! 🚒 👨🏻‍🚒 🔥 Alguma coisa está fora do lugar.
+
+### A little further
+
+Agora, vamos para um teste um pouco menos simples.
+
+Antes de tudo, nós devemos criar um ambiente que permita a observação do comportamento da unidade que queremos testar. Isso significa substituir os objetos com os quais ela se relaciona por outros objetos "semelhantes" que nos permitam verificar de que modo a classe que está sendo testada interagiu com eles.
+
+Existem várias ferramentas para ajudar na criação desse "ambiente", especialmente para Objective-C. Em swift eles não são nem tão abundantes nem tão necessários. Usar protocolos pra definir as abstrações de cada tipo permite que seja muito simples criar um Mock para qualquer classe ou value type.
+
+No nosso caso, vamos criar um `MockMessagePresenter` que deve nos mostrar três coisas: (1) se o método foi chamado; (2) se a mensagem passada foi "Something happened"; e (3) se o view controller passado foi o view controller que chamou o método.
+
+```swift
+class MockMessagePresenter: MessagePresenter {
+    
+    var presentCalled = false
+    var message: String?
+    var viewController: UIViewController?
+    
+    func presentMessage(_ message: String, on viewController: UIViewController) {
+        presentCalled = true
+        self.message = message
+        self.viewController = viewController
+    }
+    
+}
+
+```
+
+No nosso teste nós precisamos criar um viewController e passar para ele um `MockMessagePresenter`. Desta forma, quando chamarmos o `displayAlert` o viewController irá interagir com o nosso Mock e nós poderemos ver se tudo ocorreu como esperado.
+
+O nosso teste fica mais ou menos assim: 
+
+```swift
+func testCallingPresenter() {
+        // Arrange
+        guard let sut = getViewController() else { return }
+        let messagePresenter = MockMessagePresenter()
+        sut.messagePresenter = messagePresenter
+        
+        // Act
+        sut.displayAlert()
+        
+        // Assert
+        XCTAssert(messagePresenter.presentCalled, "It should have called presentMessage()")
+        XCTAssert(messagePresenter.message == "Something happened!", "It should have passed the right message.")
+        XCTAssert(messagePresenter.viewController == sut, "It should the right viewController.")
+        
+    }
+
+```
+
+Rode os testes e veja se está tudo bem.
+
+Você pode alterar os parâmetros e "testar" o teste - não adianta nada ter um teste que não falhe quando algo está errado! Comente a chamada do método, passe parâmetros errados e veja se o seu teste vai apontar os problemas.
+
+Como você deve ter notado, esses dois testes simples garantem que o nosso viewController está funcionando como deveria. Isso nos dá a segurança de que, se algum dia, sem querer, alguém apagar o `viewDidLoad` ou alterar os parâmetros no `presentMessage` os testes vão avisar. Obviamente, no nosso exemplo daria pra notar isso olhando para o código, mas você pode imaginar como seria diferente em uma classe com algumas centenas de linhas de código, que contém várias chamadas importantes na superclasse, por exemplo. Os testes permitem que a manutenção no código seja uma atividade segura. 👷🏻
+
+## Uma nota sobre "arquitetura" 🏛
+
+Você deve ter notado que o teste só foi possível porque nós tínhamos como substituir o `messagePresenter` por um outro objeto com a nossa implementação. Tente imaginar como nós faríamos isso se não houvesse uma property `messagePresenter` no view controller e, em vez disso, o método `displayAlert` tivesse a seguinte implementação:
+
+```swift
+func displayAlert() {
+    let messagePresenter = AlertMessagePresenter()
+    messagePresenter.presentMessage("Something happened!", on: self)
+}
+```
+
+O objeto com o qual a classe se relaciona é criado dentro do método e deixa de existir assim que o método retorna. Não seria possível testar o funcinamento do view controller sem depender do funcionamento de outras unidades ([Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection)). Por isso, é importante que o nosso código seja criado de modo que possibilite testar cada unidade separadamente. Só esse "mind set" já tornará o código bem mais limpo e fácil de manter, além do já mencionado benefício de poder "brincar" tranquilamente sabendo que os testes vão nos avisar se fizermos alguma besteira.
+
+## Não deixe de ler:
+
+* [A Pragmatic Approach to iOS Testing, do Orta Therox](https://github.com/orta/pragmatic-testing)
