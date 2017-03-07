@@ -51,7 +51,7 @@ Na introdução do relatório, seja claro sobre o comportamento obtido. O que er
 
 #### 2. Defina os passos para reproduzir o bug
 
-Inclua os passos para reproduzir e informe se o comportamento for intermitente. Não tem problema se não der para reproduzir o bug todas as vezes, mas tenha certeza de que os passos descritos podem levar a alguma inconsistência.
+Inclua os passos para reproduzir e informe se o comportamento for intermitente. Não tem problema se não der para reproduzir o bug todas as vezes, mas tenha certeza de que os passos descritos podem levar à alguma inconsistência.
 
 #### 3. Inclua exemplos de código
 
@@ -59,7 +59,7 @@ Se for um relatório no Github, inclua um _snippet_ com exemplos de código ou a
 
 #### 4. Sugira uma correção ou _workaround_
 
-Se você souber a causa do bug ou onde ele ocorre, sugestões de correção são mais que bem vindas. Ou melhor que isso, corrija a inconsistência e já mande o fix para _merge_.
+Se você souber a causa do bug ou onde ele ocorre, sugestões de correção são mais que bem-vindas. Ou melhor que isso, corrija a inconsistência e já mande o fix para _merge_.
 
 ## Bugreports no Github
 
@@ -71,7 +71,7 @@ Acredito que o Github peça alguns cuidados especiais no relatório de incidente
 
 A língua-comum da internet é a Língua Inglesa, mas nem todos são fluentes e menos ainda a têm como língua nativa. Não tenha vergonha e nem medo do seu inglês. É comum encontrar pessoas de diversas partes do mundo cometendo erros gramaticais e ninguém é corrigido, ignorado ou menosprezado porque não falou inglês perfeito. Cometemos erros até na hora de escrever em português (este artigo mesmo deve conter alguns), o que dirá em uma língua que não é a nossa. Lembre-se que a prática leva à perfeição.
 
-Além disso, tenha em mente que os projetos e bibliotecas do Github são comunitários portanto, como em toda democracia propriamente dita é comum que correções e _proposals_ de incrementos sejam longamente debatidos antes de se chegar num acordo sobre a melhor forma de proceder. Portanto, seja coerente, tenha paciência e saiba argumentar escutando o lado oposto. Esta pode ser uma oportunidade fantástica para você aprofundar o seu conhecimento sobre aquela ferramenta, além de receber comentários sobre o seu código de desenvolvedores fantásticos que criam as bibliotecas mais usadas do mundo. Portanto escute e aprenda!
+Além disso, tenha em mente que os projetos e bibliotecas do Github são comunitários, consequentemente, como em toda democracia propriamente dita é comum que correções e _proposals_ de incrementos sejam longamente debatidos antes de se chegar num acordo sobre a melhor forma de proceder. Portanto, seja coerente, tenha paciência e saiba argumentar escutando o lado oposto. Esta pode ser uma oportunidade fantástica para você aprofundar o seu conhecimento sobre aquela ferramenta, além de receber comentários sobre o seu código de desenvolvedores fantásticos que criam as bibliotecas mais usadas do mundo. Escute e aprenda!
 
 Ainda sobre o assunto, recomendo o excelente artigo [O mundo é mais que seu umbigo]({{ site.baseurl }}/open-source/2016/02/29/o-mundo-e-mais-que-seu-umbigo/) do Fabri que inaugurou o equinociOS
 
