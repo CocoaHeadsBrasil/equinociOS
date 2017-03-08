@@ -373,7 +373,7 @@ E para remover:
 (lldb) unmask self.loginTextField
 ~~~
 
-###mwarning
+### mwarning
 Lembra quando eu usei o seguinte comando para simular um memory warning?
 
 ~~~
@@ -386,7 +386,7 @@ Então, com o Chisel tudo que precisa ser feito é:
 (lldb) mwarning
 ~~~
 
-###pvc
+### pvc
 Faz o print recursivo de um `UIVIewController`, por exemplo esse UINavigationController:
 
 ~~~
