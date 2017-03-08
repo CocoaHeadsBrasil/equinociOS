@@ -2,9 +2,9 @@
 layout:     post
 title:      "Unit Tests 101"
 subtitle:   "Primeir[íssim]os passos"
-date:       2017-03-07 12:00:00
+date:       2017-03-07 23:00:00
 author:     "Emannuel Carvalho"
-header-img: "img/emannuelOC/header.jpg" (imagem de cabeçalho)
+header-img: "img/emannuelOC/header.jpg"
 category:   Testes
 ---
 
