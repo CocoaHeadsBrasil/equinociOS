@@ -52,6 +52,7 @@ Para testar o `ViewController` é preciso garantir duas coisas: (1) que após o 
 Um pouco de mão-na-massa pra tudo isso fazer sentido.
 
 ⚠️ Nesse post eu vou mostrar um exemplo de testes usando XCTests. Existem outras ferramentas para testes unitários em iOS, mas a ideia geral é basicamente a mesma.
+Se você quiser seguir os passos a seguir, tem um projeto [aqui](https://github.com/emannuelOC/tutorial_unit_tests){:target="_blank"} esperando para ser testado 🤓.
 
 ### Xcode 💚
 
