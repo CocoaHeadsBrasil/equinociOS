@@ -11,7 +11,7 @@ category:   Testes
 ## Por que eu devo testar?
 
 Não é preciso escrever muito para convencer sobre a importância de testes unitários em um app. Se você programa há algum tempo, já passou por um daqueles momentos em que é preciso fazer várias alterações em uma parte do código e fica aquele frio na barriga porque não tem nada garantindo que o código que você alterou não vai quebrar outras partes com as quais ele está relacionado. Nessas horas, uma boa cobertura de testes faz muito bem para o app e para os usuários - e também pra nossa saúde mental e cardíaca.
-
+ 
 Se você não programa há muito tempo, talvez ainda não tenha sentido falta dos testes unitários. Nesse caso, você pode escolher acreditar que eles fazem bem e se proteger ou esperar para aprender com a vida. Ambas as abordagens têm vantagens e desvantagens. Eu sugeriria a primeira, mas no fim das contas, _it's up to you_.
 
 ## Testes unitários x TDD x Testes de UI
