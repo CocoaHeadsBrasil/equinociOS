@@ -49,7 +49,7 @@ Se o código é impossível de ser revertido, é impossível refatorar. Se não 
 Para ajudar nesse caminho de reversibilidade temos o que chamamos de último momento de responsabilidade.
 
 ### Último momento de responsabilidade
-O que é isso? Simples, adiei suas decisões até o último momento sem que isso te prejudique. O jeito mais fácil de explicar esse princípio é atravez de um exemplo: 
+O que é isso? Simples, adiei suas decisões até o último momento sem que isso te prejudique. O jeito mais fácil de explicar esse princípio é através de um exemplo: 
 
 > Estou construindo um app e sei que eu vou precisar persistir dados nele. Vou começar a desenvolver hoje, será que é necessário decidir qual persistência de dados eu preciso agora? Provavelmente não. Posso trabalhar com a tela mocando a persistência e aprendendo como ela deve se comportar quando for implementada. 
 
@@ -60,6 +60,6 @@ O que é isso? Simples, adiei suas decisões até o último momento sem que isso
 Adiando até o último momento eu aprendo o que a tela e a camada de rede esperam da persistência. Eu tenho mais conhecimento sobre o que eu realmente preciso e por isso tenho mais chances de acertar quando escolher.
 
 # TL;DR
-Durante o desenvolvimento da aplicação, aprendemos cada vez mais sobre o domínio do problema e qual a melhor maneira de resolver ele. A arquitetura evolutiva prega que devemos usar esse conhecimento adquirido diariamente e adicionar ao seu projeto. Para isso ela propoem práticas que ajudem você a alterar e adptar seu projeto a essas mudanças.
+Durante o desenvolvimento da aplicação, aprendemos cada vez mais sobre o domínio do problema e qual a melhor maneira de resolver ele. A arquitetura evolutiva prega que devemos usar esse conhecimento adquirido diariamente e adicionar ao seu projeto. Para isso ela propoem práticas que ajudem você a alterar e adaptar seu projeto a essas mudanças.
 
 Se você achou interessante e gostaria de aprender mais, recomendo fortemente ver a palestra de Venkat Subramaniam chamada [Towards an Evolutionary Architecture](https://www.youtube.com/watch?v=VEPwR4Hpi7M&t=21s)
