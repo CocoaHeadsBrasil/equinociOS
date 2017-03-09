@@ -167,20 +167,15 @@ Com o comando `lipo` é possível pegar diversos arquivos de biblioteca com os m
 
 Já os _frameowrks_ são analogos a bibliotecas, mas funcionam como um pacote, onde é possível incluir _assets_ (sons, imagens, vídeos, fontes, etc), _storyboards_, arquivos `NIB` (a versão compilada do `XIB`) entre outras coisas. Frameworks dinâmicos pode também ser [versionados](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/VersionInformation.html#//apple_ref/doc/uid/20002255-BCIECADD)
 
-Infelizmente o Xcode não possui um _template_ para criação de bibliotecas estáticas, mas é possível cria-las via _script_, sendo assim possível distribuir o nosso SDK como um _framework_, mas para linkagem estática, distribuindo assim em conjunto as imagens e storyboards comuns aos aplicativos.
+Infelizmente o Xcode não possui um _template_ para criação de bibliotecas estáticas, mas é possível cria-las via _script_, sendo assim possível distribuir o nosso SDK como um _framework_, mas para linkagem estática, distribuindo assim em conjunto as imagens e storyboards comuns aos aplicativos. De modo geral, para distribuir os _assets_ é necessário adicionar um _taget_ do tiplo _Bundle_ ao seu projeto - mas aqui, uma atenção: mesmo que seu projeto seja para iOS, este deve ser um target "__OS X__", e para criar o _framework_ deve ser criada uma estrutura especial de pastas, com uma pasta raíz com a "extensão" `.framework`. Para mais detalhes de como criar um frameowrk estático, veja [esse link](https://github.com/kstenerud/iOS-Universal-Framework).
 
 # Voltando a programação normal
 
-- _core_ consiste de alguns _singletons_
-- podem ser usado na biblioteca de UI para configuração automática
-	- biblioteca de UI depende da biblioteca _core_ 
-		- _core_ é inicializado antes
+Nosso SDK _core_ consiste agora de algumas classes _singleton_, modelos, _categories_, protocolos e constantes, além das bibliotecas de segurança mantidas por terceiros. Essas classes podem ser acessadas diretamente dos aplicativos ou como direto pelo SDK de UI, já que este também - intencionamente - depende da biblioteca _core_.
 
+Como a biblioteca _core_ é garantida de já estar em memória quando a biblioteca de UI é inicializada - e ambas são inicializadas durante a inicialização do aplicativo por causa da _linkagem_ estática - o que fazemos é definir um protocolo no SDK _core_, adotar e implementar esse protocolo na biblioteca de UI.
 
-# Definindo protocolos na biblioteca _core_
-
-- Exemplo de interface padrão: _warnings_ e _alerts_
-- na biblioteca _core_:
+Vamos ver um exemplo de como isso funciona. Um exemplo de conteúdo de interface que é disparado pelo _core_ são alertas e erros - de conexão ou do _backend_. Assim, tinhamos no _core_ - agora na biblioteca de UI - classes de _view_ ou _view controller_ para exibir essas telas. Mas o _core_ não sabe mais essas classes - e nem deve ser responsabilidade dele saber (agora temos a flexibilidade de alterar todo o fluxo) - o que fazemos é declarar um protocolo com um método responsável por exibir a interface. Por exemplo, podemos declarar na biblioteca _core_ o protocolo `TPAAlertDelegate` como abaixo:
 
 ~~~objectivec
 @protocol TPAAlertDelegate
@@ -190,8 +185,19 @@ Infelizmente o Xcode não possui um _template_ para criação de bibliotecas est
 @end
 ~~~
 
+E, por exemplo, na interface da classe de rede - _singleton_ - que inicialmente mandava exibir a _view_ ou _view controller_ declaramos uma variável que armazenará a referência fraca para a classe que exibirá efetivamente a interface.
 
-# UI configurando o uso
+~~~objectivec
+@interface TPANetworkManager: NSObject
++ (instancetype)sharedManager;
+
+@property (nonatomic, weak) Class<TPAAlertDelegate>alertInterfaceDelegate;
+@end
+~~~
+
+Perceba aqui que o tipo declarado é `Class<TPAAlertDelegate>` e não `id<TPAAlertDelegate>` como normalmente fazemos. Já explicamos porque.
+
+Agora digamos que a interface a ser exibida é uma _view controller_ chamada aqui de `TPAAlertViewController`. Para fazer as duas interagirem de forma transparente e sem a interação/configuração do desenvolvedor dos aplicativos - já que esses são SDKs desenvolvidos e mantidos pelo time de SDK, eu gostaria de evitar jogar essa responsabilidade para outro - implementamos o método `+load` na classe `TPAAlertViewController` como a seguir.
 
 ~~~objectivec
 @implementation TPAAlertViewController
@@ -202,25 +208,9 @@ Infelizmente o Xcode não possui um _template_ para criação de bibliotecas est
 @end
 ~~~
 
-^ atenção para metodo de classe
+Aqui, `self` está referenciando a classe `TPAAlertViewController`, e não a uma instância desta, já que esse método é chamado, como dissemoss quando a biblioteca que contém esta classe está sendo carregada em memória - ou seja, na inicialização do aplicativo. Por isso a _property_ `alertInterfaceDelegate` deve ser declarada como `Class<TPAAlertDelegate>`. Além disso, como a biblioteca de UI depende da biblioteca _core_, já temos a classe `TPANetworkManager` carregada na pilha de memória, e o _singleton_ pode ser carregado/inicializado normalmente e configurado sem intervenção de quem "consomo" esses SDKs.
 
-
-# Singleton usando _delegate_
-
-~~~objectivec
-@interface TPANetworkManager: NSObject
-+ (instancetype)sharedManager;
-
-@property (nonatomic, weak) Class<TPAAlertDelegate>alertInterfaceDelegate;
-@end
-~~~
-
-^ protocolo de classe, não de intancia
-
-
-# Singleton usando _delegate_
-
-No _core_
+Com tudo configurado podemos, na implementação do método do SDK _core_, que anteriormente inicializava uma _view_ ou _view controller_, no caso de um erro de requisição, podemos chamar o método do _delegate_.
 
 ~~~objectivec
 @implementation TPANetworkManager
@@ -235,25 +225,47 @@ No _core_
 @end
 ~~~
 
-^ atenção para o uso, se UI ñ importado, app não faz nada: erro do programador do time
+Aqui temos um exemplo simples, mas é interessante tratar de alguma forma de que `self.alertInterfaceDelegate` está configurado - se não estiver, é erro do desenvolvedor dos aplicativos, que não importaram a biblioteca de UI como dependência. Podemos então fazer o tratamento de erro desejado para erro do programador - como gerar uma excessão com uma finalização anormal do app, algo que seja detectado instantâneamente pelo desenvolvedor, não algo que vai serr detectado pelo usuário do aplicativo.
 
+# _Sample_, _Core_, _UI_...how to handle it?
 
-# Sample, Core, UI...how to handle it
+Ok, antes tinhamos um unico _workspace_ contento 3 projetos: _Sample_, _Pods_ usados pelo SDK e o SDK propriamente, mas agora temos 3 projetos separados, sendo as bibliotecas _core_ e de UI distribuídas via CocoaPods. Agora imaginemos a seguinte situação: estamos alterando a biblioteca de UI, adicionando uma nova tela que será chamada pelo _core_, e para isto precisamos alterar este ultimo para fazer a nova chamada da tela sob determinada condição. Devemos então fazer a alteração na biblioteca _core_, gerar uma nova versão, publicar esta, voltar no projeto de UI, efetuar o `pod update` e seguir com o desenvolvimento da UI, certo? Errado, isso é trabalhoso demais.
 
-- Um projeto/workspace para cada
-- pods...local pods FTW!
-	- E um pouco de `git submodule`
+Pods...local pods FTW!
+
+Mantemos os dois repositórios localmente, e no `Podfile` da biblioteca de UI, adicionamos o _core_ como dependencia, mas adicionamos o atributo `:path` apontado para o caminho local.
+
+~~~ruby
+target 'UI' do
+	...
+	pod 'SDKCore', :path => 'path/to/sdk-core/'
+end
+~~~
+
+Agora não precisamos publicar toda vez que uma alteração é feita na biblioteca _core_, facilitando muito. Mas ainda tem uma melhoria, proposta pelo artigo [CocoaPods: Working With Internal Pods Without Hassle](http://albertodebortoli.com/blog/2014/03/11/cocoapods-working-with-internal-pods/), user um pouco de `git submodule`!
+
+Um exemplo de como usar isso no projeto da biblioteca de UI seria:
 
 1. No projeto UI (_core_ como dependencia)
 	- `$ mkdir Vendor`
 	- `$ cd Vendor`
-	- `$ git submodule add path/to/sdk-core.git`
+	- `$ git submodule add server/path/to/sdk-core.git`
 2. crie um grupo no projeto `UI`, `ctrl`+click, _Add Files do UI.xcodeproj_
 	- navegue até `Vendor/sdk-core` e adicione o projeto `sdk-core.xcodeproj`
 	- navegue até `Vendor/sdk-core/Pods` e adicione o projeto `Pods.xcodeproj`
 
+E podemos deixar o `podfile` do projeto de UI como o modelo a segui:
 
-### Qual problema é resolvido com a combinação _local pods_ + `git submodule`?
+~~~ruby
+target 'UI' do
+	...
+	pod 'SDKCore', :path => './Vendor/sdk-core/'
+end
+~~~
+
+Agora podemos executar `pod install` no projeto UI que ele irá compilar com a biblioteca _core_, mas no `.podspec` deixamos o _core_ sendo baixado do servidor. Para quem desenvolve as duas bibliotecas, temos uma unica janela e um unico local de alteração, com alterações entre projetos facilitadas.
+
+Qual problema é resolvido com a combinação _local pods_ + `git submodule`? Um resumo seria:
 
 - Situação: 2 projetos independentes
 	- duas janelas do Xcode
@@ -264,47 +276,49 @@ No _core_
 		4. `pod update sdk-core` dentro do projeto UI
 		5. burocrático e demorado
 
-
-### Por que `git submodule` e CocoaPods
+Mas com a dupla `git submodule` e CocoaPods temos:
 
 - Fácil manutenção
 	- uma unica área de trabalho, dois projetos independentes
 	- compilado da forma tradicional 
 	- para quem precisa dar manutenção nos dois projetos
 		1. Clonar o projeto UI
-		2. `$ git submodule update` - UI baixa as dependencias de submodulos
+		2. `$ git submodule update --init` - UI baixa as dependencias de submodulos
 		3. Alterar dentro do workspace o projeto  
 - Fácil distribuição
 - Fácil versionamento
 	- projetos podem ser versionados individualmente para quem vai usar, e não desenvolver
 
+Ao terminar as alterações dois dois projetos, devemos:
 
-## Podfile do projeto UI
+1. efetuar o `commit` da biblioteca _core_;
+2. efetuar o `commit` da biblioteca de UI
 
-~~~ruby
-target 'UI' do
-	...
-	pod 'SDKCore', :path => './Vendor/sdk-core/'
-end
-~~~
+O `push` pode ser feito a qualquer momento. Mas é importante que o `commit` da biblioteca de UI seja feito após o `commit` da biblioteca _core_, pois será feita uma referência ao `commit` exato do _core_ do momento que o é feito o `commit` do projeto de UI. Isso é valido se você mudar de _branch_ no projeto _core_, por exemplo.
 
-Pode executar `pod install` no projeto UI
-- _core_ usado como dependencia via CocoaPods, facilita distribuição
-- alterações entre projetos facilitado
+Agora no projeto _Sample_ basta fazer algo semelhante, porêm adicionando o repositório da biblioteca de UI como dependencia, e para baixar todos os submoduls recursivamente, executar o comando:
 
+`$ git submodule update --init --recursive`
+
+Que irá baixar o código da biblioteca de UI e da biblioteca _core_.
 
 # Resultados
 
-SDK (apenas o core):
-- Linhas de código: de ____ para 4600
-- Cobertura de testes: de 85% para 82%, atualmente em 95%
-	- aparentemente o máximo teórico
-		- funções em `C` de segurança impedem Injeção de Dependencia
-		- Separação da lib de segurança pode jogar baixa cobertura do SDK para segurança
+Após algumas _sprints_, o resultado foi:
+
+SDK (apenas o _core_):
+- Redução das linhas de código: de ____ para 4600
+- Cobertura de testes: de 85% para 83%
+	- enquanto esse processo eraa feito, outro desenvolvedor do time chegou a 95% de cobertura na principal _branch_ de desenvolvimento
+	- Estes 95% parecem ser um "máximo teórico", pois as bibliotecas de segurança são escritar majoritariamente em `C`, impedindo/dificultando a injeção de dependencia e _mocks_/_stubs_
 
 UI:
-- Pode ser facilmente versionada edistribuída com CocoaPods
+- Projeto novo, iniciado com aproximadamente 4000 linhas de código
+	- o _storyboard_ deve ser convertido para arquivo `xib` ou código fonte em breve
+- Após migração dos testes da versão anterios da biblioteca _core_, já nasceu com 82% de cobertura de código
+- Pode ser facilmente versionada e distribuída com CocoaPods
 - Times dos apps só precisam adicionar ao Podfile - nenhuma configuração necessária
+- Podemos criar bibliotecas de UI para macOS/watchOS/tvOS - aplicativo só tem que adicionar a biblioteca de UI correta
 
 # Proxímos passos
 
