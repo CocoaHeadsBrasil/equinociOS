@@ -12,7 +12,7 @@ category:   "comunidade"
 >
 > Este post é um complemento ao talk [Bugreport 101](https://www.slideshare.net/FlavioVieiraCaetano/bugreport-101-72988003){:target="_blank"} apresentado no 28º CocoaHeads SP
 
-É muito fácil encontrar desenvolvedores que já encontram algum tipo de bug em código de terceiros. Seja numa lib externa, seja no SDK da Apple. Nosso código, lindo e cheiroso, com um comportamento indesejado por causa de uma pessoa que não está nem na mesma folha de pagamentos que você. Também não é difícil encontrar devs que já reportaram tais bugs para os responsáveis pelo código ou que contribuiram para a sua correção de alguma forma. Mas, não tão fácil é encontrar desenvolvedores que reportaram algum tipo de bug para a Apple.
+É muito fácil encontrar desenvolvedores que já acharam algum tipo de bug em código de terceiros. Seja numa lib externa, seja no SDK da Apple. Nosso código, lindo e cheiroso, com um comportamento indesejado por causa de uma pessoa que não está nem na mesma folha de pagamentos que você. Também não é difícil encontrar devs que já reportaram tais bugs para os responsáveis pelo código ou que contribuíram para a sua correção de alguma forma. Mas, não tão fácil é encontrar desenvolvedores que reportaram algum tipo de bug para a Apple.
 
 A falta de material sobre _bugreport_, seja motivacional, sejam guidelines, acentuam esse fato. Frequentes são os reports sem informação relevante, com dados confidenciais ou cópias idênticas de reports já preenchidos sem adição de nenhum dado novo.
 
@@ -32,7 +32,7 @@ Ademais, não podemos nunca esquecer de quem cria essas bibliotecas. Relatar uma
 
 ## Bugreport é dinheiro
 
-Grandes empresas precisam tanto de ajuda que tornaram programas de Bug Bounty lugar-comum. A demanda por relatórios de _exploits_ e vulnerabilidades é tão grande, que Facebook, Github, Google, Microsoft e diversas outras empresas reconhecem e recompensam aqueles que descobrem e resolvem bugs antes destas inconsistências se tornarem públicas.
+Grandes empresas precisam tanto de ajuda que tornaram programas de Bug Bounty lugar-comum. A demanda por relatórios de _exploits_ e vulnerabilidades é tão grande que Facebook, Github, Google, Microsoft e diversas outras empresas reconhecem e recompensam aqueles que descobrem e resolvem bugs antes destas inconsistências se tornarem públicas.
 
 Em 2016 o Departamento de Defesa americano anunciou um programa chamado [Hack the Pentagon](https://www.defense.gov/News/Article/Article/684616/dod-invites-vetted-specialists-to-hack-the-pentagon) no qual especialistas em seguranças foram convidados a tentar invadir páginas públicas do Pentágono em busca de falhas de segurança. [Mais de US$71.000 foram pagos](https://en.wikipedia.org/wiki/Bug_bounty_program) em recompensas.
 
@@ -42,7 +42,7 @@ Também em 2016, a [Apple anunciou](https://techcrunch.com/2016/08/04/apple-anno
 
 ## Os 4 passos para um bom report
 
-Diversas plataformas oferecem templates de relatórios, o Github inclusive disponibiliza o arquivo [CONTRIBUTING guidelines](https://github.com/blog/1184-contributing-guidelines) para que cada repositório documente como relatar e contribuir com o desenvolvimento dos códigos. No entanto, com tantas possibilidades e sem um padrão, nem sempre é fácil focar e ser claro na redação do relatório.
+Diversas plataformas oferecem templates de relatórios, o Github inclusive disponibiliza o arquivo [CONTRIBUTING guidelines](https://github.com/blog/1184-contributing-guidelines) para que cada repositório documente como relatar e contribuir com o desenvolvimento dos códigos. No entanto, com tantas possibilidades e sem um padrão, nem sempre é fácil focar e ser conciso na redação do relatório.
 
 ![I have no idea what I'm doing]({{ site.baseurl }}/img/fjcaetano/p_lab.png)
 
@@ -57,11 +57,11 @@ Inclua os passos para reproduzir e informe se o comportamento for intermitente. 
 
 #### 3. Inclua exemplos de código
 
-Se for um relatório no Github, inclua um _snippet_ com exemplos de código ou até um link para um repositório com um projeto ou playground contendo a reprodução da _issue_.
+Se for um relatório para a Apple, sempre anexe um projeto ou playground contendo a reprodução da inconsistência no seu radar. No caso de uma _issue_ no Github, pode-se incluir _snippets_ com códigos de exemplos ou até links para repositórios contendo um projeto ou playground de exemplo.
 
 #### 4. Sugira uma correção ou _workaround_
 
-Se você souber a causa do bug ou onde ele ocorre, sugestões de correção são mais que bem-vindas. Ou melhor que isso, corrija a inconsistência e já mande o fix para _merge_.
+Se você souber a causa do bug ou onde ele ocorre, sugestões de correção são mais que bem-vindas. Ou melhor que isso, corrija a inconsistência e já abra um _pull-request_ com o fix da inconsistência.
 
 ## Bugreports no Github
 
@@ -71,7 +71,7 @@ Acredito que o Github peça alguns cuidados especiais no relatório de incidente
 
 ![Nelson: HAHA]({{ site.baseurl }}/img/fjcaetano/nelson_haha.jpg)
 
-A língua-comum da internet é a Língua Inglesa, mas nem todos são fluentes e menos ainda a têm como língua nativa. Não tenha vergonha e nem medo do seu inglês. É comum encontrar pessoas de diversas partes do mundo cometendo erros gramaticais e ninguém é corrigido, ignorado ou menosprezado porque não falou inglês perfeito. Cometemos erros até na hora de escrever em português (este artigo mesmo deve conter alguns), o que dirá em uma língua que não é a nossa. Lembre-se que a prática leva à perfeição.
+A língua-comum da internet é a Língua Inglesa, mas nem todos são fluentes e menos ainda a têm como língua nativa. Não tenha vergonha e nem medo do seu inglês. É comum encontrar pessoas de diversas partes do mundo cometendo erros gramaticais e ninguém é corrigido, ignorado ou menosprezado porque não falou inglês perfeito. Cometemos erros até na hora de escrever em português (este artigo mesmo deve conter alguns), o que dirá em um idioma que não é o nosso. Lembre-se que a prática leva à perfeição.
 
 Além disso, tenha em mente que os projetos e bibliotecas do Github são comunitários, consequentemente, como em toda democracia propriamente dita é comum que correções e _proposals_ de incrementos sejam longamente debatidos antes de se chegar num acordo sobre a melhor forma de proceder. Portanto, seja coerente, tenha paciência e saiba argumentar escutando o lado oposto. Esta pode ser uma oportunidade fantástica para você aprofundar o seu conhecimento sobre aquela ferramenta, além de receber comentários sobre o seu código de desenvolvedores fantásticos que criam as bibliotecas mais usadas do mundo. Escute e aprenda!
 
@@ -87,9 +87,9 @@ Para aqueles que não gostam do portal, há também o [QuickRadar](http://www.qu
 
 [![QuickRadar]({{ site.baseurl }}/img/fjcaetano/quickradar.png)]({{ site.baseurl }}/img/fjcaetano/quickradar.png)
 
-Os bugs reportados para a Apple são privados por questão de segurança. Embora o grosso dos bugs seja comportamental, existem vulnerabilidades e falhas de segurança que podem ser exploradas para obter vantagem sobre os usuários que não podem se tornar públicas para evitar exposição. Para isso, surgiu o [OpenRadar](https://openradar.appspot.com) que tenta ser um espelho do portal da Apple. Uma das vantagens do QuickRadar é mandar as suas issues automaticamente para o OpenRadar, mitigando a necessidade de preencher tudo duas vezes.
- 
-O OpenRadar ainda oferece a possiblidade de comentar nas _issues_ o que acrescenta uma dinâmica mais rica na interação com a comunidade. Em 2016 reportei um bug na `UICollectionView` que os engenheiros da Apple descartaram como sendo o comportamento correto. Discordei da decisão mas <del>como bug documentado é feature</del> pedi para que tal comportamento fosse adicionado na documentação, pedido que foi ignorado, e no [rdar://28323532](https://openradar.appspot.com/radar?id=5022915414196224) podemos ver que o usuário **nicolas.millasseau** também discordou da decisão dos engenheiros.
+Os bugs reportados para a Apple são privados por questão de segurança. Embora o grosso dos bugs seja comportamental, existem vulnerabilidades e falhas de segurança que podem ser exploradas para obter vantagem sobre os usuários e que não podem se tornar públicas para evitar exposição. Por isso, surgiu o [OpenRadar](https://openradar.appspot.com) que tenta ser um espelho do portal da Apple, onde os desenvolvedores replicam seus relatórios para torná-los públicos. Uma das vantagens do QuickRadar é mandar as suas issues automaticamente para o OpenRadar, mitigando a necessidade de preencher tudo duas vezes.
+
+O OpenRadar ainda oferece a possiblidade de comentar nas páginas das _issues_ o que acrescenta uma dinâmica mais rica na interação com a comunidade. Em 2016 reportei um bug na `UICollectionView` que os engenheiros da Apple descartaram como sendo o comportamento correto. Discordei da decisão mas <del>como bug documentado é feature</del> pedi para que tal comportamento fosse adicionado na documentação, pedido que foi ignorado, e no [rdar://28323532](https://openradar.appspot.com/radar?id=5022915414196224) podemos ver que o usuário **nicolas.millasseau** também discordou da decisão dos engenheiros.
 
 ## Reporte duplicatas
 
@@ -97,7 +97,7 @@ Não se acanhe e nem se desmotive se seus bugs estiverem sendo sinalizados como 
 
 Consequentemente, ao reportar uma duplicata, você está fornecendo mais informação que pode ajudar na resolução de um incidente. Pode ser que você esteja conseguindo reproduzir o bug de uma forma diferente, ou então que você saiba de alguma solução ou _workaround_ para o ocorrido, ou até que o seu crashlog contenha informações complementares aos outros radares.
 
-No Github, há uma controvérsia quanto ao 👍. Acredito ser importante sinalizar _issues_ com o `+1` como forma de sinalizar uma duplicata, pois caracteriza que há mais gente sendo afetada por aquela _issue_, porém há quem acredite que não agrega em nada. Inclusive, [na sessão 213 da WWDC](https://developer.apple.com/videos/play/wwdc2016/213/), os engenheiros da Apple pedem que, ao criar um radar, não simplesmente copie e cole um já existente pois isso não agrega informação e não sobe a prioridade.
+No Github, há uma controvérsia quanto ao 👍. Acredito ser importante adicionar o `+1` nas _issues_ como forma de sinalizar uma duplicata, pois caracteriza que há mais gente sendo afetada por aquela inconsistência, porém há quem acredite que não agrega em nada. Inclusive, [na sessão 213 da WWDC](https://developer.apple.com/videos/play/wwdc2016/213/), os engenheiros da Apple pedem que, ao criar um radar, não simplesmente copie e cole um já existente pois isso não agrega informação e não sobe a prioridade.
 
 Caso algum radar seu seja marcado como uma duplicata, será informado o `id` da _issue_ original, que pode ser buscado no OpenRadar onde pode-se ler os comentários para saber se há alguma forma de contornar o problema, qual o status atual (se estiver atualizado) e o que a comunidade está falando em geral sobre isso.
 
@@ -105,8 +105,8 @@ Caso algum radar seu seja marcado como uma duplicata, será informado o `id` da 
 
 > "Não apresente problemas, apresente soluções" - eu mesmo
 
-Leve este mantra para a sua vida: "reclame menos". Se você tem poder para mudar algo, não reclame. Mude! Se você não tem poder para mudar, de que adianta reclamar? Na hora de resolver uma situação, seja no trabalho, seja em casa ou na rua, não apresente um problema: apresente uma solução. Isso não significa que você deve reportar menos bugs, justo pelo contrário! Reportar um bug é o primeiro passo para resolvê-lo.
+Leve este mantra para a sua vida: "reclame menos". Se você tem poder para mudar algo, não reclame: mude! Se você não tem poder para mudar, de que adianta reclamar? Na hora de resolver uma situação, seja no trabalho, seja em casa ou na rua, não apresente um problema: apresente uma solução. Isso não significa que você deve reportar menos bugs, justo pelo contrário! Reportar um bug é o primeiro passo para resolvê-lo.
 
 Se você reportar um bug, sempre que possível, apresente um fix ou ao menos um _workaround_. Se for no Github, submeta um pull-request. Seja pró-ativo e resolva seu próprio problema ao invés de esperar que os outros o resolvam por você.
 
-De nada adianta chorar sem agir. Ilumine o problema. Seja parte da solução. Melhore as ferramentas que você usa no dia-a-dia. Diminua a sua dor. Otimize o seu tempo. Ajude a comunidade a crecer. Pode ter certeza que no caminho você cresce junto.
+De nada adianta chorar sem agir. Ilumine o problema. Seja parte da solução. Melhore as ferramentas que você usa no dia-a-dia. Diminua a sua dor. Otimize o seu tempo. Ajude a comunidade a crescer. Pode ter certeza que no caminho você cresce junto.
