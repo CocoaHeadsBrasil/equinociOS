@@ -2,13 +2,15 @@
 layout:     "post"
 title:      "Bugreport 101"
 subtitle:   "Um ensaio sobre bugs e relatórios"
-date:       2017-03-1 12:00:00
+date:       2017-03-10 12:00:00
 author:     "Flávio Caetano"
 header-img: "img/fjcaetano/computer-data-analytics-blue-background-website-header.jpg"
 category:   "comunidade"
 ---
 
 > Flávio Caetano ([@flavio_caetano](https://twitter.com/flavio_caetano){:target="_blank"}) desenvolve para iOS desde 2011, quando a gerência de memória era manual e storyboard era coisa de cinema. Já trabalhou em alguns dos maiores (e menores) apps do Brasil e atualmente lidera o desenvolvimento em iOS no [Winnin](https://winnin.com/){:target="_blank"}.
+>
+> Este post é um complemento ao talk [Bugreport 101](https://www.slideshare.net/FlavioVieiraCaetano/bugreport-101-72988003){:target="_blank"} apresentado no 28º CocoaHeads SP
 
 É muito fácil encontrar desenvolvedores que já encontram algum tipo de bug em código de terceiros. Seja numa lib externa, seja no SDK da Apple. Nosso código, lindo e cheiroso, com um comportamento indesejado por causa de uma pessoa que não está nem na mesma folha de pagamentos que você. Também não é difícil encontrar devs que já reportaram tais bugs para os responsáveis pelo código ou que contribuiram para a sua correção de alguma forma. Mas, não tão fácil é encontrar desenvolvedores que reportaram algum tipo de bug para a Apple.
 
