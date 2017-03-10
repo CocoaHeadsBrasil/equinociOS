@@ -147,9 +147,21 @@ Caso queira entrar em contato, estou no [Twitter (@chrisfsampaio)](https://twitt
 * Vale também mencionar [um relato](https://www.objc.io/issues/15-testing/snapshot-testing), do [Orta Therox](http://orta.io), deveras parecido com a experiência que tive.
 
 ---- 
-<br/>
 
+
+### Errata
+1. Meu amigo [Fabri](https://twitter.com/marcelofabri_) fez uma boa ressalva – executar o teste antes de gerar a primeira imagem e observamos que o mesmo irá falhar. Este passo é importante para validarmos que o teste falha quando não há arquivo para ser usado como referência.
+
+2.  O caro [Fabri](https://twitter.com/marcelofabri_) também lembrou que vale mencionar o [_matcher_ para `Expecta`](https://github.com/dblock/ios-snapshot-test-case-expecta), que permite uma sintáxe mais natural nas linhas de:  
+
+~~~swift  
+    expect(view).to.recordSnapshot()
+    expect(view).to.haveValidSnapshot()
+    expect(view).to.haveValidSnapshotWithTolerance(0.01)
+    expect(view).to.haveValidSnapshotNamedWithTolerance(@"unique snapshot name", 0.01)
+~~~  
+
+<br/>
 
 #### Notas
 [^1]: Na verdade, recomendo a leitura de todos os textos que estão lá no [invariante](http://invariante.com/).
-
