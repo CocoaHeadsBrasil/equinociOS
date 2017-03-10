@@ -28,15 +28,11 @@ Além disso, precisei fazer uma prova de conceito usando o SDK e esbarrei em um 
 
 ## Cenário inicial do SDK
 
-Como disse antes, o SDK é comum a vários apps gerenciados pelo meu time (a parte _core_) com outro time de outra consultoria desenvolvendo pequenas bibliotecas da parte de segurança do aplicativo, que são enviadas para nós como bibliotecas que são _linkadas_ estaticamente ao nosso SDK. Esporadicamente algumas pessoas direto do cliente ainda fazem um _bypass_ no nosso time/processo em pequenas partes do projeto, para dicionar uma _feature_ para um dos projetos principais, mas esquecendo do outro, causando _bug_ (identificado em desenvolvimento pelos times do outro projeto ainda em desenvolvimento). E está entrando um time de outra consultoria para mexer no SDK. 
+Como disse antes, o SDK é comum a vários apps gerenciados pelo meu time (a parte _core_) com outro time de outra consultoria desenvolvendo pequenas bibliotecas da parte de segurança do aplicativo, que são enviadas para nós como bibliotecas que são _linkadas_ estaticamente ao nosso SDK. Esporadicamente algumas pessoas direto do cliente ainda fazem um _bypass_ no nosso time/processo em pequenas partes do projeto, para dicionar uma _feature_ para um dos projetos principais, mas esquecendo do outro, causando _bug_ (identificado rapidamente pelos times do outro aplicativo ainda em desenvolvimento). E está entrando um time de outra consultoria para mexer no SDK. 
 
 Os aplicativos atualmente suportam o iOS 7, e isso exige que a distribuição do SDK seja como biblioteca para linkagem estática. Já temos no cliente aplicativos sendo desenvolvidos com suporte apenas ao iOS 9+, sendo escrito em Swift, mas como dependencias em Swift devem ser _frameworks_ dinâmicos, esse projeto teve inicialmente que usar CocoaPods para adicionar o SDK estaticamente, e o Carthage _linkando_ dinâmicamente as dependencias de terceiros escritas em Swift, mas o time de _devops_ do cliente barrou o Carthage - por enquanto, apenas CocoaPods pode ser usado nesse cliente.
 
-<!--
-Do lado dos aplicativos, temos projeto com mais ou menos 5 times de consultorias diferentes - com culturas diferentes - além de áreas diferentes no cliente exigindo a entrada de novas _features_ em prazos/datas específicas. Isso tudo deixa os _merge_ e a manutenção complicada, e o lançamento de novas versões gera bastante atrito.
--->
-
-Como disse anteriormente, o SDK atual compreende então de três grandes áreas, todas distribuídas como um "framework" - não no sentido de _framework_ dinâmico criado pelo Xcode, mas numa estrutura similar criada via script, que embute os _assets_ (storyboards, `XIB`s e imagens) e funcionalidades das três áreas abaixo:
+Como disse anteriormente, o SDK atual compreende então de três grandes áreas, todas distribuídas como um "framework" - não no sentido de _framework_ dinâmico criado pelo Xcode, mas numa estrutura similar criada via script, que embute os _assets_ (_storyboards_, `XIB`s e imagens) e funcionalidades das três áreas abaixo:
 
 - Comunicação
 - Segurança
@@ -47,7 +43,7 @@ Além disso, o time do SDK mantem um projeto Sample, para que os times dos apps 
 
 ## SDK "atual"
 
-![]({{ site.baseurl }}/img/talesp/iphone-sample-ios.png)
+![center]({{ site.baseurl }}/img/talesp/iphone-sample-ios.png)
 
 Além dos problemas acima, esbarramos em um novo recentemente. Um grande redesign está ocorrendo nos apps, melhorando o design e a usabilidade geral dos apps, mas que não serão lançados ao mesmo tempo. Como o SDK também inclui telas, agora telas antigas que deverão ter suporte e novas em desenvolvimento, uma solução paleativa foi criada: criar um _proxy_ que determina qual a interface usada. Então, num exemplo simples, se tinhamos uma classe/tela `LoginViewController`, tivemos que adicionar a "nova" `LoginViewControllerNew`, e o proxy determina quem será usado. Além de duplicar classes, temos também _assets_ duplicados. E como pretendemos (pelo menos o time de SDK está se adiantando para isso, ainda não tem previsão de desenvolvimento) flexibilizar o SDK, poderia dar à área de negócios a decisão de lançar para outras plataformas Apple (watchOS, tvOS, macOS), hoje estamos intimamente "presos" ao UIKit.
 
@@ -116,11 +112,12 @@ O método `+load` tem ainda uma caracteristica especial em relação ao _runtime
 ### Observação sobre `initialize` em Swift - Xcode 8.3 beta 3
 
 O documento de _Release Notes_ do Xcode 8.3 beta 3 inclui a seguinte observação.
+
 > Swift will now warn when an NSObject subclass attempts to override the class `initialize` method. Swift doesn't guarantee that references to class names trigger Objective-C class realization if they have no other side effects, leading to bugs when Swift code attempts to override initialize. (28954946)
 
 É bom tomar cuidado com isso, caso esteja usando Swift e pensar em uma implementação parecida
 
-E já que temos falado um pocuo sobre _linkagem_ estática e dinámica, e sobre bibliotecas e _frameworks_, vamos explicar um pouco sobre elas.
+E já que temos falado um Pouco sobre _linkagem_ estática e dinámica, e sobre bibliotecas e _frameworks_, vamos explicar um pouco sobre elas.
 
 ## "Linkagem" estática vs dinâmica
 
@@ -302,81 +299,96 @@ Agora no projeto _Sample_ basta fazer algo semelhante, porêm adicionando o repo
 
 Que irá baixar o código da biblioteca de UI e da biblioteca _core_.
 
+A estrutura de diretórios de nossos projetos agora fica similar a esta:
+
+
+~~~
+~/Sample
+    └── .git
+    └── .gitsubmodules
+    └── Podfile
+    └── Pods
+    └── Sample.xcodeproj
+    └── Sample.xcworkspace
+    └── Sources
+    └── Vendor
+        └── SDKUI (submodule)
+            └── .git
+            └── .gitsubmodules
+            └── Podfile
+            └── Pods
+            └── SDKUI.podspec
+            └── SDKUI.xcodeproj
+            └── SDKUI.xcworkspace
+            └── Sources
+            └── Vendor
+                └── SDKCore (submodule)
+                    └── .git
+                    └── Podfile
+                    └── Pods
+                    └── SDKCore.podspec
+                    └── SDKCore.xcodeproj
+                    └── SDKCore.xcodeproj
+                    └── Sources
+~~~
+
+E a estrutura dos projetos dentro do Xcode ficam assim:
+
+~~~
+▼ Sample (projeto)
+  ▶ Source
+  ▶ Products
+  ▶ Frameworks
+  ▶ Pods
+  ▼ Vendor
+    ▼ SDKUI
+      ▶ Source
+      ▶ Products
+      ▶ Frameworks
+      ▶ Pods
+      ▼ Vendor
+        ▼ SDKCore
+          ▶ Source
+          ▶ Products
+          ▶ Frameworks
+          ▶ Pods
+        ▶ Pods (Projeto)
+    ▶ Pods (Projeto)
+▶ Pods (Projeto)
+~~~
+
 # Resultados
 
 Após algumas _sprints_, o resultado foi:
 
 SDK (apenas o _core_):
-- Redução das linhas de código: de ____ para 4600
+
+- Redução das linhas de código: de 28000* para 13500 (sendo 7000 linhas de testes)
 - Cobertura de testes: de 85% para 83%
 	- enquanto esse processo eraa feito, outro desenvolvedor do time chegou a 95% de cobertura na principal _branch_ de desenvolvimento
 	- Estes 95% parecem ser um "máximo teórico", pois as bibliotecas de segurança são escritar majoritariamente em `C`, impedindo/dificultando a injeção de dependencia e _mocks_/_stubs_
 
 UI:
-- Projeto novo, iniciado com aproximadamente 4000 linhas de código
+
+- Projeto novo, iniciado com aproximadamente 9500 linhas de código (sendo 5500 linhas de testes)
 	- o _storyboard_ deve ser convertido para arquivo `xib` ou código fonte em breve
 - Após migração dos testes da versão anterios da biblioteca _core_, já nasceu com 82% de cobertura de código
 - Pode ser facilmente versionada e distribuída com CocoaPods
 - Times dos apps só precisam adicionar ao Podfile - nenhuma configuração necessária
 - Podemos criar bibliotecas de UI para macOS/watchOS/tvOS - aplicativo só tem que adicionar a biblioteca de UI correta
 
+Sample:
+
+- Projeto simplificado
+	- Redução de linhas de código: de 28000* para 2100
+
 # Proxímos passos
 
-- Criar a nova versão da lib de UI com o redesign
-- Transformar as maiores features em apps/módulos
+Com a primeira experiência na definição de um núcleo comum e na integração das dependências, podemos agora gerar a nova versão da biblioteca de interface de forma muito mais simples e sem duplicação de código e recursos ou 
 
-# Bonus: Convertendo biblioteca estática em dinâmica
+Além disso, podemos agora partir para a modularização mais fina desse projeto, como a separação melhor da camada de segurança.
 
-- impactos de performance quando muitas libs dinâmicas são carregadas
-	- _daemon_ `amfi` le e valida conteúdo e assinatura do _app_ e das bibliotecas
-- conversão manual ou automática
-
-
-## Conversão manual
-
-- biblioteca de terceiro a ser integrada em app compatível com iOS 8+
-
-1. Identificar formato
-	- `$ lipo -indo libMyComp.a`
-	- `Architectures in the fat file: libMyComp.a are: x86_64 arm64`
-2. Extraír cada arquitetura do binário gordo
-	- `$ mkdir -p x86_64`
-	- `$ lipo libMyComp.a -extract x86_64 -output ./x86_64/libfoo.a`
-3. Verificar se parte extraída tem arquitetura correta
-	- `$ lipo -info ./x86_64/libfoo.a` 
-	- `input file libfoo.a is not a fat file`
-	- `Non-fat file: libfoo.a is architecture: x86_64`
-4. Verificar que é um arquivo `ar`
-	- `$ file ./x86_64/libfoo.a`
-	- `libfoo.a: current ar archive random library`
-5. Extrair os arquivos objetos
-	- `$ cd x86_64`
-	- `$ ar -x libfoo.a`
-6. Contruír nova biblioteca dinâmica
-	- `$ libtool -dynamic *.o -o libfoo_dynamic-x86_64.dylib -framework CoreFoundation -lSystem`
-7. Repita para cada arquitetura
-8. Crie uma biblioteca dinâmica gorda
-	- $ lipo -create ./x86_64/libfoo_dynamic-x86_64.dylib ./arm64/libfoo_dynamic-arm64.dylib -output ./libfoo_dynamic.dylib`
-
-## Conversão automática
-
-- Empacotar biblioteca estática em uma dinâmica
-	- mais confiável e mais fácil
-
-1. Crie um novo projeto
-2. Escolha _Cocoa Touch Framework_ como _target_
-3. Adicione a biblioteca estática, _headers_ e recursos
-4. Nas configurações do projeto, em _Build Settings_ da sua biblioteca dinâmica:
-	- adicione a _flag_ `--all_load` na opção `OTHER_LDFLAGS`
-	- adicione os caminhos da biblioteca estática nos campos `FRAMEWORK_SEARCH_PATH` e `LIBRARY_SEARCH_PATH`
-	- se biblioteca estática não for binário gordo, adicione a _flag_ `-no_arch_warnings` no campo _OTHER_LDFLAGS_
-5. Nas opções de _Build phases_ da biblioteca dinâmica:
-	- adicione a biblioteca estática na fase _Link Binary With Libraries_
-	- adicione os _headers_ que deseja exportar como publicos na fase _Headers_
-	- adicione os recursos que deseja incluir na fase _Copy bundle resources_
-6. Efetue o _build_ do projeto
-7. Caso ocorram erros de simbolos inexistentes, volte em _Build Phases_, expanda a fase _Link Binary With Libraries_ e adicione as bibliotecas que a biblioteca estática espera ser _linkada_
-
+Por ultimo, pretentemos expor a solução de forma que os outros times dos aplicativos possam também modularizar as funcionalidades, ganhando assim a simplificação do trabalho do time de integração, mais detalhes de qualidade de código por times e áreas do aplicativo, facilidade na evolução de áreas separadas dos mesmos e maior estabilidade geral dos aplicativos.
 
 # Referências:
 
