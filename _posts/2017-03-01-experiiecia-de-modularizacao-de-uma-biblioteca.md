@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Experiências na modularização de um projeto de um SDK"
-date:       2017-03-01 00:00:00
+date:       2017-03-11 00:00:00
 author:     "Tales Pinheiro"
 category:   "arquitetura"
 ---
