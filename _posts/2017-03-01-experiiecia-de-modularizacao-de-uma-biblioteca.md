@@ -34,7 +34,7 @@ Os aplicativos atualmente suportam o iOS 7, e isso exige que a distribuição do
 
 Como disse anteriormente, o SDK atual compreende então três grandes áreas, todas distribuídas como um "framework" - não no sentido de _framework_ dinâmico criado pelo Xcode, mas numa estrutura similar criada via script, que embute os _assets_ (_storyboards_, `XIB`s e imagens) e funcionalidades das três áreas abaixo:
 
-- Comúnicação
+- Comunicação
 - Segurança
 - UI Comum aos projetos
 
@@ -78,7 +78,7 @@ O processo geral - já efetuado - pode ser descrito de forma bastante simples. F
 
 Mas temos aqui um problema:
 
-Algumas telas incluídas no _core_ são chamadas por métodos do _core_, não pelos apps principais. Por exemplo, alguns erros de comúnicação já são exibidos para o usuário via chamada do _core_. Mas o _core_ não pode depender de UI. Além disso, para times que usam a nova biblioteca de UI, desejamos que a comúnicação deve ser transparente e sem configuração.
+Algumas telas incluídas no _core_ são chamadas por métodos do _core_, não pelos apps principais. Por exemplo, alguns erros de comunicação já são exibidos para o usuário via chamada do _core_. Mas o _core_ não pode depender de UI. Além disso, para times que usam a nova biblioteca de UI, desejamos que a comunicação deve ser transparente e sem configuração.
 
 Como ter duas bibliotecas se comúnicando, com o _core_ chamando métodos de UI sem saber da existência desses ou do UIKit?
 
@@ -104,7 +104,7 @@ Praticamente toda classe da Foundation e do UIKit herda de `NSObject` (com exce�
 		- linkagem estática: na inicialização do aplicativo
 		- linkagem dinâmica: na primeira chamada de um método da biblioteca
 - `+initialize`
-	- Esse método é um pouco mais _lazy_, e só é chamado quando primeiro método da classe é chamado. Assim, se durante a vida da aplicação, uma referência qualquer - chamada de método de classe, instância ou algo como `NSStringFromClass` ou `NSClassFromString` - não for chamada, esse método não é chamado. Além disso, é garantido pelo runtime que esse método será chamado apenas uma vez por class, na primeira  da mesma por terceiros.
+	- Esse método é um pouco mais _lazy_, e só é chamado quando primeiro método da classe é chamado. Assim, se durante a vida da aplicação, uma referência qualquer - chamada de método de classe, instância ou algo como `NSStringFromClass` ou `NSClassFromString` - não for chamada, esse método não é chamado. Além disso, é garantido pelo runtime que esse método será chamado apenas uma vez por class, na primeira referência da mesma por terceiros.
 
 O método `+load` tem ainda uma característica especial em relação ao _runtime_: se a classe e uma ou mais categorias implementar o método `+load`, todos serão executados
 
