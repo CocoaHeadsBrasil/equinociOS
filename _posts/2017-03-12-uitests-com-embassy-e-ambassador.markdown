@@ -16,18 +16,18 @@ Esse post tem objetivos bem modestos. A ideia é simplesmente falar sobre um des
 
 Foi uma experiência legal e até meio surpreendente de certa forma. Espero que isso possa ser útil pra outras pessoas também 😊
 
-## não-sei-que-título-colocar-aqui
+## Motivação
 
-Algo que sempre me chamou a atenção é a interação entre pessoas de diferentes áreas e com diferentes backgrounds. Eu costumo me agradar muito com as iniciativas que têm como objetivo tornar essa interação mais agradável e produtiva. Foi esse pensamento que me motivou a procurar implementar testes de UI no projeto que eu estava trabalhando nos últimos meses. 
+Algo que sempre me chamou a atenção é a interação entre pessoas de diferentes áreas e com diferentes backgrounds. Eu costumo me agradar muito com as iniciativas que têm como objetivo tornar essa interação mais agradável e produtiva. Foi esse pensamento que me motivou a implementar testes de UI no projeto que eu estava trabalhando nos últimos meses. 
 
 Diferente dos testes unitários, os testes de UI tem essa característica de observar o funcionamento do app "pelo lado de fora" e isso pode ser uma porta de entrada para "não-programadores" se envolverem mais com o processo de desenvolvimento, uma vez que não é necessário conhecer a implementação do app pra testar. Além disso, o código em um teste de UI costuma ser bem mais legível (menos assustador? 🤔) pra quem não está acostumado a codar. 
 
-Pois bem. Nesse projeto eu resolvi escrever os meus primeiros UITests. E eu precisei pesquisar como eu faria pra que os meus testes não tocassem no servidor. Naquele momento nós só tínhamos o servidor de homologação então de cara havia duas opções: (1) criar um servidor para os testes e passar uma url diferente como variável de ambiente no launch dos testes; ou (2) mockar as respostas do servidor na própria camada de network e retornar essas respostas quando estiver rodando testes de UI.
+Nesse projeto eu resolvi escrever os meus primeiros UITests. E eu precisei pesquisar como eu faria pra que os meus testes não tocassem no servidor. Naquele momento nós só tínhamos o servidor de homologação então de cara havia duas opções: (1) criar um servidor para os testes e passar uma url diferente como variável de ambiente no launch; ou (2) mockar as respostas do servidor na própria camada de network e retornar essas respostas quando estiver rodando os testes de UI.
 
-A primeira opção não me pareceu uma boa ideia. Os testes dependeriam da conexão e do servidor, de modo que qualquer falha em um desses dois acarretaria em uma alteração do resultado dos testes.  
+A primeira opção não me pareceu uma boa ideia. Os testes dependeriam da conexão e do servidor, de modo que qualquer falha em um desses dois acarretaria em uma alteração no resultado dos testes.  
 A segunda opção não me parecia tão problemática, mas ainda não era o ideal. O que me fez pensar duas vezes foi o fato de que haveria bastante código no app que não servia pro app em si, mas sim pros meus testes. 
 
-Eu fui procurar uma terceira opção e acabei encontrando [este artigo](https://envoy.engineering/embedded-web-server-for-ios-ui-testing-8ff3cef513df#.t2rr3w9db){:target="_blank"}. Com o Embassy e o Ambassador, a ideia é que o seu servidor rode no próprio target de testes e você pode definir a resposta que você quer retornar no próprio método onde a UI será testada. Além disso, é possível verificar se os dados que o app está enviando para o servidor a partir de ações na interface estão corretos.
+Eu fui procurar uma terceira opção e acabei encontrando [este artigo](https://envoy.engineering/embedded-web-server-for-ios-ui-testing-8ff3cef513df#.t2rr3w9db){:target="_blank"}. Com o Embassy e o Ambassador, a ideia é que o seu servidor rode no próprio target de testes e você pode definir a resposta que você quer retornar no próprio método onde a UI será testada. Além disso, é possível verificar os dados que o app está enviando para o servidor a partir de ações na interface.
 
 Eu gostei muito da ideia. Os testes vão ficar isolados e a definição do que o app está recebendo fica logo acima dos asserts que verificam se a interface está como deveria, tornando bem mais visível (mesmo pra quem não está acostumado com o código) a relação entre o que o app está esperando de retorno da API e a interface.
 
@@ -104,9 +104,9 @@ class UITestBase: XCTestCase {
 
 ```
 
-No método `setupWebApp()` eu inicializo o server e crio o `router`. O `router` é o objeto que será usado para definir as respostas do servidor para cada request.
+No método `setupWebApp()` eu inicializo o server e crio o `router`, que será usado para definir as respostas do servidor para cada request.
 
-No `setupApp()` eu crio o `XCUIApplication` e passo a url para o app. No código do app, a única mudança que eu preciso alterar é uma verificação se essa url foi passada, se tiver sido, ela se torna a _base url_ da API.
+No `setupApp()` eu crio o `XCUIApplication` e passo a url para o app. No código do app, a única mudança que eu preciso fazer é uma verificação se essa url foi passada, se tiver sido, ela se torna a _base url_ da API.
 
 ```swift
 let baseURL = ProcessInfo.processInfo.environment["webserviceURL"] ?? "http://realurlgoeshere.com"
@@ -114,9 +114,9 @@ let baseURL = ProcessInfo.processInfo.environment["webserviceURL"] ?? "http://re
 
 Ok! Servidor configurado! Vamos ver os testes em ação.
 
-## Projeto de exemplo
+## App de exemplo
 
-O app de exemplo é bem simples. É uma micro-rede social para desenvolvedores iOS, onde você pode se cadastrar e publicar uma única frase ou citação que diz algo sobre você. Além disso você pode ver os usuários cadastrados e as frases que eles publicaram. Ele apresenta uma lista de Devs e ao selecionar um deles, o usuário vai pra uma tela de detalhe que mostra a frase publicada.
+O app de exemplo é bem simples. É uma nano-rede social para desenvolvedores iOS, onde você pode se cadastrar e publicar uma única frase ou citação que diz algo sobre você. Além disso você pode ver os usuários cadastrados e as frases que eles publicaram. Ele apresenta uma lista de Devs e ao selecionar um deles, o usuário vai pra uma tela de detalhe que mostra a frase publicada.
 
 <img src="{{ site.baseurl }}/img/emannuelOC/list_devs.png">
 
@@ -124,9 +124,13 @@ A primeira tela é uma tableView em que cada célula mostra no `textLabel` o nom
 
 A segunda tela contém somente uma label com a frase referente ao dev selecionado e o seu nome no title da `navigationBar`.
 
+<img src="{{ site.baseurl }}/img/emannuelOC/detail_screen.png">
+
 ## Testando a UI
 
-No nosso teste, quando o app abrir vai ser feita uma chamada para o servidor que deve retornar a lista de desenvolvedores cadastrados. Para definir os dados que serão retornados, basta retornar um dicionário ou array contendo as informações no bloco da JSONResponse().
+No nosso teste, quando o app abrir vai ser feita uma chamada para o servidor que deve retornar a lista de desenvolvedores cadastrados. 
+
+O retorno com a lista para o nosso "micro-exemplo" ficou mais ou menos assim:
 
 ```swift
 let mockData = [
@@ -138,7 +142,7 @@ let mockData = [
     [
         "id": 214,
         "name": "Francesco Perrotti-Garcia",
-        "quote": "Vc não quer um pato 🐥"
+        "quote": "Vc não quer um pato 🐥, vc quer um Quackable!"
     ],
     [
         "id": 235,
@@ -173,10 +177,11 @@ let mockData = [
     [
         "id": 243,
         "name": "Douglas Fischer",
-        "quote": "To pagando pra ver o que vão escrever de mim. Pelo menos não tem mention no blog! 😅"
+        "quote": "To ➡️pagando⬅️ pra ver o que vão escrever de mim. Pelo menos não tem mention no blog! 😅"
     ]
 ]
 ```
+Para definir os dados que serão retornados, basta retornar um dicionário ou array contendo as informações no bloco da `JSONResponse` - que por sua vez pode estar dentro de uma `DelayResponse`, caso você queira simular um atraso na resposta.
 
 Podemos então escrever o nosso código com base nas informações que nós sabemos que virão do servidor. Segundo o retorno definido, a tableView deve mostrar uma lista com os nomes.
 
@@ -209,7 +214,7 @@ func testShowingItems() {
 
 Se tudo ocorrer como deveria, a tableView deve conter uma célula com o nome de cada uma das pessoas listadas. O `swipeUp()` é para garantir que mesmo num device com a tela menor, todos os itens poderão ser exibidos.
 
-No nosso exemplo, ao selecionar um nome da lista o app vai pra uma nova tela com os detalhes da pessoa selecionada. Pra isso, é feita uma chamada para a nossa API, passando o `id` da pessoa selecionada. Assim, é possível testar se ao selecionar uma pessoa da lista o app está realmente fazendo a chamada correta.
+No nosso exemplo, ao selecionar um nome da lista o app vai pra uma nova tela com os detalhes da pessoa selecionada. Pra isso, é feita uma chamada para a nossa API, passando o `id` do desenvolvedor. Assim, é possível testar se ao selecionar uma pessoa da lista o app está realmente fazendo a chamada adequada.
 
 No próprio bloco onde é definida a resposta pra um dado caminho é possível testar se as informações passadas estão corretas.
 
@@ -225,6 +230,7 @@ func testSelectingDeveloper() {
         if let input = environ["swsgi.input"] as? SWSGIInput {
             JSONReader.read(input, handler: { (json) in
                 if let info = json as? [String: Any] {
+                    // o `info` contém os parâmetros passados na chamada
                     XCTAssert(info["developer_id"] as? Int == 214)
                 }
             })
@@ -243,17 +249,17 @@ func testSelectingDeveloper() {
 }
 ```
 
-Além de garantir que as os parâmetros certos estão sendo enviados, o teste também verifica se o app está mostrando a frase correta - afinal de contas, esse é um teste de UI. 
+Além de garantir que as os parâmetros certos estão sendo enviados, o teste também verifica se o app está mostrando a frase correta - afinal de contas, esse é um teste de UI.
 
-Aqui certamente cabe uma discussão sobre se isso deve acontecer em um teste de _UI_. Eu vou deixar a discussão mais profunda pra quem é mais "gente grande". Nesse post fica só a apresentação da funcionalidade - que no meu caso foi bastante útil!
+Aqui certamente cabe uma discussão sobre se um teste de _UI_ é o local para verificar os parâmetros passados na chamada http. Eu vou deixar a discussão mais profunda pra quem é mais "gente grande". Nesse post fica só a apresentação da funcionalidade - que no meu caso foi bem útil!
 
 ## Concluindo
 
-O `Embassy` e o `Ambassador` me ajudaram bastante com os testes de UI no último projeto em que eu trabalhei e eu espero que possa ser útil pra alguns de vocês também. Vale lembrar que são ferramentas abertas! Nós podemos clonar os projetos, contribuir, propor e implementar novas funcionalidades.
+O `Embassy` e o `Ambassador` me ajudaram bastante com os testes de UI no último projeto em que eu trabalhei e eu espero que possa ser útil pra alguns de vocês também. Vale lembrar que são ferramentas abertas! Nós podemos clonar os projetos, contribuir e propor e implementar novas funcionalidades.
 
 Agradeço a leitura!
 
-Quaisquer críticas e/ou sugestões são mais que bem-vindas. Você pode encontrar no [Twitter](https://twitter.com/emannuel_oc){:target="_blank"} e no [Slack do iOSDevBR](http://iosdevbr.herokuapp.com){:target="_blank"}.
+Quaisquer críticas e/ou sugestões são mais que bem-vindas. Você pode me encontrar no [Twitter](https://twitter.com/emannuel_oc){:target="_blank"} e no [Slack do iOSDevBR](http://iosdevbr.herokuapp.com){:target="_blank"}.
  
 Grande abraço! 🙃
 
