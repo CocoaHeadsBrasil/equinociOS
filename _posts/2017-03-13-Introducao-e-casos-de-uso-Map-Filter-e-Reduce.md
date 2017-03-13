@@ -165,17 +165,17 @@ soma = alunosNotas.reduce (0, +)
 
 ```
 
-Este artigo tem a intenção de ser um primeiro passo na utilização das funções de ordem maior. Além das mencionadas aqui, ainda tempos o ```flatMap``` (a qual não será abordada, entretanto com [vasta fonte na internet](https://developer.apple.com/reference/swift/dictionary/1687661-flatmap)) e também temos as operações em cadeia, ou seja, a possibilidade de combinar todas essas funções.
+Este artigo tem a intenção de ser um primeiro passo na utilização das funções de ordem maior. Além das mencionadas aqui, ainda temos o ```flatMap``` (a qual não será abordada, entretanto com [vasta fonte na internet](https://developer.apple.com/reference/swift/dictionary/1687661-flatmap)) e também temos as operações em cadeia, ou seja, a possibilidade de combinar todas essas funções.
 
 ### Revisão
 
 ![](http://www.monolitonimbus.com.br/wp-content/uploads/2015/01/revisao_telecurso.jpg)
 
-**Map** : retorna uma coleção contendo resultados de se aplicar uma transformação para cada item, **map** vai **mapear** sua coleção inteira.
+**Map** : Retorna uma coleção contendo resultados de se aplicar uma transformação para cada item, **map** vai **mapear** sua coleção inteira.
 
-**Filter** : retorna uma coleção contendo apenas os itens que correspondem a uma condição de **filtro**.
+**Filter** : Retorna uma coleção contendo apenas os itens que correspondem a uma condição de **filtro**.
 
-**Reduce** : retorna um único valor calculado através da sua coleção. **Reduz** sua coleção a um unico valor.
+**Reduce** : Retorna um único valor calculado através da sua coleção. **Reduz** sua coleção a um unico valor.
 
 Brincadeiras a parte, espero que tenham gostado e que encontrem situações onde estas funções possam facilitar seu dia-a-dia, ou até mesmo ajudar você entender o código de outro desenvolvedor.
 
@@ -190,7 +190,7 @@ Obrigado e até a próxima 😉!
 * [Sequence](https://developer.apple.com/reference/swift/sequence)
 * [Closures](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html)
 * [Swift Guide to Map Filter Reduce](https://useyourloaf.com/blog/swift-guide-to-map-filter-reduce/)
-* [Simple Higher Order Functions in Swift 3.0 — Map, filter,flatMap reduce and !](https://medium.com/@mimicatcodes/simple-higher-order-functions-in-swift-3-0-map-filter-reduce-and-flatmap-984fa00b2532#.4od07v215)
+* [Simple Higher Order Functions in Swift 3.0 — Map, filter,flatMap reduce](https://medium.com/@mimicatcodes/simple-higher-order-functions-in-swift-3-0-map-filter-reduce-and-flatmap-984fa00b2532#.4od07v215)
 * [Esse vídeo: (principalmente os 2 primeiros segundos)](https://www.youtube.com/watch?v=v6wImnaYW1I)
 
 
