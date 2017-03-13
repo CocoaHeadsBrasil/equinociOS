@@ -124,6 +124,8 @@ Assim como ```map```, existem ainda outras formas de escrever o ```filter```, ma
 
 ### Reduce
 
+![]({{  }}/img/ezefranca/reduce.png)
+
 Combina todos os itens de uma coleção para criar um único valor.
 Vamos supor que precisamos obter a soma de todas as notas dos alunos, uma solução seria implementar outro loop For-In:
 
@@ -175,7 +177,7 @@ Este artigo tem a intenção de ser um primeiro passo na utilização das funç�
 
 **Reduce** : retorna um único valor calculado através da sua coleção. **Reduz** sua coleção a um unico valor.
 
-Brincadeiras a parte, espero que tenha gostado e que encontrem situações onde estas funções possam facilitar seu dia-a-dia, ou até mesmo ajudar você entender o código de outro desenvolvedor.
+Brincadeiras a parte, espero que tenham gostado e que encontrem situações onde estas funções possam facilitar seu dia-a-dia, ou até mesmo ajudar você entender o código de outro desenvolvedor.
 
 Todos os exemplos estão [neste playground](https://github.com/ezefranca/map-filter-reduce-equinocios).
 
