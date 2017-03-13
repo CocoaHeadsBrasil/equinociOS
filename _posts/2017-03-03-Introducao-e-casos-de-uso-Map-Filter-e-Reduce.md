@@ -1,16 +1,19 @@
 ---
 layout:     post
 title:      "Introdução e casos de uso: Map, Filter e Reduce."
-date:       2017-03-03 02:19:00
+date:       2017-03-13 02:19:00
 author:     "Ezequiel França"
 header-img: "img/ezefranca/header.jpg"
 category:   "swift"
 ---
 
-> Ezequiel França ([@ezefranca](https://twitter.com/ezefranca){:target="_blank"}) é desenvolvedor iOS, postador de zueiras no Slack e também entusiasta de Internet das Coisas e mundo Maker.
+> Ezequiel França ([@ezefranca](https://twitter.com/ezefranca){:target="_blank"}) é desenvolvedor iOS, postador de piadas no Slack e também entusiasta de Internet das Coisas e mundo Maker.
 
+O mundo iOS é gigantesco, e cada dia mais temos opções e alternativas, que vão desde a [programação reativa](https://www.raywenderlich.com/138547/getting-started-with-rxswift-and-rxcocoa), até a [programação funcional](https://www.raywenderlich.com/114456/introduction-functional-programming-swift) propriamente dita.
 
-Bem, eu geralmente gosto de escrever sobre o que me fez falta. Quando falamos em Map, Filter e Reduce, principalmente para um desenvolvedor junior é como se estivéssimos falando em uma bicho de sete cabeças. Acredito que isso naturalmente seja resultado de como programção é ensinada, tópicos como programação funcional são típicos de cursos de Ciência ou Engenharia da Computação (ou Matemática), por terem um rigor matemático maior. Entretanto para utilizar muitos destes recursos você não precisa ter estudado Cálculo IV ou ter muitos e muitos anos de programação para entender. 
+Para chegar lá não existe mágica, e alias, não que estes paradigmas vão resolver tudo, mas devemos pensar em evoluir a cada dia.
+
+Bem, eu geralmente gosto de escrever sobre o que me fez falta. Quando falamos em Map, Filter e Reduce, principalmente para um desenvolvedor junior é como se estivéssemos falando em uma bicho de sete cabeças. Acredito que isso naturalmente seja resultado de como programção é ensinada, tópicos como programação funcional são típicos de cursos de Ciência ou Engenharia da Computação (ou Matemática), por terem um rigor matemático maior. Entretanto para entender e utilizar muitos destes recursos você não precisa ter estudado Cálculo IV ou ter muitos e muitos anos de programação para entender. 
 
 A ideia deste artigo é justamente essa, mostrar alguns casos onde podemos utilizar estes conceitos funcionais, para facilitar ou deixar mais legível o tratamento de alguns tipos de dados.
 
@@ -20,6 +23,8 @@ Uma função de ordem superior é uma função que:
 
 • tem outra função como argumento, ou
 • produz uma função como resultado.
+
+![]({{  }}/img/ezefranca/hof.JPG)
 
 Por enquanto é isso. Vamos entender melhor com exemplos.
 
@@ -52,7 +57,7 @@ Com isso teriamos no array ```novaNotas``` as notas acrescidas de um ponto. A id
 
 ```swift
 
-// Uma das sintaxes do map, utilizando closure
+// Uma das váriações de sintaxes do map, utilizando closures
 
 var alunosNotas = [4, 5, 7, 9, 6, 10, 3]
 
@@ -63,7 +68,7 @@ alunosNotas = alunosNotas.map({(nota:Int) -> Int in
 
 ```
 
-Além da forma mostrada acima, podemos utilizar o ```map``` com a "sintaxe sugar" com $ (minha favorita), onde $0 é o elemento atual, $1 próximo elemento e assim sucessivamente:
+Além da forma mostrada acima, podemos utilizar o ```map``` com a *syntax sugar* com $ (minha favorita), onde $0 é o elemento atual, $1 próximo elemento e assim sucessivamente:
 
 ```swift
 
@@ -174,28 +179,33 @@ soma = alunosNotas.reduce (0, +)
 
 ```
 
-Este artigo tem a inteção de ser o primeiro passo na utilização das funções de ordem maior. Além das mencionadas ainda tempos o ```flatMap``` (a qual não será abordada, entretanto com [vasta fonte na internet]()) e também temos as operações em cadeia, ou seja, a possibilidade de combinar todas essas funções.
+Este artigo tem a inteção de ser o primeiro passo na utilização das funções de ordem maior. Além das mencionadas ainda tempos o ```flatMap``` (a qual não será abordada, entretanto com [vasta fonte na internet](https://developer.apple.com/reference/swift/dictionary/1687661-flatmap)) e também temos as operações em cadeia, ou seja, a possibilidade de combinar todas essas funções.
 
 ### Revisão
 
-*Map* : retorna um Array contendo resultados de aplicar uma transformação para cada item.
-*Filter* : retorna um Array contendo apenas os itens que correspondem a uma condição de "filtro".
-*Reduce* : retorna um único valor calculado chamando um fecho de combinação para cada item com um valor inicial.
+![](http://www.monolitonimbus.com.br/wp-content/uploads/2015/01/revisao_telecurso.jpg)
 
-Espero que tenha gostado do post e que encontrem situações onde estas funções possam facilitar seu dia-a-dia, ou até mesmo ajudar você entender o código de outro desenvolvedor.
+**Map** : retorna uma coleção contendo resultados de se aplicar uma transformação para cada item, **map** vai **mapear** sua coleção inteira.
+
+**Filter** : retorna uma coleção contendo apenas os itens que correspondem a uma condição de **filtro**.
+
+**Reduce** : retorna um único valor calculado através da sua coleção. **Reduz** sua coleção a um unico valor.
+
+Brincadeiras a parte, espero que tenha gostado e que encontrem situações onde estas funções possam facilitar seu dia-a-dia, ou até mesmo ajudar você entender o código de outro desenvolvedor.
+
+Todos os exemplos estão [neste playground](https://github.com/ezefranca/map-filter-reduce-equinocios).
 
 Obrigado e até a próxima 😉!
 
-<center><img src="https://media.giphy.com/media/l41YflLBmVOHbWCVq/giphy.gif"></img></center>
-
+![](https://media.giphy.com/media/l41YflLBmVOHbWCVq/giphy.gif)
 
 ### Referências
 
-* [Esse vídeo: (principalmente os 2 primeiros segundos)](https://www.youtube.com/watch?v=v6wImnaYW1I)
 * [Sequence](https://developer.apple.com/reference/swift/sequence)
 * [Closures](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html)
 * [Swift Guide to Map Filter Reduce](https://useyourloaf.com/blog/swift-guide-to-map-filter-reduce/)
 * [Simple Higher Order Functions in Swift 3.0 — Map, filter, reduce and flatMap!](https://medium.com/@mimicatcodes/simple-higher-order-functions-in-swift-3-0-map-filter-reduce-and-flatmap-984fa00b2532#.4od07v215)
+* [Esse vídeo: (principalmente os 2 primeiros segundos)](https://www.youtube.com/watch?v=v6wImnaYW1I)
 
 
 
