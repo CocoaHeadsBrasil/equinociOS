@@ -87,7 +87,8 @@ A conexão entre uma central e um periférico é feita através de escaneamento 
 - Descobertas as características, a central pode então ler valores das características estaticamente ou se increver naquela característica e caso o periférico atualize o valor dela, a central será notificada com o novo valor.
 - A conexão pode ser finalizada, se for o caso.
 
-<img src="{{ site.baseurl }}/img/leonardocardoso/advertising-discovery.png">
+<img src="{{ site.baseurl }}/img/leonardocardoso/advertisingdiscovery.png">
+
 
 # Serviços e Características
 
@@ -96,7 +97,7 @@ As trocas de dados feitas por dispositivos conectados são através de proprieda
 Um serviço é uma coleção de dados e comportamentos associados para completar uma tarefa ou uma função de um disposito, ou partes de um dispositivo. Esses comportamentos são chamados de características. Uma característica provê mais detalhes sobre um serviço de um periférico. Parece basicamente uma descrição daqueles verbetes que você procura em um dicionário. Uma definição te leva pra outra e você fica num eterno *loop*. Mas vamos tentar explicar melhor mais abaixo.
 
 Serviços podem ter outros serviços relacionados, como dependências, apontando para *UUIDs* de outros serviços. Cada característica também tem *UUID* que a possa indentificar.
-<img src="{{ site.baseurl }}/img/leonardocardoso/services-characterisctic.png">Então nesse exemplo nós temos dois sensores que funcionam diferentes um do outro mas juntos eles produzem um serviço, que é o Batimento Cardíaco. Para que ele funcione corretamente, o sensor cardíaco deve estar posicionado no local ideal.
+<img src="{{ site.baseurl }}/img/leonardocardoso/servicescharacterisctics.png">Então nesse exemplo nós temos dois sensores que funcionam diferentes um do outro mas juntos eles produzem um serviço, que é o Batimento Cardíaco. Para que ele funcione corretamente, o sensor cardíaco deve estar posicionado no local ideal.
 
 Ainda utilizando o nosso exemplo anterior, suponha que no dispositivo de batimento cardíaco poderíamos ter dois serviços, um com duas caracterícticas e outro com apenas uma:
 
@@ -128,7 +129,7 @@ Primeiro, vamos criar um protocolor para receber os eventos escutados do `Blueto
 
 #### BlueEar
 
-```swift
+~~~swift
 
 protocol BlueEar {
 
@@ -141,11 +142,11 @@ protocol BlueEar {
 
 }
 
-```
+~~~
 
 #### BluetoothManager
 
-```swift
+~~~swift
 
 class BluetoothManager: NSObject {
 
@@ -208,11 +209,11 @@ class BluetoothManager: NSObject {
 
 }
 
-```
+~~~
 
 #### CBPeripheralManagerDelegate
 
-```swift
+~~~swift
 
 // MARK: - CBPeripheralManagerDelegate
 extension BluetoothManager: CBPeripheralManagerDelegate {
@@ -350,11 +351,11 @@ extension BluetoothManager: CBPeripheralManagerDelegate {
     
 }
 
-```
+~~~
 
 #### ViewController
 
-```swift
+~~~swift
 
 import UIKit
 
@@ -392,11 +393,11 @@ extension ViewController: BlueEar {
     
 }
 
-```
+~~~
 
 #### View
 
-<img src="{{ site.baseurl }}/img/leonardocardoso/iOS-bound.png">
+<img src="{{ site.baseurl }}/img/leonardocardoso/iOS.png">
 
 
 #### Notas:
@@ -409,7 +410,7 @@ extension ViewController: BlueEar {
 
 #### BlueEar
 
-```swift
+~~~swift
 
 protocol BlueEar {
 
@@ -427,11 +428,11 @@ protocol BlueEar {
 
 }
 
-```
+~~~
 
 #### BluetoothManager
 
-```swift
+~~~swift
 
 class BluetoothManager: NSObject {
 
@@ -475,11 +476,11 @@ class BluetoothManager: NSObject {
 
 }
 
-```
+~~~
 
 #### CBCentralManagerDelegate
 
-```swift
+~~~swift
 
 // MARK: - CBCentralManagerDelegate
 extension BluetoothManager: CBCentralManagerDelegate {
@@ -562,11 +563,11 @@ extension BluetoothManager: CBCentralManagerDelegate {
 
 }
 
-```
+~~~
 
 #### CBPeripheralDelegate
 
-```swift
+~~~swift
 
 // MARK: - CBPeripheralDelegate
 extension BluetoothManager: CBPeripheralDelegate {
@@ -708,11 +709,11 @@ extension BluetoothManager: CBPeripheralDelegate {
     
 }
 
-```
+~~~
 
 #### ViewController
 
-```swift
+~~~swift
 
 import Foundation
 import Cocoa
@@ -755,11 +756,11 @@ extension ViewController: BlueEar {
     
 }
 
-```
+~~~
 
 #### View
 
-<img src="{{ site.baseurl }}/img/leonardocardoso/macOS-bound.png">
+<img src="{{ site.baseurl }}/img/leonardocardoso/macOS.png">
 
 #### Notas:
 
@@ -774,7 +775,7 @@ extension ViewController: BlueEar {
 
 Na imagem, temos o respectivo: *Log* do periférico, *iOS*, *macOS*, *Log* da central.
 
-<a href="{{ site.baseurl }}/img/leonardocardoso/result.mp4" alt="Click to see a video smoother than this GIF">
+<a href="{{ site.baseurl }}/img/leonardocardoso/result.mp4" alt="Click to see a video smoother than this GIF" target="_blank">
 <img src="{{ site.baseurl }}/img/leonardocardoso/result.gif">
 </a>
 
