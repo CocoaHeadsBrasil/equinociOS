@@ -163,7 +163,7 @@ soma = alunosNotas.reduce (0, +)
 
 ```
 
-Este artigo tem a inteção de ser o primeiro passo na utilização das funções de ordem maior. Além das mencionadas ainda tempos o ```flatMap``` (a qual não será abordada, entretanto com [vasta fonte na internet](https://developer.apple.com/reference/swift/dictionary/1687661-flatmap)) e também temos as operações em cadeia, ou seja, a possibilidade de combinar todas essas funções.
+Este artigo tem a intenção de ser um primeiro passo na utilização das funções de ordem maior. Além das mencionadas aqui, ainda tempos o ```flatMap``` (a qual não será abordada, entretanto com [vasta fonte na internet](https://developer.apple.com/reference/swift/dictionary/1687661-flatmap)) e também temos as operações em cadeia, ou seja, a possibilidade de combinar todas essas funções.
 
 ### Revisão
 
