@@ -111,32 +111,16 @@ for nota in alunosNotas {
 
 ```
 
-Com isso teriamos no array ```aprovadosNotas``` as notas dos alunos aprovados. A ideia central do ```filter``` é essa, fazer um loop sobre uma coleção e aplicar un "filtro" nela, então vejamos como ficaria utilizando o ```filter``` para fazer a mesma operação:
+Com isso teriamos no array ```aprovadosNotas``` as notas dos alunos aprovados. A ideia central do ```filter``` é essa, fazer um loop sobre uma coleção e aplicar un "filtro" nela, então vejamos como ficaria utilizando o ```filter``` para fazer a mesma operação. Podemos utilizar o ```filter``` com a sintaxe de $ vista anteriormente:
 
 ```swift
-
-// Uma das sintaxes do map, utilizando closure
-
-var alunosNotas = [4, 5, 7, 9, 6, 10, 3]
-
-alunosNotas = alunosNotas.map({(nota:Int) -> Int in
-    return nota + 1
-})
-
-
-```
-
-Além da forma mostrada acima, podemos utilizar o ```filter``` com a sintaxe de $.
-
-```swift
+// Verifica se a nota é >= a 5
 
 var alunosNotas = [4, 5, 7, 9, 6, 10, 3]
 alunosNotas = alunosNotas.filter { $0 >= 5 }
 
 ```
 Assim como ```map```, existem ainda outras formas de escrever o ```filter```, mas em todas elas a ideia central será a mesma, filtrar os elementos de uma coleção, baseado em uma condição.
-
-
 
 ### Reduce
 
@@ -204,7 +188,7 @@ Obrigado e até a próxima 😉!
 * [Sequence](https://developer.apple.com/reference/swift/sequence)
 * [Closures](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html)
 * [Swift Guide to Map Filter Reduce](https://useyourloaf.com/blog/swift-guide-to-map-filter-reduce/)
-* [Simple Higher Order Functions in Swift 3.0 — Map, filter, reduce and flatMap!](https://medium.com/@mimicatcodes/simple-higher-order-functions-in-swift-3-0-map-filter-reduce-and-flatmap-984fa00b2532#.4od07v215)
+* [Simple Higher Order Functions in Swift 3.0 — Map, filter,flatMap reduce and !](https://medium.com/@mimicatcodes/simple-higher-order-functions-in-swift-3-0-map-filter-reduce-and-flatmap-984fa00b2532#.4od07v215)
 * [Esse vídeo: (principalmente os 2 primeiros segundos)](https://www.youtube.com/watch?v=v6wImnaYW1I)
 
 
