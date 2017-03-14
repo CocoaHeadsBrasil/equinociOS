@@ -137,6 +137,7 @@ Falaremos mais de como aproveitar anotações mais abaixo porém por enquanto é
 
 A beleza das anotações serem inseridas em comentários é que códigos anotados ainda são códigos Swift válidos que compilam normalmente!
 
+<img src="{{ site.baseurl }}/img/fpg1503/sourcerer.jpg">
 
 ## Instalação
 
@@ -471,7 +472,7 @@ Para fazer isso usaremos o fato de que Sourcery copia o que inserimos dentro das
 
 {% highlight swift %}
 {% raw %}
-public protocol GitHubService: AutoImplement {
+public protocol GitHubService: AutoImplementable {
   /// sourcery: GET = "users/{user}/repos"
   /// sourcery: Path = ["user": user]
   func listRepos(for user: String, test: String, completion: Completion<[Repo]>) -> Cancelable
@@ -487,7 +488,7 @@ Usando o template:
 
 {% highlight html %}
 {% raw %}
-{% for protocol in types.protocols.implementing:"AutoImplement" %}
+{% for protocol in types.protocols.implementing:"AutoImplementable" %}
 struct {{protocol.name}}Implementation: {{protocol.name}} {
 	{% for method in protocol.methods %}
 	func {{method.name}} -> {{method.returnTypeName}} {
