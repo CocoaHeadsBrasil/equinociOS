@@ -22,19 +22,15 @@ Você já se deparou copiando e colando código ou então fazendo um código ext
 Para mim programar é criar abstrações de problemas do mundo real e metaprogramação é **a arte de abstrair uma abstração**.
 Ao usar metaprogramação você escreve menos código repetitivo e, com isso, menos bugs.  
 
-
-# Exemplo simples
-Se você é como eu provavelmente sempre tem um Playground, e algo como o [regexr.com](http://regexr.com) aberto para evitar ter que ficar replicando código. //TODO: FINISH
-
 # Sourcery
 [Sourcery](https://github.com/krzysztofzablocki/Sourcery) é uma ferramenta open source mantida pelo [Krzysztof Zabłocki](https://github.com/krzysztofzablocki) que alavanca metaprogramação em Swift usando templates. Não se preocupe, vou explicar o que isso significa nos próximos parágrafos.
 
 ## O que é um *template*?
-*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito**. Imagine um template como um cortador de biscoitos, algo que dá forma ao que é colocado dentro, você pode usar um cortador de biscoitos em massinha de crianças e isso não vai trasnformar ela em biscoito.
+*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito**. Imagine um template como um cortador de biscoitos, algo que dá forma ao que é colocado dentro, **você pode usar um cortador de biscoitos em massinha de crianças mas isso não vai trasnformar ela em biscoito**.
 <img src="{{ site.baseurl }}/img/fpg1503/template.jpg">
 
 ## Por que *templates*?
-//TODO: FINISH
+A magia dos templates é desacoplar o formato da implementação de fato. Quando tempos um formato que diz como algo vai ser implementado basta mudar um lugar (o template) e a mudança é propagada. Além disso podemos fazer templates para diferentes versões da linguagem ou até mesmo para diferentes linguagens!
 
 ## Stencil
 [Stencil](http://github.com/kylef/Stencil) é uma linguagem de templates para Swift criada e mantida pelo [Kyle Fuller](https://github.com/kylef), a ideia é criar uma maneira de expressar a apresentação de algo. Farei uma introdução rápida ao Stencil porém encorajo você a dar uma lida na [documentação oficial](http://stencil.fuller.li)!
@@ -544,11 +540,13 @@ Repare como utilizamos os dicionários para mapear `String`s para valores espec�
 
 Cabe ressaltar não é possível acessar dentro do template as anoteações dos campos indvidualmente porém isso não é um problema pois temos uma extensão que permite expandir `String`s usando dicionários. Além disso o código gerado conta com outras abstrações como a função genérica `request`, a closure genérica `Completion`, o `enum HTTPMethod` e o protocolo `Cancelable`, o código dessas abstrações não será incluso para manter o artigo sucinto porém elas podem facilmente ser subistituídas por outras de sua preferência.
 
+# Mais sobre Sourcery
+Além de Stencil o Sourcery também permite o uso de [SwiftTemplates](https://github.com/krzysztofzablocki/Sourcery/blob/master/SourceryTests/Stub/SwiftTemplates/Equality.swifttemplate) e [templates em JavaScript](https://github.com/krzysztofzablocki/Sourcery/blob/master/SourceryTests/Stub/JavaScriptTemplates/Equality.js), usando o [EJS](http://ejs.co).
+
+Para saber mais soubre Sourcery dê uma lida no [README do repositório](https://github.com/krzysztofzablocki/Sourcery), que contém mais informações sobre o que pode ser extraído de cada tipo e detalhes sobre como especificar o local de armazenamento do código gerado.
+
 # Outras ferramentas
+Para trabalhar com Strings localizadas, Cores, Imagens, Storyboards e Fontes use o [SwiftGen](https://github.com/SwiftGen/SwiftGen), uma ferramenta para gerar código e te ajudar a garantir (em tempo de compilação) que os recursos sendo utilizados de fato existem. SwiftGen também utiliza templates Stencil.
 
-
-## SwiftGen
-//TODO
-
-# Imagens
-Todas as imagens usadas nesse artigo são CC0.
+# Em suma
+Metaprogramação é uma ferramenta muito poderosa pois permite que você escreva menos código, código mais expressivo e que você alavanque o sistema de tipos e o compilador para economizar tempo e reduzir potenciais erros. Nem sempre é necessário fazer um código ultra-complexo que cobre todos os casos possíveis e imagináveis, com metaprogramação você pode começar com um template que cumpre suas necessiades e ir evoluindo-o com o passar do tempo.
