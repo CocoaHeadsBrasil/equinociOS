@@ -175,10 +175,12 @@ O Atom funciona incrivelmente bem para isso, além de permitir que você divida 
 
 ### *VSCode*
 
+Gosto muito do Visual Studio Code porém ele possui a limitação de só permitir a divisão em panes em um sentido (só vertical ou só horizontal). Esse não é um grande limitador para mim então costuma usar o VSCode com metade mostrando o código/template (2 abas) e a outra metade mostrando o código gerado.
 <img src="{{ site.baseurl }}/img/fpg1503/vscode.gif">
 
 # Casos de Uso
-Para todos os exemplos abaixo farei implementações simples, elas não cobrem todos os casos porém estará explicito em quais casos elas funcionam e uma referência para uma implementação que lida com todos os *edge cases*.
+Para todos os exemplos abaixo farei implementações simples, elas não cobrem todos os casos porém estará explicito em quais casos elas funcionam e uma referência para uma implementação que lida com todos os *edge cases* (caso ela exista).
+Nem sempre é necessário fazer um código ultra-complexo que cobre todos os casos possíveis e imagináveis, com metaprogramação você pode começar com um template que cumpra suas necessiades e ir evoluindo-o com o passar do tempo.
 
 ## `Equatable`
 Uma maneira simples de pensar em igualdade de tipos concretos é: todas as suas propriedades não computadas devem ser iguais. Essa implementação não lida com: Optionals, Enums, Arrays, Herança. Exemplo de implementação mais completa: [AutoEquatable](https://github.com/krzysztofzablocki/Sourcery/blob/master/Templates/AutoEquatable.stencil).
@@ -282,7 +284,7 @@ func autoInject<T>() throws -> T {
 No exemplo acima somento criamos um construtor de conveniência que chama nossa função capaz de prover dependências e junta isso com os parâmetros não injetados numa chamada para o construtor designado.
 
 ## Desserialização de JSONs
-Para serialização de JSONs usaremos o protocolo `JsonCreatable` que consiste de coisas que podem ser criadas a partir de um dicionário:
+Para desserialização de JSONs usaremos o protocolo `JsonCreatable` que consiste de coisas que podem ser criadas a partir de um dicionário:
 
 {% highlight swift %}
 {% raw %}
@@ -549,4 +551,6 @@ Para saber mais soubre Sourcery dê uma lida no [README do repositório](https:/
 Para trabalhar com Strings localizadas, Cores, Imagens, Storyboards e Fontes use o [SwiftGen](https://github.com/SwiftGen/SwiftGen), uma ferramenta para gerar código e te ajudar a garantir (em tempo de compilação) que os recursos sendo utilizados de fato existem. SwiftGen também utiliza templates Stencil.
 
 # Em suma
-Metaprogramação é uma ferramenta muito poderosa pois permite que você escreva menos código, código mais expressivo e que você alavanque o sistema de tipos e o compilador para economizar tempo e reduzir potenciais erros. Nem sempre é necessário fazer um código ultra-complexo que cobre todos os casos possíveis e imagináveis, com metaprogramação você pode começar com um template que cumpre suas necessiades e ir evoluindo-o com o passar do tempo.
+Metaprogramação é uma ferramenta muito poderosa pois permite que você escreva menos código, código mais expressivo. Sourcery é uma ferramenta e que você alavanque o sistema de tipos e o compilador para economizar tempo e reduzir potenciais erros. Além disso você sempre pode usar mais metapgromação: Se perceber que há algo que se repete muito você pode fazer um programa que faz um programa que faz um programa.
+
+E você? Qual código faz no dia-a-dia que é repetitivo? Como você resolveu isso?
