@@ -64,7 +64,7 @@ Cada letra do nome representa um tipo de objeto/classe que iremos ter são:
 
 <img src="{{ site.baseurl }}/img/vitormesquita/Viper-Module.png">
 
-##View
+## View
 Representa tudo onde o usuário irá interagir.<br>
 Sua responsabilidade é mostrar o que o <b>Presenter</b> manda ela mostrar, e lidar com interações do usuario com a tela passando-as para o Presenter.
 
@@ -113,7 +113,7 @@ extension ViewController: ViewProtocol {
 }
 ```
 
-##Presenter
+## Presenter
 Representa toda a lógica dá view.<br>
 Ele recebe eventos da View e reage a eles.<br>
 Ele recebe dados do <b>Interactor</b>, aplica a lógica da View e manda mostrar o que for preciso.
@@ -173,7 +173,7 @@ extension Presenter: RepositoryOutput {
 }
 ```
 
-##Interactor
+## Interactor
 Representa um caso de uso.<br>
 Ele que é responsável por aplicar a lógica de determinado caso.
 
@@ -211,7 +211,7 @@ extension RepositoryInteractor: RepositoryInput {
 }
 ```
 
-##Entity
+## Entity
 Representa a entidade da API e/ou do Banco
 
 ```swift 
@@ -242,7 +242,7 @@ class Repository: Mappable {
 }
 ```
 
-##Router
+## Router
 Representa toda a lógica de navegação da sua aplicação.<br>
 Ele que sabe para qual tela tem que ir e para qual tem que voltar.<br>
 <b>É um objeto composto por 2 (Presenter e WireFrame).</b>
@@ -285,13 +285,13 @@ Nesse caso é encarregado de falar para o WireFrame fazer algum tipo de navegaç
 
 ---
 
-#Dicas 
+# Dicas 
 
 Quando comecei a implementar essa arquitetura tive alguns problemas que deixaram o desenvolvimento um pouco mais complicado, mas com essas dicas pode ficar bem mais simples desenvolver.
 
 Como sabemos no desenvolvimento iOS sempre temos que cuidar a memoria que nossa aplicação consome (famoso Memory Leak). E com o VIPER por ter muitas dependências e dependências ciclicas, tive muito problema em desalocar meu ViewController e suas dependências.
 
-###Com a `weak var` esse problema pode ser facilmente resolvido. 
+### Com a `weak var` esse problema pode ser facilmente resolvido. 
 
 Colocando ponteiros fracos nas dependências ciclicas como segue o diagrama:
 
@@ -311,19 +311,19 @@ Para quem está começando com VIPER pode ser meio confuso abstrair o que cada p
 
 <img src="{{ site.baseurl }}/img/vitormesquita/folders.png">
 
-###Presentation 
+### Presentation 
 
 Nesse pacote deverá conter as dependências `view`, `presenter` e `router (wireFrame)` separados por `features`.
 
 <img src="{{ site.baseurl }}/img/vitormesquita/presentation.png">
 
-###Domain
+### Domain
 
 Nesse pacote deverá conter o `interactor`.
 
 <img src="{{ site.baseurl }}/img/vitormesquita/domain.png">
 
-###Data
+### Data
 
 Nesse pacote deverá conter as `entities` e todos as implementações de `APIClient` ou `DataBase`
 
@@ -333,13 +333,13 @@ Nesse pacote deverá conter as `entities` e todos as implementações de `APICli
 <b>OBS: projeto exemplo que está no meu github</br> 
 --
 
-##E agora?
+## E agora?
 
 Muitas pessoas falam que é muito `overhead` fazer um software em VIPER, e de fato digo é mesmo, se sua aplicação é pequena.
 
 Mas antes de julgar ou adotar o VIPER, analise bem seu projeto, verique se ele é um projeto que será escalavél e com varias funcionalidades. Se for o VIPER poderá ser uma arma muito útil que irá facilitar sua vida. Se não, viper poderá atrapalhar sua vida e pode acabar em um `spaghetti code` o seu projeto. 
 
-###VIPER exige um empenho muito grande de quem está programando para se entender e se aplicar de forma correta.
+### VIPER exige um empenho muito grande de quem está programando para se entender e se aplicar de forma correta.
 
 Abaixo deixarem uns links para ajudar você que está começando em VIPER a se orientar e praticar.
 
