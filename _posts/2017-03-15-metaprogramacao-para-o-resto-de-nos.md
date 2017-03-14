@@ -2,7 +2,7 @@
 layout:     post
 title:      "Metaprogramação para o resto de nós"
 subtitle:	"Pare de escrever boilerplate"
-date:       2017-03-14 00:15:03
+date:       2017-03-15 00:15:03
 author:     "Francesco Perrotti-Garcia"
 header-img: "img/fpg1503/metaprogramming.jpg"
 category:   "metaprogramming"
