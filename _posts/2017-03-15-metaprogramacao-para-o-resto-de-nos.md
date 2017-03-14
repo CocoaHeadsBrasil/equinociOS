@@ -30,11 +30,11 @@ Se você é como eu provavelmente sempre tem um Playground, e algo como o [regex
 [Sourcery](https://github.com/krzysztofzablocki/Sourcery) é uma ferramenta open source mantida pelo [Krzysztof Zabłocki](https://github.com/krzysztofzablocki) que alavanca metaprogramação em Swift usando templates. Não se preocupe, vou explicar o que isso significa nos próximos parágrafos.
 
 ## O que é um *template*?
-*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito. //TODO: FINISH
+*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito. Imagine um template como um cortador de biscoitos, algo que dá forma ao que é colocado dentro, você pode usar um cortador de biscoitos em massinha de crianças e isso não vai trasnformar ela em biscoito.
 <img src="{{ site.baseurl }}/img/fpg1503/template.jpg">
 
 ## Por que *templates*?
-//TODOL FINISH
+//TODO: FINISH
 
 ## Stencil
 [Stencil](http://github.com/kylef/Stencil) é uma linguagem de templates para Swift criada e mantida pelo [Kyle Fuller](https://github.com/kylef), a ideia é criar uma maneira de expressar a apresentação de algo. Farei uma introdução rápida ao Stencil porém encorajo você a dar uma lida na [documentação oficial](http://stencil.fuller.li)!
