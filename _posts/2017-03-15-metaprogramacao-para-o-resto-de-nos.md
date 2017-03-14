@@ -4,7 +4,7 @@ title:      "Metaprogramação para o resto de nós"
 subtitle:	"Pare de escrever boilerplate"
 date:       2017-03-15 00:15:03
 author:     "Francesco Perrotti-Garcia"
-header-img: "img/fpg1503/mozzie.jpg"
+header-img: "img/fpg1503/metaprogramming.jpg"
 category:   "metaprogramming"
 ---
 
@@ -31,7 +31,7 @@ Se você é como eu provavelmente sempre tem um Playground, e algo como o [regex
 
 ## O que é um *template*?
 *Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito. //TODO: FINISH
-//TODO: IMAGE
+<img src="{{ site.baseurl }}/img/fpg1503/template.jpg">
 
 ## Por que *templates*?
 //TODOL FINISH
@@ -89,11 +89,21 @@ Lista de usuários padrão
 ### Filtros
 Além disso Stencil possui alguns filtros (e Sourcery adiciona outros bem interessantes):
 
-- `capitalize`: deixa a primeira letra da string em caixa alta (`swift -> Swift`)
-- `uppercase`: deixa todas as letras da string em caixa alta (`swift -> SWIFT`)
-- `lowercase`: deixa todas as letras da string em caixa baixa (`Taylor Swift` -> `taylor swift`)
+- `capitalize`: deixa a primeira letra da string em caixa alta e as demais em caixa baixa (`Taylor Swift -> Tayor swift`)
+- `uppercase`: deixa todas as letras da string em caixa alta (`Taylor Swift -> TAYLOR SWIFT`)
+- `lowercase`: deixa todas as letras da string em caixa baixa (`Taylor Swift -> taylor swift`)
 
 Filtros são aplicados a uma variável usando o pipe (`|`), por exemplo: `{{ "Taylor Swift"|lowercase }}`
+
+Há filtros que possuem parâmetros, esses parâmetros devem ser incluídos na forma `variável|filtro:parâmetro`, um exemplo é o filtro `join` em listas:
+
+```stencil
+// myList = ["Uma", "lista", "com", "várias", "palavras"]
+{{ myList|join:" 🥑 "}}
+// Imprime "Uma 🥑 lista 🥑 com 🥑 várias 🥑 palavras"
+```
+
+Além disso podemos usar as e filtros [adicionadas pelo Sourcery](https://github.com/krzysztofzablocki/Sourcery#custom-stencil-tags-and-filter) e nas últimas versões você também pode usar os [exportados pelo StencilSwfitKit](https://github.com/SwiftGen/StencilSwiftKit).
 
 ### Anotações
 Infelizmente Swift não possui suporte a anotações de código, no entanto Sourcery traz uma alternativa para isso: comentários com `/// sourcery`, veja o exemplo abaixo onde o `struct User` é anotado `AutoEquatable`: 
@@ -107,13 +117,16 @@ struct User {
 }
 ```
 
-Falaremos mais de como aproveitar anotações mais abaixo porém por enquanto é interessante saber que podemos usar um filtro de Stencil (`annotated`) para encontrar apenas coisas anotadas, ou seja, se quisermos escrever algum código apenas para todos os tipos anotados `AutoEquatable` fazemos assim:
+Falaremos mais de como aproveitar anotações mais abaixo porém por enquanto é interessante saber que podemos usar um filtro de Stencil (`annotated`) para encontrar apenas coisas anotadas, ou seja, se quisermos escrever algum código apenas para todas as variáveis anotadas `AutoInject` entro de um tipo `type` faríamos assim:
 
 ```stencil
-{% for type in types.all|annotated:"AutoEquatable" %}
-{{ type }}
+{% for variable in type.variables|annotated:"AutoInject" %}
+{{ variable }}
 {% endfor %}
 ```
+
+A beleza das anotações serem inseridas em comentários é que códigos anotados ainda são códigos Swift válidos que compilam normalmente!
+
 
 ## Instalação
 
@@ -139,15 +152,20 @@ sourcery Input.swift Template.stencil Output.swift --watch
 
 Note que a flag `--watch` acompanha seus arquivos e automaticamente regera a saída baseado nas mudanças, é mágico! Note que para isso funcionar eu tenho o sourcery na minha `PATH`, caso você não tenha será necessário fornecer o caminho para o binário.
 
-
-//TODO: IMAGES, TEXT
 ## Editores de texto
+Para poder acompanhar as mudanças em tempo real aconselho que você divida sua tela em duas partes: código sendo editado (template/fonte) e saída gerada automaticamente. Usando a flag `--watch` que comentei acima basta salvar o arquivo que as mudanças são refletidas automaticamente
 
 ### *Sublime Text*
+Infelizmente o Sublime Text não atualiza arquivos abertos automaticamente quando há mudanças no disco então não recomendo o uso dele. Você poderia instalar algum plugin para isso porém a falta dessa feature inviabiliza o uso dele junto para visualizar mudanças automaticamente.
 
 ### *Atom*
+O Atom funciona incrivelmente bem para isso, além de permitir que você divida sua tela em vários panes em sentidos diferentes simultâneamente!
+<img src="{{ site.baseurl }}/img/fpg1503/atom.gif">
+
 
 ### *VSCode*
+
+<img src="{{ site.baseurl }}/img/fpg1503/vscode.gif">
 
 # Casos de Uso
 Para todos os exemplos abaixo farei implementações simples, elas não cobrem todos os casos porém estará explicito em quais casos elas funcionam e uma referência para uma implementação que lida com todos os *edge cases*.
