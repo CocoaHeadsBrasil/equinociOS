@@ -434,3 +434,6 @@ Lindo, não? O único problema é que o código acima não compila pois os tipos
 //TODO
 ## SwiftGen
 //TODO
+
+# Imagens
+Todas as imagens usadas nesse artigo são CC0.
