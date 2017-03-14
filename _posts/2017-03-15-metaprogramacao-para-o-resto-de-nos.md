@@ -303,9 +303,115 @@ extension User: JsonCreatable {
 }
 ```
 
+A beleza de usarmos templates é que não precisamos nos limitar a Swfit! Imagine que seu colega Android vai ter que implementar tudo de novo então você poderia escrever um template para ele! 
+
+```stencil
+{% for type in types.all.implementing:"AutoJsonCreatable" %}
+package com.equinocios.{{type.name}};
+
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class {{type.name}} implements Serializable {
+
+    {% for variable in type.variables|instance|stored %}
+    @SerializedName("{{variable.annotations.JsonName|default:variable.name}}")
+    private {{variable.unwrappedTypeName}} {{variable.name}} = null;
+
+    {% endfor %}
+
+    {% for variable in type.variables|instance|stored %}
+    public {{variable.unwrappedTypeName}} get{{variable.name|swiftIdentifier}}({{variable.unwrappedTypeName}} {{variable.name}}) {
+        return {{variable.name}};
+    } 
+
+    public void set{{variable.name|swiftIdentifier}}({{variable.unwrappedTypeName}} {{variable.name}}) {
+        this.{{variable.name}} = {{variable.name}};
+    }
+
+    {% endfor %}
+}
+{% endfor %}
+```
+
+Esse template gera o código abaixo:
+
+```java
+package com.equinocios.User;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
+
+    @SerializedName("fullName")
+    private String name = null;
+
+    @SerializedName("favoriteNumber")
+    private Int favoriteNumber = null;
+
+    @SerializedName("isCool")
+    private Bool isCool = null;
+
+    @SerializedName("numberOfTaylorSwiftAlbums")
+    private Int numberOfTaylorSwiftAlbums = null;
+
+    @SerializedName("favoriteQuote")
+    private String favoriteQuote = null;
+
+
+    public String getName(String name) {
+        return name;
+    } 
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Int getFavoriteNumber(Int favoriteNumber) {
+        return favoriteNumber;
+    } 
+
+    public void setFavoriteNumber(Int favoriteNumber) {
+        this.favoriteNumber = favoriteNumber;
+    }
+
+    public Bool getIsCool(Bool isCool) {
+        return isCool;
+    } 
+
+    public void setIsCool(Bool isCool) {
+        this.isCool = isCool;
+    }
+
+    public Int getNumberOfTaylorSwiftAlbums(Int numberOfTaylorSwiftAlbums) {
+        return numberOfTaylorSwiftAlbums;
+    } 
+
+    public void setNumberOfTaylorSwiftAlbums(Int numberOfTaylorSwiftAlbums) {
+        this.numberOfTaylorSwiftAlbums = numberOfTaylorSwiftAlbums;
+    }
+
+    public String getFavoriteQuote(String favoriteQuote) {
+        return favoriteQuote;
+    } 
+
+    public void setFavoriteQuote(String favoriteQuote) {
+        this.favoriteQuote = favoriteQuote;
+    }
+
+}
+```
+
+Lindo, não? O único problema é que o código acima não compila pois os tipos que usamos tem nomes diferentes em Java, poderíamos criar um [filtro customizado do Stencil](https://github.com/kylef/Stencil/blob/master/docs/custom-template-tags-and-filters.rst) (provavelmente chamado `javaTypeName`) que fizesse essa conversão. O ponto deste exemplo é mostrar o quão flexível templates nos permitem ser!
+
 
 ## Cliente HTTP
 //TODO
+
+
 # Outras ferramentas
 //TODO
 ## SwiftGen
