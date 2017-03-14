@@ -2,7 +2,7 @@
 layout:     post
 title:      "Metaprogramação para o resto de nós"
 subtitle:	"Pare de escrever boilerplate"
-date:       2017-03-15 00:15:03
+date:       2017-03-14 00:15:03
 author:     "Francesco Perrotti-Garcia"
 header-img: "img/fpg1503/metaprogramming.jpg"
 category:   "metaprogramming"
@@ -39,8 +39,10 @@ Se você é como eu provavelmente sempre tem um Playground, e algo como o [regex
 ## Stencil
 [Stencil](http://github.com/kylef/Stencil) é uma linguagem de templates para Swift criada e mantida pelo [Kyle Fuller](https://github.com/kylef), a ideia é criar uma maneira de expressar a apresentação de algo. Farei uma introdução rápida ao Stencil porém encorajo você a dar uma lida na [documentação oficial](http://stencil.fuller.li)!
 
+{% raw %}
 - `{{ ... }}`: imprime variáveis
 - `{% ... %}`: funciona para tags (mais sobre elas abaixo)
+{% endraw %}
 
 ## Tags
 As duas tags mais importantes são `for` e `if`:
@@ -48,21 +50,25 @@ As duas tags mais importantes são `for` e `if`:
 ### `for`
 Suponhamos que há uma lista de usuários (chamada `users`) e queremos listar todos eles um embaixo do outro:
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% for user in users %}
 {{ user.name }}
 {% endfor %}
-```
+{% endraw %}
+{% endhighlight %}
 
 Além disso podemos usar a tag `empty` para lidar com listas vazias:
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% for user in users %}
 {{ user.name }}
 {% empty %}
 Não há usuários :(
 {% endfor %}
-```
+{% endraw %}
+{% endhighlight %}
 
 E por final temos à nossa disposição o contexto `forloop` que possui três variáveis: 
 
@@ -78,13 +84,15 @@ O `if` avalia uma variável para verdadeira se um dos abaixo for válido:
 - número: maior que zero
 - string: não vazia
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% if users.count == 42 and users.first.name == "Admin" %}
 Lista de usuários interessante
 {% else %}
 Lista de usuários padrão
 {% endif %}
-```
+{% endraw %}
+{% endhighlight %}
 
 ### Filtros
 Além disso Stencil possui alguns filtros (e Sourcery adiciona outros bem interessantes):
@@ -97,33 +105,39 @@ Filtros são aplicados a uma variável usando o pipe (`|`), por exemplo: `{{ "Ta
 
 Há filtros que possuem parâmetros, esses parâmetros devem ser incluídos na forma `variável|filtro:parâmetro`, um exemplo é o filtro `join` em listas:
 
-```stencil
+{% highlight html %}
+{% raw %}
 // myList = ["Uma", "lista", "com", "várias", "palavras"]
 {{ myList|join:" 🥑 "}}
 // Imprime "Uma 🥑 lista 🥑 com 🥑 várias 🥑 palavras"
-```
+{% endraw %}
+{% endhighlight %}
 
 Além disso podemos usar as e filtros [adicionadas pelo Sourcery](https://github.com/krzysztofzablocki/Sourcery#custom-stencil-tags-and-filter) e nas últimas versões você também pode usar os [exportados pelo StencilSwfitKit](https://github.com/SwiftGen/StencilSwiftKit).
 
 ### Anotações
 Infelizmente Swift não possui suporte a anotações de código, no entanto Sourcery traz uma alternativa para isso: comentários com `/// sourcery`, veja o exemplo abaixo onde o `struct User` é anotado `AutoEquatable`: 
 
-```swift
+{% highlight swift %}
+{% raw %}
 /// sourcery: AutoEquatable
 struct User {
     let id: UUID
     let name: String
     let email: String
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Falaremos mais de como aproveitar anotações mais abaixo porém por enquanto é interessante saber que podemos usar um filtro de Stencil (`annotated`) para encontrar apenas coisas anotadas, ou seja, se quisermos escrever algum código apenas para todas as variáveis anotadas `AutoInject` entro de um tipo `type` faríamos assim:
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% for variable in type.variables|annotated:"AutoInject" %}
 {{ variable }}
 {% endfor %}
-```
+{% endraw %}
+{% endhighlight %}
 
 A beleza das anotações serem inseridas em comentários é que códigos anotados ainda são códigos Swift válidos que compilam normalmente!
 
@@ -146,9 +160,9 @@ Para os exemplos a baixo eu recomendo que você tenha um binário preparado (na 
 
 Eu sempre faço assim e crio um Script em shell para facilitar minha vida, seu conteúdo é somente:
 
-```shell
+{% highlight shell %}
 sourcery Input.swift Template.stencil Output.swift --watch
-```
+{% endhighlight %}
 
 Note que a flag `--watch` acompanha seus arquivos e automaticamente regera a saída baseado nas mudanças, é mágico! Note que para isso funcionar eu tenho o sourcery na minha `PATH`, caso você não tenha será necessário fornecer o caminho para o binário.
 
@@ -173,7 +187,8 @@ Para todos os exemplos abaixo farei implementações simples, elas não cobrem t
 ## `Equatable`
 Uma maneira simples de pensar em igualdade de tipos concretos é: todas as suas propriedades não computadas devem ser iguais. Essa implementação não lida com: Optionals, Enums, Arrays, Herança. Exemplo de implementação mais completa: [AutoEquatable](https://github.com/krzysztofzablocki/Sourcery/blob/master/Templates/AutoEquatable.stencil).
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% for type in types.implementing.AutoEquatable %}
 extension {{ type.name }}: Equatable {}
 {{ type.accessLevel }} func == (lhs: {{ type.name }}, rhs: {{ type.name }}) -> Bool {
@@ -183,20 +198,24 @@ extension {{ type.name }}: Equatable {}
     return true
 }
 {% endfor %}
-```
+{% endraw %}
+{% endhighlight %}
 
 Para o `struct User`:
 
-```swift
+{% highlight swift %}
+{% raw %}
 struct User: AutoEquatable {
     let id: UUID
     let name: String
     let email: String
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Foi gerado o código:
-```swift
+{% highlight swift %}
+{% raw %}
 extension User: Equatable {}
 internal func == (lhs: User, rhs: User) -> Bool {
     guard lhs.id == rhs.id else { return false }
@@ -204,12 +223,14 @@ internal func == (lhs: User, rhs: User) -> Bool {
     guard lhs.email == rhs.email else { return false }
     return true
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 ## `AutoInjectable`
 Imagine que você possui um `struct` com diversas propriedades porém quer que algumas delas sejam injetadas automaticamente e não quer perder o construtor que você ganhou, podemos para isso inserir uma anotação `AutoInjectable`, nosso `struct` ficaria assim:
 
-```swift
+{% highlight swift %}
+{% raw %}
 struct ApiService: AutoInjectable {
 
     /// sourcery: AutoInject
@@ -220,11 +241,13 @@ struct ApiService: AutoInjectable {
     let baseURL: URL
     let serviceName: String
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Podemos escrever um template assim:
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% for type in types.all.implementing:"AutoInjected" %}
 extension {{type.name}} {
     convenience init({% for variable in type.variables|instance|!annotated:"AutoInject" %}{{variable.name}}: {{variable.typeName}}{% if not forloop.last %}, {% endif %}{% endfor %}) {
@@ -239,11 +262,13 @@ extension {{type.name}} {
 func autoInject<T>() throws -> T {
     //TODO: Sua lógica de injeção de dependências aqui!
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Código gerado:
 
-```swift
+{% highlight swift %}
+{% raw %}
 extension ApiService {
     convenience init(baseURL: URL, serviceName: String) {
         let requestManager: RequestManager = try! autoInject()
@@ -255,24 +280,28 @@ extension ApiService {
 func autoInject<T>() throws -> T {
     //TODO: Sua lógica de injeção de dependências aqui!
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 No exemplo acima somento criamos um construtor de conveniência que chama nossa função capaz de prover dependências e junta isso com os parâmetros não injetados numa chamada para o construtor designado.
 
 ## Desserialização de JSONs
 Para serialização de JSONs usaremos o protocolo `JsonCreatable` que consiste de coisas que podem ser criadas a partir de um dicionário:
 
-```swift
+{% highlight swift %}
+{% raw %}
 protocol JsonCreatable {
     init?(json: [String: Any])
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Nesse caso assumiremos que todas as propriedades não `Optional` são obrigatórias, que todas as variáveis sem um nome pré-definido tem seu próprio nome no JSON e não lidamos com tipos diferentes de Números, Strings e Booleanos. 
 
 Nosso `struct`:
 
-```swift
+{% highlight swift %}
+{% raw %}
 struct User: AutoJsonCreatable {
     /// sourcery: JsonName = "fullName"
     let name: String
@@ -281,11 +310,13 @@ struct User: AutoJsonCreatable {
     let numberOfTaylorSwiftAlbums: Int
     let favoriteQuote: String?
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Template:
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% for type in types.all.implementing:"AutoJsonCreatable" %}
 extension {{type.name}}: JsonCreatable {
     init?(json: [String: Any]) {
@@ -299,11 +330,13 @@ extension {{type.name}}: JsonCreatable {
     }
 }
 {% endfor %}
-```
+{% endraw %}
+{% endhighlight %}
 
 Código gerado:
 
-```swift
+{% highlight swift %}
+{% raw %}
 extension User: JsonCreatable {
     init?(json: [String: Any]) {
         guard let name = json["fullName"] as? String else { return nil }
@@ -319,11 +352,13 @@ extension User: JsonCreatable {
         self.favoriteQuote = favoriteQuote
     }
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 A beleza de usarmos templates é que não precisamos nos limitar a Swfit! Imagine que seu colega Android vai ter que implementar tudo de novo então você poderia escrever um template para ele! 
 
-```stencil
+{% highlight html %}
+{% raw %}
 {% for type in types.all.implementing:"AutoJsonCreatable" %}
 package com.equinocios.{{type.name}};
 
@@ -351,11 +386,14 @@ public class {{type.name}} implements Serializable {
     {% endfor %}
 }
 {% endfor %}
-```
+{% endraw %}
+{% endhighlight %}
+
 
 Esse template gera o código abaixo:
 
-```java
+{% highlight java %}
+{% raw %}
 package com.equinocios.User;
 
 import com.google.gson.annotations.SerializedName;
@@ -421,7 +459,8 @@ public class User implements Serializable {
     }
 
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Lindo, não? O único problema é que o código acima não compila pois os tipos que usamos tem nomes diferentes em Java, poderíamos criar um [filtro customizado do Stencil](https://github.com/kylef/Stencil/blob/master/docs/custom-template-tags-and-filters.rst) (provavelmente chamado `javaTypeName`) que fizesse essa conversão. O ponto deste exemplo é mostrar o quão flexível templates nos permitem ser!
 
@@ -432,6 +471,7 @@ Lindo, não? O único problema é que o código acima não compila pois os tipos
 
 # Outras ferramentas
 //TODO
+
 ## SwiftGen
 //TODO
 
