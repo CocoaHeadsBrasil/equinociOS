@@ -30,7 +30,7 @@ Se você é como eu provavelmente sempre tem um Playground, e algo como o [regex
 [Sourcery](https://github.com/krzysztofzablocki/Sourcery) é uma ferramenta open source mantida pelo [Krzysztof Zabłocki](https://github.com/krzysztofzablocki) que alavanca metaprogramação em Swift usando templates. Não se preocupe, vou explicar o que isso significa nos próximos parágrafos.
 
 ## O que é um *template*?
-*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito. Imagine um template como um cortador de biscoitos, algo que dá forma ao que é colocado dentro, você pode usar um cortador de biscoitos em massinha de crianças e isso não vai trasnformar ela em biscoito.
+*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito**. Imagine um template como um cortador de biscoitos, algo que dá forma ao que é colocado dentro, você pode usar um cortador de biscoitos em massinha de crianças e isso não vai trasnformar ela em biscoito.
 <img src="{{ site.baseurl }}/img/fpg1503/template.jpg">
 
 ## Por que *templates*?
@@ -466,11 +466,86 @@ Lindo, não? O único problema é que o código acima não compila pois os tipos
 
 
 ## Cliente HTTP
-//TODO
+Como exemplo final vamos fazer um pequeno cliente HTTP de uma API Rest.
 
+Dado uma interface da API (expressa em um protocol) queremos produzir uma implementação concreta.
+Para fazer isso usaremos o fato de que Sourcery copia o que inserimos dentro das anotações para nosso código. Usaremos dicionários de Swift para simular anotações de parâmetros.
+
+{% highlight swift %}
+{% raw %}
+public protocol GitHubService: AutoImplement {
+  /// sourcery: GET = "users/{user}/repos"
+  /// sourcery: Path = ["user": user]
+  func listRepos(for user: String, test: String, completion: Completion<[Repo]>) -> Cancelable
+
+  /// sourcery: GET = "group/{id}/users"
+  /// sourcery: Path = ["id": groupId]
+  func groupList(for groupId: Int, completion: Completion<[User]>) -> Cancelable
+}
+{% endraw %}
+{% endhighlight %}
+
+Usando o template:
+
+{% highlight html %}
+{% raw %}
+{% for protocol in types.protocols.implementing:"AutoImplement" %}
+struct {{protocol.name}}Implementation: {{protocol.name}} {
+	{% for method in protocol.methods %}
+	func {{method.name}} -> {{method.returnTypeName}} {
+		let httpMethod: HTTPMethod = .{% if method.annotations.GET %}get{% endif %}{% if method.annotations.POST %}post{% endif %}{% if method.annotations.PUT %}put{% endif %}{% if method.annotations.DELETE %}delete{% endif %}
+		let rawPath = "{{method.annotations.GET}}{{method.annotations.PUT}}{{method.annotations.POST}}{{method.annotations.DELETE}}"
+		let rawQuery: [String: Any] = {% ifnot method.annotations.Query %}[:]{% endif %}{{method.annotations.Query}}
+
+		let path = rawPath.expanded(using: {% ifnot method.annotations.Path %}[:]{% endif %}{{method.annotations.Path}})
+		let pathAndQuery = path.adding(rawQuery)
+
+		return request(httpMethod, path: path, completion: completion)
+	}
+
+	{% endfor %}
+}
+{% endfor %}
+{% endraw %}
+{% endhighlight %}
+
+O código gerado neste caso é:
+
+{% highlight swift %}
+{% raw %}
+struct GitHubServiceImplementation: GitHubService {
+	func listRepos(for user: String, completion: Completion<[Repo]>) -> Cancelable {
+		let httpMethod: HTTPMethod = .get
+		let rawPath = "users/{user}/repos"
+		let rawQuery: [String: Any] = [:]
+
+		let path = rawPath.expanded(using: ["user": user])
+		let pathAndQuery = path.adding(rawQuery)
+
+		return request(httpMethod, path: path, completion: completion)
+	}
+
+	func groupList(for groupId: Int, completion: Completion<[User]>) -> Cancelable {
+		let httpMethod: HTTPMethod = .get
+		let rawPath = "group/{id}/users"
+		let rawQuery: [String: Any] = [:]
+
+		let path = rawPath.expanded(using: ["id": groupId])
+		let pathAndQuery = path.adding(rawQuery)
+
+		return request(httpMethod, path: path, completion: completion)
+	}
+
+}
+{% endraw %}
+{% endhighlight %}
+
+Repare como utilizamos os dicionários para mapear `String`s para valores específicos que serão passados para a função, por isso nosso dicionário tem o formato `["chave": valor]`, fazendo isso teremos uma garantia em tempo de compilação de que os valores utilizados existem.
+
+Cabe ressaltar não é possível acessar dentro do template as anoteações dos campos indvidualmente porém isso não é um problema pois temos uma extensão que permite expandir `String`s usando dicionários. Além disso o código gerado conta com outras abstrações como a função genérica `request`, a closure genérica `Completion`, o `enum HTTPMethod` e o protocolo `Cancelable`, o código dessas abstrações não será incluso para manter o artigo sucinto porém elas podem facilmente ser subistituídas por outras de sua preferência.
 
 # Outras ferramentas
-//TODO
+
 
 ## SwiftGen
 //TODO
