@@ -330,7 +330,7 @@ Nesse pacote deverá conter as `entities` e todos as implementações de `APICli
 <img src="{{ site.baseurl }}/img/vitormesquita/data.png">
 
 
-<b>OBS: projeto exemplo que está no meu github</br> 
+<b>OBS: projeto exemplo que está no meu github</b> 
 --
 
 ## E agora?
