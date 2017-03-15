@@ -282,7 +282,7 @@ func autoInject<T>() throws -> T {
 {% endraw %}
 {% endhighlight %}
 
-No exemplo acima somento criamos um construtor de conveniência que chama nossa função capaz de prover dependências e junta isso com os parâmetros não injetados numa chamada para o construtor designado.
+No exemplo acima somente criamos um construtor de conveniência que chama nossa função capaz de prover dependências e junta isso com os parâmetros não injetados numa chamada para o construtor designado.
 
 ## Desserialização de JSONs
 Para desserialização de JSONs usaremos o protocolo `JsonCreatable` que consiste de coisas que podem ser criadas a partir de um dicionário:
@@ -552,6 +552,6 @@ Para saber mais soubre Sourcery dê uma lida no [README do repositório](https:/
 Para trabalhar com Strings localizadas, Cores, Imagens, Storyboards e Fontes use o [SwiftGen](https://github.com/SwiftGen/SwiftGen), uma ferramenta para gerar código e te ajudar a garantir (em tempo de compilação) que os recursos sendo utilizados de fato existem. SwiftGen também utiliza templates Stencil.
 
 # Em suma
-Metaprogramação é uma ferramenta muito poderosa pois permite que você escreva menos código, código mais expressivo. Sourcery é uma ferramenta e que você alavanque o sistema de tipos e o compilador para economizar tempo e reduzir potenciais erros. Além disso você sempre pode usar mais metapgromação: Se perceber que há algo que se repete muito você pode fazer um programa que faz um programa que faz um programa.
+Metaprogramação é uma ferramenta muito poderosa pois permite que você escreva menos código, código mais expressivo. Sourcery é uma ferramenta que faz com que você alavanque o sistema de tipos junto com o compilador para economizar tempo e reduzir potenciais erros. Além disso você sempre pode usar mais metapgromação: Se perceber que há algo que se repete muito você pode fazer um programa que faz um programa que faz um programa.
 
 E você? Qual código faz no dia-a-dia que é repetitivo? Como você resolveu isso?
