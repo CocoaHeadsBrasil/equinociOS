@@ -125,7 +125,7 @@ bibliotecas da Apple acabam se tornando um estorvo. Por exemplo, a função
 _sigaction_ usa uma estrutura como um dos parâmetros para instalação de handlers
 de sinal. No caso da Apple, esta estrutura contém uma união que é mascarada por
 macros. Para a linguagem C isso é irrelevante, mas para o Swift, faz toda a
-diferença. O código swift neste caso, compilará para a plataforma Apple se a
+diferença. O código Swift neste caso, compilará para a plataforma Apple se a
 estrutura for usada conforme definida, e falhará para o Linux. A recíproca é
 totalmente verdadeira, ou seja, o código feito para Linux não compilará na
 plataforma Apple. É necessário, portanto, fazer um wrapper em C para permitir o
@@ -152,9 +152,9 @@ deram origem a outros processos.
 
 ### Processo-filho
 
-O processo filho é um processo que é criado por outro processo. O processo filho
+O processo-filho é um processo que é criado por outro processo. O processo-filho
 tem como característica um número inteiro chamado de _PPID_, ou _parent process
-ID_. O processo pai pode ser um processo filho de outro processo e este fato
+ID_. O processo-pai pode ser um processo-filho de outro processo e este fato
 implica na criação de uma árvore de processos.
 
 As implicações disso são importantes para o correto design de um software do
@@ -233,9 +233,9 @@ _/usr/sbin_ dependendo do seu Unix ou Linux.
 
 A daemonização consiste em dissociar seu processo do seu terminal ativo. Isto é
 algo muito simples de ser feito, na realidade. A ideia por trás disso é criar um
-processo filho e o processo filho criar outro processo filho que, em última
+processo-filho e o processo-filho criar outro processo-filho que, em última
 instância, executará o código do seu daemon, tomando-se o cuidado de terminar os
-processos-pai sem aguardar o retorno dos processos filhos.
+processos-pai sem aguardar o retorno dos processos-filhos.
 
 Neste cenário o processo neto é adotado pelo sistema de inicialização e
 torna-se, efetivamente, dissociado do seu terminal. Isto é tão simples de ser
@@ -249,8 +249,8 @@ Este comando meio esquisito inicia um contador que escreve um arquivo texto a
 cada 10 segundos, durante 100 segundos. Se antes de finalizar o script você
 fechar o seu terminal o arquivo _output.txt_ continuará a crescer.
 
-O truque é bem simples: cria-se um processo filho e dentro deste processo filho
-cria-se outro processo filho. Em C, teríamos algo assim usando a forma clássica
+O truque é bem simples: cria-se um processo-filho e dentro deste processo-filho
+cria-se outro processo-filho. Em C, teríamos algo assim usando a forma clássica
 de criação de processos-filho:
 
     if (fork() == 0) {
@@ -266,26 +266,26 @@ de criação de processos-filho:
     }
 
 Trabalhar com multi-processos no Unix sempre foi um assunto confuso. A chamada
-de sistema _fork_ retorna ao processo pai o PID do processo filho. Para o
-processo filho, o retorno do system call é zero. O que não fica explícito no
+de sistema _fork_ retorna ao processo-pai o PID do processo-filho. Para o
+processo-filho, o retorno do system call é zero. O que não fica explícito no
 código é que ao chamar o _fork_, o seu processo se divide em dois. O que está no
-`else` do `if (fork() == 0)` é o processo pai. O que está no `then` é o processo
-filho.
+`else` do `if (fork() == 0)` é o processo-pai. O que está no `then` é o
+processo-filho.
 
 As chamadas ao system call `exit` faz com que o processo seja finalizado
 imediatamente. No caso do exemplo, os processos-pai serão finalizados sem
 aguardar os processos-filho retornarem. Como dito, em uma situação como esta, o
-processo filho não tem com quem sincronizar para retornar pois os processos-pai
+processo-filho não tem com quem sincronizar para retornar pois os processos-pai
 já foram reciclados pelo sistema. Assim, o processo _init_ assume o processo
 órfão e este fica dissociado de um terminal, passando a rodar em segundo plano.
 
 De uma forma mais moderna, pode-se usar a função `posix_spawn` para carregar
 novamente o seu processo em outro espaço de endereçamento. A diferença entre
 usar isto e a chamada `fork` é que esta última pode gerar problemas com os
-frameworks da Apple, em particular se você estiver programando em swift.
+frameworks da Apple, em particular se você estiver programando em Swift.
 
 A chamada a `posix_spawn` gera um pouco mais de trabalho. Esta função cria um
-processo filho de forma diferente, iniciando o novo processo literalmente do
+processo-filho de forma diferente, iniciando o novo processo literalmente do
 zero. Você precisa informar a `posix_spawn` qual o caminho completo do
 executável, ou seja, esta função cria um processo arbitrário totalmente novo que
 pode, ou não, ser igual ao processo em execução.
@@ -371,7 +371,7 @@ próprio Linux/Unix já lhe dá as message queues prontas para uso.
 # Swift Server-side
 
 A linguagem Swift tem ganhado destaque no desenvolvimento de aplicações do lado
-do servidor. Porém, swift não tem wrappers nativos para integrar chamadas de
+do servidor. Porém, Swift não tem wrappers nativos para integrar chamadas de
 sistema com a linguagem. Assim, a forma de realizar isto é importar código C
 para o seu software, o que muitas vezes exige a necessidade de escrever wrappers
 em C antes de importá-los para o seu código em Swift.
@@ -391,4 +391,4 @@ inicialização/término da sua aplicação.
 
 Como os sistemas Unix foram escritos basicamente em C, cedo ou tarde será
 necessário escrever algum código para que seja possível integrar-se o seu
-servidor swift ao sistema operacional.
+servidor Swift ao sistema operacional.
