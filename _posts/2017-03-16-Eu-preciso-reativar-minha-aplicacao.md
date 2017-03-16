@@ -12,7 +12,7 @@ category:   Reativo
 
 # Eu preciso reativar minha aplicação?
 
-> Vinicius Carvalho ([@viniciusc70](https://twitter.com/viniciusc70)) | Trabalho com mobile desde 2013. Seguindo na carreira de dev iOS desde 2014. Comecei a carreira em Fortaleza e hoje está buscando novos ares em São Paulo. Nas horas vagas andar de bicicleta e buscar aprender algo novo é o que mais me interessa. Você pode me encontrar também no [Slack](http://iosdevbr.herokuapp.com) @viniciuscarvalho do iOSDevBr.
+> Vinicius Carvalho ([@viniciusc70](https://twitter.com/viniciusc70)) | Trabalho com mobile desde 2013 e iOS desde 2014. Comecei a carreira em Fortaleza e hoje está buscando novos ares em São Paulo. Nas horas vagas andar de bicicleta sem rumo é o que faço. Você pode me encontrar também no [Slack](http://iosdevbr.herokuapp.com) @viniciuscarvalho do iOSDevBr.
 
 ## O porquê
 
