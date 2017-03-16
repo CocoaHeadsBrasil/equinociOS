@@ -28,7 +28,7 @@ ReactiveCocoa é um paradigma que combina programação funcional e reativa, há
 
 Antes de começar tudo eu tive que entender o que havia no código que estava me deparando naquele momento, por isso fui ver cada um dos eventos que o ReactiveCocoa possuía.
 
-No Reactive, ele fornece uma interface padrão para lidar com o fluxo de disparo de eventos. Esses padrões de são representados pela classe **`RACSignal`**. Temos três tipos, `next`, `error` e `completed`. Não vou passar afundo cada um, mas você pode saber mais sobre tais na [documentação](https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#signals)
+No Reactive, ele fornece uma interface padrão para lidar com o fluxo de disparo de eventos. Essa interface padrão tem como representação a classe **`RACSignal`**, onde possuímos três tipos, `next`, `error` e `completed`. Não vou passar afundo cada um, mas você pode saber mais sobre tais na [documentação](https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#signals)
 
 ### Mas o que é um event?
 
@@ -39,11 +39,11 @@ Vejamos esse trecho de código para entender como funcionam,
     map:^id(NSString *text) {
     	return @(text.length);
     }]
-    
+
     filter:^BOOL(NSNumber *length) {
     	return [length integerValue] > 5;
     }]
-    
+
     subscribeNext:^(id x) {
     	NSLog(@"%@", x);
     }];
@@ -63,7 +63,7 @@ RACSignal *validUsernameSignal =
     map:^id(NSString *text) {
       return @([self isValidUsername:text]);
    }];
- 
+
 RACSignal *validPasswordSignal =
   [self.passwordTextField.rac_textSignal
     map:^id(NSString *text) {
@@ -92,7 +92,7 @@ Vamos entender o código, estamos atribuindo a saída desse signal a propriedade
 
 Mas calma, vamos resolver isso!
 
-O bendito do ReactiveCocoa possui uma macro que permite transformar esse código de uma maneira elegante e tirar essa dubiedade do nosso código, 
+O bendito do ReactiveCocoa possui uma macro que permite transformar esse código de uma maneira elegante e tirar essa dubiedade do nosso código,
 
 ```
 RAC(self.passwordTextField, backgroundColor) =
@@ -100,7 +100,7 @@ RAC(self.passwordTextField, backgroundColor) =
     map:^id(NSNumber *passwordValid) {
       return [passwordValid boolValue] ? [UIColor clearColor] : [UIColor yellowColor];
     }];
- 
+
 RAC(self.usernameTextField, backgroundColor) =
   [validUsernameSignal
     map:^id(NSNumber *passwordValid) {
@@ -120,7 +120,7 @@ Você pode estar achando que vai chegar hoje ou amanhã e começar a implementar
 ![](http://i.giphy.com/JYZ397GsFrFtu.gif)
 
 Estude bem antes de começar a inserir signals, maps, filters em sua aplicação, você pode estar inserindo complexidade onde não há!
-Não tenhas as mesmas experiências traumáticas que eu. Quando vi esse rac_signal comecei a imaginar que não sabia mais programar. Pois, nunca tinha visto isso e era muito complicado. 
+Não tenhas as mesmas experiências traumáticas que eu. Quando vi esse rac_signal comecei a imaginar que não sabia mais programar. Pois, nunca tinha visto isso e era muito complicado.
 Pare, pense e veja se isso é o melhor pra você naquele momento da aplicação.
 
 No mais eu vou deixar dois artigos, para estudo e conhecer mais sobre ReactiveCocoa!
@@ -129,4 +129,3 @@ No mais eu vou deixar dois artigos, para estudo e conhecer mais sobre ReactiveCo
 (https://www.raywenderlich.com/126522/reactivecocoa-vs-rxswift)
 
 Até a próxima e obrigado! \o/
-
