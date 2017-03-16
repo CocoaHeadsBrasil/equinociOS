@@ -16,11 +16,11 @@ category:   Reativo
 
 ## O porquê
 
-Estava trabalhando em um projeto com objective-c ( *Isso mesmo objC que você leu :/ *), e me deparo com ações de toque em diversas células distintas de uma `tableview`, uma tela de formulário. Agora você se pergunta, onde que entra o `Reactive` ai? Os eventos de toques na tela são codificados de diversas maneiras, *actions*, *delegates*, *KVO*, *callbacks* e diversos. O [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) define uma interface padrão para tais eventos, justamente para que eles possam ser facilmente encadeados, filtrados e compostos. A sua utilização me ajudou a entender e compreender o porque e quando usar tal ferramenta.
+Estava trabalhando em um projeto com Objective-C ( *Isso mesmo objC que você leu :/ *), e me deparo com ações de toque em diversas células distintas de uma `UITableview`, uma tela de formulário. Agora você se pergunta, onde que entra o `Reactive` ai? Os eventos de toques na tela são codificados de diversas maneiras, *actions*, *delegates*, *KVO*, *callbacks* e diversos. O [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) define uma interface padrão para tais eventos, justamente para que eles possam ser facilmente encadeados, filtrados e compostos. A sua utilização me ajudou a entender e compreender o porque e quando usar tal ferramenta.
 
 ## Introdução
 
-ReactiveCocoa não é um paradigma que combina programação funcional e reativa, há diversos frameworks que o abordam, os seus principais são [RxSwift](https://github.com/ReactiveX/RxSwift) e o do ReactiveCocoa, como foi falado acima. Procurarei abordar mais o de porque usar e como me foi útil em um momento, mas nem sempre é necessário a sua utilização e você poderá acabar dando um tiro no pé ou querendo utilizar somente por estar na moda e você tenha lido muitos artigos sobre tal, um ponto sobre isso é você ler o artigo do [Bruno Mazzo](http://equinocios.com/arquitetura/2017/03/03/Introducao-a-arquitetura-evolutiva/), onde há um tópico que aborda esse ponto de utilização de ferramentas demais em nossas aplicações para desenvolver algo que era pra ser rápido se desenvolvido nativamente.
+ReactiveCocoa é um paradigma que combina programação funcional e reativa, há diversos frameworks que o abordam, os seus principais são [RxSwift](https://github.com/ReactiveX/RxSwift) e o do ReactiveCocoa, como foi falado acima. Procurarei abordar mais o de porque usar e como me foi útil em um momento, mas nem sempre é necessário a sua utilização e você poderá acabar dando um tiro no pé ou querendo utilizar somente por estar na moda e você tenha lido muitos artigos sobre tal, um ponto sobre isso é você ler o artigo do [Bruno Mazzo](http://equinocios.com/arquitetura/2017/03/03/Introducao-a-arquitetura-evolutiva/), onde há um tópico que aborda esse ponto de utilização de ferramentas demais em nossas aplicações para desenvolver algo que era pra ser rápido se desenvolvido nativamente.
 
 ## Vamos lá?
 
@@ -49,7 +49,9 @@ Vejamos esse trecho de código para entender bem como funcionam,
     }];
 ```
 Quando você vê o print no seu console, observará que ele começa a contar a partir do 6 em diante, para cada evento que ele recebe, ele executa o bloco e emite um valor de retorno como um próximo evento. Confuso não? Eu também fiquei quando comecei a ler sobre o assunto.
-No código acima, o `map` pega o NSString de entrada junto com seu comprimento, o que resulta em um NSNumber sendo retornado com a função de `filter`, basicamente após o `rac_textSignal` quando ainda tinhamos o NSString, após o `map` ele recebe uma instância de NSNumber. Assim, podemos usar o `map` pode transformar o dado em qualquer coisa, mas desde que seja um objeto! 
+No código acima, o `map` pega o NSString de entrada junto com seu comprimento, o que resulta em um NSNumber sendo retornado com a função de `filter`, basicamente após o `rac_textSignal` quando ainda tinhamos o NSString, após o `map` ele recebe uma instância de NSNumber. Assim, podemos usar o `map` pode transformar o dado em qualquer coisa, mas desde que seja um objeto!
+
+Se quiser conhecer mais um pouco sobre `map` e `filter`, tem um artigo bacana sobre tal [aqui](http://equinocios.com/swift/2017/03/13/Introducao-e-casos-de-uso-Map-Filter-e-Reduce/).
 
 ## Baby steps
 
@@ -71,7 +73,7 @@ RACSignal *validPasswordSignal =
 
 Como vemos novamente, o `map` transforma o `rac_textSignal` de cada campo e sua saída é um booleano como NSNumber. Beleza até aí?
 
-O próximo passo é transformar esses sinais para que eles forneçam a mudança do background de cada text field.
+O próximo passo é transformar esses sinais para que eles forneçam a mudança do background de cada `UITextField`.
 Basicamente, você assina o signal e usa o resultado para atualizar a cor do fundo dos campos. Veremos uma opção com o seguinte trecho de código;
 
 ```
@@ -84,13 +86,13 @@ Basicamente, você assina o signal e usa o resultado para atualizar a cor do fun
   }];
 ```
 
-Vamos entender o código, estamos atribuindo a saída desse signal a propriedade do backgroundColor do campo de texto. Só que, esse código está com expressões como se tivessem passado!
+Vamos entender o código, estamos atribuindo a saída desse signal a propriedade do `backgroundColor` do campo de texto. Só que, esse código está com expressões como se tivessem passado!
 
 ![](http://i.giphy.com/3otPouMUsmarhYbpaE.gif)
 
 Mas calma, vamos resolver isso!
 
-O bendito do ReactiveCocoa tem uma macro que permite transformar esse código de uma maneira elegante e tirar essa dubiedade do nosso código, 
+O bendito do ReactiveCocoa possui uma macro que permite transformar esse código de uma maneira elegante e tirar essa dubiedade do nosso código, 
 
 ```
 RAC(self.passwordTextField, backgroundColor) =
@@ -106,13 +108,13 @@ RAC(self.usernameTextField, backgroundColor) =
     }];
 ```
 
-Vendo o código acima, temos a macro RAC que permite que atribuamos a saída de um signal para a propriedade de um objeto. É necessário passar dois argumentos, o primeiro é objeto que contém a propriedade e o segundo é o nome da propriedade. Cada vez que o signal manda um próximo evento, o valor que passa agora é atribuído a determinada propriedade. Entendido?
+Observando o código acima, temos a macro RAC que permite que atribuamos a saída de um signal para a propriedade de um objeto. É necessário passar dois argumentos, o primeiro é objeto que contém a propriedade e o segundo é o nome da propriedade. Cada vez que o signal manda um próximo evento, o valor que passa agora é atribuído a determinada propriedade. Entendido?
 
 Mas você deve estar se perguntando o porquê de criar dois signals separados não é? Acaba que torna mais fácil o entendimento e a segmentação dos mesmos já que você pode fazer validações distintas e facilita também o teste unitário.
 
 ## Conclusões
 
-Passamos por alguns pontos importantes do ReactiveCocoa, comecei a escrever esse artigo visto que não conhecia e não sabia alguns desses pontos que foram passados aqui, tem muito mais lá no github do projeto e com Swift é bem mais encorpado a linguagem.. Mas, entretanto, todavia, nem tudo são flores nobres amigos!
+Passamos por alguns pontos importantes do ReactiveCocoa, comecei a escrever esse artigo visto que não conhecia e não sabia alguns desses pontos que foram passados aqui, tem muito mais lá no github do projeto e com Swift é bem mais encorpado a linguagem... Mas, entretanto, todavia, nem tudo são flores nobres amigos!
 Você pode estar achando que vai chegar hoje ou amanhã e começar a implementar Reactive em todas as suas classes não é? Não não!
 
 ![](http://i.giphy.com/JYZ397GsFrFtu.gif)
