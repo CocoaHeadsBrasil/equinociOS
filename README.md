@@ -64,19 +64,19 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 ## Data de Publicação
 - **01/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[01/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **02/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[02/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
-- **03/03/2017:** [[#131](https://github.com/CocoaHeadsBrasil/equinociOS/issues/131)] Introdução e casos de uso: Map, Filter e Reduce. artigo - by [@ezefranca](https://github.com/ezefranca) 
+- **03/03/2017:** [[#146](https://github.com/CocoaHeadsBrasil/equinociOS/issues/146)] Introdução a Arquitetura evolutiva - by [@cs-bruno-mazzo ](https://github.com/cs-bruno-mazzo) 
 - **04/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[04/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
-- **05/03/2017:** [[#146](https://github.com/CocoaHeadsBrasil/equinociOS/issues/146)] Introdução a Arquitetura evolutiva - by [@cs-bruno-mazzo ](https://github.com/cs-bruno-mazzo) 
+- **05/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[05/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **06/03/2017:** [[#125](https://github.com/CocoaHeadsBrasil/equinociOS/issues/125)] Por que a interface gráfica é um XML? - by [@ronflima](https://github.com/ronflima) 
-- **07/03/2017:** [[#145](https://github.com/CocoaHeadsBrasil/equinociOS/issues/145)] Animações utilizando auto-layout e spring animations - by [@KaiqueDamato](https://github.com/KaiqueDamato) 
+- **07/03/2017:** [[#156](https://github.com/CocoaHeadsBrasil/equinociOS/issues/156)] Unit Tests 101 - by [@emannuelOC](https://github.com/emannuelOC)
 - **08/03/2017:** [[#133](https://github.com/CocoaHeadsBrasil/equinociOS/issues/133)] LLDB é seu amigo artigo - by [@Bunn](https://github.com/Bunn) 
 - **09/03/2017:** [[#138](https://github.com/CocoaHeadsBrasil/equinociOS/issues/138)] Snapshot Testing artigo - by [@chrisfsampaio](https://github.com/chrisfsampaio) 
 - **10/03/2017:** [[#129](https://github.com/CocoaHeadsBrasil/equinociOS/issues/129)] Reporte de Bugs Para a Apple artigo - by [@fjcaetano](https://github.com/fjcaetano) 
-- **11/03/2017:** [[#143](https://github.com/CocoaHeadsBrasil/equinociOS/issues/143)] TBD artigo - by [@talesp](https://github.com/talesp) 
+- **11/03/2017:** [[#143](https://github.com/CocoaHeadsBrasil/equinociOS/issues/143)] Experiências na modularização de um SDK artigo - by [@talesp](https://github.com/talesp) 
 - **12/03/2017:** [[#123](https://github.com/CocoaHeadsBrasil/equinociOS/issues/123)] Testes de UI com Embassy e Ambassador artigo - by [@emannuelOC](https://github.com/emannuelOC) 
-- **13/03/2017:** [[#118](https://github.com/CocoaHeadsBrasil/equinociOS/issues/118)] Um mergulho na construção de módulos nativos para React Native artigo - by [@emilianoeloi](https://github.com/emilianoeloi) 
+- **13/03/2017:** [[#131](https://github.com/CocoaHeadsBrasil/equinociOS/issues/131)] Introdução e casos de uso: Map, Filter e Reduce. artigo - by [@ezefranca](https://github.com/ezefranca)
 - **14/03/2017:** [[#124](https://github.com/CocoaHeadsBrasil/equinociOS/issues/124)] Começando a implementar VIPER artigo - by [@vitormesquita](https://github.com/vitormesquita) 
-- **15/03/2017:** [[#119](https://github.com/CocoaHeadsBrasil/equinociOS/issues/119)] TBD - (Provalvelmente meta programação) artigo - by [@fpg1503](https://github.com/fpg1503) 
+- **15/03/2017:** [[#119](https://github.com/CocoaHeadsBrasil/equinociOS/issues/119)] Metaprogramação para o resto de nós artigo - by [@fpg1503](https://github.com/fpg1503) 
 - **16/03/2017:** [[#126](https://github.com/CocoaHeadsBrasil/equinociOS/issues/126)] Eu preciso reativar minha aplicação? artigo - by [@Viniciuscarvalho](https://github.com/Viniciuscarvalho) 
 - **17/03/2017:** [[#132](https://github.com/CocoaHeadsBrasil/equinociOS/issues/132)] Enums pra você e pro seu código artigo - by [@dbonates](https://github.com/dbonates) 
 - **18/03/2017:** [[#130](https://github.com/CocoaHeadsBrasil/equinociOS/issues/130)] Componentes de interface com responsabilidade única artigo - by [@ronanrodrigo](https://github.com/ronanrodrigo) 
