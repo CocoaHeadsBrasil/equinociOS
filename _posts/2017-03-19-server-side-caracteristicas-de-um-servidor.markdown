@@ -15,11 +15,11 @@ então vem sofrendo transformações até chegar no modelo em nuvem conforme tem
 hoje. Mas, o que raios é o servidor?
 
 Olhando pela ótica do software, que é a premissa deste artigo, o servidor é um
-artefato de software cuja função é prover serviços outros artefatos de software,
-chamados de _clientes_. Esta não é uma definição formal nem muito menos
-precisa. A intenção é partirmos desta definição para entender como projetar um
-servidor de software de maneira a usar as principais características do sistema
-operacional no qual estará hospedado.
+artefato de software cuja função é prover serviços à outros artefatos de
+software, chamados de _clientes_. Esta não é uma definição formal nem muito
+menos precisa. A intenção é partirmos desta definição para entender como
+projetar um servidor de software de maneira a usar as principais características
+do sistema operacional no qual estará hospedado.
 
 Hoje em dia o papel principal do servidor é prover serviços a clientes leves, ou
 _thin clients_, normalmente aplicativos para celulares. Todo o processamento
