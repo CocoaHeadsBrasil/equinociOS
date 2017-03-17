@@ -86,7 +86,7 @@ final class BusinessCardComponents {
 
 Neste momento vamos ter código repetindo. Mas, calma, no final do post esse código vai estar refatorado e com as repetições eliminadas. E essa é uma das vantagens quando construímos views com código, temos liberdade para colocar em prática nossa criatividade e evoluir o que está sendo feito.
 
-Pra fazer o layout do card referente ao plano Senior utilizarei um design pattern chamado Dependency Injection. Onde ao invés do nosso componente ter instruções de como se apresentar, eu terei uma classe que vai posicionar cada elemento no seu lugar. E um objeto da classe `BusinessCardComponents` vai ser passado através da injeção de dependência. O código vai ficar da seguinte forma.
+Pra fazer o layout do card referente ao plano Senior utilizarei o design pattern  Dependency Injection. O objeto que será injetado vai ser um `BusinessCardComponents` que vai receber instruções de apresentação na `SeniorBusinessCardView`.
 
 ~~~swift
 final class SeniorBusinessCardView: UIView {
