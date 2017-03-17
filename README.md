@@ -79,7 +79,7 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **15/03/2017:** [[#119](https://github.com/CocoaHeadsBrasil/equinociOS/issues/119)] TBD - (Provalvelmente meta programação) artigo - by [@fpg1503](https://github.com/fpg1503) 
 - **16/03/2017:** [[#126](https://github.com/CocoaHeadsBrasil/equinociOS/issues/126)] Eu preciso reativar minha aplicação? artigo - by [@Viniciuscarvalho](https://github.com/Viniciuscarvalho) 
 - **17/03/2017:** [[#132](https://github.com/CocoaHeadsBrasil/equinociOS/issues/132)] Enums pra você e pro seu código artigo - by [@dbonates](https://github.com/dbonates) 
-- **18/03/2017:** [[#130](https://github.com/CocoaHeadsBrasil/equinociOS/issues/130)] Componentes de interface com responsabilidade única artigo - by [@ronanrodrigo](https://github.com/ronanrodrigo) 
+- **18/03/2017:** [[#130](https://github.com/CocoaHeadsBrasil/equinociOS/issues/130)] Com quantas views se faz uma APP? - by [@ronanrodrigo](https://github.com/ronanrodrigo) 
 - **19/03/2017:** [[#144](https://github.com/CocoaHeadsBrasil/equinociOS/issues/144)] Server-side: características de um servidor - by [@ronflima](https://github.com/ronflima)
 - **20/03/2017:** [[#121](https://github.com/CocoaHeadsBrasil/equinociOS/issues/121)] Garimpando UIView desmistificando o Core Animator artigo - by [@renatosarro](https://github.com/renatosarro) 
 
