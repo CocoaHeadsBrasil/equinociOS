@@ -419,7 +419,7 @@ Fica fácil, né?!
 
 ## Considerações finais
 
-Bem, esses são os meus argumentos pra te convencer de que enumerar seus dados usando os super poderes da nossa linguagem do coração, vai deixar seu códigolindo, seus coleguinhas vão curtir quando precisarem dar manutenção e provavelmente o Crashlytics vai dar uma relaxada porque você não tipou errado! Espero ter contribuído com algumas idéias e uma inspiração a mais para tornar seu código mais seguro, organizado e fácil de ler.
+Bem, esses são os meus argumentos pra te convencer de que enumerar seus dados usando os super poderes da nossa linguagem do coração, vai deixar seu código lindo, seus coleguinhas vão curtir quando precisarem dar manutenção e provavelmente o Crashlytics vai dar uma relaxada porque você não tipou errado! Espero ter contribuído com algumas idéias e uma inspiração a mais para tornar seu código mais seguro, organizado e fácil de ler.
 
 Dúvidas, comentários, whatever, pode tacar por aqui, me parar na rua, ou me procurar lá no Slack da comunidade iOS, onde estou sempre presente, ainda que apenas invisível só acompanhando as _tretas_! 
 
