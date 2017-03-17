@@ -11,7 +11,7 @@ category:   ios
 
 > [Daniel Bonates](https://bonates.com){:target="_blank"}, problem solver & iOS guy at Peixe Urbano. Minhas paixões digitais são [design](https://dribbble.com/dbonates){:target="_blank"} e desenvovimento de [apps](http://bonates.com/index.html#easybalance){:target="_blank"} para a plataforma Apple. Vivo dessas coisas desde 1998 e meu primeiro app foi para o MacOS 9, em 1991, um player de audio ;) Fiquei desviado produzindo backend e frontend para web, até que a chegada do iPhone me salvou mais uma vez, quando então comprei um Mac e voltei a ser feliz, hoje focado em MacOS, iOS e derivados!
 
-#### `Disclaimer`: Estarei tratando aqui do assunto *Enum* usado **Swift**. 
+#### `Disclaimer 1`: Estarei tratando aqui do assunto *Enum* usado **Swift**. 
 
 ## Introdução
 Sempre que falo de Enums, o faço com um sentimento de gratidão por um recurso que já fez muito por mim e pelo código que escrevo. Antes dele, era quase tudo literal, sabe...frágeis strings e constantes para todo lado! Nesse artigo enfrentarei 3 desafios: passar conteúdo útil, ser pragmático e objetivo, e testar minha capacidade de síntese escrevendo o mínimo de blábláblá possível.
@@ -143,7 +143,9 @@ A partir daqui:
 
 > Nossa **missão**: criar um **enum** `Router` para gerenciar todas as rotas do nosso app.
 
-Embora a solução final que vou apresentar aqui não seja de minha autoria, acho que vale como caso real pois foi justamente num app super complexo de ecommerce que a vi implementada. Achei uma solução sensacional assim que vi, e a partir daí adotei (com pequenas modificações) em todo app que trabalho. O autor dessa sacada genial foi o [Cassiu Pacheco](https://twitter.com/CassiusPacheco_) que havia deixado sua marca no app pouco antes de eu chegar na empresa. Vamos destrinchar passo a passo essa solução pra entender como ele conseguiu resolver um sistema complexo de rotas explorando todo poder de um **Enum** em _Swift_.
+#### `Disclaimer 2`: Sobre a 'sacada' que vamos abordar:
+
+Embora a solução final que vou apresentar aqui não seja de minha autoria, acho que vale como caso real pois foi justamente num app super complexo de ecommerce que a vi implementada. Achei uma solução sensacional assim que vi, e a partir daí adotei (com pequenas modificações) em todo app que trabalho. O autor dessa sacada genial foi o [Cassius Pacheco](https://twitter.com/CassiusPacheco_){:target="_blank"} que havia deixado sua marca no app pouco antes de eu chegar na empresa. Vamos destrinchar passo a passo essa solução pra entender como ele conseguiu resolver um sistema complexo de rotas de uma API explorando todo poder de um **Enum** em _Swift_.
 
 Mas vamos começar devagar, com uma versão bem simples da _API_ e vamos aumentando a complexidade para ver até onde o uso de um **enum** pode nos ajudar.
 
