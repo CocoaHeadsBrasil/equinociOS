@@ -129,6 +129,8 @@ daí para criar uma uma oferta:
 let oferta = Oferta(titulo: "Nutella", tipo: .normal, status: .disponivel)
 {% endhighlight %}
 
+nice 😊!
+
 Acredito que até aqui, já deu pra ver que usar **enums** é uma obrigação se você pretende manter seu código legível e eficiente. Então vamos agora a um case bem mais comum e pragmático.
 
 ----
@@ -392,7 +394,7 @@ let variavel3: Int? = 42 // 42
 let variavel4: Optional<Int> = .some(42) //42
 {% endhighlight %}
 
-Ou seja, **Enum* está no :
+Viu só?! **Enum** está no coração do Swift 😊!
 
 Usando essa mesma idéia, podemos criar por exemplo um recurso muito útil para tratar erro e sucesso em requests:
 
@@ -423,7 +425,7 @@ Fica fácil, né?!
 
 Bem, esses são os meus argumentos pra te convencer de que enumerar seus dados usando os super poderes da nossa linguagem do coração, vai deixar seu código lindo, seus coleguinhas vão curtir quando precisarem dar manutenção e provavelmente o Crashlytics vai dar uma relaxada porque você não tipou errado! Espero ter contribuído com algumas idéias e uma inspiração a mais para tornar seu código mais seguro, organizado e fácil de ler.
 
-Dúvidas, comentários, whatever, pode tacar por aqui, me parar na rua, ou me procurar lá no Slack da comunidade iOS, onde estou sempre presente, ainda que apenas invisível só acompanhando as _tretas_! 
+Dúvidas, comentários, whatever, pode tacar por aqui, me parar na rua, ou me procurar lá no [Slack da comunidade iOS](http://iosdevbr.herokuapp.com), onde estou sempre presente, ainda que apenas invisível só acompanhando as _tretas_! 
 
 Abraços e até logo!
 
