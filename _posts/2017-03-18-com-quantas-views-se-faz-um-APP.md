@@ -8,33 +8,33 @@ header-img: "img/ronanrodrigo/building-boat.jpg"
 category:   view-code
 ---
 
-> Me chamo Ronan Rodrigo Nunes sou catarinense, não sulista e ja usei Adobe Flex. Comecei minha carreira fazendo algumas gambiarras no Java, embarquei no trem do Ruby, desembarquei em Python, peguei conexão para Xamarin/C# e agora estou vivendo emoções com Swift! Sou desenvoledor iOS na ([Concrete Solutions](http://www.concretesolutions.com.br){:target="_blank"}, estou aprendendo a andar de skate, escrevo na revista [Cocoa Academy](http://medium.com/cocoaacademymag){:target="_blank"} e sou companheiro e marido de Nayara que me fez gostar de psicanalise e filosofia.
+> Me chamo Ronan Rodrigo Nunes sou catarinense, não sulista e já usei Adobe Flex. Comecei minha carreira fazendo algumas gambiarras no Java, embarquei no trem do Ruby, desembarquei em Python, peguei conexão para Xamarin/C# e agora estou vivendo emoções com Swift! Sou desenvoledor iOS na ([Concrete Solutions](http://www.concretesolutions.com.br){:target="_blank"}, estou aprendendo a andar de skate, escrevo na revista [Cocoa Academy](http://medium.com/cocoaacademymag){:target="_blank"} e sou companheiro e marido de Nayara que me fez gostar de psicanálise e filosofia.
 
 # Storyboards? XIBs? View Code?
 
 Tanto meus primeiros passos dentro do XCode quanto alguns trabalhos profissionais foram feitos com o Storyboard. Eu não conseguia imaginar como alguém em sã consciência poderia substituir o arraste e solte do Interface Builder por código. Afinal, é muito simples.
 
-Até que os Storyboards começaram a me encomodar e em seguida os XIBs também. Antes de preferir views construídas com código, eu era muito resistente à esta mudança. Mas um dia comecei a refletir e concluí que isso era preguiça da minha parte. Afinal, quando fullstack eu escrevia HTML ao invés de arrastar e soltar componentes. Mas ainda assim, o Visual Format language era algo estranho.
+Até que os Storyboards começaram a me incomodar e em seguida os XIBs também. Antes de preferir views construídas com código, eu era muito resistente à esta mudança. Mas um dia comecei a refletir e concluí que isso era preguiça da minha parte. Afinal, quando fullstack eu escrevia HTML ao invés de arrastar e soltar componentes. Mas ainda assim, o Visual Format language era algo estranho.
 
 Então participei de algumas talks do Thiago Lioy [@tpLioy](http://twitter.com/tpLioy){:target="_blank"} sobre view code. Nessas talks ele mostrou como [migrou um projeto de Storyboard para views criadas com código](https://medium.com/cocoaacademymag/migrating-an-app-to-view-code-ffe3f1510408#.523t9mw60){:target="_blank"} utilizando Snapkit. E o resultado, para minha surpresa, foi bonito, simples e fácil. Foi assim que comecei a gostar de view code, obrigado [@tpLioy](http://twitter.com/tpLioy){:target="_blank"}. Mas ainda queria aprender a utilizar o que a Apple fez pra nós. Foi então que conheci o Anchor Layout.
 
 # NSLayoutAnchor
 
-A documentação da Apple descreve `NSLayoutAnchor` como sendo uma fábrica de classe, destinada a gerar objetos `NSLayoutConstraint` através de uma API mais expressiva. Sendo os objetos do tipo `NSLayoutConstraint` os reponsáveis por possibilitar o Auto Layout.
+A documentação da Apple descreve `NSLayoutAnchor` como sendo uma fábrica de classe, destinada a gerar objetos `NSLayoutConstraint` através de uma API mais expressiva. Sendo os objetos do tipo `NSLayoutConstraint` os responsáveis por possibilitar o Auto Layout.
 
-Rsumindo, a classe `NSLayoutAnchor` facilitará a criação de constraints utilizadas no auto layout. Ao invés criar as constraints utilizando o construtor da classe `NSLayoutConstraint` são utilizados métodos das `UIView`s. A vantagem consistirá em um código mais limpo e de brinde uma checagem de tipo para evitar a criação de constraints invalidas. Essa checagem de tipo não permitirá, por exemplo, misturar atributos do eixo X com atributos do eixo Y.
+Resumindo, a classe `NSLayoutAnchor` facilitará a criação de constraints utilizadas no auto layout. Ao invés criar as constraints utilizando o construtor da classe `NSLayoutConstraint` são utilizados métodos das `UIView`s. A vantagem consistirá em um código mais limpo e de brinde uma checagem de tipo para evitar a criação de constraints inválidas. Essa checagem de tipo não permitirá, por exemplo, misturar atributos do eixo X com atributos do eixo Y.
 
-> Ainda que a classe `NSLayoutAnchor` tenha a checagem adicional de tipo, ainda é possível criar constraints invalidas. Por exemplo, o compilador permite que você configure a constraint `leadingAnchor` de uma view com a `leftAnchor` de outra view, pois ambas são instancias de `NSLayoutXAxisAnchor`. Entretando, Auto Layout não permite constraints que misturem atributos de `leading` e `trailing` com atributos de `left` ou `right`. Como resultado, as constraints vão quebrar em tempo de execução. [NSLayoutAnchor](https://developer.apple.com/reference/uikit/nslayoutanchor){:target="_blank"}
+> Ainda que a classe `NSLayoutAnchor` tenha a checagem adicional de tipo, ainda é possível criar constraints inválidas. Por exemplo, o compilador permite que você configure a constraint `leadingAnchor` de uma view com a `leftAnchor` de outra view, pois ambas são instâncias de `NSLayoutXAxisAnchor`. Entretanto, Auto Layout não permite constraints que misturem atributos de `leading` e `trailing` com atributos de `left` ou `right`. Como resultado, as constraints vão quebrar em tempo de execução. [NSLayoutAnchor](https://developer.apple.com/reference/uikit/nslayoutanchor){:target="_blank"}
 
 # Hora da aventura
 
-Para demonstrar como utilizar o auto layout na prática, eu criei um playground. Nesse playground existirá uma lista de cartões de visita. Onde os cartões tem uma exibição diferênciada conforme o plano que o usuário anunciante pagou. Com isso em mente, elaborei o layout abaixo.
+Para demonstrar como utilizar o auto layout na prática, eu criei um playground. Nesse playground existirá uma lista de cartões de visita. Onde os cartões têm uma exibição diferenciada conforme o plano que o usuário anunciante pagou. Com isso em mente, criei o layout abaixo.
 
 <p align="center"><img style="border-radius: 3px;"  src="{{ site.baseurl }}/img/ronanrodrigo/business-cards-list.png"></p>
 
 ## A raiz de tudo
 
-Como podem observar, todas as células da tabela demonstrada no protótipo possuem os mesmos dados. Mas, diferentemente organizados em cada célula. Se você já lidou com front-end Web, é como se tivessemos um único HTML, com um CSS diferente para cada layout. Sendo assim, vou criar uma classe contendo todos os elementos do componente de cartão.
+Como podem observar, todas as células da tabela demonstrada no protótipo possuem os mesmos dados. Mas, diferentemente organizados em cada célula. Se você já lidou com front-end Web, é como se tivéssemos um único HTML, com um CSS diferente para cada layout. Sendo assim, vou criar uma classe contendo todos os elementos do componente de cartão.
 
 ~~~swift
 import UIKit
@@ -43,8 +43,8 @@ final class BusinessCardComponents {
 
     let photoImageView: UIImageView = {
 
-        // Aqui não vamos nos procupar com tamanhos.
-        // Isso vai ficar por tonta da "folha de estilos".
+        // Aqui não vamos nos preocupar com tamanhos.
+        // Isso vai ficar por conta da "folha de estilos".
         let imageView = UIImageView(frame: .zero)
 
         // Se desejamos calcular dinamicamente os tamanhos
@@ -84,9 +84,9 @@ final class BusinessCardComponents {
 }
 ~~~
 
-Neste momento vamos ter código repetindo. Mas, calma, no final do post esse código vai estar refatorado e com as repetições eliminadas. E essa é uma das vantagens quando construímos views com código, temos liberdade para colocar em prática nossa criatividade e evoluir o que esta sendo feito.
+Neste momento vamos ter código repetindo. Mas, calma, no final do post esse código vai estar refatorado e com as repetições eliminadas. E essa é uma das vantagens quando construímos views com código, temos liberdade para colocar em prática nossa criatividade e evoluir o que está sendo feito.
 
-Pra fazer o layout do card referente ao plano Senior utilizarei um design pattern chamado Dependency Injection. Onde ao invés do nosso componente ter instruções de como se apresentar, eu terei uma classe que vai posicionar cada elemento no seu lugar. E um objeto da classe `BusinessCardComponents` vai ser passado através da injeção de depêndencia. O código vai ficar da seguinte forma.
+Pra fazer o layout do card referente ao plano Senior utilizarei um design pattern chamado Dependency Injection. Onde ao invés do nosso componente ter instruções de como se apresentar, eu terei uma classe que vai posicionar cada elemento no seu lugar. E um objeto da classe `BusinessCardComponents` vai ser passado através da injeção de dependência. O código vai ficar da seguinte forma.
 
 ~~~swift
 final class SeniorBusinessCardView: UIView {
@@ -215,9 +215,9 @@ final class SeniorBusinessCardView: UIView {
 }
 ~~~
 
-Ocupou mais linhas pois achei conveniente quebra-las. Mas ao todo foi uma redução de quase 800 carácteres. E para além da economia de carácteres, ficou um código mais fácil de ler. Continuando, a próxima tela é refenrete ao plano Full.
+Ocupou mais linhas pois achei conveniente quebra-las. Mas ao todo foi uma redução de quase 800 caracteres. E para além da economia de caracteres, ficou um código mais fácil de ler. Continuando, a próxima tela é referente ao plano Full.
 
-Agora, quando o nosso aplicativo exibir cartões de visita do plano Full, deve mostrar a imagem ao lado dos dados, ao invés de em cima. Pra isso, criei uma view chamada `rightContentContainer` que vai conter o contúdo à direita da imagem, ou seja, com seu `leading` igual ao `trailing` da imagem.
+Agora, quando o nosso aplicativo exibir cartões de visita do plano Full, deve mostrar a imagem ao lado dos dados, ao invés de em cima. Para isso, criei uma view chamada `rightContentContainer` que vai conter o conteúdo à direita da imagem, ou seja, com seu `leading` igual ao `trailing` da imagem.
 
 ~~~swift
 final class FullBusinessCardView: UIView {
@@ -395,9 +395,9 @@ let seniorBsinessCardComponent = BusinessCardComponents(params: params)
 
 # Conclusão
 
-Quando se trata de views contruídas com código temos diversas soluções e "não existe bala de prata". O lado positivo é que podemos trabalhar com nossa criatividade para sermos mais produtivos. Acredito que o Interface Builder acaba nos limitando e nos acomodando.
+Quando se trata de views construídas com código temos diversas soluções e "não existe bala de prata". O lado positivo é que podemos trabalhar com nossa criatividade para sermos mais produtivos. Acredito que o Interface Builder acaba nos limitando e nos acomodando.
 
-Em termos práticos se a escolha fosse utilizar Storyboard ou XIBs teriamos três telas desenhadas com pouco reaproveitamento. Além disso, ficaria mais difcil de criar testes e o tráfego de dados também ficaria mais oneroso.
+Em termos práticos se a escolha fosse utilizar Storyboard ou XIBs teríamos três telas desenhadas com pouco reaproveitamento. Além disso, ficaria mais difícil de criar testes e o tráfego de dados também ficaria mais oneroso.
 
 As views com código requerem um novo aprendizado. Mas é uma curva de aprendizado baixa. Experimente sair da zona de conforto do Interface Builder, aprenderás mais sobre UIKit, vai aprimorar sua criatividade e futuramente, aos poucos, aumentará sua produtividade.
 
