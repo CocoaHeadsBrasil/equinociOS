@@ -28,7 +28,7 @@ Resumindo, a classe `NSLayoutAnchor` facilitará a criação de constraints util
 
 # Hora da aventura
 
-Para demonstrar como utilizar o auto layout na prática, eu criei um playground. Nesse playground existirá uma lista de cartões de visita. Onde os cartões têm uma exibição diferenciada conforme o plano que o usuário anunciante pagou. Com isso em mente, criei o layout abaixo.
+Para demonstrar como utilizar o auto layout na prática, eu criei um [Playground](https://github.com/ronanrodrigo/autolayout){:target="_blank"}. Nesse playground existirá uma lista de cartões de visita. Onde os cartões têm uma exibição diferenciada conforme o plano que o usuário anunciante pagou. Com isso em mente, criei o layout abaixo.
 
 <p align="center"><img style="border-radius: 3px;"  src="{{ site.baseurl }}/img/ronanrodrigo/business-cards-list.png"></p>
 
