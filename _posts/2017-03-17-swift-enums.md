@@ -143,7 +143,9 @@ A partir daqui:
 
 > Nossa **missão**: criar um **enum** `Router` para gerenciar todas as rotas do nosso app.
 
-Nessa dinâmica, começaremos com uma versão bem simples da _API_ e vamos aumentando a complexidade para ver até onde o uso de um **enum** pode nos ajudar.
+Embora a solução final que vou apresentar aqui não seja de minha autoria, acho que vale como caso real pois foi justamente num app super complexo de ecommerce que a vi implementada. Achei uma solução sensacional assim que vi, e a partir daí adotei (com pequenas modificações) em todo app que trabalho. O autor dessa sacada genial foi o [Cassiu Pacheco](https://twitter.com/CassiusPacheco_) que havia deixado sua marca no app pouco antes de eu chegar na empresa. Vamos destrinchar passo a passo essa solução pra entender como ele conseguiu resolver um sistema complexo de rotas explorando todo poder de um **Enum** em _Swift_.
+
+Mas vamos começar devagar, com uma versão bem simples da _API_ e vamos aumentando a complexidade para ver até onde o uso de um **enum** pode nos ajudar.
 
 Nossa primeira versão da _API_ é `https://bonates.com/usuarios`, que retorna um _json_ com a lista dos usuários.
 
