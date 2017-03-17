@@ -12,7 +12,7 @@ category:   view-code
 
 # Storyboards? XIBs? View Code?
 
-Tanto meus primeiros passos dentro do XCode quanto alguns trabalhos profissionais foram feitos com o Storyboard. Eu não conseguia imaginar como alguém em sã consciência poderia substituir o arraste e solte do Interface Builder por código. Afinal, é muito simples.
+Tanto meus primeiros passos dentro do Xcode quanto alguns trabalhos profissionais foram feitos com o Storyboard. Eu não conseguia imaginar como alguém em sã consciência poderia substituir o arraste e solte do Interface Builder por código. Afinal, é muito simples.
 
 Até que os Storyboards começaram a me incomodar e em seguida os XIBs também. Antes de preferir views construídas com código, eu era muito resistente à esta mudança. Mas um dia comecei a refletir e concluí que isso era preguiça da minha parte. Afinal, quando fullstack eu escrevia HTML ao invés de arrastar e soltar componentes. Mas ainda assim, o Visual Format language era algo estranho.
 
