@@ -8,6 +8,26 @@ header-img: "img/ronflima/server-background.jpeg"
 category:   server
 ---
 
+# Antes de começar
+
+Este artigo trata, basicamente, de características do sistema operacional. Pode
+parecer um pouco fora dos assuntos do EquinociOS, mas é algo bastante
+relevante. Desde que a Apple liberou a linguagem Swift como um projeto de
+código-aberto, muita gente vem usando a linguagem para desenvolver software do
+lado do servidor. Assim, torna-se bastante relevante o conhecimento que é
+apresentado neste artigo pois o software servidor executa em um ambiente que
+fará algumas exigências para o seu correto funcionamento.
+
+É importante ter em mente que o ambiente no qual seu software executa precisa
+ser respeitado. Este ambiente proporcionará vantagens, e também desvantagens,
+que precisam ser entendidas e avaliadas. O intuito é integrar bem o seu software
+com este ambiente e tirar proveito das vantagens evitando-se as desvantagens.
+
+Considerando-se que o software do lado do servidor normalmente funciona em
+esquema 24 x 7 x 365, a boa integração com o ambiente aumenta bastante a
+confiabilidade e a robustez. Portanto, é importante conhecer, mesmo que
+superficialmente, o ambiente de execução do seu servidor.
+
 # O que é o servidor?
 
 O conceito de servidor não é novo. Apareceu na série 360 da IBM em 1964. Desde
