@@ -13,11 +13,11 @@ Fala galera! Bem vindos a mais uma rodada do EquinociOS! Espero que estejam apro
 Bem, o artigo de hoje introduz um assunto que eu particularmente sempre corri dele e tentei ao máximo evitá-lo. Até que chegou o dia em que eu não tive como escapar e precisei encarar o "bixo": `CORE ANIMATOR`.
 Vou falar que foi uma das batalhas mais satisfatórias que eu já enfrentei nesse mundo de desenvolvimento mobile, pois além de eu conseguir trabalhar minhas animações de uma forma muito melhor, abriu minha mente para detalhes que sempre passaram desapercebidos e que mudou muito a minha forma de encarar uma - até então - simples estrutura de tela/layout.
 
-###LETS TALK!
+### LETS TALK!
 
 --
 
-#Core Animator
+# Core Animator
 
 Infraestrutura de renderização gráfica e animação, disponível para iOS e OS X, que você utiliza para animar as views e outros elementos visuais de sua aplicação.
 (Sim, copiei do guide da Apple).
@@ -51,7 +51,7 @@ Como falado anteriormente, não é possível definir as propriedades na presenta
 
 > Certo, vamos ver como tudo isso acontece na prática.
 
-##CABasicAnimation
+## CABasicAnimation
 
 Vamos pensar em uma animação bem básica. A primeira que vem à minha mente é deslocar um quadrado de um lado para outro. Logicamente, quando eu configurar meu `CABasicAnimation`, vou passar para ele a propriedade que eu quero alterar, o valor inicial, o valor final e a duração:
 
@@ -95,7 +95,7 @@ PS: Podemos gastar mais um artigo inteiro falando só sobre como gerenciar o tem
 
 --
 
-###Agora, como seria esta mesma animação sem o uso do Core Animator?
+### Agora, como seria esta mesma animação sem o uso do Core Animator?
 
 <script src="https://gist.github.com/renatosarro/dcc083ec91dfee76c46b5c48c56fd048.js"></script>
 
@@ -106,7 +106,7 @@ PS: Podemos gastar mais um artigo inteiro falando só sobre como gerenciar o tem
 
 Já que falamos sobre vários estados, vou aproveitar o gancho para puxar um outro elemento bem bacana presente no Core `Animator`:
 
-#CAKeyframeAnimation
+# CAKeyframeAnimation
 
 Não sei quantos vieram desta época, mas minha primeira experiência como desenvolvedor foi com Action Script. Era o boom do Flash. Fantástico, brilhante, inovador, perfeito para ter experiências mais interativas e claro, animadas.
 
@@ -146,7 +146,7 @@ Claro, esta, é apenas uma introdução. Com isso podemos ir brincando com keyPa
 
 Há uma infinidade de possibilidades quando falamos de animações e com certeza falaremos mais sobre isso.
 
-#Carry on!
+# Carry on!
 
 
 
