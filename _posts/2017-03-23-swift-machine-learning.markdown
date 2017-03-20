@@ -2,7 +2,7 @@
 layout:     post
 title:      "Swift & Machine Learning"
 subtitle:   "Sobre Recursos Humanos e Florestas Aleatórias"
-date:       2017-02-23 00:10:00
+date:       2017-03-23 00:10:00
 author:     "Lucas Farris"
 header-img: "img/farris/2017/mata_atlantica.jpg"
 category:   Tutorial
@@ -11,8 +11,6 @@ category:   Tutorial
 > Geralmente, quando se fala em aprendizado de máquina para mobile, é mais comum ver códigos escritos em Python ou R, rodando do lado do servidor. No entanto, há casos em que compensa mais fazer o processamento localmente (por poder ser feito offline, e não sobrecarregar o server). Por isso o uso de Swift é justificável. Uns 4 anos atrás, eu falaria pra usar o OpenCV rodando nativo em C++, mas os tempos são outros.
 >
 >Se você, caro leitor, nunca teve contato com inteligência artificial, não tema; este artigo não assume que você conheça previamente nada sobre.
->
-> *This article is also available in English here*
 
 1. ### Resumo
 
