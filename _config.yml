@@ -4,6 +4,7 @@ header-img: img/home-bg.jpg
 email: contato@cocoaheads.com.br
 copyright_name: CocoaHeads Brasil
 description: "20 artigos de voluntários durante o mês de Março para comemorar o equinociOS"
+date_format: "%d/%m/%Y"
 url: "http://equinocios.com"
 twitter_username: cocoaheadsbr
 github_username:  CocoaHeadsBrasil

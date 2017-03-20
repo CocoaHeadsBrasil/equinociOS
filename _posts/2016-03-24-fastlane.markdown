@@ -236,4 +236,4 @@ Obs: Se aventure pelas outras ferramentas do fastlane, elas são bem legais.
 [Martin Fowler](http://martinfowler.com/articles/continuousIntegration.html) <br />
 [Mockup dos produtos da Apple](https://developer.apple.com/app-store/marketing/guidelines/#images)
 
-> Fábio Nogueira de Almeida <a href="http://www.twitter.com/fabink" target="_blank">@fabintk</a>
+> Fábio Nogueira de Almeida <a href="http://www.twitter.com/fabintk" target="_blank">@fabintk</a>
