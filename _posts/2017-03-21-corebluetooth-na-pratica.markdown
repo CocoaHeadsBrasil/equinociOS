@@ -126,6 +126,8 @@ Para conferir o modo *background*, confira no [repositório desse projeto no Git
 
 # Code Snippets
 
+Devemos primeiro ligar nosso app com o `CoreBluetooth`. Então, vá `Project` -> `Targets` -> `Build Phases` -> `Link Binary with Libraries` -> Procura por `CoreBluetooth.framework` e então o adiciona.
+
 ## Foreground
 
 Primeiro, vamos criar um protocolor para receber os eventos escutados do `BluetoothManager` e atualizar as views dos nossos `ViewController`s. Vamos chamá-lo de `BlueEar`. E tem uma versão para a `Central` e outra pro `Peripheral`. Assim como o `BlueEar`, teremos uma classe que será a administradora da nossa conexão *Bluetooth* e é a `BluetoothManager`.
