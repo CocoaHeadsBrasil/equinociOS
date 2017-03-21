@@ -352,7 +352,7 @@ Este é um assunto muito mais voltado à administração do sistema do que
 efetivamente ao seu processo. Mas vale a pena passar o olho nisto pois é
 possível para um processo alterar a sua própria prioridade.
 
-_Scheduling_ tem haver com a forma como o seu processo será executado dentro do
+_Scheduling_ tem a ver com a forma como o seu processo será executado dentro do
 Linux/Unix. O sistema operacional divide um _quantum_ arbitrário de tempo com
 base na prioridade de cada processo, dando a cada processo a oportunidade de
 executar. Quanto maior a prioridade de um processo, mais tempo ele terá dentro
