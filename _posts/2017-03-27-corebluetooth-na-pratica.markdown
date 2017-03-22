@@ -2,7 +2,7 @@
 layout:     post
 title:      "CoreBluetooth na Prática"
 subtitle:   "Entendendo o CoreBluetooth framework e aplicando a exemplo real."
-date:       2017-03-21 00:00:00
+date:       2017-03-27 00:00:00
 author:     "Leonardo Cardoso"
 header-img: "img/leonardocardoso/main.jpg"
 category:   bluetooth
