@@ -101,7 +101,7 @@ Colocando de forma simples: **O CLOUDKIT É GRÁTIS, PONTO**
 
 O que a Apple fez foi criar um sistema que previna abusos, dessa forma, se você fizer um uso 'normal' do serviço, ele será sempre grátis.
 
-Conforme foi dito na session 301 da WWDC de 2014 (tradução livre):
+Conforme foi dito na session 231 da WWDC de 2014 (tradução livre):
 
 > Nós não queremos previnir uso legítimo
 >
