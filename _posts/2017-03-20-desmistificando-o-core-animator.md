@@ -1,23 +1,23 @@
 ---
 layout:     post
-title:      "Desmistificando o Core Animator"
-subtitle:   "Uma introdução para perder o medo desse framework como o Core Animator pode ser útil ao elaborar suas animações"
+title:      "Desmistificando o Core Animation"
+subtitle:   "Uma introdução para perder o medo desse framework como o Core Animation pode ser útil ao elaborar suas animações"
 date:       2017-03-20 00:13:00
 author:     "Renato Sarro Matos"
-header-img: "img/renatosarro/header-coreanimator.png"
+header-img: "img/renatosarro/header-coreAnimation.png"
 category:   animations
 ---
 
 Fala galera! Bem vindos a mais uma rodada do EquinociOS! Espero que estejam aproveitando e absorvendo tudo =D
 
-Bem, o artigo de hoje introduz um assunto que eu particularmente sempre corri dele e tentei ao máximo evitá-lo. Até que chegou o dia em que eu não tive como escapar e precisei encarar o "bixo": `CORE ANIMATOR`.
+Bem, o artigo de hoje introduz um assunto que eu particularmente sempre corri dele e tentei ao máximo evitá-lo. Até que chegou o dia em que eu não tive como escapar e precisei encarar o "bixo": `CORE Animation`.
 Vou falar que foi uma das batalhas mais satisfatórias que eu já enfrentei nesse mundo de desenvolvimento mobile, pois além de eu conseguir trabalhar minhas animações de uma forma muito melhor, abriu minha mente para detalhes que sempre passaram desapercebidos e que mudou muito a minha forma de encarar uma - até então - simples estrutura de tela/layout.
 
 ### LETS TALK!
 
 --
 
-# Core Animator
+# Core Animation
 
 Infraestrutura de renderização gráfica e animação, disponível para iOS e OS X, que você utiliza para animar as views e outros elementos visuais de sua aplicação.
 (Sim, copiei do guide da Apple).
@@ -37,7 +37,7 @@ animateWith...
 animateKeyframesWith...
 ~~~
 
-Estes, são métodos, ou melhor, `big helpers` que encapsulam todo o processo de criação de um `CABasicAnimation` ou de um `CAKeyframeAnimation` por exemplo. Estes métodos são muito úteis, desde que usados com moderação e um certo bom senso, mas após nossa introdução você vai notar que pode ter um resultado mais apropriado utilizando o `Core Animator`, dependendo da complexidade de suas animações.
+Estes, são métodos, ou melhor, `big helpers` que encapsulam todo o processo de criação de um `CABasicAnimation` ou de um `CAKeyframeAnimation` por exemplo. Estes métodos são muito úteis, desde que usados com moderação e um certo bom senso, mas após nossa introdução você vai notar que pode ter um resultado mais apropriado utilizando o `Core Animation`, dependendo da complexidade de suas animações.
 
 Antes de começar a ver como as animações acontecem na tela, precisamos entender um elemento bem importante: O `CALayer`, que é de fato, onde as animações acontecem.
 
@@ -91,11 +91,11 @@ Vamos também configurar a propriedade `isRemovedOnCompletion` com o boolean fal
 Observe que, como a animação foi copiada para a layer da primeira view, ao configurarmos a propriedade beginTime para começar meio segundo depois, apenas a animação da layer da `view2` é afetada, pois como falado, ao adicionar a animação à layer, é gerado uma cópia dela.
 
 
-PS: Podemos gastar mais um artigo inteiro falando só sobre como gerenciar o tempo de nossas animações. Acredite, estamos apenas começando e o `Core Animator` possui uma infinidade de possibilidades para trabalhar as animações. Com certeza mais posts virão =D
+PS: Podemos gastar mais um artigo inteiro falando só sobre como gerenciar o tempo de nossas animações. Acredite, estamos apenas começando e o `Core Animation` possui uma infinidade de possibilidades para trabalhar as animações. Com certeza mais posts virão =D
 
 --
 
-### Agora, como seria esta mesma animação sem o uso do Core Animator?
+### Agora, como seria esta mesma animação sem o uso do Core Animation?
 
 <script src="https://gist.github.com/renatosarro/dcc083ec91dfee76c46b5c48c56fd048.js"></script>
 
@@ -104,7 +104,7 @@ PS: Podemos gastar mais um artigo inteiro falando só sobre como gerenciar o tem
 - Vale ressaltar que se tratando de animações, o mais indicado é trabalhar sempre na model layer. Alterações na presentation layer precisam ser feitas com muito cuidado para evitar memory leak e uma animação não muito fluída.
 - Estaríamos limitados a animações simples, como um fade out. Mas vamos pensar em um cenário onde nosso elemento passe por vários estados até chegar em sua posição final. Utilizar essa abstração oferecida pela `UIView` já não seria muito indicado.
 
-Já que falamos sobre vários estados, vou aproveitar o gancho para puxar um outro elemento bem bacana presente no Core `Animator`:
+Já que falamos sobre vários estados, vou aproveitar o gancho para puxar um outro elemento bem bacana presente no Core `Animation`:
 
 # CAKeyframeAnimation
 
@@ -140,7 +140,7 @@ Podemos notar uma propriedade nova. A `isAdded`. Configurando esta propriedade c
 
 --
 
-Olhando assim, o Core Animator não parece tão monstruoso hehe... Na verdade ele pode e vai auxiliar muito quando precisar trabalhar mais com o lado animado da coisa =D
+Olhando assim, o Core Animation não parece tão monstruoso hehe... Na verdade ele pode e vai auxiliar muito quando precisar trabalhar mais com o lado animado da coisa =D
 
 Claro, esta, é apenas uma introdução. Com isso podemos ir brincando com keyPahts, keyFrames e ver o que podemos fazer de mais complexo exercitando muito estas propriedades básicas, mas tão importantes se tratando de animação.
 
