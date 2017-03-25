@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Gerenciando subscriptions com In App Purchases"
+title:      "Gerenciando subscriptions com In-App Purchases"
 subtitle:	"Porque parece complicado, mas não é."
 date:       2017-03-25 09:00:00
 author:     "Renan Protector"
@@ -11,7 +11,7 @@ category:   "subscription"
 > Renan Protector ([@reprotector](https://twitter.com/reprotector){:target="_blank"}) é desenvolvedor iOS desde 2009. Atualmente Indie Dev, é Co-Founder do ([Blogo](https://getblogo.com){:target="_blank"}) e do ([Space Coworking](https://spacecoworking.com){:target="_blank"}). 
 
 
-Em Junho de 2016 a Apple modificou sua política de subscriptions na App Store, permitindo que várias categorias de aplicativos possam utilizar esse modelo de negócios. A assinatura funciona como um In App Purchase e toda a parte de pagamento é feito pela própria App Store. O foco desse artigo está na gestão das assinaturas, por isso não falaremos como implementar IAP (In App Purchase) dentro do seu aplicativo. [Clique Aqui](https://developer.apple.com/in-app-purchase/){:target="_blank"} para saber mais sobre IAP.
+Em Junho de 2016 a Apple modificou sua política de subscriptions na App Store, permitindo que várias categorias de aplicativos possam utilizar esse modelo de negócios. A assinatura funciona como um In-App Purchase e toda a parte de pagamento é feito pela própria App Store. O foco desse artigo está na gestão das assinaturas, por isso não falaremos como implementar IAP (In-App Purchase) dentro do seu aplicativo. [Clique Aqui](https://developer.apple.com/in-app-purchase/){:target="_blank"} para saber mais sobre IAP.
 
 Iremos falar sobre duas possibilidades: __Assinatura apenas no app__ e __Assinatura em vários ambientes__
 
