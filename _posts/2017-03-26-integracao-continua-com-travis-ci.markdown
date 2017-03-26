@@ -9,37 +9,39 @@ category:   ios
 ---
 
 # Integração Contínua com Travis CI
-Integração Contínua é, em outras palavras, a prática que busca manter o ambiente de desenvolvimento em pleno funcionamento após iterações feitas pelos devs do projeto. Para que isso ocorra, é necessário que a cada alteração no repositório alguns itens do projeto sejam verificados, como a geração da _build_ e execução de testes, por exemplo.
+Integração Contínua é, em outras palavras, a prática que busca manter o ambiente de desenvolvimento em pleno funcionamento após iterações feitas pelos devs do projeto. Para que isso ocorra, é necessário que a cada alteração no repositório, alguns itens do projeto sejam verificados, como a geração da _build_ e execução de testes, por exemplo.
 
-Você pode ler um pouco mais sobre o assunto [aqui](https://martinfowler.com/articles/continuousIntegration.html).
+Você pode ler um pouco mais sobre o assunto [aqui (conteúdo em inglês)](https://martinfowler.com/articles/continuousIntegration.html).
 
 # Travis CI
 
-O Travis CI é um serviço dedicado exclusivamente à integração contínua, a principal limitação  do mesmo é a necessidade do projeto estar hospedado no GitHub. 
+O Travis CI é um serviço dedicado exclusivamente à integração contínua. Ele opera integrado ao GitHub, assim, algumas tarefas são simplificadas, como a automação da obtenção do _source_ do projeto. Devido à integração, é necessário que seu projeto esteja hospedado no GitHub.
 
-O uso do Travis para projetos _open source_ é gratuito 🎉 (isso sem dúvida ajudou a popularizá-lo). Para utilizá-lo em projetos privados você terá que desembolsar alguns dólares, o valor mensal (informações de março, 2017) vai de $69 no plano _Bootstrap_ até $489 💸 na opção _Premium_.
+O uso do Travis para projetos _open source_ é gratuito 🎉 (isso sem dúvida ajudou a popularizá-lo). Para utilizá-lo em projetos privados você terá que desembolsar alguns dólares, o valor mensal* vai de $69 no plano _Bootstrap_ até $489 💸 na opção _Premium_.
 
-Para começar a utilizar basta acessar [travis-ci.org](https://travis-ci.org) para projetos open source ou [travis-ci.com](https://travis-ci.com) para projetos privados. O processo de _sign-up_ é bastante simples.
+Para começar a utilizar basta acessar [travis-ci.org](https://travis-ci.org) para projetos _open source_ ou [travis-ci.com](https://travis-ci.com) para projetos privados. O processo de _sign-up_ é bastante simples.
+
+\* Informações de março, 2017
 
 # Benefícios
 
-Entre os benefícios do uso do Travis (ou qualquer outra opção para integração contínua) destaco a velocidade em que os problemas corriqueiros são encontrados, afinal, quanto mais rápido descobrimos alguma adversidade, menor a chance de uma dor de cabeça das grandes. 
+Entre os benefícios do uso do Travis (ou qualquer outra solução de integração contínua) destaco a velocidade em que os problemas corriqueiros são encontrados, afinal, quanto mais rápido descobrirmos alguma adversidade, menor a chance de uma dor de cabeça das grandes. 
 
-Outro ponto interessante é a integração realizada pelo Travis com o GitHub, onde a cada _commit_ ou _pull request_, o Travis executa seu _job_ e marca visualmente se o ambiente foi comprometido ou não. Além também da geração dos tradicionais _badges_ informando o _status_ da projeto.
+Outro ponto interessante é a integração realizada pelo Travis com o GitHub, onde a cada _commit_ ou _pull request_, o Travis executa seu _job_ e marca visualmente se o ambiente foi comprometido ou não. Além também da geração dos tradicionais _badges_ informando o _status_ do projeto.
 
 ![]({{ site.baseurl }}/img/serralvo/commits-travis.png)
 
-_Marcação visual do estado da build_
+_Marcação visual do status da build_
 
 # Hora do Show
 
-Para exemplificar o funcionamento do Travis criei um projeto para iOS, escrito em Swift 3, nele adicionei uma dependência para demonstrar o processo para obter tal.
+Para exemplificar o funcionamento do Travis criei um projeto para iOS em Swift 3. Nele adicionei uma dependência que servirá para demonstrar como obter as bibliotecas ou frameworks do projeto.
 
 Esse projeto gerou três itens para explorarmos: 
 
 * Será necessário gerenciar as dependências do projeto —  sim, é isso que você está pensando: Cocoapods.
 * Execução da _build_.
-* Por fim, notificaremos o time sobre o estado do projeto.
+* Por fim, notificaremos o time sobre o _status_ do projeto.
 
 # Arquivo .travis.yml
 
