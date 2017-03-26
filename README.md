@@ -84,8 +84,8 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **20/03/2017:** [[#121](https://github.com/CocoaHeadsBrasil/equinociOS/issues/121)] Garimpando UIView desmistificando o Core Animator artigo - by [@renatosarro](https://github.com/renatosarro) 
 
 ## Artigos extras
-- **21/03/2017:** [[#122](https://github.com/CocoaHeadsBrasil/equinociOS/issues/122)] Falando sobre App Coordinator artigo - by [@shonorio](https://github.com/shonorio) 
-- **22/03/2017:** [[#137](https://github.com/CocoaHeadsBrasil/equinociOS/issues/137)] Layout, composição e testes A/B artigo - by [@brunogb](https://github.com/brunogb) 
+- **21/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[21/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
+- **22/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[22/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]** 
 - **23/03/2017:** [[#139](https://github.com/CocoaHeadsBrasil/equinociOS/issues/139)] Machine Learning em Swift artigo - by [@luksfarris](https://github.com/luksfarris) 
 - **24/03/2017:** [[#127](https://github.com/CocoaHeadsBrasil/equinociOS/issues/127)] Sincronização de dados com CloudKit artigo - by [@insidegui](https://github.com/insidegui) 
 - **25/03/2017:** [[#140](https://github.com/CocoaHeadsBrasil/equinociOS/issues/140)] Gerenciando subscriptions com IAP artigo - by [@reprotector](https://github.com/reprotector) 
