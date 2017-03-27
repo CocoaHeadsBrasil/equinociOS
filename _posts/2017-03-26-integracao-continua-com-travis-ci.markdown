@@ -35,11 +35,11 @@ _Marcação visual do status da build_
 
 # Hora do Show
 
-Para exemplificar o funcionamento do Travis criei um projeto para iOS em Swift 3. Nele adicionei uma dependência que servirá para demonstrar como obter as bibliotecas ou frameworks do projeto.
+Para exemplificar o funcionamento do Travis criei um projeto para iOS em Swift 3. Nele, adicionei uma dependência que servirá para demonstrar como obter as bibliotecas ou frameworks do projeto.
 
-Esse projeto gerou três itens para explorarmos: 
+Esse projeto gerou três ítens para explorarmos: 
 
-* Será necessário gerenciar as dependências do projeto —  sim, é isso que você está pensando: Cocoapods.
+* Será necessário gerenciar as dependências do projeto —  sim, é isso que você está pensando: CocoaPods.
 * Execução da _build_.
 * Por fim, notificaremos o time sobre o _status_ do projeto.
 
@@ -49,17 +49,17 @@ Para que essas tarefas listadas acima funcionem, nós precisaremos criar um arqu
 
 Antes de começarmos a escrever o arquivo de configuração, precisamos entender como funciona o ciclo de vida do processo de _build_ do Travis:
 
-O Travis divide a execução do _job_ em duas etapas, a primeira delas é responsável pela atualização das dependências, seja do projeto ou do ambiente. A segunda etapa é voltada para a execução da _build_ e outras tarefas relacionadas, como _tests_, _reports_ e _deploy_. Nessas etapas podemos detectar eventos do ciclo de vida e incluir ações de acordo com a necessidade do projeto.
+O Travis divide a execução do _job_ em duas etapas, a primeira delas é responsável pela atualização das dependências, seja do projeto, ou do ambiente. A segunda etapa é voltada para a execução da _build_ e outras tarefas relacionadas, como _tests_, _reports_ e _deploy_. Nessas etapas podemos detectar eventos do ciclo de vida e incluir ações de acordo com a necessidade do projeto.
 
-Para começarmos, o primeiro passo é realizar o cadastro no Travis, para repositórios públicos ou privados, o funcionamento será o mesmo.
+Para começarmos, o primeiro passo é realizar o cadastro no Travis. Para repositórios públicos ou privados, o funcionamento será o mesmo.
 
 ![]({{ site.baseurl }}/img/serralvo/travis-ci-org.png)
 
-O próximo passo é "ativar" o Travis para o repositório desejado, feito isso, no próximo _commit_ ou _pull request_ o _job_ será executado.
+O próximo passo é "ativar" o Travis para o repositório desejado. Feito isso, no próximo _commit_ ou _pull request_, o _job_ será executado.
 
 ![]({{ site.baseurl }}/img/serralvo/start-travis.png)
 
-Após o cadastro chegou a hora de criar o arquivo *.travis.yml* na raiz do repositório, feito isso, vamos incluir duas linhas: A primeira linha é usada para definir a linguagem do projeto (que é um valor obrigatório), no caso adicionaremos `objective-c`. A segunda representa a imagem que será usada para fazer a build do projeto, no caso, adicionamos `xcode8.1`. Veja abaixo:
+Após o cadastro chegou a hora de criar o arquivo *.travis.yml* na raiz do repositório. Feito isso, vamos incluir duas linhas: A primeira é usada para definir a linguagem do projeto (que é um valor obrigatório). No caso adicionaremos `objective-c`. A segunda representa a imagem que será usada para fazer a build do projeto, no caso, adicionaremos `xcode8.1`. Veja abaixo:
 
 ~~~
 language: objective-c
@@ -72,7 +72,7 @@ Ué, `objective-c`?! Mas o projeto não está escrito em Swift? Sim, isso mesmo,
 
 ## Baixando as dependências
 
-Se você já usou CocoaPods ao menos uma vez, sabe que basta executar `pod install` para obter as dependências do projeto, no ambiente do Travis isso é um pouco diferente, se o `Podfile` estiver na raiz do projeto, o Travis fará o _fetch_ automaticamente, caso contrário, basta indicar no `.travis.yml` qual o local de tal arquivo:
+Se você já usou CocoaPods ao menos uma vez, sabe que basta executar `pod install` para obter as dependências do projeto. No ambiente do Travis isso é um pouco diferente: se o `Podfile` estiver na raiz do projeto, o Travis fará o _fetch_ automaticamente, caso contrário, basta indicar no `.travis.yml` qual o local de tal arquivo:
 
 ~~~
 podfile: path/to/Podfile
@@ -86,13 +86,13 @@ install: sh dependencies.sh
 
 ## Build e Sucesso
 
-Após obter as dependências do projeto, basta apenas configurar alguns parâmetros para a execução da _build_. Esses parâmetros envolvem alguns itens necessários para continuar o processo, são eles:
+Após obter as dependências do projeto, basta apenas configurar alguns parâmetros para a execução da _build_. Esses parâmetros envolvem alguns ítens necessários para continuar o processo. São eles:
 
 * _Path_ do `xcworkspace` ou `xcproject`.
 * Algum _scheme_ com a opção _shared_ ativada ([saiba mais aqui](http://help.apple.com/xcode/mac/8.0/#/dev5426ddfcf)).
 * SDK que será usado (no caso estamos usando `iphonesimulator`).
 
-Conhecendo tais parâmetros é a hora de realizar a _build_ do projeto, para isso, vamos adicionar na etapa `script` a chamada do `xcodebuild`.
+Conhecendo tais parâmetros é hora de realizar a _build_ do projeto, para isso, vamos adicionar na etapa `script` a chamada do `xcodebuild`.
 
 ~~~
 script:
@@ -111,11 +111,11 @@ script:
 
 ## Notificações
 
-Para detectar possíveis problemas com o projeto, é interessante compartilhar o status da _build_ com o time a cada iteração. O Travis prove diversas opções para enviar notificações, você pode optar por receber tais alertas via e-mail e/ou utilizar alguma integração, no nosso caso, vamos ser avisados via Slack 📢.
+Para detectar possíveis problemas com o projeto, é interessante compartilhar o status da _build_ com o time a cada iteração. O Travis provê diversas opções para notificações, começando pelo envio de e-mails e abrindo um leque de possibilidades graças às integrações. No nosso caso, vamos ser avisados via Slack 📢.
 
 Para isso, o primeiro passo é adicionar uma [nova integração ao Slack](https://my.slack.com/services/new/travis). Após selecionar o time e as demais opções, na própria página do Slack você encontrará o conteúdo que deve ser adicionado ao seu arquivo de configuração.
 
-Concluido tal passo, vamos incluir a chave `notifications` no arquivo `.travis.yml`:
+Concluído tal passo, vamos incluir a chave `notifications` no arquivo `.travis.yml`:
 
 ~~~
 notifications:
@@ -127,11 +127,13 @@ Importante: Caso seu projeto seja aberto, é recomendado criptografar a chave. E
 
 # Considerações Finais
 
-Ferramentas de integração contínua são realidade no mercado e fazem parte da rotina de qualquer grande projeto de software. Algumas demandam maior esforço para que sejam configuradas (principalmente ferramentas _self-hosted_) outras não, como é o caso do Travis, onde basta um arquivo de marcação para que a mágica aconteça.
+Ferramentas de integração contínua são realidade no mercado e fazem parte da rotina de qualquer grande projeto de software. Algumas demandam maior esforço para que sejam configuradas (principalmente ferramentas _self-hosted_), outras não, como é o caso do Travis, onde basta um arquivo de marcação para que a mágica aconteça.
 
-Se você se interessou pelo assunto e deseja implantar tal processo em seus projetos, e, por alguma limitação não irá conseguir utilizar o Travis, saiba que existem diversas opções, como Jenkins, Xcode Server, CircleCI, entre outras.
+Se você se interessou pelo assunto e deseja implantar tal processo em seus projetos, e por alguma limitação não irá conseguir utilizar o Travis, saiba que existem diversas opções, como Jenkins, Xcode Server, CircleCI, entre outras.
 
 Para finalizar, Integração Contínua é um dos pilares do desenvolvimento ágil, e podemos considerar que também é um passo para a Entrega Contínua, mas isso é assunto para outro artigo 🙃.
+
+Um obrigado especial ao [Roger Oba](https://github.com/rogerluan) e também ao [Cícero Duarte](https://github.com/ciceroduarte).
 
 ### Referencias:
 
