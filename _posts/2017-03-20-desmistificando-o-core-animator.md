@@ -136,7 +136,7 @@ Vamos então criar nosso objeto `CAKeyframeAnimation`.
 
 <script src="https://gist.github.com/renatosarro/7dd14ca9892d894653f8f185d18f6409.js"></script>
 
-Podemos notar uma propriedade nova. A `isAdded`. Configurando esta propriedade como verdadeiro, significa que o valor especificado pela animação, será adicionado à árvore de renderização atual. Isso nos permite reutilizar a mesma animação para qualquer elemento que precise ter o mesmo comportamento.
+Podemos notar uma propriedade nova. A `isAdditive`. Configurando esta propriedade como verdadeiro, significa que o valor especificado pela animação, será adicionado à árvore de renderização atual. Isso nos permite reutilizar a mesma animação para qualquer elemento que precise ter o mesmo comportamento.
 
 --
 
