@@ -26,7 +26,7 @@ Ao usar metaprogramação você escreve menos código repetitivo e, com isso, me
 [Sourcery](https://github.com/krzysztofzablocki/Sourcery) é uma ferramenta open source mantida pelo [Krzysztof Zabłocki](https://github.com/krzysztofzablocki) que alavanca metaprogramação em Swift usando templates. Não se preocupe, vou explicar o que isso significa nos próximos parágrafos.
 
 ## O que é um *template*?
-*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito**. Imagine um template como um cortador de biscoitos, algo que dá forma ao que é colocado dentro, **você pode usar um cortador de biscoitos em massinha de crianças mas isso não vai trasnformar ela em biscoito**.
+*Template* é uma palavra em inglês que pode ser traduzida como **modelo** ou **gabarito**. Imagine um template como um cortador de biscoitos, algo que dá forma ao que é colocado dentro, **você pode usar um cortador de biscoitos em massinha de crianças mas isso não vai transformá-la em biscoito**.
 <img src="{{ site.baseurl }}/img/fpg1503/template.jpg">
 
 ## Por que *templates*?
