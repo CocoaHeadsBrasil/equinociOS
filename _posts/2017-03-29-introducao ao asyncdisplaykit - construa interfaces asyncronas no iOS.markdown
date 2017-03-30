@@ -8,22 +8,22 @@ header-img: "img/gugaoliveira/layoutable-types.png"
 category:   UI
 ---
 
-> Sou o Guga Oliveira ([@gugaoliveira](https://twitter.com/gugaoliveira){:target="_blank"}), empreendedor, cursei engenharia eletrônica mas sempre trabalhei com softwares e programação. Abri uma empresa de desenvolvimento Web em Juiz de Fora no início de 2000, e em 2007 fundamos a [Handcom](http://www.handcom.com.br){:target="_blank"} focada em mobilidade. Trabalhamos com iOS desde o início, e criamos aplicativos em sua maioria focados no varejo e com foco empresarial. Em 2014 fundamos a startup [Microlocation](http://www.microlocation.com.br){:target="_blank"} que foi acelerada pelo Seed-MG e hoje faz parte de nosso solução para o varejo [Smart-Retail](http://www.smartretail.com.br){:target="_blank"}, atualmente estou estudando Swift e Análise de Dados, e participando bastante do desenvolvimento dos ecossistemas de Minas Gerais com o MGTI em BH e o Zer040 em Juiz de Fora.
+> Sou o Guga Oliveira ([@gugaoliveira](https://twitter.com/gugaoliveira){:target="_blank"}), empreendedor, cursei engenharia eletrônica mas sempre trabalhei com softwares e programação. Abri uma empresa de desenvolvimento Web em Juiz de Fora no início de 2000, e em 2007 fundamos a [Handcom](http://www.handcom.com.br){:target="_blank"} focada em mobilidade. Trabalhamos com iOS desde o início, e criamos aplicativos em sua maioria focados no varejo e com foco empresarial. Em 2014 fundamos a startup [Microlocation](http://www.microlocation.com.br){:target="_blank"} que foi acelerada pelo Seed-MG e hoje faz parte de nossa solução para o varejo [Smart-Retail](http://www.smartretail.com.br){:target="_blank"}, atualmente estou estudando Swift e Análise de Dados, e participando bastante do desenvolvimento dos ecossistemas de Minas Gerais com o MGTI em BH e o Zer040 em Juiz de Fora.
 
 ## interface assíncrona? sem Interface Builder?
 
-Fui apresentado ao [AsyncDisplayKit](http://asyncdisplaykit.org/) pelo Heberti Almeida, excelente dev iOS que conheci na WWDC de 2013. Ele estava usando o `ASDK` no desenvolvimento do novo app da [PostBeyond](https://postbeyond.com){:target="_blank"}, startup em que ele trabalha. No começo achei complicado apostar em uma biblioteca de terceiros para substituir as bibliotecas próprias do iOS como `UIKit`, XIBs e StroyBoards.
+Fui apresentado ao [AsyncDisplayKit](http://asyncdisplaykit.org/) pelo Heberti Almeida, excelente dev iOS que conheci na WWDC de 2013. Ele estava usando o `ASDK` no desenvolvimento do novo app da [PostBeyond](https://postbeyond.com){:target="_blank"}, startup em que ele trabalha. No começo achei complicado apostar em uma biblioteca de terceiros para substituir as bibliotecas próprias do iOS como `UIKit`, XIBs e Storyboards.
 
-Mas na WWDC 2016, o Heberti me convidou para ir no evento do [Pinterest](http://www.pinterest.com){:target="_blank"} que acontecia em volda da WWDC. O evento foi promovido pelo Scott Goodsom [@ScottGoodson](https://twitter.com/ScottGoodson){:target="_blank"}, que é Head of Core Experience no Pinterest, e que idealizou a _AsyncDisplayKit_ para desenvolver o _Paper_ para o _Facebook_. 
+Mas na WWDC 2016, o Heberti me convidou para ir no evento do [Pinterest](http://www.pinterest.com){:target="_blank"} que acontecia em volta da WWDC. O evento foi promovido pelo Scott Goodsom [@ScottGoodson](https://twitter.com/ScottGoodson){:target="_blank"}, que é Head of Core Experience no Pinterest, e que idealizou a _AsyncDisplayKit_ para desenvolver o _Paper_ para o _Facebook_. 
 
 [![WWDC 2016 AsyncDisplayKit event ](https://img.youtube.com/vi/8ngXakpE2x8/0.jpg)](https://www.youtube.com/watch?v=8ngXakpE2x8){:target="_blank"}<br/>
 _WWDC 2016 AsyncDisplayKit event_
 
-O que vi no evento me surpreendeu bastante, engenheiros de apps de famosos utilizando intensamente a biblioteca, com foco total em performance visual. O _Pinterest_ utiliza o _AsyncDisplayKit_ e possui engenheiros trabalhando de forma obsessiva na engenharia de renderezição das telas para que fiquem extremamente responsivas, com o mínimo _drop_ de _frames_ possível.
+O que vi no evento me surpreendeu bastante, engenheiros de apps famosos utilizando intensamente a biblioteca, com foco total em performance visual. O _Pinterest_ utiliza o _AsyncDisplayKit_ e possui engenheiros trabalhando de forma obsessiva na engenharia de renderização das telas para que fiquem extremamente responsivas, com o mínimo _drop_ de _frames_ possível.
 
-Como nosso aplicativo possui uma tela com muitas imagens de produtos e um fluxo quase infinito, como em uma timeline de produtos, resolvemos apostar na re-escrita com o AsyncDisplayKit nas próximas versões, além de quebrar um grande paradígma na empresa, que é o uso de Storyboard e Interface Builder.
+Como nosso aplicativo possui uma tela com muitas imagens de produtos e um fluxo quase infinito, como em uma timeline de produtos, resolvemos apostar na re-escrita com o AsyncDisplayKit nas próximas versões, além de quebrar um grande paradigma na empresa, que é o uso de Storyboard e Interface Builder.
 
-Como é um framework complexo, e não por isso dificil de usar, este artigo pretende ser introdutório ao AsyncDisplayKit, tentarei complementar com assuntos mais avançados em breve.
+Como é um framework complexo, e não por isso difícil de usar, este artigo pretende ser introdutório ao AsyncDisplayKit, tentarei complementar com assuntos mais avançados em breve.
 
 
 ## AsyncDisplayKit
@@ -45,7 +45,7 @@ O `ASDK` é incompatível com ***Interface Builder*** e ***Auto Layout***, a bib
 
 A unidade fundamental do `ASDK` é o `node` ou `ASDisplayNode`, ele é uma abstração da `UIView`, que por conseguinte é uma abstração da `CALayer`. A `UIView` só pode ser manipulada na _main thread_, mas os `nodes` são _thread safe_ e podem ser instanciados e ter toda sua hierarquia configurada em _background_ . 
 
-![Node - VIew - Layer]({{ site.baseurl }}/img/gugaoliveira/node-view-layer.png)
+![Node - View - Layer]({{ site.baseurl }}/img/gugaoliveira/node-view-layer.png)
 
 A idéia básica do `ASDK` é que você possa trabalhar com os `nodes` da mesma forma como já trabalha com as `views`, a grande maioria dos métodos e parâmetros da `UIView` e da `CALayer` possuem equivalentes nos `nodes`. 
 
@@ -266,7 +266,7 @@ Na ***DetailRootNode*** temos uma instância de `ASCollectionNode` o _container_
         
         _imageCategory = imageCategory;
 
-        // Cria a ASCollectionView. Não é necessário adiciocar como subnode explicitamente por que iremos configurar o parametro usesImplicitHierarchyManagement para YES
+        // Cria a ASCollectionView. Não é necessário adicionar como subnode explicitamente por que iremos configurar o parametro usesImplicitHierarchyManagement para YES
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         _collectionNode = [[ASCollectionNode alloc] initWithCollectionViewLayout:layout];
         _collectionNode.delegate = self;
