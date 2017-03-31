@@ -9,23 +9,23 @@ category:   Banco de Dados
 ---
 
 > Olá pessoal, esse é meu primeiro artigo aqui no EquinociOS e então farei uma breve apresentação.
->  Me chamo [Douglas Taquary](www.twitter.com/viniciusc70https://twitter.com/bluesprogrammer) sou desenvolvedor iOS um pouco mais de 3 anos, fundador e líder do Cocoaheads Teresina desde de 2015, nasci e me criei dentro da eletrônica do meu [Pai](https://www.facebook.com/profile.php?id=100009371490482&fref=ts) 📺🔌🔧 por isso a paixão também por IoT, eletrônica e seus derivados. Sou [guitarrista](https://www.youtube.com/watch?v=J0imW0Xu6nY) (apesar de não estar mais na atividade já algum tempo, somente vez ou outra), sou fã de blues, Jimi Hendrix,  e gosto de beber cerva e cozinhar ao mesmo tempo. 
+>  Me chamo [Douglas Taquary](www.twitter.com/viniciusc70https://twitter.com/bluesprogrammer) sou desenvolvedor iOS um pouco mais de 3 anos, fundador e líder do Cocoaheads Teresina desde de 2015, nasci e me criei dentro da eletrônica do meu [Pai](https://www.facebook.com/profile.php?id=100009371490482&fref=ts) 📺🔌🔧 por isso a paixão também por IoT, eletrônica e seus derivados. Sou [guitarrista](https://www.youtube.com/watch?v=J0imW0Xu6nY) (apesar de não estar mais na atividade já algum tempo, somente vez ou outra), sou fã de blues, Jimi Hendrix,  e gosto de beber cerva e cozinhar ao mesmo tempo.
 > Feita essa introdução, vamos ao que interessa: **Core Data**!
 
 
 ## Motivação
 
-A uns dois meses atrás me deparei com uma situação em que precisaria persistir dados em um aplicativo. Eu nunca fui muito fã de trabalhar com banco de dados, talvez por experiências anteriores ou por causa de várias configurações chatas que você tem que fazer pra deixar tudo funcionando. 
-Acredito que em determinadas tecnologias, não era eu ou você quem deveria estar fazendo esse tipo de configuração(*o framework ou qualquer outra coisa que você esteja usando*) tem que deixar tudo pronto somente para você ir lá e usar. Devo me preocupar com minha lógica de negócios, que no momento é o mais importante. 
+A uns dois meses atrás me deparei com uma situação em que precisaria persistir dados em um aplicativo. Eu nunca fui muito fã de trabalhar com banco de dados, talvez por experiências anteriores ou por causa de várias configurações chatas que você tem que fazer pra deixar tudo funcionando.
+Acredito que em determinadas tecnologias, não era eu ou você quem deveria estar fazendo esse tipo de configuração(*o framework ou qualquer outra coisa que você esteja usando*) tem que deixar tudo pronto somente para você ir lá e usar. Devo me preocupar com minha lógica de negócios, que no momento é o mais importante.
 
 Bom, mas o jeito foi engolir o choro. ¯\\_(ツ)\_/¯
 
 ## O que é o Core Data
 
-O [CoreData](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html?utm_source=iosstash.io) é um framework nativo como qualquer outro da **Apple**: *UIKit, Foundation* e alguns outros. Ele é usado para persistir, manipular dados no iOS/OSX e usa o `SQLite` por baixo dos panos, mas você não precisar saber `SQL` para usá-lo, ele interage com o *sql* sem você ver ou precisar saber o que está acontecendo. 
-Usamos o esquema de *key/value* para acessar nossos objetos persistidos. 
+O [CoreData](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html?utm_source=iosstash.io) é um framework nativo como qualquer outro da **Apple**: *UIKit, Foundation* e alguns outros. Ele é usado para persistir, manipular dados no iOS/OSX e usa o `SQLite` por baixo dos panos, mas você não precisar saber `SQL` para usá-lo, ele interage com o *sql* sem você ver ou precisar saber o que está acontecendo.
+Usamos o esquema de *key/value* para acessar nossos objetos persistidos.
 
-Algumas de varias caracteristicas que esse framework possui:
+Algumas de várias características que esse framework possui:
 
 - Gerenciamento e manipulação de objetos(CRUD)
 - Buscas sofisticadas. Em vez de escrever SQL, você pode criar consultas complexas associando um objeto *NSPredicate* a uma solicitação de busca.
@@ -33,38 +33,38 @@ Algumas de varias caracteristicas que esse framework possui:
 - Filtragem e gerenciamento de dados na memória e na interface de usuário
 - Controle de versão
 
-E varias outras que você pode conferir [aqui](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html?utm_source=iosstash.io). 
+E várias outras que você pode conferir [aqui](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html?utm_source=iosstash.io).
 
-Sei que existem outras tecnologias *open source* como o `Realm`, que também podem ser usadas para persistir dados no iOS e que podem ser adicionadas em seu projeto através do `cocoapods` ou via `módulo`. Mas não é o intuito desse artigo falar sobre pros e contras de tecnologias. Cabe a você escolher a tecnologia que faz sentido no seu projeto. 
+Sei que existem outras tecnologias *open source* como o `Realm`, que também podem ser usadas para persistir dados no iOS e que podem ser adicionadas em seu projeto através do `CocoaPods` ou via `módulo`. Mas não é o intuito desse artigo falar sobre prós e contras de tecnologias. Cabe a você escolher a tecnologia que faz sentido no seu projeto.
 
 Blá, blá, blá... então vamos lá. 🎉
 
 ## Explicando
 
-Há um tempo atrás, como eu falei, eu criei um [app](https://github.com/douglastaquary/mymovies) para estudar o **Core Data**. 
+Há um tempo atrás, como eu falei, eu criei um [app](https://github.com/douglastaquary/mymovies) para estudar o **Core Data**.
 
 ![]({{ site.baseurl }}/img/douglastaquary/mymovies.png)
 
 >O código do app ainda pode melhorar com algumas *refactors* .
 
-No app você pode inserir nomes de filmes favoritos, e pesquisar por eles através de uma *API Open Movie Database* chamada [OMDb API](http://www.omdbapi.com). A ideia é salvar as informações sobre os filmes e poder vê-las offline, aqui que o *framework entra em ação*. Nosso foco é somente o *Core Data*. ;)
+No app você pode inserir nomes de filmes favoritos, e pesquisar por eles através de uma *API* chamada [Open Movie Database](http://www.omdbapi.com). A ideia é salvar as informações sobre os filmes e poder vê-las offline, aqui que o *framework entra em ação*. Nosso foco é somente o *Core Data*. ;)
 
 ## Vamos lá
 
-Para poder usar o *Core Data* no seu projeto, é necessário habilitá-lo no Xcode no momento que você esta criando um novo projeto, mas ele pode ser adicionado também depois do projeto criado. Além disso, basta fazer `import CoreData` do módulo nas suas classes e pronto. Isso será as poucas configuração que você precisará fazer para sair usando. 
+Para poder usar o *Core Data* no seu projeto, é necessário habilitá-lo no Xcode no momento que você esta criando um novo projeto, mas ele pode ser adicionado também depois do projeto criado. Além disso, basta fazer `import CoreData` do módulo nas suas classes e pronto. Isso será uma das poucas configurações que você precisará fazer para sair usando.
 
 ![]({{ site.baseurl }}/img/douglastaquary/start_coredata.png)
 
 Olha que maravilha?! Mais uma vez o *teorema do taquary* agindo: nosso trabalho não é configurar, é usar, criar.. e blá, blá..
 
-Com projeto criado, abrindo a sua class `AppDelegate.swift`, lá no final do arquivo tem uma variável chamada `var persistentContainer: NSPersistentContainer`. 
-O Xcode cria essa implementação automáticamente. Ela é basicamente o meio de acesso ao seu banco de dados dentro do Core Data. Ele retorna um `container` se seu banco de dados existe, caso contrário ele retornará um erro, o seu app `crasha` e o xcode imprime um `log` no console.
+Com projeto criado, abrindo a sua class `AppDelegate.swift`, lá no final do arquivo tem uma variável chamada `var persistentContainer: NSPersistentContainer`.
+O Xcode cria essa implementação automaticamente. Ela é basicamente o meio de acesso ao seu banco de dados dentro do Core Data. Ele retorna um `container` se seu banco de dados existe, caso contrário ele retornará um erro, o seu app `crasha` e o Xcode imprime um `log` no console.
 
-Somente isso que precisamos para criarmos nossas `querys`. 
+Somente isso que precisamos para criarmos nossas `queries`.
 
 Com a chegada do [Swift 3]() as coisas ficaram bem mais fáceis para se trabalhar com o *Core Data*. Menos código e mais eficiência. Como eu disse, deixa o framework cuidar de configurações dele mesmo.
 
-Para mostrar o quanto se trabalhar com `Core Data` depois do `Swift 3` melhorou eu tenho dois arquivos aqui que o *Xcode* gera no `AppDelegate`. 
+Para mostrar o quanto se trabalhar com `Core Data` depois do `Swift 3` melhorou eu tenho dois arquivos aqui que o *Xcode* gera no `AppDelegate`.
 
 
 
@@ -127,18 +127,18 @@ Com **Swift 3**:
     }()
 ~~~
 
-Que diferença hein?! Pois é.. imagina isso em Objective C?! 🙏🏼
+Que diferença hein?! Pois é... imagina isso em Objective C?! 🙏🏼
 
 
 ## Criando modelos
 
-Outra coisa que podemos observar no nosso projeto, é que temos um arquivo com extensão `.xcdatamodel` que no nosso caso, é chamado `CoreData_app.xcdatamodel`. 
+Outra coisa que podemos observar no nosso projeto, é que temos um arquivo com extensão `.xcdatamodel` que no nosso caso, é chamado `CoreData_app.xcdatamodel`.
 
 ![]({{ site.baseurl }}/img/douglastaquary/tree2x.png)
 
-Vamos analisar esse arquivo gerado, aqui criamos e gerenciamos nossas tabelas usando uma interface bem fácil e que poupa muito trabalho. Sem contar que quando você criar uma nova tabela `+ Add Entity` e popular com seus atributos, assim que você `buildar` seu projeto, o xcode magicamente gera as classes referente a sua *extrutura/esquema/modelo* da sua tabela de dados criada. Olha que beleza 2! 🏄🏻 
+Vamos analisar esse arquivo gerado, aqui criamos e gerenciamos nossas tabelas usando uma interface bem fácil e que poupa muito trabalho. Sem contar que quando você criar uma nova tabela `+ Add Entity` e popular com seus atributos, assim que você `buildar` seu projeto, o Xcode magicamente gera as classes referentes à *estrutura/esquema/modelo* da sua tabela de dados criada. Olha que beleza 2! 🏄🏻
 
-**Aqui os fãns de geradores de código piram** 😅
+**Aqui os fãs de geradores de código piram** 😅
 
 >O *Xcode* agora suporta a geração automática de subclasses de `NSManagedObject` na ferramenta de modelagem.  
 
@@ -149,16 +149,16 @@ Inspetor de entidade:
 ## O Mito do App Delegate
 
 Já é de costume os `devs` deixarem esse código onde Xcode o cria. Algo como: eu não vou nem tocar para não quebrar... Isso é **MITO**!!😅
-O melhor que você faz é tirar essa implementação do `AppDelegate` e criar algo como `DataManager.swift` e colar ele lá. 
+O melhor que você faz é tirar essa implementação do `AppDelegate` e criar algo como `DataManager.swift` e colar ele lá.
 
 ## NSManagedObject
 
-O `NSManagedObject` é uma classe genérica que implementa todo o comportamento básico para um objeto no modelo que o Core Data espera. Não é possível usar instâncias de subclasses diretas de `NSObject` (ou qualquer outra classe que não herde de `NSManagedObject`) com um contexto de um objeto gerenciado. 
+O `NSManagedObject` é uma classe genérica que implementa todo o comportamento básico para um objeto no modelo que o Core Data espera. Não é possível usar instâncias de subclasses diretas de `NSObject` (ou qualquer outra classe que não herde de `NSManagedObject`) com um contexto de um objeto gerenciado.
 Você pode criar subclasses customizadas do `NSManagedObject`, embora isso nem sempre seja necessário, como eu falei o framework "*gera*" as classes refente as suas tabelas e propriedades.🍺
 
 ## Adicionar Dados
 
-No app temos um tela para inserir títulos de filmes. Então, precisamos persistir um atributo *name* do tipo `String` na tabela `Title`. Para eu inserir essa informação, eu simplesmente carrego meu `persistentContainer` através da minha classe `DataManager` no meu `ViewController` 
+No app temos um tela para inserir títulos de filmes. Então, precisamos persistir um atributo *name* do tipo `String` na tabela `Title`. Para eu inserir essa informação, eu simplesmente carrego meu `persistentContainer` através da minha classe `DataManager` no meu `ViewController`
 
 `var dataManager = DataManager()`
 
@@ -181,33 +181,33 @@ e implemento minha função para inserir dados:
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-    
+
 ~~~
 
-Aqui nós instânciamos nosso container usando o `managedContext`, depois pegamos a referência da tabela(*você pode ter varias tabelas*) com `entity` e criamos o objeto que será persistido:
+Aqui nós instanciamos nosso container usando o `managedContext`, depois pegamos a referência da tabela(*você pode ter várias tabelas*) com `entity` e criamos o objeto que será persistido:
 
 `let name = NSManagedObject(entity: entity, insertInto: managedContext)`
 
-E ai eu salvo de fato meu dado usando a funcão `save()` padrão do framework.
+E aí eu salvo de fato meu dado usando a funcão `save()` padrão do framework.
 
 `try managedContext.save()`
 
 Tranquilo demais!
 
-## NSFetch​Request
+## NSFetchRequest
 
 `NSFetchRequest` é um *tipo parametrizado* baseado no novo protocolo `NSFetchRequestResult` adicionado no *Swift 3*. As principais *APIs do Core Data* agora se referem a `NSFetchRequest` *parametrizado* no `Objective C` e no `Swift`.
- 
+
 Além disso, no `Swift`, `NSManagedObjectContext` oferece variantes parametrizadas de `fetch(:)`, que antes do Swift 3 era chamado de `executeFetchRequest: error:`, e `count(:)`.
 
 ~~~swift
 
 public func fetch<T : NSFetchRequestResult>(_ request: NSFetchRequest<T>) throws -> [T]
- 
+
 public func count<T : NSFetchRequestResult>(for request: NSFetchRequest<T>) throws -> Int
 
 ~~~
- 
+
 É com ele que vamos recuperar nossos dados. 🍷
 
 
@@ -215,7 +215,7 @@ public func count<T : NSFetchRequestResult>(for request: NSFetchRequest<T>) thro
 
 Para a minha `tableview` mostrar meus registros de filmes favoritos é mais simples ainda.
 
-Para recuperar os dados persistidos, nós usamos a instancia de  `NSFetchRequest`, onde temos que passar o nome da tabela.
+Para recuperar os dados persistidos, nós usamos a instância de  `NSFetchRequest`, onde temos que passar o nome da tabela.
 
 ~~~swift
 func loadData() {
@@ -234,18 +234,18 @@ func loadData() {
 ~~~
 Depois eu chamo a funcão `fetch()` usando o `context` e passando o `fetchRequest` como parâmetro.
 
-Dai é só transformar o resultado da sua busca em uma `array` de `[NSManagedObject]`, nesse caso, atribuido a *variável* `namesOfMovies` e dar reload na `tableview`.
+Dai é só transformar o resultado da sua busca em uma `array` de `[NSManagedObject]`, nesse caso, atribuído à *variável* `namesOfMovies` e dar reload na `tableview`.
 
 Então lá na função `cellForRowAt` da `tableView` eu consigo fazer isso:
 
 ~~~swift
 cell.name.text = nameOfMovie.value(forKey: "title") as? String
 ~~~
-e listar meus objetos persistidos, moleza hein?! 
+e listar meus objetos persistidos, moleza hein?!
 
 Bom, então é isso, essa foi uma breve introdução.
 
-Existem muito mais operações que podem ser feitas com esse poderoso framework nativo que está ali, só no ponto pra você usar. Espero que esse artigo tenha ajudado você a entender melhor o `Core Data` e algumas de suas estruturas. 
+Existem muito mais operações que podem ser feitas com esse poderoso framework nativo que está ali, só no ponto pra você usar. Espero que esse artigo tenha ajudado você a entender melhor o `Core Data` e algumas de suas estruturas.
 Quem sabe em um próximo podemos ir mais a fundo e brincar um pouco mais com ele.
 
 *Quer saber mais*:
@@ -255,6 +255,3 @@ Quem sabe em um próximo podemos ir mais a fundo e brincar um pouco mais com ele
 [What`s New In Core Data](https://developer.apple.com/library/content/releasenotes/General/WhatNewCoreData2016/ReleaseNotes.html)
 
 [What Is Core Data?](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html?utm_source=iosstash.io)
-
-
-
