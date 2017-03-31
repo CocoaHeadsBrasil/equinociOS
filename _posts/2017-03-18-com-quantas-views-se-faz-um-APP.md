@@ -14,15 +14,17 @@ category:   view-code
 
 Tanto meus primeiros passos dentro do Xcode quanto alguns trabalhos profissionais foram feitos com o Storyboard. Eu não conseguia imaginar como alguém em sã consciência poderia substituir o arraste e solte do Interface Builder por código. Afinal, é muito simples.
 
-Até que os Storyboards começaram a me incomodar e em seguida os XIBs também. Antes de preferir views construídas com código, eu era muito resistente à esta mudança. Mas um dia comecei a refletir e concluí que isso era preguiça da minha parte. Afinal, quando fullstack eu escrevia HTML ao invés de arrastar e soltar componentes. Mas ainda assim, o Visual Format language era algo estranho.
+Até que os Storyboards começaram a me incomodar e em seguida os XIBs também. Antes de preferir views construídas com código, eu era muito resistente à esta mudança. Mas, um dia comecei a refletir e concluí que isso era preguiça da minha parte. Afinal, quando fullstack eu escrevia HTML ao invés de arrastar e soltar componentes. Mas ainda assim, o Visual Format Language e o construtor do NSLayoutConstraint são enfadonhos.
 
-Então participei de algumas talks do Thiago Lioy [@tpLioy](http://twitter.com/tpLioy){:target="_blank"} sobre view code. Nessas talks ele mostrou como [migrou um projeto de Storyboard para views criadas com código](https://medium.com/cocoaacademymag/migrating-an-app-to-view-code-ffe3f1510408#.523t9mw60){:target="_blank"} utilizando Snapkit. E o resultado, para minha surpresa, foi bonito, simples e fácil. Foi assim que comecei a gostar de view code, obrigado [@tpLioy](http://twitter.com/tpLioy){:target="_blank"}. Mas ainda queria aprender a utilizar o que a Apple fez pra nós. Foi então que conheci o Anchor Layout.
+O Visual Format Language é muito sensível à falhas de digitação. E o construtor do NSLayoutConstraint até hoje eu acho complexo.
+
+Então participei de algumas talks do Thiago Lioy [@tpLioy](http://twitter.com/tpLioy){:target="_blank"} sobre view code. Nessas talks ele mostrou como [migrou um projeto de Storyboard para views criadas com código](https://medium.com/cocoaacademymag/migrating-an-app-to-view-code-ffe3f1510408#.523t9mw60){:target="_blank"} utilizando Snapkit. E o resultado, para minha surpresa, foi muito bom. Foi assim que comecei a gostar de view code, obrigado [@tpLioy](http://twitter.com/tpLioy){:target="_blank"}. Mas ainda queria aprender a utilizar o que a Apple fez pra nós. Foi então que conheci o Anchor Layout.
 
 # NSLayoutAnchor
 
-A documentação da Apple descreve `NSLayoutAnchor` como sendo uma fábrica de classe, destinada a gerar objetos `NSLayoutConstraint` através de uma API mais expressiva. Sendo os objetos do tipo `NSLayoutConstraint` os responsáveis por possibilitar o Auto Layout.
+A documentação da Apple descreve `NSLayoutAnchor` como sendo uma fábrica de classe, destinada a gerar objetos `NSLayoutConstraint`. Sendo os objetos do tipo `NSLayoutConstraint` os responsáveis por possibilitar o Auto Layout.
 
-Resumindo, a classe `NSLayoutAnchor` facilitará a criação de constraints utilizadas no auto layout. Ao invés criar as constraints utilizando o construtor da classe `NSLayoutConstraint` são utilizados métodos das `UIView`s. A vantagem consistirá em um código mais limpo e de brinde uma checagem de tipo para evitar a criação de constraints inválidas. Essa checagem de tipo não permitirá, por exemplo, misturar atributos do eixo X com atributos do eixo Y.
+Resumindo, o `NSLayoutAnchor` facilitará a criação de constraints utilizadas no auto layout. Ao invés criar as constraints utilizando o construtor da classe `NSLayoutConstraint` são utilizados métodos das `UIView`s. A vantagem consistirá em um código mais limpo e de brinde uma checagem de tipo para evitar a criação de constraints inválidas. Essa checagem de tipo não permitirá, por exemplo, misturar atributos do eixo X com atributos do eixo Y.
 
 > Ainda que a classe `NSLayoutAnchor` tenha a checagem adicional de tipo, ainda é possível criar constraints inválidas. Por exemplo, o compilador permite que você configure a constraint `leadingAnchor` de uma view com a `leftAnchor` de outra view, pois ambas são instâncias de `NSLayoutXAxisAnchor`. Entretanto, Auto Layout não permite constraints que misturem atributos de `leading` e `trailing` com atributos de `left` ou `right`. Como resultado, as constraints vão quebrar em tempo de execução. [NSLayoutAnchor](https://developer.apple.com/reference/uikit/nslayoutanchor){:target="_blank"}
 
@@ -34,7 +36,7 @@ Para demonstrar como utilizar o auto layout na prática, eu criei um [Playground
 
 ## A raiz de tudo
 
-Como podem observar, todas as células da tabela demonstrada no protótipo possuem os mesmos dados. Mas, diferentemente organizados em cada célula. Se você já lidou com front-end Web, é como se tivéssemos um único HTML, com um CSS diferente para cada layout. Sendo assim, vou criar uma classe contendo todos os elementos do componente de cartão.
+Como podem observar, todos os cartões de visita possuem os mesmos dados. Mas, exibidos de forma diferente. Se você já lidou com front-end Web, é como se tivéssemos um único HTML, com um CSS diferente para cada layout. Sendo assim, vou criar uma classe contendo todos os elementos do componente de cartão.
 
 ~~~swift
 import UIKit
@@ -86,7 +88,7 @@ final class BusinessCardComponents {
 
 Neste momento vamos ter código repetindo. Mas, calma, no final do post esse código vai estar refatorado e com as repetições eliminadas. E essa é uma das vantagens quando construímos views com código, temos liberdade para colocar em prática nossa criatividade e evoluir o que está sendo feito.
 
-Pra fazer o layout do card referente ao plano Senior utilizarei o design pattern  Dependency Injection. O objeto que será injetado vai ser um `BusinessCardComponents` que vai receber instruções de apresentação na `SeniorBusinessCardView`.
+Pra fazer o layout do card referente ao plano Senior é utilizado o design pattern Dependency Injection. O objeto que será injetado vai ser um `BusinessCardComponents` que vai receber instruções de apresentação na `SeniorBusinessCardView`.
 
 ~~~swift
 final class SeniorBusinessCardView: UIView {
@@ -139,7 +141,7 @@ final class SeniorBusinessCardView: UIView {
 }
 ~~~
 
-Embora sejam poucas constraints, o código ficou um tanto quanto extenso. Por conta da dor de ter que fazer esse código várias vezes criei uma extension. Abaixo, mostro como ficou a extension e como ficou o código depois.
+Embora sejam poucas constraints, o código ficou um tanto quanto extenso. Por conta da dor de ter que fazer esse código várias vezes criei uma extension. Essa extension vai facilitar ainda mais a utilização de Layout Anchor. Abaixo, mostro como ficou a extension e como ficou o código depois.
 
 ~~~swift
 extension UIView {
