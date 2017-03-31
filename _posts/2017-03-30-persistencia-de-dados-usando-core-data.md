@@ -2,7 +2,7 @@
 layout:     post
 title:      "Persistência de dados usando Core Data"
 subtitle:   "Uma introdução de como persistir dados no iOS usando o framework nativo"
-date:       2017-03-15 12:00:00
+date:       2017-03-30 12:00:00
 author:     "Douglas Taquary"
 header-img: "img/douglastaquary/database_blocks.png"
 category:   Banco de Dados
@@ -10,12 +10,12 @@ category:   Banco de Dados
 
 > Olá pessoal, esse é meu primeiro artigo aqui no EquinociOS e então farei uma breve apresentação.
 >  Me chamo [Douglas Taquary](www.twitter.com/viniciusc70https://twitter.com/bluesprogrammer) sou desenvolvedor iOS um pouco mais de 3 anos, fundador e líder do Cocoaheads Teresina desde de 2015, nasci e me criei dentro da eletrônica do meu [Pai](https://www.facebook.com/profile.php?id=100009371490482&fref=ts) 📺🔌🔧 por isso a paixão também por IoT, eletrônica e seus derivados. Sou [guitarrista](https://www.youtube.com/watch?v=J0imW0Xu6nY) (apesar de não estar mais na atividade já algum tempo, somente vez ou outra), sou fã de blues, Jimi Hendrix,  e gosto de beber cerva e cozinhar ao mesmo tempo.
-> Feita essa introdução, vamos ao que interessa: **Core Data**!
+> Feita essa introdução, vamos nessa: **Core Data**!
 
 
 ## Motivação
 
-A uns dois meses atrás me deparei com uma situação em que precisaria persistir dados em um aplicativo. Eu nunca fui muito fã de trabalhar com banco de dados, talvez por experiências anteriores ou por causa de várias configurações chatas que você tem que fazer pra deixar tudo funcionando.
+Há uns dois meses atrás me deparei com uma situação em que precisaria persistir dados em um aplicativo. Eu nunca fui muito fã de trabalhar com banco de dados, talvez por experiências anteriores ou por causa de várias configurações chatas que você tem que fazer pra deixar tudo funcionando.
 Acredito que em determinadas tecnologias, não era eu ou você quem deveria estar fazendo esse tipo de configuração(*o framework ou qualquer outra coisa que você esteja usando*) tem que deixar tudo pronto somente para você ir lá e usar. Devo me preocupar com minha lógica de negócios, que no momento é o mais importante.
 
 Bom, mas o jeito foi engolir o choro. ¯\\_(ツ)\_/¯
