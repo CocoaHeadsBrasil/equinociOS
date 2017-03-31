@@ -15,7 +15,7 @@ category:   Banco de Dados
 
 ## Motivação
 
-Há uns dois meses atrás me deparei com uma situação em que precisaria persistir dados em um aplicativo. Eu nunca fui muito fã de trabalhar com banco de dados, talvez por experiências anteriores ou por causa de várias configurações chatas que você tem que fazer pra deixar tudo funcionando.
+Há uns dois meses me deparei com uma situação em que precisaria persistir dados em um aplicativo. Eu nunca fui muito fã de trabalhar com banco de dados, talvez por experiências anteriores ou por causa de várias configurações chatas que você tem que fazer pra deixar tudo funcionando.
 Acredito que em determinadas tecnologias, não era eu ou você quem deveria estar fazendo esse tipo de configuração(*o framework ou qualquer outra coisa que você esteja usando*) tem que deixar tudo pronto somente para você ir lá e usar. Devo me preocupar com minha lógica de negócios, que no momento é o mais importante.
 
 Bom, mas o jeito foi engolir o choro. ¯\\_(ツ)\_/¯
