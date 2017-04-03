@@ -61,12 +61,8 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 4. Abra o navegador e entre no endereço
 
 
-## Data de Publicação
-- **01/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[01/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
-- **02/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[02/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
+## Posts de 2017
 - **03/03/2017:** [[#146](https://github.com/CocoaHeadsBrasil/equinociOS/issues/146)] Introdução a Arquitetura evolutiva - by [@cs-bruno-mazzo ](https://github.com/cs-bruno-mazzo) 
-- **04/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[04/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
-- **05/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[05/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
 - **06/03/2017:** [[#125](https://github.com/CocoaHeadsBrasil/equinociOS/issues/125)] Por que a interface gráfica é um XML? - by [@ronflima](https://github.com/ronflima) 
 - **07/03/2017:** [[#156](https://github.com/CocoaHeadsBrasil/equinociOS/issues/156)] Unit Tests 101 - by [@emannuelOC](https://github.com/emannuelOC)
 - **08/03/2017:** [[#133](https://github.com/CocoaHeadsBrasil/equinociOS/issues/133)] LLDB é seu amigo artigo - by [@Bunn](https://github.com/Bunn) 
@@ -84,8 +80,6 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **20/03/2017:** [[#121](https://github.com/CocoaHeadsBrasil/equinociOS/issues/121)] Garimpando UIView desmistificando o Core Animator artigo - by [@renatosarro](https://github.com/renatosarro) 
 
 ## Artigos extras
-- **21/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[21/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]**
-- **22/03/2017:** **[[Data disponível - Reservar Data](https://github.com/CocoaHeadsBrasil/equinociOS/issues/new?title=[22/03/2017]%20%3CTitulo%20do%20seu%20artigo%3E&body=<Descrição%20do%20seu%20artigo>)]** 
 - **23/03/2017:** [[#139](https://github.com/CocoaHeadsBrasil/equinociOS/issues/139)] Machine Learning em Swift artigo - by [@luksfarris](https://github.com/luksfarris) 
 - **24/03/2017:** [[#127](https://github.com/CocoaHeadsBrasil/equinociOS/issues/127)] Sincronização de dados com CloudKit artigo - by [@insidegui](https://github.com/insidegui) 
 - **25/03/2017:** [[#140](https://github.com/CocoaHeadsBrasil/equinociOS/issues/140)] Gerenciando subscriptions com IAP artigo - by [@reprotector](https://github.com/reprotector) 
@@ -93,9 +87,9 @@ Você já pode ir fazendo Pull Request do seu artigo dentro do diretório [`_pos
 - **27/03/2017:** [[#136](https://github.com/CocoaHeadsBrasil/equinociOS/issues/136)] CoreBluetooth na prática artigo - by [@LeonardoCardoso](https://github.com/LeonardoCardoso) 
 - **28/03/2017:** [[#135](https://github.com/CocoaHeadsBrasil/equinociOS/issues/135)] Adotando Handoff em apps iOS e macOS artigo - by [@rafaelnobrepd](https://github.com/rafaelnobrepd) 
 - **29/03/2017:** [[#134](https://github.com/CocoaHeadsBrasil/equinociOS/issues/134)] Interfaces Assíncronas com AssyncDisplayKit artigo - by [@gugaoliveira](https://github.com/gugaoliveira) 
-- **30/03/2017:** [[#141](https://github.com/CocoaHeadsBrasil/equinociOS/issues/141)] Persistência de dados usando Core Data artigo - by [@douglastaquary](https://github.com/douglastaquary) 
-- **31/03/2017:** [[#120](https://github.com/CocoaHeadsBrasil/equinociOS/issues/120)] 5 motivos para não utilizar Storyboard artigo - by [@shonorio](https://github.com/shonorio) 
+- **30/03/2017:** [[#141](https://github.com/CocoaHeadsBrasil/equinociOS/issues/141)] Persistência de dados usando Core Data artigo - by [@douglastaquary](https://github.com/douglastaquary)
 
+**Muito obrigado a todos que contribuiram!** :tada: 
 
 ## Contato
 Para desenvolvedores que acharam a iniciativa interessante e quiserem se juntar e conhecer a comunidade de desenvolvedores iOS brasileira, se cadastre no [Slack do iOSDevBr](http://iosdevbr.herokuapp.com/).
