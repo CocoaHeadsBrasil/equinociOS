@@ -126,7 +126,7 @@ Verifique no terminal se `AsyncDisplayKit`, `PINRemoteImage` and `PINCache` fora
 Importe o header do framework para usá-lo
 
 ~~~objective-c
-#import <AsyncDisplayKit/AsyncDisplayKit.h>
+# import <AsyncDisplayKit/AsyncDisplayKit.h>
 ~~~
 
 Para usar com `swift` deve-se criar um [_bridge header_](https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html){:target="_blank"}.
@@ -287,7 +287,7 @@ Na ***DetailRootNode*** temos uma instância de `ASCollectionNode` o _container_
 
 ...
 
-#pragma mark - ASCollectionDataSource
+# pragma mark - ASCollectionDataSource
 
 - (NSInteger)collectionNode:(ASCollectionNode *)collectionNode numberOfItemsInSection:(NSInteger)section
 {
