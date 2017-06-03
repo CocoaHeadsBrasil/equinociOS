@@ -9,7 +9,7 @@ category:   Banco de Dados
 ---
 
 > Olá pessoal, esse é meu primeiro artigo aqui no EquinociOS e então farei uma breve apresentação.
->  Me chamo [Douglas Taquary](www.twitter.com/viniciusc70https://twitter.com/bluesprogrammer) sou desenvolvedor iOS um pouco mais de 3 anos, fundador e líder do Cocoaheads Teresina desde de 2015, nasci e me criei dentro da eletrônica do meu [Pai](https://www.facebook.com/profile.php?id=100009371490482&fref=ts) 📺🔌🔧 por isso a paixão também por IoT, eletrônica e seus derivados. Sou [guitarrista](https://www.youtube.com/watch?v=J0imW0Xu6nY) (apesar de não estar mais na atividade já algum tempo, somente vez ou outra), sou fã de blues, Jimi Hendrix,  e gosto de beber cerva e cozinhar ao mesmo tempo.
+>  Me chamo [Douglas Taquary](https://twitter.com/bluesprogrammer) sou desenvolvedor iOS um pouco mais de 3 anos, fundador e líder do Cocoaheads Teresina desde de 2015, nasci e me criei dentro da eletrônica do meu [Pai](https://www.facebook.com/profile.php?id=100009371490482&fref=ts) 📺🔌🔧 por isso a paixão também por IoT, eletrônica e seus derivados. Sou [guitarrista](https://www.youtube.com/watch?v=J0imW0Xu6nY) (apesar de não estar mais na atividade já algum tempo, somente vez ou outra), sou fã de blues, Jimi Hendrix,  e gosto de beber cerva e cozinhar ao mesmo tempo.
 > Feita essa introdução, vamos nessa: **Core Data**!
 
 
