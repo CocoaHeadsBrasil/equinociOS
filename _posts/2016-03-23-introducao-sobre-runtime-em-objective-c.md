@@ -174,9 +174,9 @@ Resumidamente, será implementado o método `extensionViewDidAppear:` (que conte
 O primeiro passo é criar uma categoria e importar a biblioteca `<objc/runtime.h>`:
 
 ~~~objc
-#import "UIViewController+Swizzling.h"
+# import "UIViewController+Swizzling.h"
 
-#import <objc/runtime.h>
+# import <objc/runtime.h>
 
 @implementation UIViewController (Swizzling)
 ~~~
@@ -184,7 +184,7 @@ O primeiro passo é criar uma categoria e importar a biblioteca `<objc/runtime.h
 O método a seguir aplicará a técnica Swizzling propriamente dita:
 
 ~~~objc
-#pragma mark - Swizzling viewDidAppear:
+# pragma mark - Swizzling viewDidAppear:
 
 + (void)swizzlingViewDidAppear {
 }
@@ -245,7 +245,7 @@ if (didAddMethod) {
 Agora é preciso escrever o método `extensionViewDidAppear:` propriamente dito:
 
 ~~~objc
-#pragma mark - viewDidAppear: extension
+# pragma mark - viewDidAppear: extension
 
 - (void)extensionViewDidAppear:(BOOL)animated {
     
@@ -260,7 +260,7 @@ Lembre-se que após terminar a implementação é preciso chamar o método origi
 Para finalizar, é necessário chamar o método `swizzlingViewDidAppear` no método `load`, que por sua vez é chamado assim que a classe for inicializada:
 
 ~~~objc
-#pragma mark - Load
+# pragma mark - Load
 
 + (void)load {
     

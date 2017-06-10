@@ -159,11 +159,11 @@ Caso fosse necessário no futuro diversificar o que esta disponível para cada p
 
 ~~~swift
 
-#if os(tvOS)
+# if os(tvOS)
 
 // Código que será disponível apenas para tvOS
 
-#endif
+# endif
 
 if #available(tvOS 9.1, *) {
     // Código disponível apenas para tvOS 9.1 para frente
