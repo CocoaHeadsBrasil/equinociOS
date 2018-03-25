@@ -2,11 +2,14 @@
 layout:     post
 title:      "Brincando com Enum"
 subtitle:   "Usando valor associado e RawValue"
-date:       2018-03-28 12:00:00
+date:       2018-03-23 12:00:00
 author:     "Eduardo Tolmasquim"
 header-img: "img/eduardoTolmasquim/list.jpg"
 category:   Categoria
 ---
+>Olá pessoal, como é a primeira vez que publico no EquinociOS, vou me apresentar. Sou o Eduardo Tolmasquim e entrei no mundo iOS pelo curso BEPiD em 2015 na PUC-rio (que hoje em dia se chama Apple Developer Academy). Atualmente sou dev iOS na Fulllab e nos tempos livres mantenho um blog chamado [doidiOS](https://www.doidios.com). A maior revolução na minha vida foi quando aprendi a ler no ônibus sem ficar enjoado. As vezes até torço para ter trânsito 🤣. Ok, não chega a tanto... Mas o podcast é hors concours na hora de lavar a louça.
+
+####Agora vamos brincar com enum?
 
 Os `enum`s são perfeitos para modelar dados onde coisas são (como diz o nome), enumeráveis.
 
