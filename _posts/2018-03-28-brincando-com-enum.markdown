@@ -2,7 +2,7 @@
 layout:     post
 title:      "Brincando com Enum"
 subtitle:   "Usando valor associado e RawValue"
-date:       2018-03-23 12:00:00
+date:       2018-03-28 12:00:00
 author:     "Eduardo Tolmasquim"
 header-img: "img/eduardoTolmasquim/list.jpg"
 category:   Categoria
